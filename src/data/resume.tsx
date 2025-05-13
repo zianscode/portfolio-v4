@@ -39,7 +39,7 @@ import {
   BiLeaf as ProfileIcon,
   BiArchive as ProjectIcon,
 } from 'react-icons/bi';
-import { PiChatTeardropDotsBold as ChatIcon } from 'react-icons/pi';
+// import { PiChatTeardropDotsBold as ChatIcon } from 'react-icons/pi';
 import { LuWorkflow } from 'react-icons/lu';
 import { MenuItemType } from '@/types/menu';
 
@@ -85,14 +85,14 @@ export const MENU_ITEMS: MenuItemType[] = [
     isExternal: false,
     eventName: 'Pages: Roadmap',
   },
-  {
-    title: 'Chat Room',
-    href: '/chatroom',
-    icon: ChatIcon,
-    isShow: true,
-    isExternal: false,
-    eventName: 'Pages: Chat Room',
-  },
+  // {
+  //   title: 'Chat Room',
+  //   href: '/chatroom',
+  //   icon: ChatIcon,
+  //   isShow: true,
+  //   isExternal: false,
+  //   eventName: 'Pages: Chat Room',
+  // },
   {
     title: 'Contact',
     href: '/contact',
@@ -114,29 +114,37 @@ export const MENU_ITEMS: MenuItemType[] = [
 // Data projects
 export const projects = [
   {
-    src: "/studycourse/nextapp.png",
-    title: "State App Directory - NextJS",
-    date: "2023-09-15",
+    src: "/projects/marketplace.png",
+    title: "Eco Marketplace",
+    date: "2024-01-15", 
     isNew: true,
+    description: "Digital platforms to support green economy and green jobs.",
+    technologies: ["Next.js", "MySQL", "TailwindCss", "Typescript", "Express.js"]
   },
   {
-    src: "/studycourse/reactlist.png",
-    title: "List on State - ReactJS",
-    date: "2023-09-15",
+    src: "/projects/studi.png",
+    title: "Studi Pemodelan",
+    date: "2024-02-01",
     isNew: true,
+    description: "Modeling case study for goods distribution with 4 main roles.",
+    technologies: ["Figma"]
   },
   {
-    src: "/studycourse/angular.png",
-    title: "Angular coding style guide - AngularJS",
-    date: "2023-09-15",
+    src: "/projects/jokigames.png", 
+    title: "JokiGames & TopUpGames",
+    date: "2024-02-15",
     isNew: false,
+    description: "A game jockey and top up website with various interesting features.",
+    technologies: ["Next.js", "Node.js", "PostgreSQL", "MidTrans", "Bootstrap"]
   },
   {
-    src: "/studycourse/vue.png",
-    title: "Vue Router - VueJS",
-    date: "2023-09-15",
-    isNew: true,
-  },
+    src: "/projects/ciudigital.png",
+    title: "Ciu Insurance",
+    date: "2024-03-01",
+    isNew: false,
+    description: "Insurance bank handling app with attractive design.",
+    technologies: ["Next.js", "PostgreSQL", "Bootstrap", "Golang", "Node.js"]
+  }
 ];
 
 // Skill List
@@ -173,23 +181,41 @@ export const careerData = [
     id: 1,
     company: "SMK Wikrama Bogor",
     position: "Frontend Developer | UI UX Designer | Web Developer",
-    location: "Bogor, Indonesia",
+    location: "Bogor, Indonesia", 
     startDate: "Jun 2022",
-    endDate: "Present",
+    endDate: "Jun 2025",
     duration: "~31 Months",
-    logo: "/career/wikrama.png",
-    gradientColors: "from-blue-500 to-purple-500",
+    logo: "/career/wikrama.png"
   },
   {
     id: 2,
     company: "PT Narantraya Teknologi Digital",
     position: "Frontend Developer | UI UX Designer | Frontend Website",
     location: "Jakarta, Indonesia",
-    startDate: "Jan 2024",
+    startDate: "Jan 2024", 
     endDate: "Jun 2024",
     duration: "~6 Months",
-    logo: "/career/narantraya.jpg",
-    gradientColors: "from-red-700 to-red-500",
+    logo: "/career/narantraya.jpg"
+  },
+  {
+    id: 3,
+    company: "PT Narantraya Teknologi Digital",
+    position: "UI UX Designer | Frontend Web Developer",
+    location: "Bogor, Indonesia",
+    startDate: "Aug 2024",
+    endDate: "Nov 2024", 
+    duration: "~3 Months",
+    logo: "/career/narantraya.jpg"
+  },
+  {
+    id: 4,
+    company: "Coding Camp by DBS Fundation",
+    position: "Fullstack Developer Cohort",
+    location: "Jakarta, Indonesia",
+    startDate: "Jan 2025",
+    endDate: "Apr 2025",
+    duration: "~4 Months",
+    logo: "/career/dbs.jpg"
   },
 ];
 
@@ -299,7 +325,7 @@ export const detailedProjects = [
   {
     id: 1,
     title: "Eco Marketplace",
-    description: "Platform digital untuk mendukung ekonomi hijau dan pekerjaan hijau.",
+    description: "Digital platforms to support green economy and green jobs.",
     detailedDescription: 'This project is based on the big theme of "Green Economy and Green Jobs", which is the main focus of developing sustainable digital solutions in the era of green economic transformation. Platform ini dirancang untuk menghubungkan produsen produk ramah lingkungan dengan konsumen yang peduli terhadap keberlanjutan. Dengan fitur pencarian canggih, sistem pembayaran yang aman, dan dashboard admin yang komprehensif, Eco Marketplace menjadi solusi lengkap untuk mendukung ekonomi hijau.',
     technologies: ["Next.js", "MySQL", "TailwindCss", "Typescript", "Express.js"],
     image: "/projects/marketplace.png",
@@ -315,17 +341,17 @@ export const detailedProjects = [
       "/projects/detailsprojects/market/7.png",
     ],
     features: [
-      "Sistem pencarian produk yang canggih",
-      "Integrasi pembayaran yang aman",
-      "Dashboard admin yang komprehensif",
-      "Sistem rating dan review",
-      "Fitur wishlist dan keranjang belanja"
+      "Advanced product search system",
+      "Secure payment integration",
+      "Comprehensive admin dashboard",
+      "Rating and review system",
+      "Wishlist and shopping cart features",
     ]
   },
   {
     id: 2,
     title: "Studi Pemodelan",
-    description: "Studi kasus pemodelan untuk distribusi barang dengan 4 peran utama.",
+    description: "Modeling case study for goods distribution with 4 main roles.",
     detailedDescription: "This is a modeling case study project for the distribution of goods, there are 4 roles namely Distributor, Staff, System Admin, and Warehouse Management. Proyek ini mengembangkan model komprehensif untuk mengoptimalkan alur distribusi barang dari produsen hingga konsumen. Dengan mempertimbangkan berbagai peran dan tanggung jawab, model ini memberikan solusi efisien untuk manajemen rantai pasok modern.",
     technologies: ["Figma"],
     image: "/projects/studi.png",
@@ -343,16 +369,16 @@ export const detailedProjects = [
       "/projects/detailsprojects/studi/9.png",
     ],
     features: [
-      "Dashboard untuk setiap peran",
-      "Sistem tracking distribusi barang",
-      "Manajemen inventaris",
-      "Laporan analitik"
+      "Dashboard for each role",
+      "Goods distribution tracking system",
+      "Inventory management",
+      "Analytical report"
     ]
   },
   {
     id: 3,
     title: "JokiGames & TopUpGames",
-    description: "Website joki game dan top up dengan berbagai fitur menarik.",
+    description: "A game jockey and top up website with various interesting features.",
     detailedDescription: "This is a website for game jockeys and top ups, equipped with many cool features. Platform ini menyediakan layanan joki game profesional dan layanan top up untuk berbagai game populer. Dengan sistem pembayaran yang terintegrasi dengan berbagai metode pembayaran, pelanggan dapat dengan mudah menggunakan layanan ini. Fitur tracking progress joki dan live chat memastikan transparansi dan komunikasi yang baik antara pelanggan dan joki.",
     technologies: ["Next.js", "Node.js", "PostgreSQL", "MidTrans", "Bootstrap"],
     image: "/projects/jokigames.png",
@@ -364,17 +390,17 @@ export const detailedProjects = [
       // "/projects/jokigames-detail2.png"
     ],
     features: [
-      "Sistem order joki game",
-      "Top up game dengan berbagai metode pembayaran",
-      "Tracking progress joki",
-      "Live chat dengan joki",
-      "History transaksi"
+      "Jockey game booking system",
+      "Top up games with various payment methods",
+      "Tracking jockey progress",
+      "Live chat with a jockey",
+      "Transaction history"
     ]
   },
   {
     id: 4,
     title: "Ciu Insurance",
-    description: "Aplikasi penanganan bank asuransi dengan desain menarik.",
+    description: "Insurance bank handling app with attractive design.",
     detailedDescription: "Insurance bank handling application with attractive design and complete features. Aplikasi ini dirancang untuk memudahkan pengelolaan polis asuransi, klaim, dan pembayaran premi. Dengan antarmuka yang intuitif dan fitur yang komprehensif, Ciu Insurance menjadi solusi lengkap untuk industri asuransi modern. Sistem notifikasi real-time dan dashboard analitik membantu pengguna memantau dan mengelola asuransi mereka dengan efisien.",
     technologies: ["Next.js", "PostgreSQL", "Bootstrap", "Golang", "Node.js"],
     image: "/projects/ciudigital.png",
@@ -386,11 +412,11 @@ export const detailedProjects = [
       // "/projects/ciudigital-detail2.png"
     ],
     features: [
-      "Manajemen polis asuransi",
-      "Klaim online",
-      "Pembayaran premi",
-      "Notifikasi real-time",
-      "Dashboard analitik"
+      "Insurance policy management",
+      "Online claim",
+      "Premium payment",
+      "Real-time notifications",
+      "Analytical dashboard"
     ]
   },
 ];

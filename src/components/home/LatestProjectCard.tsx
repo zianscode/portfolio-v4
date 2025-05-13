@@ -32,7 +32,7 @@ const LatestProjectCard = ({ project, windowWidth, index }: LatestProjectCardPro
       }`}
     >
       <div className="relative z-10 flex h-max flex-col items-start space-y-1">
-        <div className="h-28 w-full overflow-hidden rounded-md relative">
+        <div className="h-28 w-full overflow-hidden rounded-md relative group">
           <Image
             src={project.src}
             alt={project.title}
@@ -41,6 +41,7 @@ const LatestProjectCard = ({ project, windowWidth, index }: LatestProjectCardPro
             className="h-full w-full rounded-md object-cover"
             priority
           />
+          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-md" />
           {(project.isNew || index === 0) && (
             <div className="absolute top-0 right-0 origin-top-right">
               <div className="bg-yellow-400 text-black text-xs font-bold py-1 px-9 transform rotate-45 translate-y-3 translate-x-6 shadow-md">

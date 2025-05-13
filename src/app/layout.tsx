@@ -8,6 +8,7 @@ import Favicon from "@/components/Favicon";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import ParticleStars from "@/components/ParticleStars";
+import { PAGE_TITLES, LOADING_DURATION, DEFAULT_TITLE } from "@/utils/constants";
 // import ChatRoomButton from "@/components/ChatRoomButton"; 
 
 const ClientOnlyAppContent = dynamic(() => import("@/components/AppContent"), {
@@ -21,20 +22,7 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
-const PAGE_TITLES = {
-  "/about": "About | Zian's Code",
-  "/blog": "Blog | Zian's Code",
-  "/chatroom": "ChatRoom | Zian's Code",
-  "/contact": "Contact | Zian's Code",
-  "/dashboard": "Dashboard | Zian's Code",
-  "/projects": "Projects | Zian's Code",
-  "/roadmap": "Roadmap | Zian's Code",
-} as const;
-
 type PagePath = keyof typeof PAGE_TITLES;
-
-const LOADING_DURATION = 3000;
-const DEFAULT_TITLE = "Zian's Code | Personal Website";
 
 export default function RootLayout({
   children,

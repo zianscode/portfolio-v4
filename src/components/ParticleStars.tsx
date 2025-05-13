@@ -20,16 +20,26 @@ const ParticleStars: React.FC = () => {
     handleResize();
     window.addEventListener('resize', handleResize);
 
-    const stars: Array<{ x: number; y: number; radius: number; speed: number; opacity: number }> = [];
+    const stars: Array<{
+      x: number;
+      y: number;
+      radius: number;
+      speedX: number;
+      speedY: number;
+      opacity: number;
+    }> = [];
 
     // Fungsi untuk membuat bintang
     const createStars = () => {
       for (let i = 0; i < 100; i++) {
+        const angle = Math.random() * Math.PI * 2; // Random angle in radians
+        const speed = Math.random() * 0.5 + 0.1;
         stars.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           radius: Math.random() * 2,
-          speed: Math.random() * 0.5 + 0.1,
+          speedX: Math.cos(angle) * speed, // X component of velocity
+          speedY: Math.sin(angle) * speed, // Y component of velocity
           opacity: Math.random() * 0.5 + 0.3, // Improved opacity range
         });
       }
@@ -44,15 +54,15 @@ const ParticleStars: React.FC = () => {
         ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
         ctx.fill();
 
-        // Gerakkan bintang ke kanan bawah
-        star.x += star.speed;
-        star.y += star.speed;
+        // Move stars in their respective directions
+        star.x += star.speedX;
+        star.y += star.speedY;
 
-        // Reset posisi bintang jika sudah keluar dari layar
-        if (star.x > canvas.width || star.y > canvas.height) {
-          star.x = Math.random() * -100; // Prevent stars from clustering
-          star.y = Math.random() * -100;
-        }
+        // Reset position when star goes off screen
+        if (star.x < -10) star.x = canvas.width + 10;
+        if (star.x > canvas.width + 10) star.x = -10;
+        if (star.y < -10) star.y = canvas.height + 10;
+        if (star.y > canvas.height + 10) star.y = -10;
       });
     };
 

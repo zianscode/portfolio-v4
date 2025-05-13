@@ -12,14 +12,23 @@ import {
   CareerSectionProps,
   CareerCardProps,
 } from "@/types/career";
+import { motion } from "framer-motion";
 
 const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
       className={`${isDarkMode ? "border-stone-700" : "border-stone-300"} py-2`}
     >
       <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center space-x-3">
+        <motion.div 
+          initial={{ x: -20, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="flex items-center space-x-3"
+        >
           <FaBriefcase
             className={`text-2xl ${
               isDarkMode ? "text-stone-200" : "text-gray-800"
@@ -32,9 +41,12 @@ const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
           >
             Career
           </h3>
-        </div>
+        </motion.div>
 
-        <a
+        <motion.a
+          initial={{ x: 20, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
           href="https://drive.google.com/file/d/1ASjtYR4bd3-YmsUA3e2tlMlTa9e8Mlyd/view?usp=drive_link"
           target="_blank"
           rel="noopener noreferrer"
@@ -43,47 +55,60 @@ const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
               ? "bg-neutral-800 text-stone-200 hover:bg-neutral-700"
               : "bg-neutral-100 text-blue-600 hover:bg-neutral-200"
           }`}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
           <FaDownload size={14} />
           <span>Download Resume</span>
-        </a>
+        </motion.a>
       </div>
 
-      <p
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
         className={`text-sm md:text-base mb-6 ${
           isDarkMode ? "text-stone-400" : "text-gray-600"
         }`}
       >
         My professional career journey
-      </p>
+      </motion.p>
 
-      <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6">
-        {careerData.map((career) => (
-          <CareerCard 
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {careerData.map((career, index) => (
+          <motion.div
             key={career.id}
-            career={career}
-            isDarkMode={isDarkMode}
-          />
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 * (index + 1) }}
+          >
+            <CareerCard 
+              career={career}
+              isDarkMode={isDarkMode}
+            />
+          </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
 
 // Career Card Component with proper typing
 const CareerCard = ({ career, isDarkMode }: CareerCardProps) => {
   return (
-    <div
-      className={`flex-1 w-full relative overflow-hidden rounded-2xl transition-all hover:shadow-lg ${
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      className={`w-full relative overflow-hidden rounded-2xl transition-all hover:shadow-lg ${
         isDarkMode
           ? "bg-neutral-800 hover:bg-neutral-700 border border-neutral-700"
           : "bg-white hover:bg-neutral-50 border border-neutral-200"
       }`}
     >
-      <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${career.gradientColors}`}></div>
       <div className="p-6">
         <div className="flex items-start">
-          <div
+          <motion.div
+            whileHover={{ rotate: 360 }}
+            transition={{ duration: 0.5 }}
             className={`relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 border-2 ${
               isDarkMode ? "border-neutral-700" : "border-neutral-200"
             }`}
@@ -95,17 +120,23 @@ const CareerCard = ({ career, isDarkMode }: CareerCardProps) => {
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
-          </div>
+          </motion.div>
 
           <div className="ml-4">
-            <h4
+            <motion.h4
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
               className={`text-lg font-semibold ${
                 isDarkMode ? "text-stone-100" : "text-gray-800"
               }`}
             >
               {career.company}
-            </h4>
-            <div
+            </motion.h4>
+            <motion.div
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
               className={`flex items-center text-sm mt-2 ${
                 isDarkMode ? "text-stone-300" : "text-gray-700"
               }`}
@@ -113,11 +144,16 @@ const CareerCard = ({ career, isDarkMode }: CareerCardProps) => {
               <span className="font-medium">
                 {career.position}
               </span>
-            </div>
+            </motion.div>
           </div>
         </div>
 
-        <div className="mt-4 pt-4 border-t border-dashed flex flex-col space-y-2 text-sm">
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: 0.2 }}
+          className="mt-4 pt-4 border-t border-dashed flex flex-col space-y-2 text-sm"
+        >
           <div
             className={`flex items-center ${
               isDarkMode ? "text-stone-400" : "text-gray-600"
@@ -136,9 +172,9 @@ const CareerCard = ({ career, isDarkMode }: CareerCardProps) => {
             <span className="mx-2">•</span>
             <span className="font-medium">{career.duration}</span>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

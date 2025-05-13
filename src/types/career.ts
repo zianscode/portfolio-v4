@@ -8,7 +8,6 @@ interface CareerCardProps {
       endDate: string;
       duration: string;
       logo: string;
-      gradientColors: string;
     };
     isDarkMode: boolean;
   }
