@@ -11,6 +11,16 @@ export interface Project {
   features?: string[];
 }
 
+export interface ProjectProps {
+  id: number;
+  title: string;
+  description: string;
+  technologies: string[];
+  image: string;
+  link: string;
+  slug: string;
+  isDarkMode: boolean;
+}
 
 export interface Certificate {
   id: number;
@@ -20,6 +30,17 @@ export interface Certificate {
   date: string;
   image: string;
   link: string;
+}
+
+export interface CertificateProps {
+  id: number;
+  title: string;
+  description: string;
+  issuedBy: string;
+  date: string;
+  image: string;
+  link: string;
+  isDarkMode: boolean;
 }
 
 export function isProject(item: Project | Certificate): item is Project {

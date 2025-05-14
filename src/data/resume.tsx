@@ -116,7 +116,7 @@ export const projects = [
   {
     src: "/projects/marketplace.png",
     title: "Eco Marketplace",
-    date: "2024-01-15", 
+    date: "2025-04-14", 
     isNew: true,
     description: "Digital platforms to support green economy and green jobs.",
     technologies: ["Next.js", "MySQL", "TailwindCss", "Typescript", "Express.js"]
@@ -124,7 +124,7 @@ export const projects = [
   {
     src: "/projects/studi.png",
     title: "Studi Pemodelan",
-    date: "2024-02-01",
+    date: "2025-02-01",
     isNew: true,
     description: "Modeling case study for goods distribution with 4 main roles.",
     technologies: ["Figma"]
@@ -132,7 +132,7 @@ export const projects = [
   {
     src: "/projects/jokigames.png", 
     title: "JokiGames & TopUpGames",
-    date: "2024-02-15",
+    date: "2024-09-15",
     isNew: false,
     description: "A game jockey and top up website with various interesting features.",
     technologies: ["Next.js", "Node.js", "PostgreSQL", "MidTrans", "Bootstrap"]
@@ -140,7 +140,7 @@ export const projects = [
   {
     src: "/projects/ciudigital.png",
     title: "Ciu Insurance",
-    date: "2024-03-01",
+    date: "2024-01-15",
     isNew: false,
     description: "Insurance bank handling app with attractive design.",
     technologies: ["Next.js", "PostgreSQL", "Bootstrap", "Golang", "Node.js"]
@@ -326,7 +326,7 @@ export const detailedProjects = [
     id: 1,
     title: "Eco Marketplace",
     description: "Digital platforms to support green economy and green jobs.",
-    detailedDescription: 'This project is based on the big theme of "Green Economy and Green Jobs", which is the main focus of developing sustainable digital solutions in the era of green economic transformation. Platform ini dirancang untuk menghubungkan produsen produk ramah lingkungan dengan konsumen yang peduli terhadap keberlanjutan. Dengan fitur pencarian canggih, sistem pembayaran yang aman, dan dashboard admin yang komprehensif, Eco Marketplace menjadi solusi lengkap untuk mendukung ekonomi hijau.',
+    detailedDescription: 'This project is based on the big theme of “Green Economy and Green Jobs”, which is the main focus of developing sustainable digital solutions in the era of green economic transformation. The platform is designed to connect manufacturers of eco-friendly products with consumers who care about sustainability. With advanced search features, a secure payment system, and a comprehensive admin dashboard, Eco Marketplace is a complete solution to support the green economy.',
     technologies: ["Next.js", "MySQL", "TailwindCss", "Typescript", "Express.js"],
     image: "/projects/marketplace.png",
     link: "#",
@@ -352,7 +352,7 @@ export const detailedProjects = [
     id: 2,
     title: "Studi Pemodelan",
     description: "Modeling case study for goods distribution with 4 main roles.",
-    detailedDescription: "This is a modeling case study project for the distribution of goods, there are 4 roles namely Distributor, Staff, System Admin, and Warehouse Management. Proyek ini mengembangkan model komprehensif untuk mengoptimalkan alur distribusi barang dari produsen hingga konsumen. Dengan mempertimbangkan berbagai peran dan tanggung jawab, model ini memberikan solusi efisien untuk manajemen rantai pasok modern.",
+    detailedDescription: "This is a modeling case study project for goods distribution, there are 4 roles: Distributor, Staff, System Admin, and Warehouse Management. This project develops a comprehensive model to optimize the flow of goods distribution from producers to consumers. By considering various roles and responsibilities, this model provides an efficient solution for modern supply chain management.",
     technologies: ["Figma"],
     image: "/projects/studi.png",
     link: "#",
@@ -379,7 +379,7 @@ export const detailedProjects = [
     id: 3,
     title: "JokiGames & TopUpGames",
     description: "A game jockey and top up website with various interesting features.",
-    detailedDescription: "This is a website for game jockeys and top ups, equipped with many cool features. Platform ini menyediakan layanan joki game profesional dan layanan top up untuk berbagai game populer. Dengan sistem pembayaran yang terintegrasi dengan berbagai metode pembayaran, pelanggan dapat dengan mudah menggunakan layanan ini. Fitur tracking progress joki dan live chat memastikan transparansi dan komunikasi yang baik antara pelanggan dan joki.",
+    detailedDescription: "This is a website for game jockeys and top ups, equipped with many cool features. The platform provides professional game jockey services and top up services for various popular games. With an integrated payment system with various payment methods, customers can easily use this service. The jockey progress tracking feature and live chat ensure transparency and good communication between customers and jockeys.",
     technologies: ["Next.js", "Node.js", "PostgreSQL", "MidTrans", "Bootstrap"],
     image: "/projects/jokigames.png",
     link: "#",
@@ -401,7 +401,7 @@ export const detailedProjects = [
     id: 4,
     title: "Ciu Insurance",
     description: "Insurance bank handling app with attractive design.",
-    detailedDescription: "Insurance bank handling application with attractive design and complete features. Aplikasi ini dirancang untuk memudahkan pengelolaan polis asuransi, klaim, dan pembayaran premi. Dengan antarmuka yang intuitif dan fitur yang komprehensif, Ciu Insurance menjadi solusi lengkap untuk industri asuransi modern. Sistem notifikasi real-time dan dashboard analitik membantu pengguna memantau dan mengelola asuransi mereka dengan efisien.",
+    detailedDescription: "Insurance bank handling application with attractive design and complete features. This application is designed to simplify the management of insurance policies, claims, and premium payments. With an intuitive interface and comprehensive features, Ciu Insurance is a complete solution for the modern insurance industry. The real-time notification system and analytical dashboard help users monitor and manage their insurance efficiently.",
     technologies: ["Next.js", "PostgreSQL", "Bootstrap", "Golang", "Node.js"],
     image: "/projects/ciudigital.png",
     link: "#",
@@ -425,24 +425,33 @@ export const detailedProjects = [
 export const certificates = [
   {
     id: 1,
+    title: "CERTIFICATE OF ACHIEVEMENT",
+    description: "English for Business Communication",
+    issuedBy: "Coding Camp powered by DBS Foundation",
+    date: "2025-01-30",
+    image: "/certificates/dbs_english.png",
+    link: "https://drive.google.com/file/d/13rr8V9HuzLtyqJklejMQ4YoE84x0eRtK/view?usp=drive_link",
+  },  
+  {
+    id: 2,
+    title: "Berkarir di UI UX from Zero to Hero",
+    description: "Building a Career in UI/UX from Zero to Hero",
+    issuedBy: "DaffaScript Agency",
+    date: "2025-02-04",
+    image: "/certificates/daffascr.png",
+    link: "https://drive.google.com/file/d/1uRwwZV5Ua_0OW0qwr7s42nXLdX4VH98F/view?usp=drive_link",
+  },  
+  {
+    id: 3,
     title: "PT NARANTRAYA TEKNOLOGI DIGITAL",
     description: "Certificate of completion of Industrial Work Practice",
     issuedBy: "PT Narantraya",
     date: "2024-07-21",
     image: "/certificates/pkl.png",
-    link: "https://drive.google.com/file/d/1-91o_3jpjzmoUKd3mXWoFsixi5HwYR8G/view?usp=drive_link",
-  },
+    link: "https://drive.google.com/file/d/1KEnumAeXLEMcZCFsrvooHx0fiutnDW6Q/view?usp=drive_link",
+  },  
   {
-    id: 2,
-    title: " UI-UX RESEARCH AND DESIGN",
-    description: "Certificate of Professional Skill",
-    issuedBy: "MySkill",
-    date: "2025-03-11",
-    image: "/certificates/myskill.png",
-    link: "https://drive.google.com/file/d/1lx5ePQXxgSrFGlFzEnAiMoaPp98ioHeP/view?usp=drive_link",
-  },
-  {
-    id: 3,
+    id: 4,
     title: "IGDX Career Seminar",
     description: "Career Guidance For Aspiring Game Developer.",
     issuedBy: "IGDX Career",
@@ -451,7 +460,16 @@ export const certificates = [
     link: "https://drive.google.com/file/d/1H4aCas-yLXKmizrN3QaRJSN3az9B1KC_/view?usp=drive_link",
   },
   {
-    id: 4,
+    id: 5,
+    title: " UI-UX RESEARCH AND DESIGN",
+    description: "Certificate of Professional Skill",
+    issuedBy: "MySkill",
+    date: "2025-03-11",
+    image: "/certificates/myskill.png",
+    link: "https://drive.google.com/file/d/1lx5ePQXxgSrFGlFzEnAiMoaPp98ioHeP/view?usp=drive_link",
+  },
+  {
+    id: 6,
     title: "Front-End with VUE JS",
     description:
       "Front-end Development with The Progressive JavaScript Framework Vue.js",
@@ -461,7 +479,7 @@ export const certificates = [
     link: "https://drive.google.com/file/d/1BZ3ccpGrEE_2IZWN9KDVR7c1yPTVC-Fx/view?usp=drive_link",
   },
   {
-    id: 5,
+    id: 7,
     title: "Back-End with JavaScript Framework",
     description:
       "Joining the Backend Development with Javascript Framework Training with PT.Laskar Teknologi Mulia (Cyberlabs).",
@@ -471,7 +489,7 @@ export const certificates = [
     link: "https://drive.google.com/file/d/12W30fxT1vpU0nziuJVKOL38qBadhumrg/view?usp=drive_link",
   },
   {
-    id: 6,
+    id: 8,
     title: "Belajar Dasar AI",
     description: "Certification for completing the AI course Dicoding.",
     issuedBy: "Dicoding",
@@ -480,7 +498,7 @@ export const certificates = [
     link: "https://drive.google.com/file/d/1Q59lDUnG8LaOrxpwZ5RvG_SQCmEzvF_E/view?usp=drive_link",
   },
   {
-    id: 7,
+    id: 9,
     title: "Belajar Membuat Front-End Web untuk Pemula",
     description:
       "Certification for completing the Frontend Web course Dicoding.",
@@ -490,7 +508,7 @@ export const certificates = [
     link: "https://drive.google.com/file/d/1moE3wdslssz-TDvWTeP0tqq5URyqv9S5/view?usp=drive_link",
   },
   {
-    id: 8,
+    id: 10,
     title: "Cloud Practitioner Essentials (Belajar Dasar AWS Cloud)",
     description: "Certification for completing the AWS course Dicoding.",
     issuedBy: "Dicoding",
@@ -499,7 +517,7 @@ export const certificates = [
     link: "https://drive.google.com/file/d/1i89m11ZocSTqaQk8AhiPsxFJ6HxYZ3xq/view?usp=drive_link",
   },
   {
-    id: 9,
+    id: 11,
     title: "Belajar Dasar Pemrograman JavaScript",
     description: "Certification for completing the JS course Dicoding.",
     issuedBy: "Dicoding",
@@ -508,7 +526,7 @@ export const certificates = [
     link: "https://drive.google.com/file/d/1D8sIA-4zFwJpjtkPoI_LbADspGeRBZzG/view?usp=drive_link",
   },
   // {
-  //   id: 10,
+  //   id: 12,
   //   title: "Belajar Dasar Pemrograman JavaScript",
   //   description: "Certification for completing the JS course Dicoding.",
   //   issuedBy: "Dicoding",

@@ -1,28 +1,30 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
-
-interface CertificateProps {
-  id: number;
-  title: string;
-  description: string;
-  issuedBy: string;
-  date: string;
-  image: string;
-  link: string;
-  isDarkMode: boolean;
-}
+import { CertificateProps } from "@/types/projects";
 
 const CertificateItem = ({ id, title, description, issuedBy, date, image, link, isDarkMode }: CertificateProps) => {
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [isMultiline, setIsMultiline] = useState(false);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
+  const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
     if (descriptionRef.current) {
       setIsMultiline(descriptionRef.current.scrollHeight > descriptionRef.current.clientHeight);
     }
   }, [description]);
+
+  useEffect(() => {
+    const img = new window.Image();
+    img.src = image;
+    img.onload = () => {
+      setImageSize({
+        width: img.naturalWidth,
+        height: img.naturalHeight
+      });
+    };
+  }, [image]);
 
   return (
     <motion.div
@@ -39,12 +41,13 @@ const CertificateItem = ({ id, title, description, issuedBy, date, image, link, 
         isDarkMode ? "border-neutral-800" : "border-gray-200"
       }`}
     >
-      <div className="w-full h-64 relative group">
+      <div className="w-full relative group" style={{ height: 'auto' }}>
         <Image
           src={image}
           alt={title}
-          fill
-          className="object-contain"
+          width={imageSize.width}
+          height={imageSize.height}
+          className="object-contain w-full"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
