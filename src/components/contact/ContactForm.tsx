@@ -101,7 +101,7 @@ const ContactForm = () => {
               onChange={handleChange}
               className={`peer w-full px-4 py-3 rounded-lg border-2 ${
                 isDarkMode 
-                  ? 'border-neutral-700 bg-neutral-900 text-white focus:border-neutral-500' 
+                  ? 'border-neutral-900 bg-neutral-950 text-white focus:border-neutral-800' 
                   : 'border-neutral-300 bg-white text-neutral-900 focus:border-neutral-400'
               } focus:outline-none transition-all duration-300`}
             />
@@ -109,7 +109,7 @@ const ContactForm = () => {
               htmlFor="sendername"
               className={`absolute left-4 -top-2.5 px-1 text-sm ${
                 isDarkMode 
-                  ? 'bg-neutral-900 text-neutral-400' 
+                  ? 'bg-neutral-950 text-neutral-400' 
                   : 'bg-white text-neutral-600'
               } transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm`}
             >
@@ -128,7 +128,7 @@ const ContactForm = () => {
               onChange={handleChange}
               className={`peer w-full px-4 py-3 rounded-lg border-2 ${
                 isDarkMode 
-                  ? 'border-neutral-700 bg-neutral-900 text-white focus:border-neutral-500' 
+                  ? 'border-neutral-900 bg-neutral-950 text-white focus:border-neutral-800' 
                   : 'border-neutral-300 bg-white text-neutral-900 focus:border-neutral-400'
               } focus:outline-none transition-all duration-300`}
             />
@@ -136,7 +136,7 @@ const ContactForm = () => {
               htmlFor="replyto"
               className={`absolute left-4 -top-2.5 px-1 text-sm ${
                 isDarkMode 
-                  ? 'bg-neutral-900 text-neutral-400' 
+                  ? 'bg-neutral-950 text-neutral-400' 
                   : 'bg-white text-neutral-600'
               } transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm`}
             >
@@ -156,7 +156,7 @@ const ContactForm = () => {
             onChange={handleChange}
             className={`peer w-full px-4 py-3 rounded-lg border-2 ${
               isDarkMode 
-                ? 'border-neutral-700 bg-neutral-900 text-white focus:border-neutral-500' 
+                ? 'border-neutral-900 bg-neutral-950 text-white focus:border-neutral-800' 
                 : 'border-neutral-300 bg-white text-neutral-900 focus:border-neutral-400'
             } focus:outline-none transition-all duration-300`}
           />
@@ -164,7 +164,7 @@ const ContactForm = () => {
             htmlFor="subject"
             className={`absolute left-4 -top-2.5 px-1 text-sm ${
               isDarkMode 
-                ? 'bg-neutral-900 text-neutral-400' 
+                ? 'bg-neutral-950 text-neutral-400' 
                 : 'bg-white text-neutral-600'
             } transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm`}
           >
@@ -183,7 +183,7 @@ const ContactForm = () => {
             onChange={handleChange}
             className={`peer w-full px-4 py-3 rounded-lg border-2 ${
               isDarkMode 
-                ? 'border-neutral-700 bg-neutral-900 text-white focus:border-neutral-500' 
+                ? 'border-neutral-900 bg-neutral-950 text-white focus:border-neutral-800' 
                 : 'border-neutral-300 bg-white text-neutral-900 focus:border-neutral-400'
             } focus:outline-none transition-all duration-300 resize-none`}
           ></textarea>
@@ -191,7 +191,7 @@ const ContactForm = () => {
             htmlFor="message"
             className={`absolute left-4 -top-2.5 px-1 text-sm ${
               isDarkMode 
-                ? 'bg-neutral-900 text-neutral-400' 
+                ? 'bg-neutral-950 text-neutral-400' 
                 : 'bg-white text-neutral-600'
             } transition-all duration-300 peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-sm`}
           >
