@@ -14,7 +14,7 @@ export default function Introduction() {
       </div>
 
       <div className="space-y-4">
-        <ul className="ml-5 flex list-disc flex-col gap-1 text-neutral-700 dark:text-neutral-400 lg:flex-row lg:gap-8">
+        <ul className="ml-5 flex list-disc flex-row gap-8 text-neutral-700 dark:text-neutral-400">
           <li>Open to Work</li>
           <li>
             Based in Bogor <span className="ml-1">🇮🇩</span>

@@ -43,6 +43,20 @@ export interface CertificateProps {
   isDarkMode: boolean;
 }
 
+// Interface untuk LatestProject di halaman home
+export interface LatestProject {
+  src: string;
+  title: string;
+  date: string;
+  isNew?: boolean;
+}
+
+export interface LatestProjectCardProps {
+  project: LatestProject;
+  windowWidth: number | null;
+  index: number;
+}
+
 export function isProject(item: Project | Certificate): item is Project {
   return (item as Project).technologies !== undefined;
 }

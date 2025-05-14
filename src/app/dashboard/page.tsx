@@ -17,8 +17,8 @@ const DashboardPage = () => {
       }`}
     >
 
-      <main className="flex-1 flex justify-center pt-8 md:pt-12 px-4 md:px-8 lg:px-12 ml-0 md:ml-8">
-        <div className="max-w-4xl mx-auto w-full">
+      <main className="flex-1 flex justify-center pt-8 md:pt-16 lg:pt-14 px-4 md:px-6 lg:px-8 ml-0 md:ml-6">
+        <div className="w-full max-w-[700px] xl:max-w-[830px] transition-all duration-500 ease-in-out">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

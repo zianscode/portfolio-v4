@@ -47,7 +47,7 @@ const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
           initial={{ x: 20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
-          href="https://drive.google.com/file/d/1ASjtYR4bd3-YmsUA3e2tlMlTa9e8Mlyd/view?usp=drive_link"
+          href="https://drive.google.com/file/d/1lLeOhvsLgEK_PPj76cHERzrbpGXE8jR0/view?usp=drive_link"
           target="_blank"
           rel="noopener noreferrer"
           className={`text-sm flex items-center space-x-2 px-4 py-2 rounded-full transition-all ${

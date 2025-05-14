@@ -125,7 +125,7 @@ export const projects = [
     src: "/projects/studi.png",
     title: "Studi Pemodelan",
     date: "2025-02-01",
-    isNew: true,
+    isNew: false,
     description: "Modeling case study for goods distribution with 4 main roles.",
     technologies: ["Figma"]
   },
