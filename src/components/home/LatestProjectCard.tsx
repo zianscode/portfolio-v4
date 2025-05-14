@@ -15,7 +15,6 @@ const LatestProjectCard = ({ project, windowWidth, index }: LatestProjectCardPro
     return title.length > limit ? title.slice(0, limit) + "..." : title;
   };
 
-  // Mencari slug berdasarkan judul proyek
   const getProjectSlug = (title: string) => {
     const detailedProject = detailedProjects.find(p => p.title === title);
     return detailedProject ? detailedProject.slug : "";
