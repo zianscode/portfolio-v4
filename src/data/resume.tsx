@@ -122,6 +122,14 @@ export const projects = [
     technologies: ["Next.js", "MySQL", "TailwindCss", "Typescript", "Express.js"]
   },
   {
+    src: "/projects/kasirapp.png",
+    title: "Kasir App",
+    date: "2025-04-15", 
+    isNew: true,
+    description: "A simple and responsive cashier app for managing sales and products in small businesses.",
+    technologies: ["Next.js", "MySQL", "TailwindCss", "Typescript", "Express.js"]
+  },
+  {
     src: "/projects/studi.png",
     title: "Studi Pemodelan",
     date: "2025-02-01",
