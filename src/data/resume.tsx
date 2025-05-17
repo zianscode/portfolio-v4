@@ -350,6 +350,39 @@ export const detailedProjects = [
   },
   {
     id: 2,
+    title: "Kasir App",
+    description: "A simple and responsive cashier app for managing sales and products in small businesses.",
+    detailedDescription: "Kasir App is a web-based POS system built with Laravel and React.js. It allows users to manage products, process sales, handle user roles, and view transaction history. The app is designed for ease of use and optimized for small to medium-sized businesses.",
+    technologies: ["Laravel", "PHP", "MySql", "JavaScript", "TailwindCss"],
+    image: "/projects/kasirapp.png",
+    link: "#",
+    slug: "kasir-app",
+    gallery: [
+      "/projects/detailsprojects/kasir/1.png",
+      "/projects/detailsprojects/kasir/2.png",
+      "/projects/detailsprojects/kasir/3.png",
+      "/projects/detailsprojects/kasir/4.png",
+      "/projects/detailsprojects/kasir/5.png",
+      "/projects/detailsprojects/kasir/6.png",
+      "/projects/detailsprojects/kasir/7.png",
+      "/projects/detailsprojects/kasir/8.png",
+      "/projects/detailsprojects/kasir/9.png",
+      "/projects/detailsprojects/kasir/10.png",
+      "/projects/detailsprojects/kasir/11.png",
+      "/projects/detailsprojects/kasir/12.png",
+      "/projects/detailsprojects/kasir/13.png",
+      "/projects/detailsprojects/kasir/14.png",
+    ],
+    features: [
+      "User authentication and role management (admin and cashier)",
+      "Product management (CRUD operations)",
+      "Real-time sales processing",
+      "Transaction history and reporting",
+      "Responsive and user-friendly interface"
+    ]
+  },
+  {
+    id: 3,
     title: "Studi Pemodelan",
     description: "Modeling case study for goods distribution with 4 main roles.",
     detailedDescription: "This is a modeling case study project for goods distribution, there are 4 roles: Distributor, Staff, System Admin, and Warehouse Management. This project develops a comprehensive model to optimize the flow of goods distribution from producers to consumers. By considering various roles and responsibilities, this model provides an efficient solution for modern supply chain management.",
@@ -376,7 +409,7 @@ export const detailedProjects = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     title: "JokiGames & TopUpGames",
     description: "A game jockey and top up website with various interesting features.",
     detailedDescription: "This is a website for game jockeys and top ups, equipped with many cool features. The platform provides professional game jockey services and top up services for various popular games. With an integrated payment system with various payment methods, customers can easily use this service. The jockey progress tracking feature and live chat ensure transparency and good communication between customers and jockeys.",
@@ -398,7 +431,7 @@ export const detailedProjects = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     title: "Ciu Insurance",
     description: "Insurance bank handling app with attractive design.",
     detailedDescription: "Insurance bank handling application with attractive design and complete features. This application is designed to simplify the management of insurance policies, claims, and premium payments. With an intuitive interface and comprehensive features, Ciu Insurance is a complete solution for the modern insurance industry. The real-time notification system and analytical dashboard help users monitor and manage their insurance efficiently.",

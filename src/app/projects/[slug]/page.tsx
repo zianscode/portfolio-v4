@@ -36,7 +36,7 @@ const ProjectDetailPage = () => {
           isDarkMode ? "bg-[#0B0A0A] text-white" : "bg-white text-black"
         }`}
       >
-        <div className="animate-spin rounded-full h-12 w-12 sm:h-16 sm:w-16 border-t-2 border-b-2 border-blue-500"></div>
+        <div className="animate-spin rounded-full h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 border-t-2 border-b-2 border-blue-500"></div>
       </div>
     );
   }
@@ -48,15 +48,15 @@ const ProjectDetailPage = () => {
           isDarkMode ? "bg-[#0B0A0A] text-white" : "bg-white text-black"
         }`}
       >
-        <h1 className="text-2xl sm:text-3xl font-bold mb-4 text-center">Project Tidak Ditemukan</h1>
-        <p className="mb-6 text-center">Maaf, project yang Anda cari tidak ditemukan.</p>
+        <h1 className="text-2xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-center">Project Tidak Ditemukan</h1>
+        <p className="mb-4 sm:mb-6 text-base sm:text-base text-center">Maaf, project yang Anda cari tidak ditemukan.</p>
         <Link
           href="/projects"
-          className={`px-4 sm:px-6 py-2 rounded-lg ${
+          className={`px-4 sm:px-5 md:px-6 py-2.5 rounded-lg ${
             isDarkMode
               ? "bg-blue-600 hover:bg-blue-700"
               : "bg-blue-500 hover:bg-blue-600"
-          } text-white transition-colors text-sm sm:text-base`}
+          } text-white transition-colors text-sm sm:text-base md:text-base`}
         >
           Kembali ke Projects
         </Link>
@@ -66,7 +66,7 @@ const ProjectDetailPage = () => {
 
   return (
     <div
-      className={`flex min-h-screen pb-8 sm:pb-16 ${
+      className={`flex min-h-screen pb-6 sm:pb-8 md:pb-16 ${
         isDarkMode ? "bg-[#0B0A0A] text-white" : "bg-white text-black"
       }`}
     >
@@ -74,13 +74,13 @@ const ProjectDetailPage = () => {
         <div className="w-full max-w-[700px] xl:max-w-[830px] transition-all duration-500 ease-in-out">
           <Link
             href="/projects"
-            className={`inline-flex items-center mb-4 sm:mb-6 text-sm sm:text-base ${
+            className={`inline-flex items-center mb-3 sm:mb-4 md:mb-6 text-sm sm:text-base md:text-base ${
               isDarkMode ? "text-gray-300 hover:text-white" : "text-gray-600 hover:text-black"
             } transition-colors`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-4 w-4 sm:h-5 sm:w-5 mr-2"
+              className="h-4 w-4 sm:h-5 sm:w-5 md:h-5 md:w-5 mr-2"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -99,30 +99,47 @@ const ProjectDetailPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="space-y-4 sm:space-y-6"
+            className="space-y-4 sm:space-y-5 md:space-y-6"
           >
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3">{project.title}</h1>
+            <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">{project.title}</h1>
             
-            <div className="space-y-2 sm:space-y-3">
-              <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh] rounded-2xl sm:rounded-3xl overflow-hidden">
+            <div className="space-y-3 sm:space-y-4">
+              <div className="relative w-full h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden">
                 <Image
                   src={activeImage}
                   alt={project.title}
                   fill
-                  className="object-contain rounded-2xl sm:rounded-3xl"
+                  className="object-contain !rounded-lg !sm:rounded-xl !md:rounded-2xl"
+                  style={{ borderRadius: "inherit" }}
                   priority
                   quality={100}
-                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, 70vw"
+                  sizes="(max-width: 480px) 100vw, (max-width: 768px) 80vw, 70vw"
                 />
               </div>
               
               {project.gallery && project.gallery.length > 0 && (
-                <div className="flex space-x-2 sm:space-x-4 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent">
+                <div 
+                  className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 xs:gap-2 sm:gap-2.5 md:gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent"
+                  onKeyDown={(e) => {
+                    if (!project?.gallery) return;
+                    const currentIndex = project.gallery.indexOf(activeImage);
+                    if (e.key === 'ArrowLeft') {
+                      e.preventDefault();
+                      const newIndex = currentIndex > 0 ? currentIndex - 1 : project.gallery.length - 1;
+                      setActiveImage(project.gallery[newIndex]);
+                    } else if (e.key === 'ArrowRight') {
+                      e.preventDefault();
+                      const newIndex = currentIndex < project.gallery.length - 1 ? currentIndex + 1 : 0;
+                      setActiveImage(project.gallery[newIndex]);
+                    }
+                  }}
+                  tabIndex={0}
+                >
                   {project.gallery.map((img, index) => (
                     <button
                       key={index}
                       onClick={() => setActiveImage(img)}
-                      className={`relative w-16 h-16 sm:w-24 sm:h-24 rounded-xl sm:rounded-2xl overflow-hidden flex-shrink-0 border-2 transition-all ${
+                      className={`relative aspect-square w-full rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden flex-shrink-0 border-2 transition-all ${
                         activeImage === img
                           ? isDarkMode
                             ? "border-blue-500"
@@ -136,7 +153,8 @@ const ProjectDetailPage = () => {
                         src={img}
                         alt={`Gallery ${index + 1}`}
                         fill
-                        className="object-cover rounded-xl sm:rounded-2xl"
+                        className="object-cover rounded-lg sm:rounded-xl md:rounded-2xl"
+                        style={{ borderRadius: "inherit" }}
                       />
                     </button>
                   ))}
@@ -144,26 +162,26 @@ const ProjectDetailPage = () => {
               )}
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-5 sm:space-y-6 md:space-y-7">
               <div>
-                <h2 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-4">Deskripsi</h2>
-                <p className="text-sm sm:text-base leading-relaxed">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4">Deskripsi</h2>
+                <p className="text-sm sm:text-base md:text-base leading-relaxed">
                   {project.detailedDescription}
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                <div className={`rounded-2xl sm:rounded-3xl p-4 sm:p-6 ${
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
+                <div className={`rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 ${
                   isDarkMode ? "bg-neutral-900" : "bg-gray-50"
                 } border ${
                   isDarkMode ? "border-neutral-800" : "border-gray-200"
                 }`}>
-                  <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Teknologi</h2>
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                  <h2 className="text-lg sm:text-lg font-semibold mb-3">Teknologi</h2>
+                  <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, index) => (
                       <span
                         key={index}
-                        className={`px-2 sm:px-3 py-1 text-xs sm:text-sm font-medium rounded-full ${
+                        className={`px-3 sm:px-3 py-1.5 text-sm sm:text-sm font-medium rounded-full ${
                           isDarkMode
                             ? "bg-gray-800 text-gray-200 border border-gray-700"
                             : "bg-gray-100 text-gray-800 border border-gray-200"
@@ -175,14 +193,14 @@ const ProjectDetailPage = () => {
                   </div>
                 </div>
 
-                <div className={`rounded-2xl sm:rounded-3xl p-4 sm:p-6 ${
+                <div className={`rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 ${
                   isDarkMode ? "bg-neutral-900" : "bg-gray-50"
                 } border ${
                   isDarkMode ? "border-neutral-800" : "border-gray-200"
                 }`}>
                   {project.features && project.features.length > 0 && (
                     <>
-                      <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Fitur</h2>
+                      <h2 className="text-lg sm:text-lg font-semibold mb-3">Fitur</h2>
                       <ul className="space-y-2">
                         {project.features.map((feature, index) => (
                           <li
@@ -191,7 +209,7 @@ const ProjectDetailPage = () => {
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
-                              className={`h-4 w-4 sm:h-5 sm:w-5 mr-2 mt-0.5 ${
+                              className={`h-5 w-5 sm:h-5 sm:w-5 mr-2 mt-0.5 ${
                                 isDarkMode ? "text-blue-400" : "text-blue-500"
                               }`}
                               viewBox="0 0 20 20"
@@ -203,7 +221,7 @@ const ProjectDetailPage = () => {
                                 clipRule="evenodd"
                               />
                             </svg>
-                            <span className="text-xs sm:text-sm">{feature}</span>
+                            <span className="text-sm sm:text-sm">{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -213,12 +231,12 @@ const ProjectDetailPage = () => {
               </div>
 
               {project.link && project.link !== "#" && (
-                <div className="flex justify-center pt-2 sm:pt-4">
+                <div className="flex justify-center pt-3 sm:pt-4 md:pt-5">
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-flex items-center justify-center px-4 sm:px-6 py-2 rounded-xl text-sm sm:text-base ${
+                    className={`inline-flex items-center justify-center px-4 sm:px-5 md:px-6 py-2.5 rounded-lg sm:rounded-xl text-sm sm:text-base ${
                       isDarkMode
                         ? "bg-blue-600 hover:bg-blue-700"
                         : "bg-blue-500 hover:bg-blue-600"
@@ -226,7 +244,7 @@ const ProjectDetailPage = () => {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 sm:h-5 sm:w-5 mr-2"
+                      className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 mr-2"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
