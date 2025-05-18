@@ -12,7 +12,7 @@ Selamat datang di repositori Portfolio Website versi 4! Ini adalah iterasi terba
 
 ## 🛠 Teknologi Utama
 
-- ⚛️ Next.js 14 (App Router)
+- ⚛️ Next.js 15 (App Router)
 - 🎨 Tailwind CSS
 - ✨ Framer Motion
 - 📱 Fully Responsive
