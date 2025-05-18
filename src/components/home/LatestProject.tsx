@@ -48,43 +48,67 @@ const LatestProject = () => {
       } py-6 w-full`}
     >
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:px-0">
-        <div>
-          <div className="flex items-center gap-2">
-            <FaCode
-              className={`text-xl ${
-                isDarkMode ? "text-stone-200" : "text-stone-800"
-              }`}
-            />
-            <h2
-              className={`text-xl font-bold ${
-                isDarkMode ? "text-stone-200" : "text-stone-800"
+        <div className="flex items-center justify-between w-full sm:w-auto">
+          <div>
+            <div className="flex items-center gap-2">
+              <FaCode
+                className={`text-xl ${
+                  isDarkMode ? "text-stone-200" : "text-stone-800"
+                }`}
+              />
+              <h2
+                className={`text-xl font-bold ${
+                  isDarkMode ? "text-stone-200" : "text-stone-800"
+                }`}
+              >
+                Recent Projects
+              </h2>
+            </div>
+            <p
+              className={`text-sm pt-2 ${
+                isDarkMode ? "text-neutral-400" : "text-neutral-600"
               }`}
             >
-              Recent Projects
-            </h2>
+              The project I created
+            </p>
           </div>
-          <p
-            className={`text-sm pt-2 ${
-              isDarkMode ? "text-neutral-400" : "text-neutral-600"
-            }`}
-          >
-            The project I created
-          </p>
+
+          {/* Button moved inline with text in mobile view */}
+          <div className="sm:hidden">
+            <Link href="/projects" passHref>
+              <motion.div
+                className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-neutral-400 dark:border-neutral-800 text-xs sm:text-sm flex items-center gap-2 ${
+                  isDarkMode
+                    ? "bg-neutral-950 text-stone-200 hover:bg-neutral-800"
+                    : "bg-neutral-200 text-stone-800 hover:bg-neutral-300"
+                } transition-colors shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap cursor-pointer`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FaBullhorn className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span>The project I created</span>
+              </motion.div>
+            </Link>
+          </div>
         </div>
-        <Link href="/projects" passHref>
-          <motion.div
-            className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-neutral-400 dark:border-neutral-800 text-xs sm:text-sm flex items-center gap-2 ${
-              isDarkMode
-                ? "bg-neutral-950 text-stone-200 hover:bg-neutral-800"
-                : "bg-neutral-200 text-stone-800 hover:bg-neutral-300"
-            } transition-colors shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap cursor-pointer`}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <FaBullhorn className="w-4 h-4 sm:w-5 sm:h-5" />
-            <span>The project I created</span>
-          </motion.div>
-        </Link>
+
+        {/* Desktop button */}
+        <div className="hidden sm:block">
+          <Link href="/projects" passHref>
+            <motion.div
+              className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-neutral-400 dark:border-neutral-800 text-xs sm:text-sm flex items-center gap-2 ${
+                isDarkMode
+                  ? "bg-neutral-950 text-stone-200 hover:bg-neutral-800"
+                  : "bg-neutral-200 text-stone-800 hover:bg-neutral-300"
+              } transition-colors shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap cursor-pointer`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaBullhorn className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span>The project I created</span>
+            </motion.div>
+          </Link>
+        </div>
       </div>
 
       {isMobile ? (
@@ -94,7 +118,7 @@ const LatestProject = () => {
             {projects.map((project, index) => (
               <div
                 key={`${project.title}-${index}`}
-                className="min-w-full snap-center px-2"
+                className="min-w-full snap-center"
               >
                 <LatestProjectCard
                   project={project}
