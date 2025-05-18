@@ -4,7 +4,7 @@ Selamat datang di repositori Portfolio Website versi 4! Ini adalah iterasi terba
 
 ## ✨ Fitur Unggulan
 
-- **Next.js 14** - Dengan fitur App Router terbaru untuk performa optimal
+- **Next.js 15** - Dengan fitur App Router terbaru untuk performa optimal
 - **Desain Modern** - Antarmuka yang elegan dan responsif
 - **Animasi Smooth** - Transisi halus dengan Framer Motion
 - **Dark/Light Mode** - Dukungan tema gelap dan terang
