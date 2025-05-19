@@ -2,7 +2,7 @@
 
 Selamat datang di repositori Portfolio Website versi 4! Ini adalah iterasi terbaru dari portfolio pribadi saya yang dibangun dengan teknologi modern.
 
-![Preview Portfolio](https://user-images.githubusercontent.com/1234567/portfolio.png)
+![Preview Portfolio](C:\Users\ACER\Pictures\Screenshots)
 
 ## ✨ Fitur Unggulan
 
