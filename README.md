@@ -2,6 +2,9 @@
 
 Selamat datang di repositori Portfolio Website versi 4! Ini adalah iterasi terbaru dari portfolio pribadi saya yang dibangun dengan teknologi modern.
 
+![Uploading image.png…]()
+
+
 ## ✨ Fitur Unggulan
 
 - **Next.js 15** - Dengan fitur App Router terbaru untuk performa optimal
