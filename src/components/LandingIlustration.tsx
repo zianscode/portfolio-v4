@@ -11,10 +11,10 @@ export default function LandingIlustration() {
 
   return (
     <LandingContainer>
-      <div className="flex flex-col gap-1 w-full py-2">
+      <div className="flex flex-col gap-1 w-full py-4">
         {/* Baris 1 */}
         <motion.div
-          className="w-full h-2 rounded-full bg-neutral-200 dark:bg-neutral-800"
+          className="w-full h-2 rounded-full border-2 border-neutral-200 dark:border-neutral-800 bg-transparent"
           initial={{ width: 0 }}
           animate={{ width: "100%" }}
           transition={{ 
@@ -25,7 +25,7 @@ export default function LandingIlustration() {
         
         {/* Baris 2 */}
         <motion.div
-          className="w-3/4 h-1.5 rounded-full bg-neutral-300 dark:bg-neutral-700 mx-auto"
+          className="w-3/4 h-1.5 rounded-full border border-neutral-300 dark:border-neutral-700 mx-auto bg-transparent"
           initial={{ opacity: 0, scaleX: 0 }}
           animate={{ opacity: 1, scaleX: 1 }}
           transition={{ 
@@ -37,19 +37,19 @@ export default function LandingIlustration() {
         
         {/* Tombol */}
         <motion.div
-          className="w-16 h-4 rounded-lg bg-neutral-500 dark:bg-neutral-600 mx-auto mt-1"
+          className="w-16 h-4 rounded-lg border-2 border-neutral-500 dark:border-neutral-600 mx-auto mt-1 bg-transparent"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ 
-            opacity: [1, 0.9, 1], // Animasi kedap-kedip
+            opacity: [1, 0.9, 1],
             scale: 1 
           }}
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.05, borderColor: "#4f46e5" }}
           whileTap={{ scale: 0.95 }}
           transition={{ 
             delay: 0.6,
             duration: 1.5,
             ease: "easeInOut",
-            repeat: Infinity, // Mengulang animasi
+            repeat: Infinity,
             repeatType: "mirror"
           }}
         />
@@ -59,11 +59,11 @@ export default function LandingIlustration() {
           {[1, 2, 3].map((item) => (
             <motion.div
               key={item}
-              className="h-8 rounded-lg border border-neutral-300 dark:border-neutral-700"
+              className="h-8 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-transparent"
               initial="hidden"
               animate="visible"
               variants={cardVariants}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, borderColor: "#4f46e5" }}
               whileTap={{ scale: 0.95 }}
               transition={{ 
                 delay: item * 0.2,
@@ -73,17 +73,18 @@ export default function LandingIlustration() {
               }}
             >
               <motion.div
-                className="w-full h-full bg-neutral-100 dark:bg-neutral-800 rounded-[inherit]"
+                className="w-full h-full border border-neutral-200 dark:border-neutral-700 rounded-[inherit] bg-transparent"
                 initial={{ opacity: 0 }}
                 animate={{ 
-                  opacity: [1, 0.8, 1], // Animasi kedap-kedip
-                  scale: [1, 1.02, 1] // Sedikit scaling untuk efek dinamis
+                  opacity: [1, 0.8, 1],
+                  scale: [1, 1.02, 1],
+                  borderColor: ["#393E46", "#1F7D53", "#222831"]
                 }}
                 transition={{ 
                   delay: item * 0.3,
                   duration: 1.5,
                   ease: "easeInOut",
-                  repeat: Infinity, // Mengulang animasi
+                  repeat: Infinity,
                   repeatType: "mirror"
                 }}
               />

@@ -8,7 +8,7 @@ import {
   FaBootstrap,
   FaFigma,
   FaNodeJs,
-  FaJava,
+  // FaJava,
   FaGitAlt,
   FaGithubAlt,
   FaGitlab,
@@ -26,7 +26,7 @@ import {
   SiPostgresql,
   SiPrisma,
   SiGraphql,
-  SiGulp,
+  // SiGulp,
   SiJavascript,
   SiMongodb,
   SiDocker,
@@ -174,13 +174,13 @@ export const SkillList = [
   { name: "Laravel", icon: <SiLaravel className="text-2xl" style={{ color: "#FF2D20" }} /> },
   { name: "MySQL", icon: <SiMysql className="text-2xl" style={{ color: "#4479A1" }} /> },
   { name: "PostgreSQL", icon: <SiPostgresql className="text-2xl" style={{ color: "#336791" }} /> },
-  { name: "Java", icon: <FaJava className="text-2xl" style={{ color: "#007396" }} /> },
+  // { name: "Java", icon: <FaJava className="text-2xl" style={{ color: "#007396" }} /> },
   { name: "Git", icon: <FaGitAlt className="text-2xl" style={{ color: "#F05032" }} /> },
   { name: "GitHub", icon: <FaGithubAlt className="text-2xl" style={{ color: "#D1D5DB" }} /> },
   { name: "GitLab", icon: <FaGitlab className="text-2xl" style={{ color: "#FC6D26" }} /> },
   { name: "Prisma", icon: <SiPrisma className="text-2xl" style={{ color: "#2D3748" }} /> },
-  { name: "GraphQL", icon: <SiGraphql className="text-2xl" style={{ color: "#E10098" }} /> },
-  { name: "Gulp", icon: <SiGulp className="text-2xl" style={{ color: "#CF4647" }} /> },
+  // { name: "GraphQL", icon: <SiGraphql className="text-2xl" style={{ color: "#E10098" }} /> },
+  // { name: "Gulp", icon: <SiGulp className="text-2xl" style={{ color: "#CF4647" }} /> },
 ];
 
 // Career data array to be imported in components
@@ -217,7 +217,7 @@ export const careerData = [
   },
   {
     id: 4,
-    company: "Coding Camp by DBS Fundation",
+    company: "Coding Camp X DBS Fundation",
     position: "Fullstack Developer Cohort",
     location: "Jakarta, Indonesia",
     startDate: "Jan 2025",

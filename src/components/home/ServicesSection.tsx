@@ -15,8 +15,8 @@ const ServicesSection = () => {
       Illustration: WebIlustration
     },
     {
-      title: "Mobile Development",
-      description: "Develop high-performance mobile applications for iOS and Android platforms using React Native.",
+      title: "Mobile UI/UX Design",
+      description: "Developed user interfaces for mobile apps, ensuring the designs are intuitive, visually appealing, and ready for handoff to development teams.",
       Illustration: MobileIllustration
     },
     {
