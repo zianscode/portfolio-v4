@@ -346,7 +346,7 @@ export const detailedProjects = [
     technologies: ["ASP.NET Core", "MySQL", "Razor Pages", "Bootstrap 5", "C#"],
     image: "/projects/nawauthapp.png",
     link: "https://github.com/fajarfauzian/NawatechAuthApp-Junior-Dev-Coding-Test.git",
-    slug: "eco-marketplace",
+    slug: "nawatech-app",
     gallery: [
       "/projects/detailsprojects/nawauthapp/1.png",
       "/projects/detailsprojects/nawauthapp/2.png",
