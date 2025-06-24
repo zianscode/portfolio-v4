@@ -114,6 +114,14 @@ export const MENU_ITEMS: MenuItemType[] = [
 // Data projects
 export const projects = [
   {
+    src: "/projects/nawauthapp.png",
+    title: "NawatechAuthApp",
+    date: "2025-05-23", 
+    isNew: true,
+    description: "Digital platforms to support green economy and green jobs.",
+    technologies: ["Next.js", "MySQL", "TailwindCss", "Typescript", "Express.js"]
+  },
+  {
     src: "/projects/marketplace.png",
     title: "Eco Marketplace",
     date: "2025-04-14", 
@@ -332,6 +340,34 @@ export const categories = {
 export const detailedProjects = [
   {
     id: 1,
+    title: "NawatechAuthApp",
+    description: "User registration and product management web app built with ASP.NET Core and MySQL.",
+    detailedDescription: 'This project is an implementation of the Nawatech Junior Fullstack Developer technical test, with the main features of User Registration, Login, and Product & Category Management using ASP.NET Core (.NET 6/7/8) and Entity Framework Core. An optional email confirmation feature is also available.',
+    technologies: ["ASP.NET Core", "MySQL", "Razor Pages", "Bootstrap 5", "C#"],
+    image: "/projects/nawauthapp.png",
+    link: "https://github.com/fajarfauzian/NawatechAuthApp-Junior-Dev-Coding-Test.git",
+    slug: "eco-marketplace",
+    gallery: [
+      "/projects/detailsprojects/nawauthapp/1.png",
+      "/projects/detailsprojects/nawauthapp/2.png",
+      "/projects/detailsprojects/nawauthapp/3.png",
+      "/projects/detailsprojects/nawauthapp/4.png",
+      "/projects/detailsprojects/nawauthapp/5.png",
+      "/projects/detailsprojects/nawauthapp/6.png",
+      "/projects/detailsprojects/nawauthapp/7.png",
+      "/projects/detailsprojects/nawauthapp/8.png",
+      "/projects/detailsprojects/nawauthapp/9.png",
+    ],
+    features: [
+      "Users can register an account with an email address and password (Optional Confirmation email for account verification.)",
+      "Users can log in using their registered email address and password.",
+      "Users can edit their profiles, including changing their profile photos.",
+      "Users can create, modify, and soft delete product category data.",
+      "Users can create, modify, and soft delete product data.",
+    ]
+  },
+  {
+    id: 2,
     title: "Eco Marketplace",
     description: "Digital platforms to support green economy and green jobs.",
     detailedDescription: 'This project is based on the big theme of “Green Economy and Green Jobs”, which is the main focus of developing sustainable digital solutions in the era of green economic transformation. The platform is designed to connect manufacturers of eco-friendly products with consumers who care about sustainability. With advanced search features, a secure payment system, and a comprehensive admin dashboard, Eco Marketplace is a complete solution to support the green economy.',
@@ -357,7 +393,7 @@ export const detailedProjects = [
     ]
   },
   {
-    id: 2,
+    id: 3,
     title: "Kasir App",
     description: "A simple and responsive cashier app for managing sales and products in small businesses.",
     detailedDescription: "Kasir App is a web-based POS system built with Laravel and React.js. It allows users to manage products, process sales, handle user roles, and view transaction history. The app is designed for ease of use and optimized for small to medium-sized businesses.",
@@ -390,7 +426,7 @@ export const detailedProjects = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     title: "Studi Pemodelan",
     description: "Modeling case study for goods distribution with 4 main roles.",
     detailedDescription: "This is a modeling case study project for goods distribution, there are 4 roles: Distributor, Staff, System Admin, and Warehouse Management. This project develops a comprehensive model to optimize the flow of goods distribution from producers to consumers. By considering various roles and responsibilities, this model provides an efficient solution for modern supply chain management.",
@@ -417,7 +453,7 @@ export const detailedProjects = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     title: "JokiGames & TopUpGames",
     description: "A game jockey and top up website with various interesting features.",
     detailedDescription: "This is a website for game jockeys and top ups, equipped with many cool features. The platform provides professional game jockey services and top up services for various popular games. With an integrated payment system with various payment methods, customers can easily use this service. The jockey progress tracking feature and live chat ensure transparency and good communication between customers and jockeys.",
@@ -439,7 +475,7 @@ export const detailedProjects = [
     ]
   },
   {
-    id: 5,
+    id: 6,
     title: "Ciu Insurance",
     description: "Insurance bank handling app with attractive design.",
     detailedDescription: "Insurance bank handling application with attractive design and complete features. This application is designed to simplify the management of insurance policies, claims, and premium payments. With an intuitive interface and comprehensive features, Ciu Insurance is a complete solution for the modern insurance industry. The real-time notification system and analytical dashboard help users monitor and manage their insurance efficiently.",
