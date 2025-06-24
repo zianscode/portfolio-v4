@@ -337,7 +337,7 @@ export const detailedProjects = [
     detailedDescription: 'This project is based on the big theme of “Green Economy and Green Jobs”, which is the main focus of developing sustainable digital solutions in the era of green economic transformation. The platform is designed to connect manufacturers of eco-friendly products with consumers who care about sustainability. With advanced search features, a secure payment system, and a comprehensive admin dashboard, Eco Marketplace is a complete solution to support the green economy.',
     technologies: ["Next.js", "MySQL", "TailwindCss", "Typescript", "Express.js"],
     image: "/projects/marketplace.png",
-    link: "#",
+    link: "https://github.com/fajarfauzian/Final-Coding-Camp-DBS",
     slug: "eco-marketplace",
     gallery: [
       "/projects/detailsprojects/market/1.png",
@@ -363,7 +363,7 @@ export const detailedProjects = [
     detailedDescription: "Kasir App is a web-based POS system built with Laravel and React.js. It allows users to manage products, process sales, handle user roles, and view transaction history. The app is designed for ease of use and optimized for small to medium-sized businesses.",
     technologies: ["Laravel", "PHP", "MySql", "JavaScript", "TailwindCss"],
     image: "/projects/kasirapp.png",
-    link: "#",
+    link: "https://github.com/fajarfauzian/Final_UKK_Cashier_App.git",
     slug: "kasir-app",
     gallery: [
       "/projects/detailsprojects/kasir/1.png",
@@ -423,7 +423,7 @@ export const detailedProjects = [
     detailedDescription: "This is a website for game jockeys and top ups, equipped with many cool features. The platform provides professional game jockey services and top up services for various popular games. With an integrated payment system with various payment methods, customers can easily use this service. The jockey progress tracking feature and live chat ensure transparency and good communication between customers and jockeys.",
     technologies: ["Next.js", "Node.js", "PostgreSQL", "MidTrans", "Bootstrap"],
     image: "/projects/jokigames.png",
-    link: "#",
+    link: "https://github.com/fajarfauzian/fitur-topup-fe.git",
     slug: "joki-games",
     gallery: [
       "/projects/jokigames.png",
@@ -445,7 +445,7 @@ export const detailedProjects = [
     detailedDescription: "Insurance bank handling application with attractive design and complete features. This application is designed to simplify the management of insurance policies, claims, and premium payments. With an intuitive interface and comprehensive features, Ciu Insurance is a complete solution for the modern insurance industry. The real-time notification system and analytical dashboard help users monitor and manage their insurance efficiently.",
     technologies: ["Next.js", "PostgreSQL", "Bootstrap", "Golang", "Node.js"],
     image: "/projects/ciudigital.png",
-    link: "#",
+    link: "https://github.com/fajarfauzian/micro-frontend.git",
     slug: "ciu-insurance",
     gallery: [
       "/projects/ciudigital.png",

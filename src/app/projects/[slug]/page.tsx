@@ -8,6 +8,7 @@ import { Project } from "@/types/projects";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { FaGithub } from "react-icons/fa"; 
 
 const ProjectDetailPage = () => {
   const { isDarkMode } = useDarkMode();
@@ -17,7 +18,7 @@ const ProjectDetailPage = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    if (params.slug) {
+    if (params.slug && typeof params.slug === 'string') {
       const foundProject = detailedProjects.find(
         (p) => p.slug === params.slug
       );
@@ -109,7 +110,7 @@ const ProjectDetailPage = () => {
                   src={activeImage}
                   alt={project.title}
                   fill
-                  className="object-contain !rounded-lg !sm:rounded-xl !md:rounded-2xl"
+                  className="object-contain" 
                   style={{ borderRadius: "inherit" }}
                   priority
                   quality={100}
@@ -134,6 +135,8 @@ const ProjectDetailPage = () => {
                     }
                   }}
                   tabIndex={0}
+                  aria-label="Galeri gambar proyek"
+                  role="group"
                 >
                   {project.gallery.map((img, index) => (
                     <button
@@ -148,13 +151,15 @@ const ProjectDetailPage = () => {
                           ? "border-neutral-800"
                           : "border-gray-200"
                       }`}
+                      aria-label={`Lihat gambar ${index + 1} dari galeri`}
                     >
                       <Image
                         src={img}
-                        alt={`Gallery ${index + 1}`}
+                        alt={`Galeri ${index + 1} untuk ${project.title}`}
                         fill
-                        className="object-cover rounded-lg sm:rounded-xl md:rounded-2xl"
+                        className="object-cover"
                         style={{ borderRadius: "inherit" }}
+                        sizes="96px"
                       />
                     </button>
                   ))}
@@ -163,6 +168,7 @@ const ProjectDetailPage = () => {
             </div>
 
             <div className="space-y-5 sm:space-y-6 md:space-y-7">
+              {/* Description */}
               <div>
                 <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-3 sm:mb-4">Deskripsi</h2>
                 <p className="text-sm sm:text-base md:text-base leading-relaxed">
@@ -170,6 +176,26 @@ const ProjectDetailPage = () => {
                 </p>
               </div>
 
+              {/* Button GitHub */}
+              {project.link && project.link !== "#" && (
+                <div className="flex justify-start"> 
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center px-4 sm:px-5 md:px-6 py-2.5 rounded-lg sm:rounded-xl text-sm sm:text-base ${
+                      isDarkMode
+                        ? "bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700" 
+                        : "bg-gray-100 hover:bg-gray-200 text-gray-800 border border-gray-200" 
+                    } transition-colors font-medium`}
+                  >
+                    <FaGithub className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 mr-2" /> 
+                    See on GitHub
+                  </a>
+                </div>
+              )}
+
+              {/* Technologies */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
                 <div className={`rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 ${
                   isDarkMode ? "bg-neutral-900" : "bg-gray-50"
@@ -198,6 +224,8 @@ const ProjectDetailPage = () => {
                 } border ${
                   isDarkMode ? "border-neutral-800" : "border-gray-200"
                 }`}>
+
+                  {/* Features */}
                   {project.features && project.features.length > 0 && (
                     <>
                       <h2 className="text-lg sm:text-lg font-semibold mb-3">Fitur</h2>
@@ -205,11 +233,11 @@ const ProjectDetailPage = () => {
                         {project.features.map((feature, index) => (
                           <li
                             key={index}
-                            className="flex items-start"
+                            className="flex items-start text-sm sm:text-sm"
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
-                              className={`h-5 w-5 sm:h-5 sm:w-5 mr-2 mt-0.5 ${
+                              className={`h-5 w-5 sm:h-5 sm:w-5 mr-2 mt-0.5 flex-shrink-0 ${
                                 isDarkMode ? "text-blue-400" : "text-blue-500"
                               }`}
                               viewBox="0 0 20 20"
@@ -221,7 +249,7 @@ const ProjectDetailPage = () => {
                                 clipRule="evenodd"
                               />
                             </svg>
-                            <span className="text-sm sm:text-sm">{feature}</span>
+                            <span>{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -229,37 +257,6 @@ const ProjectDetailPage = () => {
                   )}
                 </div>
               </div>
-
-              {project.link && project.link !== "#" && (
-                <div className="flex justify-center pt-3 sm:pt-4 md:pt-5">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`inline-flex items-center justify-center px-4 sm:px-5 md:px-6 py-2.5 rounded-lg sm:rounded-xl text-sm sm:text-base ${
-                      isDarkMode
-                        ? "bg-blue-600 hover:bg-blue-700"
-                        : "bg-blue-500 hover:bg-blue-600"
-                    } text-white transition-colors`}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 sm:h-5 sm:w-5 md:h-6 md:w-6 mr-2"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
-                    Lihat Project
-                  </a>
-                </div>
-              )}
             </div>
           </motion.div>
         </div>

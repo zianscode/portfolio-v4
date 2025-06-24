@@ -1,7 +1,10 @@
+"use client";
+
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ProjectProps } from "@/types/projects";
+import { FiExternalLink } from "react-icons/fi";
 
 const ProjectItem = ({
   id,
@@ -18,73 +21,78 @@ const ProjectItem = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{
-        scale: 1.02,
-        y: -5,
+        scale: 1.03,
+        y: -7,
       }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className={`rounded-2xl overflow-hidden backdrop-blur-md ${
-        isDarkMode
-          ? "bg-neutral-900/80 hover:bg-neutral-800/80"
-          : "bg-white/80 hover:bg-gray-50/80"
-      } transition-all duration-300 ${
-        isDarkMode
-          ? "shadow-[0_4px_20px_rgb(0,0,0,0.3)] hover:shadow-[0_8px_25px_rgb(0,0,0,0.35)]"
-          : "shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_8px_25px_rgba(0,0,0,0.12)]"
-      }`}
+      className={`relative rounded-xl overflow-hidden backdrop-blur-md border 
+        ${isDarkMode 
+          ? "bg-neutral-900/70 border-neutral-800 hover:bg-neutral-800/70" 
+          : "bg-white/70 border-gray-200 hover:bg-gray-50/70"
+        } 
+        transition-all duration-300 
+        ${isDarkMode
+          ? "shadow-xl hover:shadow-2xl shadow-neutral-900/60 hover:shadow-neutral-900/80" 
+          : "shadow-lg hover:shadow-xl shadow-gray-300/60 hover:shadow-300/80" 
+        }`}
     >
       <div className="w-full h-56 relative group">
         <Image
           src={image}
           alt={title}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-500 group-hover:scale-110" 
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority={id === 1}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0 gap-4">
-          <Link href={`/projects/${slug}`}>
+        
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 
+                        transition-all duration-500 transform translate-y-4 group-hover:translate-y-0 gap-4">
+          <Link href={`/projects/${slug}`} className="focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-transparent rounded-full">
             <motion.div
-              whileHover={{ scale: 1.1, rotate: 90 }}
-              transition={{ type: "spring", stiffness: 400 }}
-              className="bg-white/30 backdrop-blur-lg p-3 rounded-xl hover:bg-white/40"
+              whileHover={{ scale: 1.1, rotate: 15 }} 
+              whileTap={{ scale: 0.9 }} 
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              className="relative p-4 rounded-full cursor-pointer overflow-hidden
+                         transition-colors duration-300 transform scale-100" 
+              aria-label={`Lihat detail proyek ${title}`}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                />
-              </svg>
+              <div 
+                className={`absolute inset-0 z-0 rounded-full 
+                            animate-gradient-move 
+                            ${isDarkMode 
+                              ? "bg-gradient-to-r from-neutral-700 via-blue-600 to-green-500"
+                              : "bg-gradient-to-r from-neutral-500 via-blue-400 to-green-300"
+                            } 
+                            bg-[length:200%_200%]`} 
+              ></div>
+              <FiExternalLink className="relative z-10 h-7 w-7 text-white" /> 
             </motion.div>
           </Link>
         </div>
       </div>
-      <div className="p-4">
-        <h2 className="text-lg font-bold mb-3 tracking-tight">{title}</h2>
+
+      <div className="p-5"> 
+        <h2 className={`text-xl font-bold mb-2 tracking-tight 
+                        ${isDarkMode ? "text-white" : "text-gray-900"}`}>
+          {title}
+        </h2>
         <p
-          className={`text-sm leading-relaxed mb-4 ${
-            isDarkMode ? "text-gray-300" : "text-gray-600"
-          }`}
+          className={`text-sm leading-relaxed mb-4 
+            ${isDarkMode ? "text-gray-300" : "text-gray-700"}`}
         >
           {description}
         </p>
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-2 mt-4"> 
           {technologies.map((tech, index) => (
             <span
               key={index}
-              className={`px-3 py-1 text-xs font-medium rounded-lg ${
-                isDarkMode
-                  ? "bg-gray-800/50 text-gray-200 backdrop-blur-sm"
-                  : "bg-gray-100/70 text-gray-800 backdrop-blur-sm"
-              } transition-all duration-300 hover:scale-105`}
+              className={`px-3.5 py-1.5 text-xs font-medium rounded-full 
+                ${isDarkMode
+                  ? "bg-neutral-800 text-gray-200 border border-neutral-700" 
+                  : "bg-gray-100 text-gray-800 border border-gray-200" 
+                } 
+                transition-all duration-300 hover:scale-105 hover:shadow-md`} 
             >
               {tech}
             </span>
