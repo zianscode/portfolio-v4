@@ -115,51 +115,39 @@ export const MENU_ITEMS: MenuItemType[] = [
 export const projects = [
   {
     src: "/projects/nawauthapp.png",
-    title: "NawatechAuthApp",
+    title: "Nawatech Auth App",
     date: "2025-05-23", 
     isNew: true,
-    description: "Digital platforms to support green economy and green jobs.",
-    technologies: ["Next.js", "MySQL", "TailwindCss", "Typescript", "Express.js"]
   },
   {
     src: "/projects/marketplace.png",
     title: "Eco Marketplace",
     date: "2025-04-14", 
     isNew: true,
-    description: "Digital platforms to support green economy and green jobs.",
-    technologies: ["Next.js", "MySQL", "TailwindCss", "Typescript", "Express.js"]
   },
   {
     src: "/projects/kasirapp.png",
     title: "Kasir App",
     date: "2025-04-15", 
-    isNew: true,
-    description: "A simple and responsive cashier app for managing sales and products in small businesses.",
-    technologies: ["Next.js", "MySQL", "TailwindCss", "Typescript", "Express.js"]
+    isNew: false,
   },
   {
     src: "/projects/studi.png",
     title: "Studi Pemodelan",
     date: "2025-02-01",
     isNew: false,
-    description: "Modeling case study for goods distribution with 4 main roles.",
-    technologies: ["Figma"]
   },
   {
     src: "/projects/jokigames.png", 
     title: "JokiGames & TopUpGames",
     date: "2024-09-15",
     isNew: false,
-    description: "A game jockey and top up website with various interesting features.",
-    technologies: ["Next.js", "Node.js", "PostgreSQL", "MidTrans", "Bootstrap"]
   },
   {
     src: "/projects/ciudigital.png",
     title: "Ciu Insurance",
     date: "2024-01-15",
     isNew: false,
-    description: "Insurance bank handling app with attractive design.",
-    technologies: ["Next.js", "PostgreSQL", "Bootstrap", "Golang", "Node.js"]
   }
 ];
 
