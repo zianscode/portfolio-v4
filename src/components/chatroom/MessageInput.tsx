@@ -6,6 +6,7 @@ interface MessageInputProps {
   isDarkMode: boolean;
   onSendMessage: (message: string) => Promise<void>;
   isSending: boolean;
+  disabled?: boolean;
 }
 
 const MessageInput = ({ isDarkMode, onSendMessage, isSending }: MessageInputProps) => {

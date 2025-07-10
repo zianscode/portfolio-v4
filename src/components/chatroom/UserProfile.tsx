@@ -5,6 +5,7 @@ import { User } from "@/types/chatroom";
 interface UserProfileProps {
   user: User | null;
   handleLogout: () => Promise<void>;
+  isDarkMode?: boolean;
 }
 
 const UserProfile = ({ user, handleLogout }: UserProfileProps) => {
