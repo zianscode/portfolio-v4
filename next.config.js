@@ -27,7 +27,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Cross-Origin-Embedder-Policy',
-            value: 'require-corp', // Less restrictive than credentialless
+            value: 'require-corp', 
           },
           {
             key: 'Cross-Origin-Opener-Policy',
