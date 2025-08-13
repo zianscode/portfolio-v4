@@ -67,7 +67,7 @@ const SocialCards = () => {
     {
       icon: <FaGithub />,
       title: "Explore the code",
-      description: "Explore the source code for all my projects on GitHub.",
+      description: "Explore my source code on GitHub",
       buttonText: "Go to GitHub",
       buttonColor: "bg-gray-700",
       hoverColor: "hover:bg-gray-600",
@@ -93,7 +93,7 @@ const SocialCards = () => {
     {
       icon: <FaSpotify />,
       title: "Listen to my playlist",
-      description: "Check out my favorite tracks and playlists on Spotify.",
+      description: "See my favorite songs and playlists on Spotify.",
       buttonText: "Go to Spotify",
       buttonColor: "bg-green-600",
       hoverColor: "hover:bg-green-700",
