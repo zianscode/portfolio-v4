@@ -30,7 +30,7 @@ const Contact = () => {
 
       <div className="text-center">
         <p className={`text-sm ${subtitleColor}`}>
-          Don&apos;t be a stranger — I respond to all messages! 🌟
+          Don&apos;t be a stranger I respond to all messages! 🌟
         </p>
       </div>
     </div>
