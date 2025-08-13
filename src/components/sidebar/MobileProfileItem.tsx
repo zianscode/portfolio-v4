@@ -56,7 +56,7 @@ export default function MobileProfileItem({
           transition={{ duration: 0.15, ease: "easeOut" }}
         >
           <Image
-            src="/image/profile1.jpeg"
+            src="/image/Fajar_Fauzian.jpg"
             alt="zfosix"
             width={36}
             height={36}

@@ -41,7 +41,7 @@ export default function ProfileItem({
 
   return (
     <div
-      className="flex flex-col items-center justify-center py-4 relative transition-all" // Kurangi py-6 menjadi py-4
+      className="flex flex-col items-center justify-center py-4 relative transition-all" 
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -71,7 +71,7 @@ export default function ProfileItem({
         }}
       >
         <Image
-          src="/image/profile1.jpeg"
+          src="/image/Fajar_Fauzian.jpg"
           alt="zfosix"
           width={80} 
           height={80}

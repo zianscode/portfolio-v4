@@ -115,7 +115,7 @@ export const MENU_ITEMS: MenuItemType[] = [
 export const projects = [
   {
     src: "/projects/nawauthapp.png",
-    title: "Nawatech Auth App",
+    title: "Auth App",
     date: "2025-05-23", 
     isNew: true,
   },
