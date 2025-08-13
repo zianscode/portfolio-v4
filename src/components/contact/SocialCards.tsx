@@ -75,7 +75,7 @@ const SocialCards = () => {
       bgColor: "bg-slate-300/50",
       darkBgColor: "dark:bg-slate-800/50",
       borderColor: "border-gray-600/20",
-      url: "https://github.com/zfosix",
+      url: "https://github.com/fajarfauzian",
     },
     {
       icon: <FaLinkedin />,
