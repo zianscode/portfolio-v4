@@ -13,7 +13,7 @@ export default function TypeAnimation({ sequence, delay = 1000 }: TypeAnimationP
   sequence.forEach((item, index) => {
     modifiedSequence.push(item)
 
-    if (index < sequence.length) {
+    if (index < sequence.length - 1) {
       modifiedSequence.push(delay)
     }
   })

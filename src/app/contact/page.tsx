@@ -8,13 +8,15 @@ import "react-toastify/dist/ReactToastify.css";
 import SocialCards from "@/components/contact/SocialCards";
 import ContactForm from "@/components/contact/ContactForm";
 
+import HeaderDivider from "@/components/common/HeaderDivider";
+
 const ContactPage = () => {
   const { isDarkMode } = useDarkMode();
 
   return (
     <div
       className={`flex min-h-screen ${
-        isDarkMode ? "bg-[#0B0A0A] text-white" : "bg-white text-black"
+        isDarkMode ? "text-white" : "text-black"
       }`}
     >
       <ToastContainer
@@ -29,18 +31,14 @@ const ContactPage = () => {
         pauseOnHover
       />
 
-      <main className="flex-1 flex justify-center pt-8 md:pt-16 lg:pt-14 px-4 md:px-6 lg:px-8 ml-0 md:ml-6">
+      <main className="flex-1 flex justify-center pt-10 md:pt-16 lg:pt-14 px-4 md:px-6 lg:px-8 ml-0 md:ml-6">
         <div className="w-full max-w-[700px] xl:max-w-[830px] transition-all duration-500 ease-in-out">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-start mb-8"
           >
-            <div
-              className={`border-b ${
-                isDarkMode ? "border-stone-700" : "border-stone-300"
-              } border-dotted pb-4`}
-            >
+            <div>
               <div className="flex items-center space-x-3">
                 <IoMdContacts
                   className={`text-3xl ${
@@ -62,6 +60,7 @@ const ContactPage = () => {
               >
                 Let&rsquo;s get in touch
               </p>
+              <HeaderDivider />
             </div>
           </motion.div>
 

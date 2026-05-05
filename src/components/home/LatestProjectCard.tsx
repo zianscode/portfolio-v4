@@ -23,9 +23,9 @@ const LatestProjectCard = ({ project, windowWidth, index }: LatestProjectCardPro
   const projectSlug = getProjectSlug(project.title);
 
   return (
-    <Link href={`/projects/${projectSlug}`}>
-      <button 
-        className={`relative animate-slide-card transition hover:scale-95 hover:duration-500 ${
+    <Link href={`/projects/${projectSlug}`} className="block w-full">
+      <div 
+        className={`relative animate-slide-card transition hover:scale-95 hover:duration-500 text-left cursor-pointer ${
           isMobile ? 'w-full min-w-[10px]' : 'min-w-[250px]'
         }`}
       >
@@ -37,10 +37,10 @@ const LatestProjectCard = ({ project, windowWidth, index }: LatestProjectCardPro
               width={200}
               height={200}
               className="h-full w-full rounded-md object-cover"
-              priority
+              priority={index < 2}
             />
             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-md" />
-            {(project.isNew || index === 0) && (
+            {project.isNew && (
               <div className="absolute top-0 right-0 origin-top-right">
                 <div className="bg-yellow-400 text-black text-xs font-bold py-1 px-9 transform rotate-45 translate-y-3 translate-x-6 shadow-md">
                   NEW
@@ -55,7 +55,7 @@ const LatestProjectCard = ({ project, windowWidth, index }: LatestProjectCardPro
             Started on: {project.date}
           </span>
         </div>
-      </button>
+      </div>
     </Link>
   );
 };

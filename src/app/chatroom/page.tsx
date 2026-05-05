@@ -80,7 +80,7 @@ const ChatroomPage = () => {
 
   // Memoized values
   const containerClasses = useMemo(() => 
-    `flex min-h-screen ${isDarkMode ? "bg-[#0B0A0A] text-white" : "bg-white text-black"}`,
+    `flex min-h-screen ${isDarkMode ? "text-white" : "text-black"}`,
     [isDarkMode]
   );
 
@@ -379,7 +379,7 @@ const ChatroomPage = () => {
 
   return (
     <div className={containerClasses}>
-      <main className="flex-1 flex justify-center pt-8 md:pt-12 px-4 md:px-8 lg:px-12 ml-0 md:ml-8">
+      <main className="flex-1 flex justify-center pt-10 md:pt-16 lg:pt-14 px-4 md:px-8 lg:px-12 ml-0 md:ml-8">
         <div className="max-w-4xl mx-auto w-full relative">
           {/* Header */}
           <ChatroomHeader isDarkMode={isDarkMode} />

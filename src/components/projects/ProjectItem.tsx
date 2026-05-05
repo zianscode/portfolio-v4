@@ -59,11 +59,10 @@ const ProjectItem = ({
             >
               <div 
                 className={`absolute inset-0 z-0 rounded-full 
-                            animate-gradient-move 
-                            ${isDarkMode 
-                              ? "bg-gradient-to-r from-neutral-700 via-blue-600 to-green-500"
-                              : "bg-gradient-to-r from-neutral-500 via-blue-400 to-green-300"
-                            } 
+                            animate-gradient-move                             ${isDarkMode 
+                               ? "bg-gradient-to-r from-neutral-800 via-brand-dark to-brand-neon"
+                               : "bg-gradient-to-r from-neutral-400 via-brand-dark to-brand-neon"
+                             } 
                             bg-[length:200%_200%]`} 
               ></div>
               <FiExternalLink className="relative z-10 h-7 w-7 text-white" /> 

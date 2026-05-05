@@ -1,6 +1,7 @@
 import React from 'react';
 import { summaryMock } from '@/common/mocks/summary';
-import {   BiLeaf as ProfileIcon, } from 'react-icons/bi';
+import { BiLeaf as ProfileIcon } from 'react-icons/bi';
+import HeaderDivider from '@/components/common/HeaderDivider';
 
 interface SummaryProps {
   isDarkMode: boolean;
@@ -15,7 +16,7 @@ const Summary: React.FC<SummaryProps> = ({ isDarkMode }) => {
 
   return (
     <section className={`space-y-2 pb-3 bg-cover bg-no-repeat ${borderColor}`}>
-      <div className={`border-b border-dotted pb-4 ${borderColor}`}>
+      <div>
         <div className="flex items-center space-x-3">
           <h1 className={`text-2xl md:text-3xl font-bold ${headingColor} flex items-center gap-2`}>
             <ProfileIcon className="text-2xl" />
@@ -25,6 +26,7 @@ const Summary: React.FC<SummaryProps> = ({ isDarkMode }) => {
         <p className={`mt-2 text-sm md:text-base ${subtitleColor}`}>
           A short story of me
         </p>
+        <HeaderDivider />
       </div>
 
       <div className={`space-y-4 pt-3 text-sm md:text-base ${textColor}`}>

@@ -51,7 +51,7 @@ export default function MobileProfileItem({
           }}
           whileHover={{
             scale: 1.05,
-            borderColor: isDarkMode ? "rgba(59, 130, 246, 0.5)" : "rgba(219, 39, 119, 0.5)",
+            borderColor: isDarkMode ? "#FFFFFF" : "#000000",
           }}
           transition={{ duration: 0.15, ease: "easeOut" }}
         >
@@ -60,16 +60,10 @@ export default function MobileProfileItem({
             alt="zfosix"
             width={36}
             height={36}
-            priority
             sizes="36px"
             className="object-cover w-full h-full"
           />
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 to-pink-500/20"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.15 }}
-          />
+
         </motion.div>
 
         {/* Name and Handle */}

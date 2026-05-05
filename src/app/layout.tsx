@@ -1,6 +1,6 @@
 "use client"; 
 
-import { Poppins } from "next/font/google";
+import { Poppins, Sora } from "next/font/google";
 import { DarkModeProvider } from "@/context/DarkModeContext";
 import "../styles/globals.css";
 import dynamic from "next/dynamic";
@@ -22,6 +22,11 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-sora",
+});
+
 type PagePath = keyof typeof PAGE_TITLES;
 
 export default function RootLayout({
@@ -31,23 +36,24 @@ export default function RootLayout({
 }>) {
   const [isLoading, setIsLoading] = useState(false);
   const [isInitialLoad, setIsInitialLoad] = useState(false);
-  // const [ setShowChatRoomButton] = useState(false);
   const pathname = usePathname() || "/";
 
+  // Initial loading only
   useEffect(() => {
     setIsLoading(true);
     setIsInitialLoad(true);
 
-    // Update judul halaman berdasarkan pathname
-    document.title = PAGE_TITLES[pathname as PagePath] || DEFAULT_TITLE;
-
-    // Simulasikan loading selama LOADING_DURATION
     const timeout = setTimeout(() => {
       setIsLoading(false);
       setIsInitialLoad(false);
     }, LOADING_DURATION);
 
     return () => clearTimeout(timeout);
+  }, []);
+
+  // Update document title on pathname change
+  useEffect(() => {
+    document.title = PAGE_TITLES[pathname as PagePath] || DEFAULT_TITLE;
   }, [pathname]);
 
   // useEffect(() => {
@@ -63,7 +69,7 @@ export default function RootLayout({
         <Favicon />
         <meta name="format-detection" content="telephone=no, date=no, email=no, address=no" />
       </head>
-      <body className={`${poppins.variable} antialiased`}>
+      <body className={`${poppins.variable} ${sora.variable} antialiased`}>
         {/* Komponen ParticleStars */}
         <ParticleStars />
 

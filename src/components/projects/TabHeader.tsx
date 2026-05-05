@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FaProjectDiagram, FaCertificate } from "react-icons/fa";
+import HeaderDivider from "@/components/common/HeaderDivider";
 
 interface TabHeaderProps {
   activeTab: "projects" | "certificates";
@@ -11,13 +12,9 @@ const TabHeader = ({ activeTab, isDarkMode }: TabHeaderProps) => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="text-start mb-8"
+      className="text-start mb-6"
     >
-      <div
-        className={`border-b ${
-          isDarkMode ? "border-stone-700" : "border-stone-300"
-        } border-dotted pb-4`}
-      >
+      <div>
         <div className="flex items-center space-x-3">
           {activeTab === "projects" ? (
             <FaProjectDiagram
@@ -49,6 +46,7 @@ const TabHeader = ({ activeTab, isDarkMode }: TabHeaderProps) => {
             ? "Showcasing my passion for technology, design, and problem-solving through code."
             : "A collection of certifications that validate my skills and knowledge."}
         </p>
+        <HeaderDivider />
       </div>
     </motion.div>
   );

@@ -123,7 +123,7 @@ export const projects = [
     src: "/projects/marketplace.png",
     title: "Eco Marketplace",
     date: "2025-04-14", 
-    isNew: true,
+    isNew: false,
   },
   {
     src: "/projects/kasirapp.png",

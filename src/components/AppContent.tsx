@@ -16,11 +16,16 @@ interface AppContentProps {
   children: React.ReactNode;
 }
 
+import GridBackground from "@/components/GridBackground";
+
 function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
   const { isDarkMode } = useDarkMode();
 
   return (
     <>
+      {/* Base Background Color */}
+      <div className={`fixed inset-0 z-[-1] ${isDarkMode ? 'bg-neutral-950' : 'bg-white'}`} />
+      <GridBackground />
       {/* Animasi untuk loading state */}
       <AnimatePresence>
         {isLoading && (
@@ -41,9 +46,6 @@ function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
       {/* Konten utama */}
       <div
         className="flex flex-1 overflow-hidden pt-12 md:pt-0"
-        style={{
-          backgroundColor: isDarkMode ? "bg-neutral-950" : "bg-white",
-        }}
       >
         {/* Sidebar dengan animasi masuk/keluar */}
         <AnimatePresence>

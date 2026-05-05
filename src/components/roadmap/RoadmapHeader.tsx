@@ -5,6 +5,8 @@ interface RoadmapHeaderProps {
   isDarkMode: boolean;
 }
 
+import HeaderDivider from "@/components/common/HeaderDivider";
+
 export default function RoadmapHeader({ isDarkMode }: RoadmapHeaderProps) {
   return (
     <motion.div
@@ -12,11 +14,7 @@ export default function RoadmapHeader({ isDarkMode }: RoadmapHeaderProps) {
       animate={{ opacity: 1, y: 0 }}
       className="text-start mb-8"
     >
-      <div
-        className={`border-b ${
-          isDarkMode ? "border-stone-700" : "border-stone-300"
-        } border-dotted pb-4`}
-      >
+      <div>
         <div className="flex items-center space-x-3">
           <RiRoadMapLine
             className={`text-2xl sm:text-3xl ${
@@ -38,6 +36,7 @@ export default function RoadmapHeader({ isDarkMode }: RoadmapHeaderProps) {
         >
           Learning path recommendation and free course playlist
         </p>
+        <HeaderDivider />
       </div>
     </motion.div>
   );

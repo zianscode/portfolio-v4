@@ -6,6 +6,8 @@ interface ChatroomHeaderProps {
   isDarkMode: boolean;
 }
 
+import HeaderDivider from "@/components/common/HeaderDivider";
+
 const ChatroomHeader = ({ isDarkMode }: ChatroomHeaderProps) => {
   return (
     <motion.div
@@ -13,11 +15,7 @@ const ChatroomHeader = ({ isDarkMode }: ChatroomHeaderProps) => {
       animate={{ opacity: 1, y: 0 }}
       className="text-start mb-8"
     >
-      <div
-        className={`border-b ${
-          isDarkMode ? "border-stone-700" : "border-stone-300"
-        } border-dotted pb-4`}
-      >
+      <div className="pb-2">
         <div className="flex items-center space-x-3">
           <IoChatbubbleEllipsesOutline
             className={`text-3xl ${
@@ -33,6 +31,7 @@ const ChatroomHeader = ({ isDarkMode }: ChatroomHeaderProps) => {
         >
           Leave your impression or suggestion about this website here.
         </p>
+        <HeaderDivider />
       </div>
     </motion.div>
   );

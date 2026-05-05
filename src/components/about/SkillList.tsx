@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SkillCard from "./SkillCard";
 import MarqueeElement from "@/components/MarqueeElement";
 import { SkillList } from "@/data/resume";
@@ -14,7 +14,11 @@ interface SkillsListProps {
 const SkillsList = ({ direction = "left", isDarkMode = false }: SkillsListProps) => {
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
   const isMediumScreen = useMediaQuery("(max-width: 768px)");
-  const shuffledSkills = [...SkillList].sort(() => Math.random() - 0.5);
+  const [skills, setSkills] = useState(SkillList);
+
+  useEffect(() => {
+    setSkills([...SkillList].sort(() => Math.random() - 0.5));
+  }, []);
 
   const getMarqueeConfig = () => {
     if (isSmallScreen) {
@@ -55,7 +59,7 @@ const SkillsList = ({ direction = "left", isDarkMode = false }: SkillsListProps)
 
       <div className="grid grid-cols-1 gap-1 sm:gap-3 md:gap-4 w-full">
         {Array.from({ length: 2 }, (_, index) => {
-          const slider = [...shuffledSkills].sort(() => Math.random() - 0.5);
+          const slider = [...skills].sort(() => Math.random() - 0.5);
           const marqueeDirection = index % 2 === 0 ? direction : direction === "left" ? "right" : "left";
 
           const duplicatedSlider = [...slider, ...slider];

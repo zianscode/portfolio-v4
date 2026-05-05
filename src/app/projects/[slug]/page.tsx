@@ -10,6 +10,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa"; 
 
+import HeaderDivider from "@/components/common/HeaderDivider";
+
 const ProjectDetailPage = () => {
   const { isDarkMode } = useDarkMode();
   const params = useParams();
@@ -34,7 +36,7 @@ const ProjectDetailPage = () => {
     return (
       <div
         className={`flex min-h-screen items-center justify-center ${
-          isDarkMode ? "bg-[#0B0A0A] text-white" : "bg-white text-black"
+          isDarkMode ? "text-white" : "text-black"
         }`}
       >
         <div className="animate-spin rounded-full h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 border-t-2 border-b-2 border-blue-500"></div>
@@ -46,7 +48,7 @@ const ProjectDetailPage = () => {
     return (
       <div
         className={`flex min-h-screen flex-col items-center justify-center p-4 ${
-          isDarkMode ? "bg-[#0B0A0A] text-white" : "bg-white text-black"
+          isDarkMode ? "text-white" : "text-black"
         }`}
       >
         <h1 className="text-2xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-center">Project Tidak Ditemukan</h1>
@@ -68,10 +70,10 @@ const ProjectDetailPage = () => {
   return (
     <div
       className={`flex min-h-screen pb-6 sm:pb-8 md:pb-16 ${
-        isDarkMode ? "bg-[#0B0A0A] text-white" : "bg-white text-black"
+        isDarkMode ? "text-white" : "text-black"
       }`}
     >
-      <main className="flex-1 flex justify-center pt-8 md:pt-16 lg:pt-14 px-4 md:px-6 lg:px-8 ml-0 md:ml-6">
+      <main className="flex-1 flex justify-center pt-10 md:pt-16 lg:pt-14 px-4 md:px-6 lg:px-8 ml-0 md:ml-6">
         <div className="w-full max-w-[700px] xl:max-w-[830px] transition-all duration-500 ease-in-out">
           <Link
             href="/projects"
@@ -103,6 +105,7 @@ const ProjectDetailPage = () => {
             className="space-y-4 sm:space-y-5 md:space-y-6"
           >
             <h1 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4">{project.title}</h1>
+            <HeaderDivider />
             
             <div className="space-y-3 sm:space-y-4">
               <div className="relative w-full h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh] rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden">

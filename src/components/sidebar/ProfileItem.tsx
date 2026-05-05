@@ -62,8 +62,8 @@ export default function ProfileItem({
         whileHover={{
           scale: 1.05,
           borderColor: isDarkMode
-            ? "rgba(59, 130, 246, 0.5)"
-            : "rgba(219, 39, 119, 0.5)",
+            ? "#FFFFFF"
+            : "#000000",
         }}
         transition={{
           duration: 0.3,
@@ -75,15 +75,9 @@ export default function ProfileItem({
           alt="zfosix"
           width={80} 
           height={80}
-          priority
           className="object-cover w-full h-full"
         />
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 to-pink-500/20"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        />
+
       </motion.div>
 
       <motion.button

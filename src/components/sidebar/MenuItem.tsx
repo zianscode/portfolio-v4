@@ -23,10 +23,7 @@ export default function MenuItem({
 }: MenuItemProps) {
   const { title, href, icon: Icon, isExternal } = item;
   const isActive = pathname === href || pathname.startsWith(`${href}/`);
-  
-  // Handle special case for blog route with query params
-  const isBlogActive = href.startsWith('/blog') && pathname.startsWith('/blog');
-  const isCurrentActive = isActive || isBlogActive;
+  const isCurrentActive = isActive;
 
   // Force text to always show in mobile view
   const shouldShowText = isMobile || isOpen;

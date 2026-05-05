@@ -9,7 +9,7 @@ export default function MobileLandingContainer({
   return (
      <div className="group relative">
       {/* 3D Mobile Container - Even More Compact */}
-      <div className="h-36 w-20 overflow-hidden rounded-xl border-[3px] border-neutral-800 dark:border-neutral-900 transition-all duration-300 ease-out transform-gpu group-hover:scale-105 group-hover:-translate-y-1 group-hover:rotate-x-12 group-hover:rotate-y-6 group-hover:shadow-lg group-hover:shadow-blue-500/20 perspective-1000">
+      <div className="h-36 w-20 overflow-hidden rounded-xl border-[3px] border-neutral-800 dark:border-neutral-900 transition-all duration-300 ease-out transform-gpu group-hover:scale-105 group-hover:-translate-y-1 group-hover:rotate-x-12 group-hover:rotate-y-6 group-hover:shadow-lg group-hover:shadow-brand-neon/20 perspective-1000">
         
         {/* Screen area with hover effect */}
         <div className="relative h-full w-full overflow-hidden bg-neutral-100 dark:bg-neutral-950 transition-colors duration-300 group-hover:bg-neutral-50 dark:group-hover:bg-neutral-900">
@@ -36,7 +36,7 @@ export default function MobileLandingContainer({
         </div>
       </div>
       {/* Enhanced blue glow shadow */}
-      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-blue-500/20 via-blue-400/10 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md transform translate-y-2 scale-95 -z-10"></div>
+      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-brand-neon/20 via-brand-neon/10 to-brand-dark/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md transform translate-y-2 scale-95 -z-10"></div>
     </div>
   );
 }
@@ -51,7 +51,7 @@ function MobileIllustration() {
           width: [12, 12, 16, 16, 12],
           height: [12, 12, 16, 16, 12],
           borderRadius: ["50%", "50%", "4px", "4px", "50%"],
-          borderColor: ["#9ca3af", "#4f46e5", "#4f46e5", "#9ca3af"]
+          borderColor: ["#9ca3af", "#39FF14", "#39FF14", "#9ca3af"]
         }}
         transition={{
           duration: 8,
@@ -93,7 +93,7 @@ function MobileIllustration() {
             initial={{ height: 8 }}
             animate={{
               height: [8, 12, 12, 8],
-              borderColor: ["#d1d5db", "#4f46e5", "#d1d5db"]
+              borderColor: ["#d1d5db", "#39FF14", "#d1d5db"]
             }}
             transition={{
               duration: 6,

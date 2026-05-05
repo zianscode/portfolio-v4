@@ -43,7 +43,7 @@ export default function FooterItem({ isSidebarOpen }: FooterProps) {
               <span>by</span>
             </motion.div>
             <motion.span
-              className="font-semibold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent"
+              className="font-semibold bg-gradient-to-r from-[#39FF14] to-[#001F3F] bg-clip-text text-transparent"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}

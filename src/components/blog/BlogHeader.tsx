@@ -8,6 +8,8 @@ interface BlogHeaderProps {
   isDarkMode: boolean;
 }
 
+import HeaderDivider from "@/components/common/HeaderDivider";
+
 const BlogHeader: React.FC<BlogHeaderProps> = ({ isDarkMode }) => {
   return (
     <motion.div
@@ -15,11 +17,7 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({ isDarkMode }) => {
       animate={{ opacity: 1, y: 0 }}
       className="text-start mb-8"
     >
-      <div
-        className={`border-b ${
-          isDarkMode ? "border-stone-700" : "border-stone-300"
-        } border-dotted pb-4`}
-      >
+      <div>
         <div className="flex items-center space-x-3">
           <FaBlog
             className={`text-3xl ${
@@ -41,6 +39,7 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({ isDarkMode }) => {
         >
           Welcome to my blog! Your Source for Expert Tips and Insights!{" "}
         </p>
+        <HeaderDivider />
       </div>
     </motion.div>
   );

@@ -52,7 +52,7 @@ export default function ProfileHeader({
               border: showText ? "1px solid rgba(255, 255, 255, 0.6)" : "none",
               padding: showText ? "3px 8px" : "0",
               borderRadius: "9999px",
-              color: "white",
+              color: "#ffffff",
               boxShadow: showText ? "0 2px 8px rgba(0, 0, 0, 0.15)" : "none",
             }}
             exit={{ opacity: 0, y: -10 }}
@@ -60,7 +60,7 @@ export default function ProfileHeader({
               backgroundColor: showText
                 ? "rgba(255, 255, 255, 0.9)"
                 : "transparent",
-              color: showText ? "black" : "white",
+              color: showText ? "#000000" : "#ffffff",
               scale: 1.05,
               boxShadow: showText ? "0 4px 10px rgba(0, 0, 0, 0.2)" : "none",
             }}

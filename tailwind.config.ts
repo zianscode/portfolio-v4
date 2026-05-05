@@ -14,6 +14,10 @@ const config: Config = {
       colors: {
         background: "var(--background)", 
         foreground: "var(--foreground)", 
+        brand: {
+          neon: "#39FF14",
+          dark: "#001F3F",
+        }
       },
       borderRadius: {
         lg: "var(--radius)", 
@@ -21,9 +25,18 @@ const config: Config = {
         sm: "calc(var(--radius) - 4px)", 
       },
       fontFamily: {
-        sora: ["var(--soraSans-font)", ...fontFamily.sans], 
-        robotoCondensed: ["var(--robotoCondensed-font)", ...fontFamily.sans], 
+        sora: ["var(--font-sora)", ...fontFamily.sans], 
+        poppins: ["var(--font-poppins)", ...fontFamily.sans], 
         inter: ["var(--inter-font)", ...fontFamily.sans], 
+      },
+      animation: {
+        'gradient-move': 'gradient-move 3s ease infinite',
+      },
+      keyframes: {
+        'gradient-move': {
+          '0%, 100%': { 'background-position': '0% 50%' },
+          '50%': { 'background-position': '100% 50%' },
+        },
       },
     },
   },
