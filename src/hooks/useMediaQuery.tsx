@@ -2,13 +2,7 @@ import { useState, useEffect } from 'react';
 
 // Custom hook to check if media query matches
 const useMediaQuery = (query: string): boolean => {
-  const [matches, setMatches] = useState<boolean>(() => {
-    // Check if window is defined (client-side)
-    if (typeof window !== 'undefined') {
-      return window.matchMedia(query).matches;
-    }
-    return false; // Default to false on server-side
-  });
+  const [matches, setMatches] = useState<boolean>(false);
 
   useEffect(() => {
     // Skip effect on server-side

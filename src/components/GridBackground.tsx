@@ -4,21 +4,42 @@ import React from "react";
 import { useDarkMode } from "@/context/DarkModeContext";
 
 export default function GridBackground() {
-  const { isDarkMode } = useDarkMode();
+  const { isDarkMode, mounted } = useDarkMode();
+
+  // Use a neutral color until client has mounted to avoid hydration mismatch
+  const lineColor = mounted
+    ? isDarkMode
+      ? "rgba(255, 255, 255, 0.15)"
+      : "rgba(0, 0, 0, 0.15)"
+    : "rgba(0, 0, 0, 0.15)";
 
   return (
     <div className="fixed inset-x-0 top-0 h-[600px] pointer-events-none z-0 overflow-hidden">
-      {/* Grid Pattern with 3-way fade (Left, Right, Bottom) */}
+      {/* Desktop Grid Pattern */}
       <div 
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full hidden sm:block"
         style={{
           backgroundImage: `
-            linear-gradient(to right, ${isDarkMode ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.15)'} 1px, transparent 1px),
-            linear-gradient(to bottom, ${isDarkMode ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.15)'} 1px, transparent 1px)
+            linear-gradient(to right, ${lineColor} 1px, transparent 1px),
+            linear-gradient(to bottom, ${lineColor} 1px, transparent 1px)
           `,
           backgroundSize: '40px 40px',
           maskImage: 'radial-gradient(ellipse at top center, black 10%, transparent 90%)',
           WebkitMaskImage: 'radial-gradient(ellipse at top center, black 10%, transparent 90%)',
+        }}
+      />
+
+      {/* Mobile Grid Pattern - Shifted down with top fade */}
+      <div 
+        className="absolute inset-0 w-full h-full sm:hidden top-[70px]"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, ${lineColor} 1px, transparent 1px),
+            linear-gradient(to bottom, ${lineColor} 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px',
+          maskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 25%, transparent 100%)',
         }}
       />
 

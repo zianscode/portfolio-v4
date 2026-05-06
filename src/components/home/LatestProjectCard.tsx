@@ -11,7 +11,7 @@ const LatestProjectCard = ({ project, windowWidth, index }: LatestProjectCardPro
   const isMobile = windowWidth !== null && windowWidth < 768;
 
   const truncateTitle = (title: string) => {
-    const limit = windowWidth && windowWidth < 640 ? 20 : 30;
+    const limit = windowWidth && windowWidth < 640 ? 28 : 32;
     return title.length > limit ? title.slice(0, limit) + "..." : title;
   };
 
@@ -24,36 +24,54 @@ const LatestProjectCard = ({ project, windowWidth, index }: LatestProjectCardPro
 
   return (
     <Link href={`/projects/${projectSlug}`} className="block w-full">
-      <div 
-        className={`relative animate-slide-card transition hover:scale-95 hover:duration-500 text-left cursor-pointer ${
-          isMobile ? 'w-full min-w-[10px]' : 'min-w-[250px]'
+      <div
+        className={`relative text-left cursor-pointer transition-transform duration-300 active:scale-95 ${
+          isMobile ? "w-full" : "min-w-[220px] max-w-[260px] hover:scale-[0.98]"
         }`}
       >
-        <div className="relative z-10 flex h-max flex-col items-start space-y-1">
-          <div className="h-28 w-full overflow-hidden rounded-md relative group">
+        <div className="flex flex-col gap-2">
+          {/* Image */}
+          <div
+            className={`relative w-full overflow-hidden rounded-xl group border ${
+              isDarkMode ? "border-neutral-800" : "border-neutral-200"
+            } ${isMobile ? "h-44" : "h-32"}`}
+          >
             <Image
               src={project.src}
               alt={project.title}
-              width={200}
-              height={200}
-              className="h-full w-full rounded-md object-cover"
+              fill
+              className="object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
+              sizes={isMobile ? "100vw" : "260px"}
               priority={index < 2}
             />
-            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-md" />
+            {/* Hover overlay */}
+            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
+
+            {/* NEW badge */}
             {project.isNew && (
-              <div className="absolute top-0 right-0 origin-top-right">
-                <div className="bg-yellow-400 text-black text-xs font-bold py-1 px-9 transform rotate-45 translate-y-3 translate-x-6 shadow-md">
-                  NEW
-                </div>
+              <div className="absolute top-2 right-2 bg-yellow-400 text-black text-[9px] font-bold px-2 py-0.5 rounded-full shadow">
+                NEW
               </div>
             )}
           </div>
-          <p className={`text-sm ${isDarkMode ? "text-neutral-300" : "text-neutral-800"}`}>
-            {truncateTitle(project.title)}
-          </p>
-          <span className={`text-[10px] ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
-            Started on: {project.date}
-          </span>
+
+          {/* Text Info */}
+          <div className="flex flex-col gap-0.5 px-0.5">
+            <p
+              className={`font-semibold font-poppins leading-snug ${
+                isMobile ? "text-[14px]" : "text-[13px]"
+              } ${isDarkMode ? "text-neutral-200" : "text-neutral-800"}`}
+            >
+              {truncateTitle(project.title)}
+            </p>
+            <span
+              className={`font-poppins ${
+                isMobile ? "text-[11px]" : "text-[10px]"
+              } ${isDarkMode ? "text-neutral-500" : "text-neutral-500"}`}
+            >
+              Started on: {project.date}
+            </span>
+          </div>
         </div>
       </div>
     </Link>

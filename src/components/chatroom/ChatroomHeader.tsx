@@ -6,8 +6,6 @@ interface ChatroomHeaderProps {
   isDarkMode: boolean;
 }
 
-import HeaderDivider from "@/components/common/HeaderDivider";
-
 const ChatroomHeader = ({ isDarkMode }: ChatroomHeaderProps) => {
   return (
     <motion.div
@@ -31,7 +29,6 @@ const ChatroomHeader = ({ isDarkMode }: ChatroomHeaderProps) => {
         >
           Leave your impression or suggestion about this website here.
         </p>
-        <HeaderDivider />
       </div>
     </motion.div>
   );

@@ -7,8 +7,6 @@ import {
   MdBarChart,
 } from "react-icons/md";
 
-import HeaderDivider from "@/components/common/HeaderDivider";
-
 const DashboardPage = () => {
   const { isDarkMode } = useDarkMode();
   
@@ -49,7 +47,6 @@ const DashboardPage = () => {
                 This is my personal dashboard, built with Next.js API routes
                 deployed as serverless functions.
               </p>
-              <HeaderDivider />
             </div>
           </motion.div>
 

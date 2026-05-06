@@ -43,12 +43,12 @@ export default function FooterItem({ isSidebarOpen }: FooterProps) {
               <span>by</span>
             </motion.div>
             <motion.span
-              className="font-semibold bg-gradient-to-r from-[#39FF14] to-[#001F3F] bg-clip-text text-transparent"
+              className="text-neutral-800 dark:text-neutral-200"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4 }}
             >
-              zfosix
+              ziancode
             </motion.span>
           </motion.div>
         ) : (

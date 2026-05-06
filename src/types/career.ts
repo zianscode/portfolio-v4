@@ -1,19 +1,21 @@
-interface CareerCardProps {
-    career: {
-      id: number;
-      company: string;
-      position: string;
-      location: string;
-      startDate: string;
-      endDate: string;
-      duration: string;
-      logo: string;
-    };
-    isDarkMode: boolean;
-  }
-  
-  interface CareerSectionProps {
-    isDarkMode: boolean;
-  }
+export interface Career {
+  id: number;
+  company: string;
+  position: string;
+  tags?: string[];
+  location: string;
+  startDate: string;
+  endDate: string;
+  duration: string;
+  logo: string;
+}
 
-export type { CareerCardProps, CareerSectionProps };
+export interface CareerCardProps {
+  career: Career;
+  isDarkMode: boolean;
+  index: number;
+}
+
+export interface CareerSectionProps {
+  isDarkMode: boolean;
+}

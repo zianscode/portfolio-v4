@@ -25,10 +25,8 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: [
-          {
-            key: 'Cross-Origin-Embedder-Policy',
-            value: 'require-corp', 
-          },
+          // COEP require-corp dihapus — header ini memblokir iframe dari extension
+          // seperti mobile simulator, menyebabkan DOM dimodifikasi sebelum hydration
           {
             key: 'Cross-Origin-Opener-Policy',
             value: 'same-origin-allow-popups',

@@ -25,29 +25,31 @@ const YouTubeSection = ({ isDarkMode }: { isDarkMode: boolean }) => {
         isDarkMode ? "border-stone-700" : "border-stone-300"
       }`}
     >
-      <div className="flex items-center space-x-3">
-        <FaYoutube
-          className={`text-2xl ${isDarkMode ? "text-stone-200" : "text-gray-800"}`}
-        />
-        <h3
-          className={`text-xl font-bold ${
-            isDarkMode ? "text-stone-200" : "text-gray-800"
+      <div>
+        <div className="flex items-center gap-2">
+          <FaYoutube
+            className={`text-base sm:text-xl ${isDarkMode ? "text-stone-200" : "text-stone-800"}`}
+          />
+          <h2
+            className={`text-base sm:text-xl font-bold ${
+              isDarkMode ? "text-stone-200" : "text-stone-800"
+            }`}
+          >
+            YouTube Channel
+          </h2>
+        </div>
+        <p
+          className={`mt-1 sm:mt-2 text-[13px] sm:text-[15px] leading-relaxed ${
+            isDarkMode ? "text-stone-300" : "text-stone-700"
           }`}
         >
-          YouTube Channel
-        </h3>
+          My YouTube channel in 2023
+        </p>
       </div>
       <div
         className="p-4 rounded-lg shadow-md mt-4"
         style={{ backgroundColor: isDarkMode ? "#1E1E1E" : "#FFFFFF" }}
       >
-        <p
-          className={`text-sm md:text-base ${
-            isDarkMode ? "text-stone-400" : "text-gray-600"
-          }`}
-        >
-          My YouTube channel in 2023
-        </p>
 
         <div className="mt-4 w-full overflow-hidden">
           {embedError ? (

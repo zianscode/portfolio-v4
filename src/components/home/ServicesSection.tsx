@@ -35,16 +35,16 @@ const ServicesSection = () => {
     <section
       className={`flex flex-col text-start ${
         isDarkMode ? "border-stone-700" : "border-stone-300"
-      } py-6`}
+      }`}
     >
       <div className="flex items-center gap-2">
         <FaProjectDiagram
-          className={`text-xl ${
+          className={`text-base sm:text-xl ${
             isDarkMode ? "text-stone-200" : "text-stone-800"
           }`}
         />
         <h2
-          className={`text-xl font-bold ${
+          className={`text-base sm:text-xl font-bold ${
             isDarkMode ? "text-stone-200" : "text-stone-800"
           }`}
         >
@@ -52,7 +52,7 @@ const ServicesSection = () => {
         </h2>
       </div>
       <p
-        className={`mt-2 ${
+        className={`mt-1 sm:mt-2 text-[13px] sm:text-[15px] leading-relaxed ${
           isDarkMode ? "text-stone-300" : "text-stone-700"
         }`}
       >
@@ -82,24 +82,26 @@ interface ServiceCardProps {
 
 const ServiceCard = ({ title, description, isDarkMode, Illustration }: ServiceCardProps) => (
   <div
-    className={`p-6 rounded-lg border border-neutral-300 dark:border-neutral-800 ${
-      isDarkMode ? "bg-neutral-950/70" : "bg-neutral-50"
-    } transition-all duration-300 cursor-pointer relative overflow-hidden group`}
+    className={`p-6 rounded-2xl transition-all duration-300 cursor-pointer relative overflow-hidden group ${
+      isDarkMode 
+        ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:bg-neutral-800/50 hover:-translate-y-1" 
+        : "bg-white/50 backdrop-blur-md border border-white/60 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:bg-white/70 hover:-translate-y-1"
+    }`}
   >
-    <div className="flex justify-center relative">
-      <div className="relative inline-block">
+    <div className="flex items-center justify-center relative h-48 w-full mt-2 mb-4">
+      <div className="relative inline-block scale-125 sm:scale-[1.35] origin-center pointer-events-none">
         <Illustration />
       </div>
     </div>
     <h3
-      className={`text-lg font-semibold mt-7 ${
+      className={`text-[15px] sm:text-lg font-bold mt-5 sm:mt-7 ${
         isDarkMode ? "text-neutral-200" : "text-neutral-800"
       }`}
     >
       {title}
     </h3>
     <p
-      className={`my-2 ${
+      className={`my-2 text-[13px] sm:text-[15px] leading-relaxed ${
         isDarkMode ? "text-neutral-300" : "text-neutral-700"
       }`}
     >

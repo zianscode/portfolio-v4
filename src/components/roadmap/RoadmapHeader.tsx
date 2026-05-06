@@ -5,8 +5,6 @@ interface RoadmapHeaderProps {
   isDarkMode: boolean;
 }
 
-import HeaderDivider from "@/components/common/HeaderDivider";
-
 export default function RoadmapHeader({ isDarkMode }: RoadmapHeaderProps) {
   return (
     <motion.div
@@ -22,7 +20,7 @@ export default function RoadmapHeader({ isDarkMode }: RoadmapHeaderProps) {
             }`}
           />
           <h1
-            className={`text-2xl sm:text-3xl font-bold ${
+            className={`text-xl font-bold ${
               isDarkMode ? "text-stone-200" : "text-gray-800"
             }`}
           >
@@ -30,13 +28,12 @@ export default function RoadmapHeader({ isDarkMode }: RoadmapHeaderProps) {
           </h1>
         </div>
         <p
-          className={`mt-2 text-sm sm:text-base ${
+          className={`mt-2 text-[15px] leading-relaxed ${
             isDarkMode ? "text-stone-400" : "text-gray-600"
           }`}
         >
           Learning path recommendation and free course playlist
         </p>
-        <HeaderDivider />
       </div>
     </motion.div>
   );

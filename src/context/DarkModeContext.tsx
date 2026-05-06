@@ -4,11 +4,13 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 interface DarkModeContextType {
   isDarkMode: boolean;
+  mounted: boolean;
   toggleDarkMode: () => void;
 }
 
 const DarkModeContext = createContext<DarkModeContextType>({
   isDarkMode: false,
+  mounted: false,
   toggleDarkMode: () => {},
 });
 
@@ -21,14 +23,13 @@ export const DarkModeProvider: React.FC<{
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-
     const darkModePreference = localStorage.getItem("darkMode");
     const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
     setIsDarkMode(
       darkModePreference !== null ? JSON.parse(darkModePreference) : prefersDarkMode
     );
+    setMounted(true);
   }, []);
 
   useEffect(() => {
@@ -36,11 +37,11 @@ export const DarkModeProvider: React.FC<{
 
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
-      document.body.classList.add("bg-neutral-950"); 
-      document.body.classList.remove("bg-white"); 
+      document.body.classList.add("bg-neutral-950");
+      document.body.classList.remove("bg-white");
     } else {
       document.documentElement.classList.remove("dark");
-      document.body.classList.add("bg-white"); 
+      document.body.classList.add("bg-white");
       document.body.classList.remove("bg-neutral-950");
     }
 
@@ -52,7 +53,7 @@ export const DarkModeProvider: React.FC<{
   };
 
   return (
-    <DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
+    <DarkModeContext.Provider value={{ isDarkMode, mounted, toggleDarkMode }}>
       {children}
     </DarkModeContext.Provider>
   );

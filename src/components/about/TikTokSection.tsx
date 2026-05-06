@@ -11,25 +11,25 @@ interface TikTokSectionProps {
     // isAuthenticated 
   }: TikTokSectionProps) => {
     return (
-    <section className="py-6">
-      <div className="flex items-center space-x-3">
-        <FaTiktokIcon
-          className={`text-2xl ${
-            isDarkMode ? "text-stone-200" : "text-gray-800"
-          }`}
-        />
-        <h3
-          className={`text-xl font-bold ${
-            isDarkMode ? "text-stone-200" : "text-gray-800"
-          }`}
-        >
-          Tiktok
-        </h3>
-      </div>
-      <div className="flex items-center space-x-2 mt-4">
+    <section>
+      <div>
+        <div className="flex items-center gap-2">
+          <FaTiktokIcon
+            className={`text-base sm:text-xl ${
+              isDarkMode ? "text-stone-200" : "text-stone-800"
+            }`}
+          />
+          <h2
+            className={`text-base sm:text-xl font-bold ${
+              isDarkMode ? "text-stone-200" : "text-stone-800"
+            }`}
+          >
+            Tiktok
+          </h2>
+        </div>
         <p
-          className={`text-sm md:text-base ${
-            isDarkMode ? "text-stone-400" : "text-gray-600"
+          className={`mt-1 sm:mt-2 text-[13px] sm:text-[15px] leading-relaxed ${
+            isDarkMode ? "text-stone-300" : "text-stone-700"
           }`}
         >
           Find me on Tiktok

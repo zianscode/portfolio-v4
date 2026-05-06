@@ -14,31 +14,22 @@ export default function CategorySelector({
   isDarkMode
 }: CategorySelectorProps) {
   return (
-    <div className="flex space-x-4 mb-4">
-      <button
-        onClick={() => setActiveCategory("frontend")}
-        className={`px-4 py-2 rounded-full transition-colors text-sm sm:text-base ${
-          activeCategory === "frontend"
-            ? "bg-blue-950 text-white"
-            : isDarkMode
-              ? "bg-neutral-900 text-white hover:bg-neutral-700"
-              : "bg-gray-200 hover:bg-gray-700"
-        }`}
-      >
-        Frontend
-      </button>
-      <button
-        onClick={() => setActiveCategory("backend")}
-        className={`px-4 py-2 rounded-full transition-colors text-sm sm:text-base ${
-          activeCategory === "backend"
-            ? "bg-blue-950 text-white"
-            : isDarkMode
-              ? "bg-neutral-900 text-white hover:bg-neutral-700"
-              : "bg-gray-200 hover:bg-gray-700"
-        }`}
-      >
-        Backend
-      </button>
+    <div className="flex flex-wrap gap-2 sm:gap-4 mb-4">
+      {(Object.keys(skillCategories) as CategoryKey[]).map((category) => (
+        <button
+          key={category}
+          onClick={() => setActiveCategory(category)}
+          className={`px-4 py-2 rounded-full transition-all text-sm sm:text-base capitalize font-medium ${
+            activeCategory === category
+              ? "bg-neutral-900 text-white dark:bg-white dark:text-black shadow-lg"
+              : isDarkMode
+                ? "bg-neutral-900 text-neutral-400 hover:bg-neutral-800 border border-neutral-800"
+                : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200 border border-neutral-200"
+          }`}
+        >
+          {category}
+        </button>
+      ))}
     </div>
   );
 }

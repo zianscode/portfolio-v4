@@ -1,116 +1,83 @@
+"use client";
+
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
 import { CertificateProps } from "@/types/projects";
+import { FiArrowRight } from "react-icons/fi";
 
-const CertificateItem = ({ id, title, description, issuedBy, date, image, link, isDarkMode }: CertificateProps) => {
-  const [showFullDescription, setShowFullDescription] = useState(false);
-  const [isMultiline, setIsMultiline] = useState(false);
-  const descriptionRef = useRef<HTMLParagraphElement>(null);
-  const [imageSize, setImageSize] = useState({ width: 0, height: 0 });
-
-  useEffect(() => {
-    if (descriptionRef.current) {
-      setIsMultiline(descriptionRef.current.scrollHeight > descriptionRef.current.clientHeight);
-    }
-  }, [description]);
-
-  useEffect(() => {
-    const img = new window.Image();
-    img.src = image;
-    img.onload = () => {
-      setImageSize({
-        width: img.naturalWidth,
-        height: img.naturalHeight
-      });
-    };
-  }, [image]);
-
+const CertificateItem = ({ title, description, issuedBy, date, image, link, isDarkMode }: CertificateProps) => {
   return (
     <motion.div
-      key={id}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.3 }}
-      className={`rounded-2xl overflow-hidden shadow-xl ${
-        isDarkMode
-          ? "bg-neutral-900 hover:bg-neutral-800"
-          : "bg-white hover:bg-gray-50"
-      } transition-all duration-300 border ${
-        isDarkMode ? "border-neutral-800" : "border-gray-200"
-      }`}
+      className={`group flex flex-col h-full rounded-2xl overflow-hidden transition-all duration-500 font-poppins
+        ${isDarkMode 
+          ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:bg-neutral-800/50 hover:-translate-y-1" 
+          : "bg-white/50 backdrop-blur-md border border-white/60 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:bg-white/70 hover:-translate-y-1"
+        }`}
     >
-      <div className="w-full relative group" style={{ height: 'auto' }}>
+      {/* Edge-to-Edge Image Container (Fixed 3:2 Aspect Ratio) */}
+      <div className="relative w-full aspect-[3/2] overflow-hidden bg-neutral-100 dark:bg-neutral-800">
         <Image
           src={image}
           alt={title}
-          width={imageSize.width}
-          height={imageSize.height}
-          className="object-contain w-full"
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-110" 
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-0 group-hover:opacity-70 transition-opacity duration-300" />
-        <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-10 w-10 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-            />
-          </svg>
-        </a>
+        <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
-      <div className="p-3">
-        <h2 className="text-lg font-semibold mb-1 line-clamp-1">{title}</h2>
-        <div className="flex items-start gap-1 mb-2">
-          <p 
-            ref={descriptionRef}
-            className={`text-xs text-gray-500 dark:text-gray-400 ${!showFullDescription && 'line-clamp-1'}`}
-          >
+
+      {/* Content Container */}
+      <div className="p-4 flex flex-col flex-grow space-y-3">
+        <div className="space-y-1.5">
+          <h2 className={`text-[15px] font-bold tracking-tight leading-snug line-clamp-2 ${isDarkMode ? "text-white" : "text-neutral-900"}`}>
+            {title}
+          </h2>
+          <p className={`text-[13px] leading-relaxed line-clamp-2 ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
             {description}
           </p>
-          {isMultiline && (
-            <button
-              onClick={() => setShowFullDescription(!showFullDescription)}
-              className="text-xs text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
-            >
-              {showFullDescription ? 'Less' : 'More'}
-            </button>
-          )}
         </div>
-        <div className="flex flex-wrap gap-1.5">
-          <span
-            className={`px-2 py-0.5 text-[10px] rounded-full ${
-              isDarkMode
-                ? "bg-gray-800 text-gray-300"
-                : "bg-gray-100 text-gray-600"
+
+        {/* Metadata */}
+        <div className="flex flex-wrap gap-1.5 pt-1">
+          <span className={`px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider rounded-md border
+            ${isDarkMode
+              ? "bg-neutral-800/50 text-neutral-400 border-neutral-700/50" 
+              : "bg-neutral-100/50 text-neutral-500 border-neutral-200" 
             }`}
           >
             {issuedBy}
           </span>
-          <span
-            className={`px-2 py-0.5 text-[10px] rounded-full ${
-              isDarkMode
-                ? "bg-gray-800 text-gray-300"
-                : "bg-gray-100 text-gray-600"
+          <span className={`px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider rounded-md border
+            ${isDarkMode
+              ? "bg-neutral-800/50 text-neutral-400 border-neutral-700/50" 
+              : "bg-neutral-100/50 text-neutral-500 border-neutral-200" 
             }`}
           >
             {date}
           </span>
         </div>
+
+        <div className="flex-grow" />
+
+        {/* Action Button */}
+        <a 
+          href={link} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="block pt-1"
+        >
+          <motion.div
+            whileHover={{ x: 5 }}
+            className={`flex items-center space-x-2 text-xs font-bold transition-colors duration-300
+              ${isDarkMode ? "text-white hover:text-neutral-300" : "text-neutral-900 hover:text-neutral-700"}`}
+          >
+            <span>View Certificate</span>
+            <FiArrowRight className="text-sm" />
+          </motion.div>
+        </a>
       </div>
     </motion.div>
   );

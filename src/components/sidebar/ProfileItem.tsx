@@ -35,9 +35,6 @@ export default function ProfileItem({
     return () => clearTimeout(timer);
   }, [isSidebarOpen]);
 
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDarkMode);
-  }, [isDarkMode]);
 
   return (
     <div
@@ -72,7 +69,7 @@ export default function ProfileItem({
       >
         <Image
           src="/image/Fajar_Fauzian.jpg"
-          alt="zfosix"
+          alt="ziancode"
           width={80} 
           height={80}
           className="object-cover w-full h-full"
@@ -129,7 +126,7 @@ export default function ProfileItem({
                   className="text-neutral-900 dark:text-neutral-200 font-semibold"
                 >
                   <Link href="/" passHref>
-                    <h2 className="font-sora flex-grow whitespace-nowrap text-base font-medium lg:text-lg"> 
+                    <h2 className="font-poppins flex-grow whitespace-nowrap text-base font-medium lg:text-lg"> 
                       Fajar Fauzian
                     </h2>
                   </Link>
@@ -160,7 +157,7 @@ export default function ProfileItem({
               <Link
                 href={DEVTO_PROFILE}
                 target="_blank"
-                className="font-sora text-xs text-neutral-600 transition-all duration-300 hover:text-neutral-700 dark:text-neutral-500 dark:hover:text-neutral-400" 
+                className="font-poppins text-xs text-neutral-600 transition-all duration-300 hover:text-neutral-700 dark:text-neutral-500 dark:hover:text-neutral-400" 
               >
                 @zianscode
               </Link>

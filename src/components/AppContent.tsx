@@ -19,12 +19,12 @@ interface AppContentProps {
 import GridBackground from "@/components/GridBackground";
 
 function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
-  const { isDarkMode } = useDarkMode();
+  const { isDarkMode, mounted } = useDarkMode();
 
   return (
     <>
-      {/* Base Background Color */}
-      <div className={`fixed inset-0 z-[-1] ${isDarkMode ? 'bg-neutral-950' : 'bg-white'}`} />
+      {/* Base Background Color — neutral until mounted to avoid hydration mismatch */}
+      <div className={`fixed inset-0 z-[-1] ${mounted ? (isDarkMode ? 'bg-neutral-950' : 'bg-white') : ''}`} />
       <GridBackground />
       {/* Animasi untuk loading state */}
       <AnimatePresence>
@@ -45,7 +45,7 @@ function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
 
       {/* Konten utama */}
       <div
-        className="flex flex-1 overflow-hidden pt-12 md:pt-0"
+        className="flex flex-1 overflow-x-hidden pt-12 md:pt-0 relative z-10"
       >
         {/* Sidebar dengan animasi masuk/keluar */}
         <AnimatePresence>
@@ -62,7 +62,7 @@ function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
 
         {/* Konten anak (children) dengan animasi */}
         <motion.div
-          className="flex-1"
+          className="flex-1 min-w-0 overflow-x-hidden"
           initial={{ opacity: isInitialLoad ? 0 : 1 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}

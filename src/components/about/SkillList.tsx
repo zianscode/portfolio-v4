@@ -15,10 +15,34 @@ const SkillsList = ({ direction = "left", isDarkMode = false }: SkillsListProps)
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
   const isMediumScreen = useMediaQuery("(max-width: 768px)");
   const [skills, setSkills] = useState(SkillList);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     setSkills([...SkillList].sort(() => Math.random() - 0.5));
   }, []);
+
+  if (!mounted) {
+    return (
+      <section className="flex flex-col space-y-4 w-full">
+        <div className="flex items-center space-x-3">
+          <FaLaptopCode
+            className={`text-2xl ${
+              isDarkMode ? "text-stone-200" : "text-gray-800"
+            }`}
+          />
+          <h3
+            className={`text-xl font-bold ${
+              isDarkMode ? "text-stone-200" : "text-gray-800"
+            }`}
+          >
+            Skills
+          </h3>
+        </div>
+        <div className="h-32" /> {/* Placeholder to avoid layout shift */}
+      </section>
+    );
+  }
 
   const getMarqueeConfig = () => {
     if (isSmallScreen) {
@@ -49,7 +73,7 @@ const SkillsList = ({ direction = "left", isDarkMode = false }: SkillsListProps)
       </div>
       <div className="flex items-center space-x-2 mt-2 sm:mt-4">
         <p
-          className={`text-sm md:text-base mb-6 ${
+          className={`text-[15px] leading-relaxed mb-4 ${
             isDarkMode ? "text-stone-400" : "text-gray-600"
           }`}
         >
@@ -59,7 +83,9 @@ const SkillsList = ({ direction = "left", isDarkMode = false }: SkillsListProps)
 
       <div className="grid grid-cols-1 gap-1 sm:gap-3 md:gap-4 w-full">
         {Array.from({ length: 2 }, (_, index) => {
-          const slider = [...skills].sort(() => Math.random() - 0.5);
+          // Use the skills state which is shuffled in useEffect, 
+          // or a static version for the first render to avoid hydration mismatch.
+          const slider = skills; 
           const marqueeDirection = index % 2 === 0 ? direction : direction === "left" ? "right" : "left";
 
           const duplicatedSlider = [...slider, ...slider];
@@ -84,6 +110,7 @@ const SkillsList = ({ direction = "left", isDarkMode = false }: SkillsListProps)
                     <SkillCard
                       name={skill.name}
                       icon={skill.icon}
+                      color={skill.color}
                       isMobile={isSmallScreen}
                     />
                   </div>

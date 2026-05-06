@@ -45,19 +45,19 @@ const LatestProject = () => {
     <section
       className={`space-y-2 ${
         isDarkMode ? "border-stone-700" : "border-stone-300"
-      } py-6 w-full`}
+      } w-full`}
     >
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:px-0">
         <div className="flex items-center justify-between w-full sm:w-auto">
           <div>
             <div className="flex items-center gap-2">
               <FaCode
-                className={`text-xl ${
+                className={`text-base sm:text-xl ${
                   isDarkMode ? "text-stone-200" : "text-stone-800"
                 }`}
               />
               <h2
-                className={`text-xl font-bold ${
+                className={`text-base sm:text-xl font-bold ${
                   isDarkMode ? "text-stone-200" : "text-stone-800"
                 }`}
               >
@@ -65,7 +65,7 @@ const LatestProject = () => {
               </h2>
             </div>
             <p
-              className={`text-sm pt-2 ${
+              className={`text-[13px] sm:text-[15px] pt-1 sm:pt-2 ${
                 isDarkMode ? "text-neutral-400" : "text-neutral-600"
               }`}
             >
@@ -77,11 +77,11 @@ const LatestProject = () => {
           <div className="sm:hidden">
             <Link href="/projects" passHref>
               <motion.div
-                className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-neutral-400 dark:border-neutral-800 text-xs sm:text-sm flex items-center gap-2 ${
+                className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm flex items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap cursor-pointer ${
                   isDarkMode
-                    ? "bg-neutral-950 text-stone-200 hover:bg-neutral-800"
-                    : "bg-neutral-200 text-stone-800 hover:bg-neutral-300"
-                } transition-colors shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap cursor-pointer`}
+                    ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 text-stone-200 hover:bg-neutral-800/50"
+                    : "bg-white/50 backdrop-blur-md border border-white/60 text-stone-800 hover:bg-white/70"
+                }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -96,11 +96,11 @@ const LatestProject = () => {
         <div className="hidden sm:block">
           <Link href="/projects" passHref>
             <motion.div
-              className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-neutral-400 dark:border-neutral-800 text-xs sm:text-sm flex items-center gap-2 ${
+              className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm flex items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap cursor-pointer ${
                 isDarkMode
-                  ? "bg-neutral-950 text-stone-200 hover:bg-neutral-800"
-                  : "bg-neutral-200 text-stone-800 hover:bg-neutral-300"
-              } transition-colors shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap cursor-pointer`}
+                  ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 text-stone-200 hover:bg-neutral-800/50"
+                  : "bg-white/50 backdrop-blur-md border border-white/60 text-stone-800 hover:bg-white/70"
+              }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -112,13 +112,13 @@ const LatestProject = () => {
       </div>
 
       {isMobile ? (
-        // Mobile View - Single card with horizontal scroll
-        <div className="no-scrollbar mt-4 h-40 overflow-y-hidden overflow-x-scroll snap-x snap-mandatory pt-2">
+        // Mobile View — full-width snap carousel, no fixed height clipping
+        <div className="no-scrollbar mt-4 overflow-x-scroll overflow-y-visible snap-x snap-mandatory pb-2">
           <div className="flex">
             {projects.map((project, index) => (
               <div
                 key={`${project.title}-${index}`}
-                className="min-w-full snap-center"
+                className="min-w-full snap-center px-0.5"
               >
                 <LatestProjectCard
                   project={project}
@@ -133,7 +133,7 @@ const LatestProject = () => {
         // Desktop View - Enhanced horizontal scroll
         <div
           ref={carouselRef}
-          className="no-scrollbar mt-4 flex h-40 flex-row space-x-4 overflow-y-hidden overflow-x-auto pt-2 snap-x snap-proximity"
+          className="no-scrollbar mt-4 flex flex-row space-x-4 overflow-x-auto pt-2 pb-4 snap-x snap-proximity"
         >
           {projects.map((project, index) => (
             <div key={`${project.title}-${index}`} className="snap-start">

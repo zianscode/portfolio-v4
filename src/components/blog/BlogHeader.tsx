@@ -8,8 +8,6 @@ interface BlogHeaderProps {
   isDarkMode: boolean;
 }
 
-import HeaderDivider from "@/components/common/HeaderDivider";
-
 const BlogHeader: React.FC<BlogHeaderProps> = ({ isDarkMode }) => {
   return (
     <motion.div
@@ -39,7 +37,6 @@ const BlogHeader: React.FC<BlogHeaderProps> = ({ isDarkMode }) => {
         >
           Welcome to my blog! Your Source for Expert Tips and Insights!{" "}
         </p>
-        <HeaderDivider />
       </div>
     </motion.div>
   );

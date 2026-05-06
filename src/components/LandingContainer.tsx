@@ -7,7 +7,7 @@ export default function LandingContainer({
 }) {
   return (
     <div className="group relative">
-      <div className="h-36 w-52 overflow-hidden rounded-lg border dark:border-neutral-700 transition-all duration-300 ease-out transform-gpu group-hover:scale-105 group-hover:-translate-y-2 group-hover:rotate-x-12 group-hover:rotate-y-6 group-hover:shadow-2xl group-hover:shadow-brand-neon/20 perspective-1000">
+      <div className="h-36 w-52 overflow-hidden rounded-lg border dark:border-neutral-700 transition-all duration-300 ease-out transform-gpu group-hover:-translate-y-2 group-hover:rotate-x-12 group-hover:rotate-y-6 group-hover:shadow-2xl group-hover:shadow-brand-neon/20 perspective-1000">
         <div className="relative flex items-center justify-start gap-1 border-b bg-neutral-200 px-2 py-1 dark:border-neutral-700 dark:bg-neutral-900 transition-colors duration-300 group-hover:bg-neutral-50 dark:group-hover:bg-neutral-800">
           {[
             { color: "bg-red-400 group-hover:bg-red-500" },
