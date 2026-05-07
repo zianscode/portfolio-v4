@@ -77,25 +77,33 @@ const SocialMediaSection = ({ isDarkMode }: { isDarkMode: boolean }) => {
               className={`group relative overflow-hidden backdrop-blur-lg border ${link.borderColor} ${link.bgColor} ${link.darkBgColor} rounded-2xl p-5 shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:-translate-y-1 transition-all duration-500 flex flex-col h-full`}
             >
               <div className="absolute -right-8 -top-8 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity duration-500 pointer-events-none">
-                {React.cloneElement(link.icon as React.ReactElement<{ className?: string }>, { className: `text-[12rem] ${link.iconColor}` })}
+                {React.cloneElement(
+                  link.icon as React.ReactElement<{ className?: string }>,
+                  { className: `text-[12rem] ${link.iconColor}` },
+                )}
               </div>
-              
+
               <div className="flex flex-col space-y-4 relative z-10 h-full">
                 <div className="flex items-center space-x-3">
                   <div className="p-2.5 rounded-xl bg-black/5 dark:bg-white/10">
-                    {React.cloneElement(link.icon as React.ReactElement<{ className?: string }>, { className: `text-2xl ${link.iconColor}` })}
+                    {React.cloneElement(
+                      link.icon as React.ReactElement<{ className?: string }>,
+                      { className: `text-2xl ${link.iconColor}` },
+                    )}
                   </div>
-                  <h2 className={`text-xl font-bold font-poppins tracking-tight ${isDarkMode ? "text-stone-100" : "text-stone-900"}`}>
+                  <h2
+                    className={`text-xl font-bold font-poppins tracking-tight ${isDarkMode ? "text-stone-100" : "text-stone-900"}`}
+                  >
                     {link.name}
                   </h2>
                 </div>
-                
+
                 <p className="text-[15px] text-neutral-600 dark:text-neutral-400 font-poppins leading-relaxed flex-grow">
                   {link.username}
                 </p>
               </div>
             </motion.div>
-arna          </a>
+          </a>
         ))}
       </div>
     </section>
