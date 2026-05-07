@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { useRef } from "react";
+import { motion } from "framer-motion";
 import { FaCode, FaBullhorn } from "react-icons/fa";
 import { useDarkMode } from "@/context/DarkModeContext";
 import { projects } from "@/data/resume";
