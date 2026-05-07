@@ -79,7 +79,7 @@ const SocialCards = () => {
       bgColor: "bg-neutral-100/50",
       darkBgColor: "dark:bg-neutral-900/40",
       borderColor: "border-neutral-200 dark:border-white/10",
-      url: "https://github.com/fajarfauzian",
+      url: "https://github.com/zianscode",
     },
     {
       icon: <FaLinkedin />,
@@ -92,7 +92,7 @@ const SocialCards = () => {
       bgColor: "bg-blue-50/50",
       darkBgColor: "dark:bg-blue-950/30",
       borderColor: "border-blue-100 dark:border-white/10",
-      url: "https://www.linkedin.com/in/fajar-fauzian-153220277/",
+      url: "https://www.linkedin.com/in/fajarfauzian/",
     },
     {
       icon: <FaSpotify />,
@@ -118,7 +118,7 @@ const SocialCards = () => {
       bgColor: "bg-pink-50/50",
       darkBgColor: "dark:bg-pink-950/30",
       borderColor: "border-pink-100 dark:border-white/10",
-      url: "https://dribbble.com/zfosix",
+      url: "https://dribbble.com/ziancode",
     },
   ];
 

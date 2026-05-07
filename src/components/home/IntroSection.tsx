@@ -1,14 +1,21 @@
-import Saweria from '@/components/Saweria'
-import TypeAnimation from '@/components/TypeAnimation';
+import Saweria from "@/components/Saweria";
+import TypeAnimation from "@/components/TypeAnimation";
 
 export default function Introduction() {
   return (
     <section className="space-y-3 bg-cover bg-no-repeat">
       <div className="flex items-start justify-between gap-3 min-w-0">
         <div className="font-poppins flex gap-2 text-lg sm:text-xl font-bold text-neutral-700 dark:text-neutral-200 min-w-0 flex-1">
-          <TypeAnimation sequence={["Hi, I'm Fajar Fauzian", "Hi, I'm Frontend Developer", "Hi, I'm UI/UX Designer"]} delay={3000} />
+          <TypeAnimation
+            sequence={[
+              "Hi, I'm Fajar Fauzian",
+              "Hi, I'm Frontend Developer",
+              "Hi, I'm UI/UX Designer",
+            ]}
+            delay={3000}
+          />
         </div>
-        <span className='text-neutral-700 dark:text-neutral-200 flex-shrink-0'>
+        <span className="text-neutral-700 dark:text-neutral-200 flex-shrink-0">
           <Saweria />
         </span>
       </div>
@@ -21,11 +28,13 @@ export default function Introduction() {
           </li>
         </ul>
         <p className="text-[15px] leading-relaxed text-neutral-800 dark:text-neutral-300">
-          Passionate and seasoned Software Engineer with a strong focus on frontend development. Proficient in
-          TypeScript and well-versed in all aspects of web technologies. Collaborative team player dedicated to
-          delivering efficient, scalable, and visually appealing web applications.
+          Frontend Developer with experience in building responsive,
+          user friendly, and scalable web applications. Passionate about
+          creating clean interfaces, improving user experience, and delivering
+          efficient solutions while working collaboratively in team
+          environments.
         </p>
       </div>
     </section>
-  )
+  );
 }
