@@ -53,7 +53,6 @@ export interface LatestProject {
 
 export interface LatestProjectCardProps {
   project: LatestProject;
-  windowWidth: number | null;
   index: number;
 }
 

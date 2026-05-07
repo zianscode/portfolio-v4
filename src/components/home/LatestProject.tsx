@@ -10,36 +10,7 @@ import Link from "next/link";
 
 const LatestProject = () => {
   const { isDarkMode } = useDarkMode();
-  const [windowWidth, setWindowWidth] = useState<number | null>(null);
-  const controls = useAnimation();
   const carouselRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    setWindowWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    if (windowWidth !== null && carouselRef.current) {
-      const isMobile = windowWidth < 640;
-      if (!isMobile) {
-        // Optional: Add subtle animation for desktop if desired
-        controls.start({
-          x: 0, // No infinite scroll, but could be customized
-          transition: { duration: 0 },
-        });
-      } else {
-        controls.start({
-          x: 0,
-          transition: { duration: 0 },
-        });
-      }
-    }
-  }, [windowWidth, controls]);
-
-  const isMobile = windowWidth !== null && windowWidth < 640;
 
   return (
     <section
@@ -111,41 +82,37 @@ const LatestProject = () => {
         </div>
       </div>
 
-      {isMobile ? (
-        // Mobile View — full-width snap carousel, no fixed height clipping
-        <div className="no-scrollbar mt-4 overflow-x-scroll overflow-y-visible snap-x snap-mandatory pb-2">
-          <div className="flex">
-            {projects.map((project, index) => (
-              <div
-                key={`${project.title}-${index}`}
-                className="min-w-full snap-center px-0.5"
-              >
-                <LatestProjectCard
-                  project={project}
-                  windowWidth={windowWidth}
-                  index={index}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      ) : (
-        // Desktop View - Enhanced horizontal scroll
-        <div
-          ref={carouselRef}
-          className="no-scrollbar mt-4 flex flex-row space-x-4 overflow-x-auto pt-2 pb-4 snap-x snap-proximity"
-        >
+      {/* Mobile View — full-width snap carousel, no fixed height clipping */}
+      <div className="sm:hidden no-scrollbar mt-4 overflow-x-scroll overflow-y-visible snap-x snap-mandatory pb-2">
+        <div className="flex">
           {projects.map((project, index) => (
-            <div key={`${project.title}-${index}`} className="snap-start">
+            <div
+              key={`${project.title}-${index}`}
+              className="min-w-full snap-center px-0.5"
+            >
               <LatestProjectCard
                 project={project}
-                windowWidth={windowWidth}
                 index={index}
               />
             </div>
           ))}
         </div>
-      )}
+      </div>
+
+      {/* Desktop View - Enhanced horizontal scroll */}
+      <div
+        ref={carouselRef}
+        className="hidden sm:flex no-scrollbar mt-4 flex-row space-x-4 overflow-x-auto pt-2 pb-4 snap-x snap-proximity"
+      >
+        {projects.map((project, index) => (
+          <div key={`${project.title}-${index}`} className="snap-start">
+            <LatestProjectCard
+              project={project}
+              index={index}
+            />
+          </div>
+        ))}
+      </div>
     </section>
   );
 };

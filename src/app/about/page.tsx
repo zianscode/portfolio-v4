@@ -1,22 +1,15 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDarkMode } from "@/context/DarkModeContext";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import "@/styles/globals.css";
 import IntroductionSection from "@/components/about/IntroductionSection";
 import CareerSection from "@/components/about/CareerSection";
 import SkillList from "@/components/about/SkillList";
-// import YouTubeSection from "@/components/about/YouTubeSection";
-import TikTokSection from "@/components/about/TikTokSection";
+import SocialMediaSection from "@/components/about/SocialMediaSection";
 export default function AboutPage() {
   const { isDarkMode } = useDarkMode();
   const isMobile = useMediaQuery("(max-width: 768px)");
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem("tiktok_token");
-    setIsAuthenticated(!!token);
-  }, []);
 
   return (
     <div
@@ -29,10 +22,7 @@ export default function AboutPage() {
           <IntroductionSection isDarkMode={isDarkMode} />
           <CareerSection isDarkMode={isDarkMode} />
           <SkillList isDarkMode={isDarkMode}  isMobile={isMobile} />
-          <TikTokSection 
-            isDarkMode={isDarkMode} 
-            isAuthenticated={isAuthenticated} 
-          />
+          <SocialMediaSection isDarkMode={isDarkMode} />
         </div>
       </main>
     </div>
