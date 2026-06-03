@@ -1,6 +1,5 @@
 // MessagesList.tsx
 "use client";
-import { useRef, useEffect } from "react";
 import { Message, User } from "@/types/chatroom";
 import MessageItem from "./MessageItem";
 
@@ -35,18 +34,6 @@ const MessagesList = ({
   onSaveEdit,
   onCancelEdit,
 }: MessagesListProps) => {
-  const messagesEndRef = useRef<HTMLDivElement | null>(null);
-  const isInitialLoad = useRef(true);
-
-  useEffect(() => {
-    if (isInitialLoad.current) {
-      isInitialLoad.current = false;
-      return;
-    }
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages]);
 
   if (isLoading) {
     return (
@@ -97,7 +84,6 @@ const MessagesList = ({
           onCancelEdit={onCancelEdit}
         />
       ))}
-      <div ref={messagesEndRef} />
     </div>
   );
 };
