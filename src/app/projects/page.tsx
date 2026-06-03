@@ -13,7 +13,7 @@ const ProjectsPage = () => {
   const { isDarkMode } = useDarkMode();
   const [activeTab, setActiveTab] = useState<"projects" | "certificates">("projects");
 
-  const displayedItems = activeTab === "projects" ? detailedProjects : certificates;
+  const displayedItems = activeTab === "projects" ? [...detailedProjects].reverse() : certificates;
 
   return (
     <div

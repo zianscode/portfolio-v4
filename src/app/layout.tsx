@@ -36,6 +36,12 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -46,12 +52,9 @@ export default function RootLayout({
       {/*
         suppressHydrationWarning di <head> mencegah React throw error
         ketika browser extension (mobile simulator) memodifikasi DOM <head>
-        sebelum React selesai hydrate. Viewport meta ditaruh di sini
-        untuk menghindari __next_viewport_boundary__ bug di Next.js 16 + Turbopack.
+        sebelum React selesai hydrate.
       */}
-      <head suppressHydrationWarning>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-      </head>
+      <head suppressHydrationWarning />
       <body className={`${poppins.variable} ${sora.variable} antialiased`} suppressHydrationWarning>
         <RootLayoutClient>
           {children}

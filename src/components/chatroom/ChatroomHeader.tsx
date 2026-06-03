@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
+import { BiMessageDetail } from "react-icons/bi";
 
 interface ChatroomHeaderProps {
   isDarkMode: boolean;
@@ -11,25 +11,29 @@ const ChatroomHeader = ({ isDarkMode }: ChatroomHeaderProps) => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="text-start mb-8"
+      className="text-start"
     >
-      <div className="pb-2">
-        <div className="flex items-center space-x-3">
-          <IoChatbubbleEllipsesOutline
-            className={`text-3xl ${
-              isDarkMode ? "text-stone-200" : "text-gray-800"
-            }`}
-          />
-          <h1 className="text-3xl font-bold">Chat Room</h1>
-        </div>
-        <p
-          className={`mt-2 ${
-            isDarkMode ? "text-gray-300" : "text-gray-600"
+      <div className="flex items-center gap-2">
+        <BiMessageDetail
+          className={`text-base sm:text-xl ${
+            isDarkMode ? "text-stone-200" : "text-stone-800"
+          }`}
+        />
+        <h1
+          className={`text-base sm:text-xl font-bold ${
+            isDarkMode ? "text-stone-200" : "text-stone-800"
           }`}
         >
-          Leave your impression or suggestion about this website here.
-        </p>
+          Chat Room
+        </h1>
       </div>
+      <p
+        className={`mt-1 sm:mt-2 text-[13px] sm:text-[15px] leading-relaxed ${
+          isDarkMode ? "text-stone-300" : "text-stone-700"
+        }`}
+      >
+        Leave your impression or suggestion about this website here.
+      </p>
     </motion.div>
   );
 };

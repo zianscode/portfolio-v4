@@ -25,19 +25,13 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: [
-          // COEP require-corp dihapus — header ini memblokir iframe dari extension
-          // seperti mobile simulator, menyebabkan DOM dimodifikasi sebelum hydration
-          {
-            key: 'Cross-Origin-Opener-Policy',
-            value: 'same-origin-allow-popups',
-          },
           {
             key: 'Cross-Origin-Resource-Policy',
             value: 'cross-origin',
           },
           {
             key: 'Content-Security-Policy',
-            value: "frame-src 'self' https://www.youtube.com; img-src 'self' https://img.youtube.com https://lh3.googleusercontent.com https://*.googleusercontent.com;",
+            value: "frame-src 'self' https://www.youtube.com https://*.firebaseapp.com https://accounts.google.com https://apis.google.com; img-src 'self' https://img.youtube.com https://lh3.googleusercontent.com https://*.googleusercontent.com;",
           },
         ],
       },

@@ -2,7 +2,6 @@
 import React from "react";
 import { useDarkMode } from "@/context/DarkModeContext";
 import useMediaQuery from "@/hooks/useMediaQuery";
-import "@/styles/globals.css";
 import IntroductionSection from "@/components/about/IntroductionSection";
 import CareerSection from "@/components/about/CareerSection";
 import SkillList from "@/components/about/SkillList";

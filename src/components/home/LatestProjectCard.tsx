@@ -10,7 +10,7 @@ const LatestProjectCard = ({ project, index }: LatestProjectCardProps) => {
   const { isDarkMode } = useDarkMode();
   const getProjectSlug = (title: string) => {
     const detailedProject = detailedProjects.find(p => p.title === title);
-    return detailedProject ? detailedProject.slug : "";
+    return detailedProject ? detailedProject.slug : "#";
   };
 
   const projectSlug = getProjectSlug(project.title);

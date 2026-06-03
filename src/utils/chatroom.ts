@@ -20,6 +20,7 @@ export const formatTimestamp = (timestamp: Timestamp | unknown) => {
     if (timestamp instanceof Timestamp) {
       const date = timestamp.toDate();
       return new Intl.DateTimeFormat("id-ID", {
+        year: "numeric",
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,
@@ -38,6 +39,7 @@ export const formatTimestamp = (timestamp: Timestamp | unknown) => {
       const firebaseTimestamp = timestamp as FirebaseTimestamp;
       const date = new Date(firebaseTimestamp.seconds * 1000 + firebaseTimestamp.nanoseconds / 1000000);
       return new Intl.DateTimeFormat("id-ID", {
+        year: "numeric",
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,
@@ -49,6 +51,7 @@ export const formatTimestamp = (timestamp: Timestamp | unknown) => {
     // Timestamp sudah berupa Date
     if (timestamp instanceof Date) {
       return new Intl.DateTimeFormat("id-ID", {
+        year: "numeric",
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,
@@ -75,6 +78,7 @@ export const formatTimestamp = (timestamp: Timestamp | unknown) => {
     if (typeof timestamp === "number") {
       const date = new Date(timestamp);
       return new Intl.DateTimeFormat("id-ID", {
+        year: "numeric",
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,

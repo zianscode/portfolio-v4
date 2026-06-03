@@ -17,6 +17,7 @@ interface AppContentProps {
 }
 
 import GridBackground from "@/components/GridBackground";
+import ChatRoomButton from "@/components/ChatRoomButton";
 
 function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
   const { isDarkMode, mounted } = useDarkMode();
@@ -70,6 +71,9 @@ function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
           {children}
         </motion.div>
       </div>
+
+      {/* Floating Chat Widget */}
+      <ChatRoomButton />
     </>
   );
 }

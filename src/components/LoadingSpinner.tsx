@@ -140,7 +140,7 @@ const SunEarthMoonSystem = () => {
         
         @keyframes counter-orbit {
           from { transform: translateX(-50%) rotate(0deg); }
-          to { transform: translateX(-50%) rotate(0deg); }
+          to { transform: translateX(-50%) rotate(-360deg); }
         }
 
         @keyframes moon-orbit {

@@ -87,7 +87,7 @@ export default function MobileProfileItem({
         {/* Name and Handle */}
         <div className="flex flex-col">
           <div className="flex items-center gap-1.5">
-            <Link href="/" passHref>
+            <Link href="/">
               <h2
                 className="font-poppins text-sm font-semibold transition-colors"
                 style={{ color: isDarkMode ? "rgba(255,255,255,0.95)" : "rgba(10,10,10,0.95)" }}
@@ -105,14 +105,15 @@ export default function MobileProfileItem({
               <RiVerifiedBadgeFill className="text-blue-500" size={12} />
             </motion.div>
           </div>
-          <Link
+          <a
             href={DEVTO_PROFILE}
             target="_blank"
+            rel="noopener noreferrer"
             className="font-poppins text-[10px] transition-colors"
             style={{ color: isDarkMode ? "rgba(255,255,255,0.45)" : "rgba(0,0,0,0.45)" }}
           >
             @zianscode
-          </Link>
+          </a>
         </div>
       </div>
 

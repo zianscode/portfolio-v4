@@ -46,7 +46,7 @@ const LatestProject = () => {
 
           {/* Button moved inline with text in mobile view */}
           <div className="sm:hidden">
-            <Link href="/projects" passHref>
+            <Link href="/projects">
               <motion.div
                 className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm flex items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap cursor-pointer ${
                   isDarkMode

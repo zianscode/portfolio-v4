@@ -125,7 +125,7 @@ export default function ProfileItem({
                   animate={{ y: isDarkMode ? 0 : 0 }}
                   className="text-neutral-900 dark:text-neutral-200 font-semibold"
                 >
-                  <Link href="/" passHref>
+                  <Link href="/">
                     <h2 className="font-poppins flex-grow whitespace-nowrap text-base font-medium lg:text-lg"> 
                       Fajar Fauzian
                     </h2>

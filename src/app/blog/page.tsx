@@ -50,8 +50,8 @@ const BlogPage = () => {
       {/* Maintenance Overlay */}
       {isUnderMaintenance && (
         <div
-          className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-md ${
-            isDarkMode ? "bg-black" : "bg-gray-100"
+          className={`fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md ${
+            isDarkMode ? "bg-black/60" : "bg-white/60"
           }`}
         >
           <div

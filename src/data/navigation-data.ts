@@ -3,6 +3,7 @@ import {
   BiHomeSmile as HomeIcon,
   BiLeaf as ProfileIcon,
   BiArchive as ProjectIcon,
+  BiMessageDetail as ChatIcon,
 } from 'react-icons/bi';
 import { LuWorkflow } from 'react-icons/lu';
 import { MenuItemType } from '@/types/menu';
@@ -40,6 +41,14 @@ export const MENU_ITEMS: MenuItemType[] = [
     isShow: true,
     isExternal: false,
     eventName: 'Pages: Roadmap',
+  },
+  {
+    title: 'Chat Room',
+    href: '/chatroom',
+    icon: ChatIcon,
+    isShow: true,
+    isExternal: false,
+    eventName: 'Pages: ChatRoom',
   },
   {
     title: 'Contact',

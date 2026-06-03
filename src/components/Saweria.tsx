@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import React from 'react'
 import { TbCoffee } from 'react-icons/tb'
 
-import { SAWERIA_URL } from '@/common/constant'
+import { DONATE_URL } from '@/common/constant'
 import { sendDataLayer } from '@/common/libs/gtm'
 
 interface SaweriaProps {
@@ -19,7 +19,7 @@ export default function Saweria({ withText = false }: SaweriaProps) {
       event: 'saweria_clicked',
       page_path: pathname
     })
-    window.open(SAWERIA_URL, '_blank')
+    window.open(DONATE_URL, '_blank')
   }
 
   return withText ? (

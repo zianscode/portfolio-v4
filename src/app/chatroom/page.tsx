@@ -1,11 +1,11 @@
 "use client";
 import { useEffect, useState, useRef, useCallback, useMemo } from "react";
+import { motion } from "framer-motion";
 import { useDarkMode } from "@/context/DarkModeContext";
 import {
   db,
   auth,
   loginWithGoogle,
-  formatTimestamp as libFormatTimestamp,
 } from "@/lib/firebaseConfig";
 import {
   collection,
@@ -32,7 +32,7 @@ import LoginButton from "@/components/chatroom/LoginButton";
 import CustomAlert from "@/components/chatroom/CustomAlert";
 
 // Import types
-import { Message, User } from "@/types/chatroom";
+import { Message, ReplyTo, User } from "@/types/chatroom";
 
 // Constants
 const MESSAGES_LIMIT = 50; // Reduced from 100 for better performance
@@ -62,10 +62,12 @@ const ChatroomPage = () => {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [editingMessageId, setEditingMessageId] = useState<string | null>(null);
   const [editMessageText, setEditMessageText] = useState("");
+  const [replyingTo, setReplyingTo] = useState<ReplyTo | null>(null);
+  const [showWelcome, setShowWelcome] = useState(false);
   
   // Refs
-  const unsubscribeRef = useRef<(() => void) | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const justLoggedInRef = useRef(false);
 
   // Alert state with default values
   const [alertConfig, setAlertConfig] = useState<AlertConfig>({
@@ -80,12 +82,12 @@ const ChatroomPage = () => {
 
   // Memoized values
   const containerClasses = useMemo(() => 
-    `flex min-h-screen ${isDarkMode ? "text-white" : "text-black"}`,
+    `flex min-h-screen overflow-x-hidden ${isDarkMode ? "text-white" : "text-black"}`,
     [isDarkMode]
   );
 
   const chatContainerClasses = useMemo(() => 
-    `rounded-xl p-6 border ${isDarkMode ? "border-neutral-800" : "border-neutral-200"} max-h-[calc(100vh-400px)] overflow-y-auto scrollbar-none`,
+    `rounded-2xl p-4 sm:p-6 border ${isDarkMode ? "bg-neutral-900/40 border-neutral-800" : "bg-white/50 border-neutral-200"} max-h-[calc(100dvh-320px)] sm:max-h-[calc(100vh-400px)] overflow-y-auto scrollbar-none`,
     [isDarkMode]
   );
 
@@ -119,9 +121,13 @@ const ChatroomPage = () => {
         setUser({
           name: currentUser.displayName || "Anonymous",
           email: currentUser.email || "",
-          photo: currentUser.photoURL || "/default-profile.png",
+          photo: currentUser.photoURL || "/default-profile.svg",
           uid: currentUser.uid,
         });
+        if (justLoggedInRef.current) {
+          justLoggedInRef.current = false;
+          setShowWelcome(true);
+        }
       } else {
         setUser(null);
       }
@@ -129,6 +135,13 @@ const ChatroomPage = () => {
 
     return unsubscribe;
   }, []);
+
+  // Auto-hide welcome banner
+  useEffect(() => {
+    if (!showWelcome) return;
+    const timer = setTimeout(() => setShowWelcome(false), 6000);
+    return () => clearTimeout(timer);
+  }, [showWelcome]);
 
   // Messages fetcher with optimizations
   useEffect(() => {
@@ -154,9 +167,10 @@ const ChatroomPage = () => {
                 id: doc.id,
                 username: data.username || "Unknown User",
                 message: data.message || "",
-                photo: data.photo || "/default-profile.png",
+                photo: data.photo || "/default-profile.svg",
                 timestamp: data.timestamp,
                 userId: data.userId || "",
+                replyTo: data.replyTo || null,
               };
             })
             .reverse();
@@ -176,7 +190,6 @@ const ChatroomPage = () => {
         }
       );
 
-      unsubscribeRef.current = unsubscribe;
       return unsubscribe;
     } catch (error) {
       console.error("Error setting up messages listener:", error);
@@ -184,15 +197,6 @@ const ChatroomPage = () => {
       setIsLoading(false);
     }
   }, [scrollToBottom]);
-
-  // Cleanup on unmount
-  useEffect(() => {
-    return () => {
-      if (unsubscribeRef.current) {
-        unsubscribeRef.current();
-      }
-    };
-  }, []);
 
   // Event handlers
   const handleLogout = useCallback(async () => {
@@ -220,10 +224,11 @@ const ChatroomPage = () => {
     if (MAINTENANCE_MODE) return;
 
     setIsLoggingIn(true);
+    justLoggedInRef.current = true;
     try {
       await loginWithGoogle();
-      toast.success("Logged in successfully");
     } catch (error) {
+      justLoggedInRef.current = false;
       console.error("Login error:", error);
       toast.error("Failed to login. Please try again.");
     } finally {
@@ -259,6 +264,19 @@ const ChatroomPage = () => {
       },
     });
   }, [user, showAlert, hideAlert]);
+
+  const handleReplyMessage = useCallback((message: Message) => {
+    if (!user) return;
+    setReplyingTo({
+      id: message.id,
+      username: message.username,
+      message: message.message,
+    });
+  }, [user]);
+
+  const handleCancelReply = useCallback(() => {
+    setReplyingTo(null);
+  }, []);
 
   const handleEditMessage = useCallback(async (
     messageId: string,
@@ -310,7 +328,7 @@ const ChatroomPage = () => {
     setIsSending(true);
 
     try {
-      const messageData = {
+      const messageData: Record<string, unknown> = {
         username: user.name,
         message: message.trim(),
         photo: user.photo,
@@ -318,9 +336,17 @@ const ChatroomPage = () => {
         userId: user.uid,
       };
 
+      if (replyingTo) {
+        messageData.replyTo = {
+          id: replyingTo.id,
+          username: replyingTo.username,
+          message: replyingTo.message,
+        };
+      }
+
       await addDoc(collection(db, "messages"), messageData);
       
-      // Auto-scroll to bottom after sending
+      setReplyingTo(null);
       setTimeout(scrollToBottom, 100);
     } catch (error) {
       console.error("Error sending message:", error);
@@ -328,7 +354,7 @@ const ChatroomPage = () => {
     } finally {
       setIsSending(false);
     }
-  }, [user, isSending, scrollToBottom]);
+  }, [user, isSending, replyingTo, scrollToBottom]);
 
   const redirectToHome = useCallback(() => {
     router.push("/");
@@ -379,10 +405,46 @@ const ChatroomPage = () => {
 
   return (
     <div className={containerClasses}>
-      <main className="flex-1 flex justify-center pt-10 md:pt-16 lg:pt-14 px-4 md:px-8 lg:px-12 ml-0 md:ml-8">
-        <div className="max-w-4xl mx-auto w-full relative">
+      <main className="flex-1 min-w-0 flex flex-col items-center pt-10 md:pt-16 lg:pt-14 px-4 md:px-6 lg:px-8 ml-0 md:ml-6 pb-16 sm:pb-20">
+        <div className="w-full min-w-0 max-w-[700px] xl:max-w-[830px] transition-all duration-500 ease-in-out space-y-4 sm:space-y-8">
           {/* Header */}
           <ChatroomHeader isDarkMode={isDarkMode} />
+
+          {/* Welcome Banner */}
+          {showWelcome && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className={`p-4 rounded-2xl border text-sm ${
+                isDarkMode
+                  ? "bg-blue-900/20 border-blue-800/30 text-blue-200"
+                  : "bg-blue-50 border-blue-200 text-blue-800"
+              }`}
+            >
+              <div className="flex items-start gap-3">
+                <span className="text-lg flex-shrink-0">🙏</span>
+                <div>
+                  <p className="font-semibold mb-0.5">Terima kasih sudah login!</p>
+                  <p className={`text-xs leading-relaxed ${isDarkMode ? "text-blue-300" : "text-blue-600"}`}>
+                    Silakan tinggalkan pesan, saran, atau kritik untuk website ini. 
+                    Setiap masukan sangat berarti untuk pengembangan ke depannya. 😊
+                  </p>
+                </div>
+                <button
+                  onClick={() => setShowWelcome(false)}
+                  className={`ml-auto p-2 sm:p-1.5 rounded-lg transition-colors ${
+                    isDarkMode ? "hover:bg-blue-800/30 text-blue-300" : "hover:bg-blue-100 text-blue-600"
+                  }`}
+                  aria-label="Close welcome"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M18 6L6 18M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </motion.div>
+          )}
 
           {/* User Profile */}
           {user && (
@@ -405,10 +467,10 @@ const ChatroomPage = () => {
               editMessageText={editMessageText}
               onEditMessage={handleEditMessage}
               onDeleteMessage={handleDeleteMessage}
+              onReplyMessage={handleReplyMessage}
               onEditTextChange={setEditMessageText}
               onSaveEdit={handleSaveEdit}
               onCancelEdit={handleCancelEdit}
-              formatTimestamp={libFormatTimestamp}
             />
             <div ref={messagesEndRef} />
           </div>
@@ -428,7 +490,8 @@ const ChatroomPage = () => {
               isDarkMode={isDarkMode}
               onSendMessage={handleSendMessage}
               isSending={isSending}
-              disabled={MAINTENANCE_MODE}
+              replyingTo={replyingTo}
+              onCancelReply={handleCancelReply}
             />
           )}
         </div>
