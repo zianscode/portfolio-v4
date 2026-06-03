@@ -36,8 +36,13 @@ const MessagesList = ({
   onCancelEdit,
 }: MessagesListProps) => {
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const isInitialLoad = useRef(true);
 
   useEffect(() => {
+    if (isInitialLoad.current) {
+      isInitialLoad.current = false;
+      return;
+    }
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }

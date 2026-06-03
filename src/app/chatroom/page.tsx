@@ -178,9 +178,6 @@ const ChatroomPage = () => {
           setMessages(fetchedMessages);
           setIsLoading(false);
           setError(null);
-          
-          // Auto-scroll to bottom on new messages
-          setTimeout(scrollToBottom, 100);
         },
         (error) => {
           console.error("Error fetching messages:", error);
