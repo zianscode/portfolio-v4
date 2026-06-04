@@ -66,8 +66,9 @@ const ChatroomPage = () => {
   const [showWelcome, setShowWelcome] = useState(false);
   
   // Refs
-  const messagesEndRef = useRef<HTMLDivElement>(null);
   const justLoggedInRef = useRef(false);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const hasScrolledOnLoadRef = useRef(false);
 
   // Alert state with default values
   const [alertConfig, setAlertConfig] = useState<AlertConfig>({
@@ -110,9 +111,7 @@ const ChatroomPage = () => {
     setAlertConfig(prev => ({ ...prev, isOpen: false }));
   }, []);
 
-  const scrollToBottom = useCallback(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, []);
+
 
   // Authentication handler
   useEffect(() => {
@@ -142,6 +141,8 @@ const ChatroomPage = () => {
     const timer = setTimeout(() => setShowWelcome(false), 6000);
     return () => clearTimeout(timer);
   }, [showWelcome]);
+
+
 
   // Messages fetcher with optimizations
   useEffect(() => {
@@ -174,7 +175,6 @@ const ChatroomPage = () => {
               };
             })
             .reverse();
-
           setMessages(fetchedMessages);
           setIsLoading(false);
           setError(null);
@@ -193,7 +193,20 @@ const ChatroomPage = () => {
       setError("Failed to initialize chat. Please refresh the page.");
       setIsLoading(false);
     }
-  }, [scrollToBottom]);
+  }, []);
+
+  // Scroll to bottom on initial load only
+  useEffect(() => {
+    if (!isLoading && !hasScrolledOnLoadRef.current) {
+      const timer = setTimeout(() => {
+        if (messagesContainerRef.current) {
+          messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+          hasScrolledOnLoadRef.current = true;
+        }
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [isLoading]);
 
   // Event handlers
   const handleLogout = useCallback(async () => {
@@ -344,14 +357,13 @@ const ChatroomPage = () => {
       await addDoc(collection(db, "messages"), messageData);
       
       setReplyingTo(null);
-      setTimeout(scrollToBottom, 100);
     } catch (error) {
       console.error("Error sending message:", error);
       toast.error("Failed to send message. Please try again.");
     } finally {
       setIsSending(false);
     }
-  }, [user, isSending, replyingTo, scrollToBottom]);
+  }, [user, isSending, replyingTo]);
 
   const redirectToHome = useCallback(() => {
     router.push("/");
@@ -453,7 +465,7 @@ const ChatroomPage = () => {
           )}
 
           {/* Chat Messages Container */}
-          <div className={chatContainerClasses}>
+          <div ref={messagesContainerRef} className={chatContainerClasses}>
             <MessagesList
               messages={messages}
               currentUser={user}
@@ -469,7 +481,6 @@ const ChatroomPage = () => {
               onSaveEdit={handleSaveEdit}
               onCancelEdit={handleCancelEdit}
             />
-            <div ref={messagesEndRef} />
           </div>
 
           {/* Login Button */}
