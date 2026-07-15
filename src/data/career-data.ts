@@ -40,12 +40,23 @@ export const educationData = [
   {
     id: 1,
     company: "SMK Wikrama Bogor",
-    position: "Software Engineering",
+    position: "Software Engineering and GIM",
     tags: ["High School", "Vocational"],
     location: "Bogor, Indonesia", 
-    startDate: "Jun 2022",
+    startDate: "Jul 2022",
     endDate: "Jun 2025",
     duration: "3 Years",
     logo: "/career/wikrama.png"
   },
+  // {
+  //   id: 2,
+  //   company: "Universitas Binaniaga Indonesia",
+  //   position: "Computer Science",
+  //   tags: ["University", "Undergraduate"],
+  //   location: "Bogor, Indonesia", 
+  //   startDate: "Jul 2026",
+  //   endDate: "Current",
+  //   duration: "4 Years",
+  //   logo: "/career/unbin.png"
+  // },
 ];
