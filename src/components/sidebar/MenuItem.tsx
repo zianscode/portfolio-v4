@@ -73,8 +73,8 @@ export default function MenuItem({
             marginLeft: shouldShowText ? 12 : 0,
           }}
           transition={{
-            duration: 0.25,
-            ease: [0.25, 1, 0.5, 1],
+            duration: 0.35,
+            ease: [0.16, 1, 0.3, 1],
           }}
         >
           {title}
