@@ -28,10 +28,8 @@ const ProjectItem = ({
             : "bg-white/30 border-neutral-200/80 shadow-[0_12px_40px_rgba(0,0,0,0.08)] hover:bg-white/50 hover:-translate-y-1.5 hover:shadow-[0_25px_60px_rgba(0,0,0,0.18)]"
           }`}
       >
-        {/* Inset shadow (Vignette) for modern visual depth */}
         <div className="absolute inset-0 shadow-[inset_0_0_35px_rgba(0,0,0,0.45)] pointer-events-none z-10 transition-all duration-500 group-hover:shadow-[inset_0_0_55px_rgba(0,0,0,0.65)]" />
 
-        {/* Image (fills the card completely) */}
         <Image
           src={getCleanImageUrl(image)}
           alt={title}
@@ -42,15 +40,12 @@ const ProjectItem = ({
           unoptimized={process.env.NODE_ENV === "development"}
         />
 
-        {/* Floating Details (visible in default state, fades out on hover on desktop) */}
         <div className="absolute bottom-4 inset-x-5 hidden md:flex justify-between items-center z-10 md:transition-all md:duration-500 md:ease-out md:group-hover:opacity-0 md:group-hover:translate-y-2">
-          {/* Primary Tech Tag */}
           {technologies && technologies.length > 0 && (
             <span className="px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-wider rounded-md bg-black/45 backdrop-blur-md border border-white/10 text-white/90">
               {technologies[0]}
             </span>
           )}
-          {/* Action indicator arrow */}
           <div className="w-7 h-7 rounded-full flex items-center justify-center bg-black/45 backdrop-blur-md border border-white/10 text-white/90 shadow-sm">
             <svg className="w-3 h-3 transform rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />

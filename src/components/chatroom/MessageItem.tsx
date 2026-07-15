@@ -164,7 +164,6 @@ const MessageItem = ({
               isDarkMode ? "text-gray-100" : "text-gray-800"
             }`}
           >
-            {/* Reply Preview */}
             {message.replyTo && (
               <div className={`mb-2 pl-3 border-l-2 rounded-sm text-xs ${
                 isDarkMode ? "border-gray-500 text-gray-400" : "border-gray-400 text-gray-500"

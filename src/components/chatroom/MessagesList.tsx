@@ -1,4 +1,3 @@
-// MessagesList.tsx
 "use client";
 import { Message, User } from "@/types/chatroom";
 import MessageItem from "./MessageItem";

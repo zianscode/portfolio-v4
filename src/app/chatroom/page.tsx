@@ -23,7 +23,6 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
-// Import components
 import ChatroomHeader from "@/components/chatroom/ChatroomHeader";
 import UserProfile from "@/components/chatroom/UserProfile";
 import MessagesList from "@/components/chatroom/MessagesList";
@@ -31,14 +30,11 @@ import MessageInput from "@/components/chatroom/MessageInput";
 import LoginButton from "@/components/chatroom/LoginButton";
 import CustomAlert from "@/components/chatroom/CustomAlert";
 
-// Import types
 import { Message, ReplyTo, User } from "@/types/chatroom";
 
-// Constants
-const MESSAGES_LIMIT = 50; // Reduced from 100 for better performance
-const MAINTENANCE_MODE = false; // Centralized maintenance control
+const MESSAGES_LIMIT = 50;
+const MAINTENANCE_MODE = false;
 
-// Alert configuration type
 interface AlertConfig {
   isOpen: boolean;
   title: string;
@@ -53,7 +49,6 @@ const ChatroomPage = () => {
   const { isDarkMode } = useDarkMode();
   const router = useRouter();
   
-  // State management
   const [messages, setMessages] = useState<Message[]>([]);
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -65,12 +60,10 @@ const ChatroomPage = () => {
   const [replyingTo, setReplyingTo] = useState<ReplyTo | null>(null);
   const [showWelcome, setShowWelcome] = useState(false);
   
-  // Refs
   const justLoggedInRef = useRef(false);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
   const hasScrolledOnLoadRef = useRef(false);
 
-  // Alert state with default values
   const [alertConfig, setAlertConfig] = useState<AlertConfig>({
     isOpen: false,
     title: "",
@@ -81,7 +74,6 @@ const ChatroomPage = () => {
     onConfirm: () => {},
   });
 
-  // Memoized values
   const containerClasses = useMemo(() => 
     `flex min-h-screen overflow-x-hidden ${isDarkMode ? "text-white" : "text-black"}`,
     [isDarkMode]
@@ -102,7 +94,6 @@ const ChatroomPage = () => {
     [isDarkMode]
   );
 
-  // Utility functions
   const showAlert = useCallback((config: Partial<AlertConfig>) => {
     setAlertConfig(prev => ({ ...prev, ...config, isOpen: true }));
   }, []);
@@ -113,7 +104,6 @@ const ChatroomPage = () => {
 
 
 
-  // Authentication handler
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
@@ -135,7 +125,6 @@ const ChatroomPage = () => {
     return unsubscribe;
   }, []);
 
-  // Auto-hide welcome banner
   useEffect(() => {
     if (!showWelcome) return;
     const timer = setTimeout(() => setShowWelcome(false), 6000);
@@ -144,7 +133,6 @@ const ChatroomPage = () => {
 
 
 
-  // Messages fetcher with optimizations
   useEffect(() => {
     if (MAINTENANCE_MODE) {
       setIsLoading(false);
@@ -195,7 +183,6 @@ const ChatroomPage = () => {
     }
   }, []);
 
-  // Scroll to bottom on initial load only
   useEffect(() => {
     if (!isLoading && !hasScrolledOnLoadRef.current) {
       const timer = setTimeout(() => {
@@ -208,7 +195,6 @@ const ChatroomPage = () => {
     }
   }, [isLoading]);
 
-  // Event handlers
   const handleLogout = useCallback(async () => {
     if (MAINTENANCE_MODE) return;
 
@@ -314,7 +300,7 @@ const ChatroomPage = () => {
       const messageRef = doc(db, "messages", editingMessageId);
       await updateDoc(messageRef, {
         message: editMessageText.trim(),
-        editedAt: serverTimestamp(), // Add edit timestamp
+        editedAt: serverTimestamp(),
       });
       
       setEditingMessageId(null);
@@ -369,7 +355,6 @@ const ChatroomPage = () => {
     router.push("/");
   }, [router]);
 
-  // Render maintenance mode
   if (MAINTENANCE_MODE) {
     return (
       <div className={containerClasses}>
@@ -416,10 +401,8 @@ const ChatroomPage = () => {
     <div className={containerClasses}>
       <main className="flex-1 min-w-0 flex flex-col items-center pt-10 md:pt-16 lg:pt-14 px-4 md:px-6 lg:px-8 ml-0 md:ml-6 pb-16 sm:pb-20">
         <div className="w-full min-w-0 max-w-[700px] xl:max-w-[830px] transition-all duration-500 ease-in-out space-y-4 sm:space-y-8">
-          {/* Header */}
           <ChatroomHeader isDarkMode={isDarkMode} />
 
-          {/* Welcome Banner */}
           {showWelcome && (
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -455,7 +438,6 @@ const ChatroomPage = () => {
             </motion.div>
           )}
 
-          {/* User Profile */}
           {user && (
             <UserProfile 
               user={user} 
@@ -464,7 +446,6 @@ const ChatroomPage = () => {
             />
           )}
 
-          {/* Chat Messages Container */}
           <div ref={messagesContainerRef} className={chatContainerClasses}>
             <MessagesList
               messages={messages}
@@ -483,7 +464,6 @@ const ChatroomPage = () => {
             />
           </div>
 
-          {/* Login Button */}
           {!user && (
             <LoginButton
               isDarkMode={isDarkMode}
@@ -492,7 +472,6 @@ const ChatroomPage = () => {
             />
           )}
 
-          {/* Message Input */}
           {user && (
             <MessageInput
               isDarkMode={isDarkMode}
@@ -505,7 +484,6 @@ const ChatroomPage = () => {
         </div>
       </main>
 
-      {/* Custom Alert Dialog */}
       <CustomAlert
         isOpen={alertConfig.isOpen}
         onClose={hideAlert}

@@ -1,4 +1,3 @@
-// You can add this file to define shared types across components
 
 export interface SocialCardData {
     icon: React.ReactNode;

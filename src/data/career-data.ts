@@ -1,4 +1,3 @@
-// Work Experience data
 export const workExperienceData = [
   {
     id: 1,
@@ -35,7 +34,6 @@ export const workExperienceData = [
   },
 ];
 
-// Education data
 export const educationData = [
   {
     id: 1,

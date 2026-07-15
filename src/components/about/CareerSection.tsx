@@ -60,9 +60,7 @@ const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
             
             return (
               <div key={item.id} className="relative flex flex-col md:flex-row items-center justify-between">
-                {/* Mobile Cable Line Segment */}
                 <div className="md:hidden absolute left-[21px] w-[6px] h-full z-0">
-                  {/* Line going UP to previous row */}
                   {index !== 0 && (
                     <div className={`absolute top-0 h-[32px] w-full ${
                       isDarkMode 
@@ -70,7 +68,6 @@ const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
                         : "bg-stone-300 shadow-[inset_-2px_0_3px_rgba(0,0,0,0.1),inset_2px_0_3px_rgba(255,255,255,0.8)] border-x border-black/5"
                     }`} />
                   )}
-                  {/* Line going DOWN to next row */}
                   {index !== data.length - 1 && (
                     <div className={`absolute top-[32px] bottom-[-32px] w-full ${
                       isDarkMode 
@@ -80,9 +77,7 @@ const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
                   )}
                 </div>
 
-                {/* Desktop Cable Line Segment */}
                 <div className="hidden md:block absolute left-1/2 -ml-[3px] w-[6px] h-full z-0">
-                  {/* Line going UP to previous row */}
                   {index !== 0 && (
                     <div className={`absolute top-0 bottom-1/2 w-full ${
                       isDarkMode 
@@ -90,7 +85,6 @@ const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
                         : "bg-stone-300 shadow-[inset_-2px_0_3px_rgba(0,0,0,0.1),inset_2px_0_3_rgba(255,255,255,0.8)] border-x border-black/5"
                     }`} />
                   )}
-                  {/* Line going DOWN to next row */}
                   {index !== data.length - 1 && (
                     <div className={`absolute top-1/2 bottom-[-48px] w-full ${
                       isDarkMode 
@@ -100,23 +94,19 @@ const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
                   )}
                 </div>
                 
-                {/* Mobile Connector Node */}
                 <div className={`md:hidden absolute left-[15px] top-[32px] w-4 h-6 rounded-md flex items-center justify-center border-y-2 z-10 ${
                   isDarkMode ? "bg-stone-900 border-stone-700 shadow-lg" : "bg-stone-100 border-stone-300 shadow-sm"
                 }`}>
                   <div className={`w-1.5 h-1.5 rounded-full animate-pulse bg-gradient-to-tr from-blue-500 to-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.8)]`} />
                 </div>
                 
-                {/* Desktop Connector Node */}
                 <div className={`hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-8 rounded-lg items-center justify-center border-y-2 z-10 ${
                   isDarkMode ? "bg-stone-900 border-stone-700 shadow-xl" : "bg-stone-100 border-stone-400 shadow-md"
                 }`}>
                   <div className={`w-2 h-2 rounded-full animate-pulse bg-gradient-to-tr from-blue-600 via-emerald-400 to-cyan-400 shadow-[0_0_12px_rgba(52,211,153,0.9)]`} />
                 </div>
                 
-                {/* Main Card */}
                 <div className={`w-full md:w-[46%] pl-14 pr-2 md:pl-0 md:pr-0 relative ${isLeft ? 'md:order-1' : 'md:order-3'}`}>
-                  {/* Mobile Floating Badge */}
                   <div className={`md:hidden absolute right-4 -top-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full shadow-md border z-10 ${isDarkMode ? "bg-neutral-800 border-neutral-700 text-stone-200" : "bg-white border-stone-200 text-stone-700"}`}>
                     <span className="text-[12px]">{getIcon(index)}</span>
                     <span className="text-[10px] font-bold font-poppins">{year}</span>
@@ -129,18 +119,14 @@ const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
                   />
                 </div>
                 
-                {/* Desktop Badge (Speech Bubble) sitting opposite the card */}
                 <div className={`hidden md:flex w-[46%] items-center ${isLeft ? 'md:order-3 justify-start pl-6' : 'md:order-1 justify-end pr-6'}`}>
                   <div className={`relative flex items-center gap-2 px-4 py-2 rounded-xl shadow-lg border transition-transform hover:-translate-y-1 ${isDarkMode ? "bg-neutral-800 border-neutral-700 text-stone-200" : "bg-white border-stone-200 text-stone-700"}`}>
                     
-                    {/* CSS Triangle (Arrow) pointing to the timeline */}
                     {isLeft ? (
-                      // Card is on Left, Badge is on Right -> Arrow points Left
                       <div className={`absolute top-1/2 -translate-y-1/2 -left-[6px] border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[6px] ${isDarkMode ? "border-r-neutral-700" : "border-r-stone-200"}`}>
                         <div className={`absolute -top-[5px] -right-[7px] border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-r-[5px] ${isDarkMode ? "border-r-neutral-800" : "border-r-white"}`} />
                       </div>
                     ) : (
-                      // Card is on Right, Badge is on Left -> Arrow points Right
                       <div className={`absolute top-1/2 -translate-y-1/2 -right-[6px] border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[6px] ${isDarkMode ? "border-l-neutral-700" : "border-l-stone-200"}`}>
                         <div className={`absolute -top-[5px] -left-[7px] border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[5px] ${isDarkMode ? "border-l-neutral-800" : "border-l-white"}`} />
                       </div>
@@ -166,7 +152,6 @@ const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
       transition={{ duration: 0.5 }}
       className="space-y-10"
     >
-      {/* Work Experience Section */}
       <div>
         <div className="flex items-center justify-between mb-6">
           <motion.div 
@@ -212,7 +197,6 @@ const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
         {renderLayout(workExperienceData)}
       </div>
 
-      {/* Education Section */}
       <div>
         <div className="flex items-center gap-2 mb-6">
           <FaGraduationCap
@@ -235,7 +219,6 @@ const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
   );
 };
 
-// Career Card Component
 const CareerCard = ({ career, isDarkMode, index }: CareerCardProps) => {
   return (
     <motion.div

@@ -39,7 +39,7 @@ const SkillsList = ({ direction = "left", isDarkMode = false }: SkillsListProps)
             Skills
           </h3>
         </div>
-        <div className="h-32" /> {/* Placeholder to avoid layout shift */}
+        <div className="h-32" />
       </section>
     );
   }
@@ -84,7 +84,6 @@ const SkillsList = ({ direction = "left", isDarkMode = false }: SkillsListProps)
       <div className="grid grid-cols-1 gap-1 sm:gap-3 md:gap-4 w-full">
         {Array.from({ length: 2 }, (_, index) => {
           // Use the skills state which is shuffled in useEffect, 
-          // or a static version for the first render to avoid hydration mismatch.
           const slider = skills; 
           const marqueeDirection = index % 2 === 0 ? direction : direction === "left" ? "right" : "left";
 

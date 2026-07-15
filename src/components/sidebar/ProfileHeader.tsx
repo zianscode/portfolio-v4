@@ -18,7 +18,6 @@ export default function ProfileHeader({
     <>
       {isSidebarOpen && (
         <>
-          {/* Background Image */}
           <motion.div
             className="absolute inset-x-0 top-0 h-24 bg-cover bg-center z-0 rounded-lg overflow-hidden" // Ganti h-1/2 ke h-20
             style={{
@@ -30,7 +29,6 @@ export default function ProfileHeader({
             transition={{ duration: 0.5 }}
           />
 
-          {/* Overlay */}
           <motion.div
             className="absolute inset-x-0 top-0 h-24 bg-black/50 z-0 rounded-lg"
             style={{ margin: "12px" }}

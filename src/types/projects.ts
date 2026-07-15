@@ -44,7 +44,6 @@ export interface CertificateProps {
   isDarkMode: boolean;
 }
 
-// Interface untuk LatestProject di halaman home
 export interface LatestProject {
   src: string;
   title: string;

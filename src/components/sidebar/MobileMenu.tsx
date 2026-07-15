@@ -12,7 +12,6 @@ export default function MobileMenu({
   pathname,
   prefetchNextPages,
 }: MobileMenuProps) {
-  // Prefetch halaman saat menu mobile terbuka
   useEffect(() => {
     if (isMobileOpen && prefetchNextPages) {
       prefetchNextPages();
@@ -30,7 +29,6 @@ export default function MobileMenu({
     return () => window.removeEventListener("resize", handleResize);
   }, [isMobileOpen, setIsMobileOpen]);
 
-  // Cegah scroll body saat menu mobile terbuka
   useEffect(() => {
     if (isMobileOpen) {
       document.body.style.overflow = "hidden";
@@ -59,7 +57,6 @@ export default function MobileMenu({
           role="navigation"
           aria-label="Mobile Navigation"
         >
-          {/* Menu Section */}
           <motion.nav
             className="flex-grow mt-20 px-5 overflow-y-auto"
             animate={{ opacity: 1 }}

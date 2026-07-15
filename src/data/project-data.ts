@@ -1,4 +1,3 @@
-// Data projects
 export const projects = [
   {
     src: "/projects/kedai_kopio.png",

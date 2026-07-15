@@ -15,7 +15,6 @@ const BlogPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  // Maintenance mode state
   const [isUnderMaintenance] = useState(true);
 
   const allPosts = Object.values(categories).flatMap(
@@ -36,7 +35,6 @@ const BlogPage = () => {
       post.author.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Redirect to home page
   const redirectToHome = () => {
     router.push("/");
   };
@@ -47,7 +45,6 @@ const BlogPage = () => {
         isDarkMode ? "bg-[#0B0A0A] text-white" : "bg-white text-black"
       }`}
     >
-      {/* Maintenance Overlay */}
       {isUnderMaintenance && (
         <div
           className={`fixed inset-0 z-50 flex items-center justify-center backdrop-blur-md ${

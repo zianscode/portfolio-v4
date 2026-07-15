@@ -31,7 +31,6 @@ const CertificateItem = ({ title, description, issuedBy, date, image, link, isDa
         <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
 
-      {/* Content Container */}
       <div className="p-4 flex flex-col flex-grow space-y-3">
         <div className="space-y-1.5">
           <h2 className={`text-[15px] font-bold tracking-tight leading-snug line-clamp-2 ${isDarkMode ? "text-white" : "text-neutral-900"}`}>
@@ -42,7 +41,6 @@ const CertificateItem = ({ title, description, issuedBy, date, image, link, isDa
           </p>
         </div>
 
-        {/* Metadata */}
         <div className="flex flex-wrap gap-1.5 pt-1">
           <span className={`px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider rounded-md border
             ${isDarkMode
@@ -64,7 +62,6 @@ const CertificateItem = ({ title, description, issuedBy, date, image, link, isDa
 
         <div className="flex-grow" />
 
-        {/* Action Button */}
         <a 
           href={link} 
           target="_blank" 

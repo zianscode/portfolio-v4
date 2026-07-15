@@ -25,13 +25,10 @@ const LoginButton = ({ isDarkMode, onLogin, isLoggingIn }: LoginButtonProps) => 
         `}
         aria-label={isLoggingIn ? "Logging in..." : "Login with Google to Chat"}
       >
-        {/* Glass shine overlay */}
         <span className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.10] to-transparent pointer-events-none" />
 
-        {/* Google Icon */}
         <FcGoogle className="w-5 h-5 flex-shrink-0 relative z-10" />
 
-        {/* Text */}
         <span className="relative z-10">
           {isLoggingIn ? (
             <span className="flex items-center gap-2">

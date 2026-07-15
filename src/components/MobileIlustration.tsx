@@ -7,7 +7,6 @@ export default function MobileIlustration() {
   return (
     <MobileContainer>
       <div className="flex flex-col items-center w-full px-1 pt-2">
-        {/* Animated profile avatar */}
         <motion.div
           className="mb-1.5 border border-neutral-400 dark:border-neutral-700"
           initial={{
@@ -28,7 +27,6 @@ export default function MobileIlustration() {
           }}
         />
 
-        {/* Status bars */}
         <div className="w-full flex flex-col gap-1 mb-2">
           <div className="h-1 w-6 rounded-full bg-neutral-400 dark:bg-neutral-700" />
           <div className="flex gap-0.5">
@@ -37,7 +35,6 @@ export default function MobileIlustration() {
           </div>
         </div>
 
-        {/* List items */}
         <div className="w-full flex flex-col gap-0.5">
           {[1, 2, 3].map((item) => (
             <motion.div

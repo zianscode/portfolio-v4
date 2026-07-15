@@ -60,7 +60,6 @@ const ProjectDetailPage = () => {
       <main className="flex-1 min-w-0 flex flex-col items-center pt-6 sm:pt-10 md:pt-16 lg:pt-14 px-4 sm:px-6 ml-0 md:ml-6">
         <div className="w-full min-w-0 max-w-[700px] xl:max-w-[830px] space-y-6 sm:space-y-8">
           
-          {/* Back Button */}
           <button
             onClick={() => router.back()}
             className={`group inline-flex items-center text-[13px] sm:text-[14px] font-semibold transition-all ${
@@ -77,7 +76,6 @@ const ProjectDetailPage = () => {
             transition={{ duration: 0.4 }}
             className="space-y-6 sm:space-y-8"
           >
-            {/* Header */}
             <div className="space-y-2">
               <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-neutral-900 dark:text-white">{project.title}</h1>
               <p className={`text-[13px] sm:text-[15px] leading-relaxed font-medium ${isDarkMode ? "text-neutral-400" : "text-neutral-500"}`}>
@@ -85,12 +83,10 @@ const ProjectDetailPage = () => {
               </p>
             </div>
             
-            {/* Mac-style Gallery Section */}
             <div className="space-y-4 sm:space-y-6">
               <div className={`relative w-full rounded-xl sm:rounded-2xl overflow-hidden border shadow-lg sm:shadow-2xl ${
                 isDarkMode ? "bg-neutral-900 border-neutral-800" : "bg-neutral-50 border-neutral-200"
               }`}>
-                {/* Mac Window Header */}
                 <div className={`h-8 sm:h-10 flex items-center px-3 sm:px-4 space-x-2 border-b ${
                   isDarkMode ? "bg-neutral-800 border-neutral-700" : "bg-neutral-200 border-neutral-300"
                 }`}>
@@ -106,7 +102,6 @@ const ProjectDetailPage = () => {
                   </div>
                 </div>
 
-                {/* Main Image */}
                 <div className="relative w-full aspect-video bg-white dark:bg-neutral-950 overflow-hidden">
                   <Image
                     src={getCleanImageUrl(activeImage)}
@@ -121,7 +116,6 @@ const ProjectDetailPage = () => {
                 </div>
               </div>
               
-              {/* Gallery Thumbnails */}
               {project.gallery && project.gallery.length > 1 && (
                 <div className="flex gap-2 sm:gap-3 md:gap-4 overflow-x-auto pb-2 sm:pb-4 no-scrollbar">
                   {project.gallery.map((img, index) => (
@@ -147,9 +141,7 @@ const ProjectDetailPage = () => {
               )}
             </div>
 
-            {/* Content Grid — stacks on mobile, side-by-side on large screens */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
-              {/* Main Content */}
               <div className="lg:col-span-2 space-y-6 sm:space-y-10 order-2 lg:order-1">
                 <section className="space-y-3 sm:space-y-4">
                   <h2 className="text-lg sm:text-xl font-bold flex items-center space-x-2">
@@ -182,9 +174,7 @@ const ProjectDetailPage = () => {
                 )}
               </div>
 
-              {/* Sidebar Info — shows first on mobile for quick context */}
               <div className="space-y-4 sm:space-y-6 lg:space-y-8 order-1 lg:order-2">
-                {/* Tech Stack Box */}
                 <div className={`p-4 sm:p-6 rounded-xl sm:rounded-2xl transition-all duration-300 space-y-3 sm:space-y-5 ${
                   isDarkMode 
                     ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)]" 
@@ -207,7 +197,6 @@ const ProjectDetailPage = () => {
                   </div>
                 </div>
 
-                {/* Features Box */}
                 {project.features && project.features.length > 0 && (
                   <div className={`p-4 sm:p-6 rounded-xl sm:rounded-2xl transition-all duration-300 space-y-3 sm:space-y-5 ${
                     isDarkMode 

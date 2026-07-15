@@ -50,7 +50,6 @@ const DashboardPage = () => {
             </div>
           </motion.div>
 
-          {/* Contributions Card */}
           <div
             className={`mb-6 p-6 rounded-lg ${
               isDarkMode ? "bg-neutral-800" : "bg-stone-100"

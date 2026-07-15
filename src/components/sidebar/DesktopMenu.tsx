@@ -50,7 +50,6 @@ export default function DesktopMenu({
 
       <Breakline className="mx-3" />
 
-      {/* Menu Section */}
       <motion.nav
         className="flex-grow px-3"
         animate={{
@@ -89,7 +88,6 @@ export default function DesktopMenu({
         </motion.div>
       </motion.nav>
 
-      {/* Footer Section */}
       <div className="flex-shrink-0 px-3 pb-4">
         <FooterItem isSidebarOpen={isSidebarOpen} />
       </div>

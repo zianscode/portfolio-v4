@@ -13,11 +13,8 @@ export default function RootLayoutClient({
   const [isInitialLoad, setIsInitialLoad] = useState(true);
 
   useEffect(() => {
-    // Simulasi loading awal
     const timer = setTimeout(() => {
       setIsLoading(false);
-      // Setelah loading selesai, kita beri jeda sedikit sebelum melepas isInitialLoad
-      // untuk memastikan animasi masuk berjalan lancar
       setTimeout(() => setIsInitialLoad(false), 500);
     }, 1500);
 

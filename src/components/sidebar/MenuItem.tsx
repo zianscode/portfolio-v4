@@ -25,7 +25,6 @@ export default function MenuItem({
   const isActive = pathname === href || pathname.startsWith(`${href}/`);
   const isCurrentActive = isActive;
 
-  // Force text to always show in mobile view
   const shouldShowText = isMobile || isOpen;
 
   return (
@@ -49,7 +48,6 @@ export default function MenuItem({
         whileTap={{ scale: 0.98 }}
         onClick={() => isMobile && setIsMobileOpen && setIsMobileOpen(false)}
       >
-        {/* Icon */}
         <div
           className={`${
             isCurrentActive
@@ -60,7 +58,6 @@ export default function MenuItem({
           <Icon className="h-5 w-5" />
         </div>
 
-        {/* Menu Name */}
         <motion.span
           className={`${
             isCurrentActive

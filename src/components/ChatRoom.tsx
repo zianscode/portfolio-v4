@@ -2,7 +2,7 @@
 "use client";
 
 import { useState } from "react";
-import { RiSendPlaneFill } from "react-icons/ri"; // Import ikon Send
+import { RiSendPlaneFill } from "react-icons/ri";
 
 const ChatRoom = () => {
   const [messages, setMessages] = useState<string[]>([]);
@@ -17,12 +17,10 @@ const ChatRoom = () => {
 
   return (
     <div className="flex flex-col h-[450px] w-[270px] bg-neutral-100 dark:bg-neutral-900 rounded-lg shadow-lg overflow-hidden">
-      {/* Header */}
       <div className="p-3 bg-neutral-200 dark:bg-neutral-800">
         <h2 className="text-md font-semibold text-gray-800 dark:text-white">Chat Room</h2>
       </div>
 
-      {/* Chat Messages */}
       <div className="flex-1 p-3 overflow-y-auto">
         {messages.map((message, index) => (
           <div key={index} className="mb-2">
@@ -33,7 +31,6 @@ const ChatRoom = () => {
         ))}
       </div>
 
-      {/* Input Area */}
       <div className="p-3 bg-neutral-200 dark:bg-neutral-800">
         <div className="flex gap-2">
           <input
@@ -47,7 +44,7 @@ const ChatRoom = () => {
             onClick={handleSendMessage}
             className="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center"
           >
-            <RiSendPlaneFill className="w-5 h-5" /> {/* Ikon Send */}
+            <RiSendPlaneFill className="w-5 h-5" />
           </button>
         </div>
       </div>

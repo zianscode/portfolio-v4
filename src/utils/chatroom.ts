@@ -1,22 +1,18 @@
 import { Timestamp } from "firebase/firestore";
 
-// Interface untuk objek dengan toDate method
 interface WithToDate {
   toDate: () => Date;
 }
 
-// Interface untuk objek Firebase timestamp
 interface FirebaseTimestamp {
   seconds: number;
   nanoseconds: number;
 }
 
-// Format timestamp helper function
 export const formatTimestamp = (timestamp: Timestamp | unknown) => {
   if (!timestamp) return "";
   
   try {
-    // Jika timestamp adalah Timestamp dari Firestore
     if (timestamp instanceof Timestamp) {
       const date = timestamp.toDate();
       return new Intl.DateTimeFormat("id-ID", {
@@ -29,7 +25,6 @@ export const formatTimestamp = (timestamp: Timestamp | unknown) => {
       }).format(date);
     }
     
-    // Jika timestamp adalah objek dengan properti seconds & nanoseconds
     if (
       typeof timestamp === "object" &&
       timestamp !== null &&
@@ -48,7 +43,6 @@ export const formatTimestamp = (timestamp: Timestamp | unknown) => {
       }).format(date);
     }
     
-    // Timestamp sudah berupa Date
     if (timestamp instanceof Date) {
       return new Intl.DateTimeFormat("id-ID", {
         year: "numeric",
@@ -60,7 +54,6 @@ export const formatTimestamp = (timestamp: Timestamp | unknown) => {
       }).format(timestamp);
     }
     
-    // Jika timestamp adalah string
     if (typeof timestamp === "string") {
       const date = new Date(timestamp);
       if (!isNaN(date.getTime())) {
@@ -74,7 +67,6 @@ export const formatTimestamp = (timestamp: Timestamp | unknown) => {
       }
     }
     
-    // Jika timestamp adalah number
     if (typeof timestamp === "number") {
       const date = new Date(timestamp);
       return new Intl.DateTimeFormat("id-ID", {
@@ -87,7 +79,6 @@ export const formatTimestamp = (timestamp: Timestamp | unknown) => {
       }).format(date);
     }
     
-    // Jika timestamp adalah objek dengan metode toDate()
     if (
       typeof timestamp === "object" &&
       timestamp !== null &&

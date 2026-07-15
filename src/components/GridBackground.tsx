@@ -6,7 +6,6 @@ import { useDarkMode } from "@/context/DarkModeContext";
 export default function GridBackground() {
   const { isDarkMode, mounted } = useDarkMode();
 
-  // Use a neutral color until client has mounted to avoid hydration mismatch
   const lineColor = mounted
     ? isDarkMode
       ? "rgba(255, 255, 255, 0.15)"
@@ -15,7 +14,6 @@ export default function GridBackground() {
 
   return (
     <div className="fixed inset-x-0 top-0 h-[600px] pointer-events-none z-0 overflow-hidden">
-      {/* Desktop Grid Pattern */}
       <div 
         className="absolute inset-0 w-full h-full hidden sm:block"
         style={{
@@ -29,7 +27,6 @@ export default function GridBackground() {
         }}
       />
 
-      {/* Mobile Grid Pattern - Shifted down with top fade */}
       <div 
         className="absolute inset-0 w-full h-full sm:hidden top-[70px]"
         style={{
@@ -43,7 +40,6 @@ export default function GridBackground() {
         }}
       />
 
-      {/* Blur Transition Overlay */}
       <div className="absolute inset-0 backdrop-blur-[1px]" 
            style={{ 
              maskImage: 'radial-gradient(ellipse at top center, transparent 20%, black 100%)',

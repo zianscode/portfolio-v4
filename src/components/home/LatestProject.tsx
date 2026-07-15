@@ -44,7 +44,6 @@ const LatestProject = () => {
             </p>
           </div>
 
-          {/* Button moved inline with text in mobile view */}
           <div className="sm:hidden">
             <Link href="/projects">
               <motion.div
@@ -63,7 +62,6 @@ const LatestProject = () => {
           </div>
         </div>
 
-        {/* Desktop button */}
         <div className="hidden sm:block">
           <Link href="/projects" passHref>
             <motion.div
@@ -82,7 +80,6 @@ const LatestProject = () => {
         </div>
       </div>
 
-      {/* Mobile View — full-width snap carousel, no fixed height clipping */}
       <div className="sm:hidden no-scrollbar mt-4 overflow-x-scroll overflow-y-visible snap-x snap-mandatory pb-2">
         <div className="flex">
           {projects.map((project, index) => (
@@ -99,7 +96,6 @@ const LatestProject = () => {
         </div>
       </div>
 
-      {/* Desktop View - Enhanced horizontal scroll */}
       <div
         ref={carouselRef}
         className="hidden sm:flex no-scrollbar mt-4 flex-row space-x-4 overflow-x-auto pt-2 pb-4 snap-x snap-proximity"

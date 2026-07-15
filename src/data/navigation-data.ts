@@ -8,7 +8,6 @@ import {
 import { LuWorkflow } from 'react-icons/lu';
 import { MenuItemType } from '@/types/menu';
 
-// Menu Item
 export const MENU_ITEMS: MenuItemType[] = [
   {
     title: 'Home',

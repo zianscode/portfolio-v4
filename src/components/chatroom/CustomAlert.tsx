@@ -1,4 +1,3 @@
-// CustomAlert.tsx
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaExclamationTriangle, FaTrash, FaEdit, FaCheck, FaTimes } from "react-icons/fa";
@@ -32,7 +31,6 @@ const CustomAlert = ({
     setIsVisible(isOpen);
   }, [isOpen]);
 
-  // Close on escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -109,7 +107,6 @@ const CustomAlert = ({
     <AnimatePresence>
       {isVisible && (
         <>
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -118,7 +115,6 @@ const CustomAlert = ({
             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 flex items-center justify-center p-4"
             onClick={onClose}
           >
-            {/* Alert Dialog */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -131,7 +127,6 @@ const CustomAlert = ({
               }`}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close button */}
               <button
                 className={`absolute top-4 right-4 p-1.5 rounded-xl transition-all duration-200 ${
                   isDarkMode
@@ -144,23 +139,19 @@ const CustomAlert = ({
                 <FaTimes size={14} />
               </button>
 
-              {/* Content */}
               <div className="flex flex-col items-center text-center px-8 pt-10 pb-6">
-                {/* Icon */}
                 <div className={`p-4 rounded-2xl mb-5 ${colors.iconBg}`}>
                   <div className={colors.iconText}>
                     {getIconByType()}
                   </div>
                 </div>
 
-                {/* Title */}
                 <h3 className={`text-lg font-semibold mb-2 ${
                   isDarkMode ? "text-white" : "text-neutral-900"
                 }`}>
                   {title}
                 </h3>
 
-                {/* Message */}
                 <p className={`text-sm leading-relaxed ${
                   isDarkMode ? "text-neutral-400" : "text-neutral-500"
                 }`}>
@@ -168,7 +159,6 @@ const CustomAlert = ({
                 </p>
               </div>
 
-              {/* Actions */}
               <div className={`flex gap-2.5 px-8 pb-6`}>
                 <button
                   onClick={onClose}

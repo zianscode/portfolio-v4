@@ -32,7 +32,6 @@ export default function Sidebar({ isLoading }: SidebarProps) {
       className="sticky top-0 z-10 flex flex-col transition-all duration-300 lg:py-8"
       suppressHydrationWarning={true}
     >
-      {/* Mobile Profile Section - Hanya tampil di mobile dan tidak loading */}
       {!isLoading && (
         <div className="md:hidden">
           <MobileProfileItem
@@ -44,7 +43,6 @@ export default function Sidebar({ isLoading }: SidebarProps) {
         </div>
       )}
 
-      {/* Desktop Menu - Hanya tampil di desktop */}
       <div className="hidden md:block">
         <DesktopMenu
           isDarkMode={isDarkMode}
@@ -56,7 +54,6 @@ export default function Sidebar({ isLoading }: SidebarProps) {
         />
       </div>
 
-      {/* Mobile Menu - Hanya tampil di mobile */}
       <div className="md:hidden">
         <MobileMenu
           isDarkMode={isDarkMode}

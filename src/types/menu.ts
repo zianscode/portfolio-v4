@@ -4,7 +4,7 @@ import { ComponentType } from "react";
 export type MenuItemType = {
   title: string;
   href: string;
-  icon: ComponentType<{ className?: string }>; // This should be a React component, not a string
+  icon: ComponentType<{ className?: string }>;
   isShow?: boolean;
   isExternal: boolean;
   eventName?: string;

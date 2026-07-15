@@ -36,7 +36,6 @@ export default function MobileProfileItem({
     <motion.div
       className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center w-full h-14 py-2 px-4 transition-all duration-500"
       style={{
-        // Liquid glass effect via inline styles for smooth interpolation
         backgroundColor: scrolled
           ? isDarkMode
             ? "rgba(10, 10, 10, 0.55)"
@@ -59,9 +58,7 @@ export default function MobileProfileItem({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
     >
-      {/* Profile Section */}
       <div className="flex items-center gap-3">
-        {/* Profile Image */}
         <motion.div
           className="relative rounded-full overflow-hidden border-2 flex-shrink-0 transition-all duration-300"
           style={{
@@ -84,7 +81,6 @@ export default function MobileProfileItem({
           />
         </motion.div>
 
-        {/* Name and Handle */}
         <div className="flex flex-col">
           <div className="flex items-center gap-1.5">
             <Link href="/">
@@ -117,9 +113,7 @@ export default function MobileProfileItem({
         </div>
       </div>
 
-      {/* Action Buttons */}
       <div className="flex items-center gap-2">
-        {/* Toggle Dark Mode */}
         <motion.button
           className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300"
           style={{
@@ -142,7 +136,6 @@ export default function MobileProfileItem({
           )}
         </motion.button>
 
-        {/* Hamburger Button */}
         <motion.button
           className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300"
           style={{

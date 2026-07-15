@@ -9,7 +9,6 @@ const SunEarthMoonSystem = () => {
   const [isClient, setIsClient] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   
-  // Set client-side rendering flag and check device type
   useEffect(() => {
     setIsClient(true);
     const checkMobile = () => {
@@ -21,14 +20,13 @@ const SunEarthMoonSystem = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Earth and Moon data
   const earthOrbit = isMobile ? 160 : 240;
   const earthSize = isMobile ? 14 : 18;
-  const earthSpeed = 12; // seconds for one orbit
+  const earthSpeed = 12;
   
   const moonSize = isMobile ? 5 : 7;
   const moonOrbit = isMobile ? 25 : 35;
-  const moonSpeed = 3; // seconds for one orbit
+  const moonSpeed = 3;
 
   return (
     <div
@@ -55,7 +53,6 @@ const SunEarthMoonSystem = () => {
       
       {isClient && (
         <>
-          {/* Sun - Ukuran diperbesar */}
           <div
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_30%_30%,#ffff00,#ffaa00)] z-10"
             style={{
@@ -66,7 +63,6 @@ const SunEarthMoonSystem = () => {
             }}
           />
           
-          {/* Earth Orbit */}
           <div
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
             style={{
@@ -78,14 +74,12 @@ const SunEarthMoonSystem = () => {
               animation: `orbit ${earthSpeed}s linear infinite`
             }}
           >
-            {/* Earth-Moon System */}
             <div 
               className="absolute top-0 left-1/2 -translate-x-1/2"
               style={{
                 animation: `counter-orbit ${earthSpeed}s linear infinite`
               }}
             >
-              {/* Earth */}
               <div
                 className="absolute top-[-12px] left-0 rounded-full"
                 style={{
@@ -99,7 +93,6 @@ const SunEarthMoonSystem = () => {
                 }}
               />
               
-              {/* Moon Orbit */}
               <div
                 className="absolute rounded-full"
                 style={{
@@ -113,7 +106,6 @@ const SunEarthMoonSystem = () => {
                   animation: `moon-orbit ${moonSpeed}s linear infinite`
                 }}
               >
-                {/* Moon */}
                 <div
                   className="absolute top-[-3.5px] left-1/2 -translate-x-1/2 rounded-full"
                   style={{

@@ -5,7 +5,6 @@ import LoadingSpinner from "@/components/LoadingSpinner";
 import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Import Sidebar dengan rendering hanya di sisi klien
 const ClientOnlySidebar = dynamic(() => import("@/components/sidebar/index"), {
   ssr: false,
 });
@@ -24,10 +23,8 @@ function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
 
   return (
     <>
-      {/* Base Background Color — neutral until mounted to avoid hydration mismatch */}
       <div className={`fixed inset-0 z-[-1] ${mounted ? (isDarkMode ? 'bg-neutral-950' : 'bg-white') : ''}`} />
       <GridBackground />
-      {/* Animasi untuk loading state */}
       <AnimatePresence>
         {isLoading && (
           <motion.div
@@ -44,7 +41,6 @@ function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
         )}
       </AnimatePresence>
 
-      {/* Konten utama */}
       <div
         className="flex flex-1 overflow-x-hidden pt-12 md:pt-0 relative z-10"
       >
@@ -61,7 +57,6 @@ function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
           </motion.div>
         </AnimatePresence>
 
-        {/* Konten anak (children) dengan animasi */}
         <motion.div
           className="flex-1 min-w-0 overflow-x-hidden"
           initial={{ opacity: isInitialLoad ? 0 : 1 }}
@@ -72,7 +67,6 @@ function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
         </motion.div>
       </div>
 
-      {/* Floating Chat Widget */}
       <ChatRoomButton />
     </>
   );

@@ -23,7 +23,6 @@ const MessageInput = ({ isDarkMode, onSendMessage, isSending, replyingTo, onCanc
 
   return (
     <div className="mt-6">
-      {/* Reply Preview Bar */}
       {replyingTo && (
         <div className={`flex items-center gap-2 px-4 py-2 rounded-t-xl border-b-0 text-sm ${
           isDarkMode ? "bg-neutral-800 border-neutral-700 text-gray-300" : "bg-gray-100 border-gray-300 text-gray-600"

@@ -30,7 +30,6 @@ const getProjectSpans = (total: number): string[] => {
     configIndex++;
   }
   
-  // Adjust the last item if the sum is not a multiple of 3
   const totalSum = spans.reduce((a, b) => a + b, 0);
   const remainder = totalSum % 3;
   if (remainder !== 0) {

@@ -1,4 +1,3 @@
-// Data categories for blog
 export const categories = {
   React: {
     color: "blue",

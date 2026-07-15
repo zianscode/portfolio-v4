@@ -1,4 +1,3 @@
-// Data certificates
 export const certificates = [
   {
     id: 1,

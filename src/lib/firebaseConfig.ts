@@ -3,7 +3,6 @@ import { getFirestore, Firestore } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, User, Auth } from "firebase/auth";
 import { toast } from "react-hot-toast";
 
-// Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -14,18 +13,15 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
 let app: FirebaseApp;
 let db: Firestore;
 let auth: Auth;
 
-// Check if we're in the browser environment
 if (typeof window !== 'undefined') {
   app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
   db = getFirestore(app);
   auth = getAuth(app);
 } else {
-  // For SSR - create placeholders
   app = {} as FirebaseApp;
   db = {} as Firestore;
   auth = {} as Auth;
@@ -33,10 +29,8 @@ if (typeof window !== 'undefined') {
 
 const provider = new GoogleAuthProvider();
 
-// Auth functions with postMessage handling
 const loginWithGoogle = async (): Promise<User | null> => {
   try {
-    // Add message listener for popup communication
     const messageHandler = (event: MessageEvent) => {
       if (event.data === 'auth-completed') {
         window.removeEventListener('message', messageHandler);
@@ -46,7 +40,6 @@ const loginWithGoogle = async (): Promise<User | null> => {
 
     const result = await signInWithPopup(auth, provider);
     
-    // Notify parent window that auth is complete
     if (window.opener) {
       window.opener.postMessage('auth-completed', window.location.origin);
     }
@@ -83,7 +76,6 @@ const loginWithGoogle = async (): Promise<User | null> => {
 const logout = async (): Promise<void> => {
   try {
     await signOut(auth);
-    // Notify any listening windows about logout
     if (window.opener) {
       window.opener.postMessage('auth-logout', window.location.origin);
     }

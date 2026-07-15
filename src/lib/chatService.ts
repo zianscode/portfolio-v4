@@ -1,10 +1,8 @@
 import { db } from "@/lib/firebaseConfig";
 import { collection, addDoc, query, orderBy, onSnapshot, serverTimestamp, DocumentData, QuerySnapshot } from "firebase/firestore";
 
-// Referensi ke koleksi "messages" di Firestore
 const messagesRef = collection(db, "messages");
 
-// Interface untuk pesan
 interface Message {
   id: string;
   username: string;
@@ -18,13 +16,13 @@ interface Message {
  * @param message - Isi pesan yang akan dikirim.
  */
 export const sendMessage = async (username: string, message: string): Promise<void> => {
-  if (!message.trim()) return; // Jangan kirim pesan kosong
+  if (!message.trim()) return;
 
   try {
     await addDoc(messagesRef, {
       username,
       message,
-      timestamp: serverTimestamp(), // Timestamp dari server
+      timestamp: serverTimestamp(),
     });
   } catch (error) {
     console.error("Error sending message:", error);
@@ -38,16 +36,14 @@ export const sendMessage = async (username: string, message: string): Promise<vo
  * @returns Fungsi unsubscribe untuk menghentikan listener.
  */
 export const getMessages = (callback: (messages: Message[]) => void): (() => void) => {
-  // Query untuk mendapatkan pesan yang diurutkan berdasarkan timestamp (ascending)
   const q = query(messagesRef, orderBy("timestamp", "asc"));
 
-  // Menggunakan onSnapshot untuk mendengarkan perubahan real-time
   return onSnapshot(q, (snapshot: QuerySnapshot<DocumentData>) => {
     const messages = snapshot.docs.map((doc) => ({
-      id: doc.id, // ID dokumen
-      ...doc.data(), // Data pesan (username, message, timestamp)
-    })) as Message[]; // Type assertion ke tipe Message
+      id: doc.id,
+      ...doc.data(),
+    })) as Message[];
 
-    callback(messages); // Panggil callback dengan data pesan
+    callback(messages);
   });
 };

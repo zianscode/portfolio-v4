@@ -12,7 +12,6 @@ export default function LandingIlustration() {
   return (
     <LandingContainer>
       <div className="flex flex-col gap-1 w-full py-4">
-        {/* Baris 1 */}
         <motion.div
           className="w-full h-2 rounded-full border-2 border-neutral-400 dark:border-neutral-800 bg-transparent"
           initial={{ width: 0 }}
@@ -23,7 +22,6 @@ export default function LandingIlustration() {
           }}
         />
         
-        {/* Baris 2 */}
         <motion.div
           className="w-3/4 h-1.5 rounded-full border border-neutral-400 dark:border-neutral-700 mx-auto bg-transparent"
           initial={{ opacity: 0, scaleX: 0 }}
@@ -35,7 +33,6 @@ export default function LandingIlustration() {
           }}
         />
         
-        {/* Tombol */}
         <motion.div
           className="w-16 h-4 rounded-lg border-2 border-neutral-500 dark:border-neutral-600 mx-auto mt-1 bg-transparent"
           initial={{ opacity: 0, scale: 0.8 }}
@@ -54,7 +51,6 @@ export default function LandingIlustration() {
           }}
         />
         
-        {/* Grid Items */}
         <div className="grid grid-cols-3 gap-1 mt-2">
           {[1, 2, 3].map((item) => (
             <motion.div

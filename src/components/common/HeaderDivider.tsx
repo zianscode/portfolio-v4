@@ -6,7 +6,6 @@ import React from "react";
 export default function HeaderDivider() {
   return (
     <div className="relative w-full h-px my-8 overflow-hidden">
-      {/* Main Line with Gradient */}
       <motion.div
         initial={{ x: "-100%" }}
         animate={{ x: "0%" }}
@@ -14,7 +13,6 @@ export default function HeaderDivider() {
         className="absolute inset-0 bg-gradient-to-r from-transparent via-brand-neon to-transparent opacity-50"
       />
       
-      {/* Glowing Pulse Dot */}
       <motion.div
         animate={{
           left: ["0%", "100%"],
