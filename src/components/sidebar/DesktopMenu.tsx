@@ -50,8 +50,26 @@ export default function DesktopMenu({
 
       <Breakline className="mx-3" />
 
-      <nav className="flex-grow px-3">
-        <div className="space-y-3">
+      <motion.nav
+        className="flex-grow px-3"
+        animate={{
+          opacity: 1,
+        }}
+        transition={{
+          delay: 0.1,
+        }}
+      >
+        <motion.div
+          className="space-y-3"
+          initial={false}
+          animate={{
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.05,
+              delayChildren: 0.1,
+            },
+          }}
+        >
           {menuItems.map((item) => (
             <motion.div
               key={item.href}
@@ -67,8 +85,8 @@ export default function DesktopMenu({
               />
             </motion.div>
           ))}
-        </div>
-      </nav>
+        </motion.div>
+      </motion.nav>
 
       <div className="flex-shrink-0 px-3 pb-4">
         <FooterItem isSidebarOpen={isSidebarOpen} />
