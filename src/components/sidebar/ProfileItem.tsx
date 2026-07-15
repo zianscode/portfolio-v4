@@ -112,13 +112,13 @@ export default function ProfileItem({
             transition={{ duration: 0.3 }}
           >
             <motion.div
-              className="font-medium text-base text-neutral-800 dark:text-white flex items-center justify-center gap-2"
+              className="font-medium text-base text-neutral-800 dark:text-white flex items-center justify-center"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <span className="flex items-center gap-2">
+              <div className="relative inline-flex items-center">
                 <motion.span
                   initial={{ y: 0 }}
                   animate={{ y: isDarkMode ? 0 : 0 }}
@@ -131,6 +131,7 @@ export default function ProfileItem({
                   </Link>
                 </motion.span>
                 <motion.div
+                  className="absolute left-full ml-1.5 flex items-center"
                   initial={{ scale: 0.8, opacity: 0.8 }}
                   animate={{
                     scale: [0.8, 1, 0.8],
@@ -144,7 +145,7 @@ export default function ProfileItem({
                 >
                   <RiVerifiedBadgeFill className="text-blue-500" size={14} /> 
                 </motion.div>
-              </span>
+              </div>
             </motion.div>
             <motion.div
               className="text-neutral-600 dark:text-white text-xs mt-1 font-medium w-full flex justify-center" 
