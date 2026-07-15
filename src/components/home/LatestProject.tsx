@@ -51,7 +51,7 @@ const LatestProject = () => {
                 className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm flex items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap cursor-pointer ${
                   isDarkMode
                     ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 text-stone-200 hover:bg-neutral-800/50"
-                    : "bg-white/50 backdrop-blur-md border border-white/60 text-stone-800 hover:bg-white/70"
+                    : "bg-white/50 backdrop-blur-md border border-neutral-200/80 text-stone-800 hover:bg-white/70"
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -70,7 +70,7 @@ const LatestProject = () => {
               className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm flex items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap cursor-pointer ${
                 isDarkMode
                   ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 text-stone-200 hover:bg-neutral-800/50"
-                  : "bg-white/50 backdrop-blur-md border border-white/60 text-stone-800 hover:bg-white/70"
+                  : "bg-white/50 backdrop-blur-md border border-neutral-200/80 text-stone-800 hover:bg-white/70"
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

@@ -9,11 +9,48 @@ import TabButtons from "@/components/projects/TabButtons";
 import ProjectItem from "@/components/projects/ProjectItem";
 import CertificateItem from "@/components/projects/CertificateItem";
 
+const getProjectSpans = (total: number): string[] => {
+  const rowConfigs = [
+    [2, 1],
+    [3],
+    [1, 1, 1],
+    [1, 2]
+  ];
+  
+  const spans: number[] = [];
+  let configIndex = 0;
+  
+  while (spans.length < total) {
+    const config = rowConfigs[configIndex % rowConfigs.length];
+    for (const val of config) {
+      if (spans.length < total) {
+        spans.push(val);
+      }
+    }
+    configIndex++;
+  }
+  
+  // Adjust the last item if the sum is not a multiple of 3
+  const totalSum = spans.reduce((a, b) => a + b, 0);
+  const remainder = totalSum % 3;
+  if (remainder !== 0) {
+    const needed = 3 - remainder;
+    spans[spans.length - 1] += needed;
+  }
+  
+  return spans.map(s => {
+    if (s === 2) return "md:col-span-2";
+    if (s === 3) return "md:col-span-3";
+    return "md:col-span-1";
+  });
+};
+
 const ProjectsPage = () => {
   const { isDarkMode } = useDarkMode();
   const [activeTab, setActiveTab] = useState<"projects" | "certificates">("projects");
 
   const displayedItems = activeTab === "projects" ? [...detailedProjects].reverse() : certificates;
+  const projectSpans = activeTab === "projects" ? getProjectSpans(displayedItems.length) : [];
 
   return (
     <div
@@ -26,8 +63,8 @@ const ProjectsPage = () => {
           <TabHeader activeTab={activeTab} isDarkMode={isDarkMode} />
           <TabButtons activeTab={activeTab} setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
 
-          <div className={`grid grid-cols-1 ${activeTab === "projects" ? "md:grid-cols-2" : "md:grid-cols-3"} gap-6`}>
-            {displayedItems.map((item: Project | Certificate) => {
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {displayedItems.map((item: Project | Certificate, index: number) => {
               if (isProject(item)) {
                 return (
                   <ProjectItem
@@ -40,6 +77,7 @@ const ProjectsPage = () => {
                     link={item.link}
                     slug={item.slug}
                     isDarkMode={isDarkMode}
+                    spanClass={projectSpans[index]}
                   />
                 );
               } else if (isCertificate(item)) {

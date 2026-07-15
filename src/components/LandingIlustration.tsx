@@ -14,7 +14,7 @@ export default function LandingIlustration() {
       <div className="flex flex-col gap-1 w-full py-4">
         {/* Baris 1 */}
         <motion.div
-          className="w-full h-2 rounded-full border-2 border-neutral-200 dark:border-neutral-800 bg-transparent"
+          className="w-full h-2 rounded-full border-2 border-neutral-400 dark:border-neutral-800 bg-transparent"
           initial={{ width: 0 }}
           animate={{ width: "100%" }}
           transition={{ 
@@ -25,7 +25,7 @@ export default function LandingIlustration() {
         
         {/* Baris 2 */}
         <motion.div
-          className="w-3/4 h-1.5 rounded-full border border-neutral-300 dark:border-neutral-700 mx-auto bg-transparent"
+          className="w-3/4 h-1.5 rounded-full border border-neutral-400 dark:border-neutral-700 mx-auto bg-transparent"
           initial={{ opacity: 0, scaleX: 0 }}
           animate={{ opacity: 1, scaleX: 1 }}
           transition={{ 
@@ -59,7 +59,7 @@ export default function LandingIlustration() {
           {[1, 2, 3].map((item) => (
             <motion.div
               key={item}
-              className="h-8 rounded-lg border border-neutral-300 dark:border-neutral-700 bg-transparent"
+              className="h-8 rounded-lg border border-neutral-400 dark:border-neutral-700 bg-transparent"
               initial="hidden"
               animate="visible"
               variants={cardVariants}
@@ -73,12 +73,11 @@ export default function LandingIlustration() {
               }}
             >
               <motion.div
-                className="w-full h-full border border-neutral-200 dark:border-neutral-700 rounded-[inherit] bg-transparent"
+                className="w-full h-full border border-neutral-300 dark:border-neutral-700 rounded-[inherit] bg-transparent"
                 initial={{ opacity: 0 }}
                 animate={{ 
                   opacity: [1, 0.8, 1],
-                  scale: [1, 1.02, 1],
-                  borderColor: ["#393E46", "#1F7D53", "#222831"]
+                  scale: [1, 1.02, 1]
                 }}
                 transition={{ 
                   delay: item * 0.3,

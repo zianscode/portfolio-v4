@@ -5,6 +5,7 @@ import { useDarkMode } from "@/context/DarkModeContext";
 import Link from "next/link";
 import { detailedProjects } from "@/data/resume";
 import { LatestProjectCardProps } from "@/types/projects";
+import { getCleanImageUrl } from "@/utils/image";
 
 const LatestProjectCard = ({ project, index }: LatestProjectCardProps) => {
   const { isDarkMode } = useDarkMode();
@@ -23,24 +24,36 @@ const LatestProjectCard = ({ project, index }: LatestProjectCardProps) => {
         <div className="flex flex-col gap-2">
           {/* Image */}
           <div
-            className={`relative w-full overflow-hidden rounded-xl group border ${
-              isDarkMode ? "border-neutral-800" : "border-neutral-200"
-            } h-44 md:h-32`}
+            className={`relative w-full overflow-hidden rounded-xl group border transition-all duration-300 
+              shadow-[0_4px_12px_rgba(0,0,0,0.06)] group-hover:shadow-[0_12px_24px_rgba(0,0,0,0.18)]
+              ${isDarkMode 
+                ? "border-neutral-800 bg-neutral-900/30 dark:shadow-[0_4px_15px_rgba(0,0,0,0.25)] dark:group-hover:shadow-[0_12px_30px_rgba(0,0,0,0.55)]" 
+                : "border-neutral-200 bg-white/30"
+              } h-44 md:h-32`}
           >
             <Image
-              src={project.src}
+              src={getCleanImageUrl(project.src)}
               alt={project.title}
               fill
               className="object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, 260px"
               priority={index < 2}
+              unoptimized={process.env.NODE_ENV === "development"}
             />
+            {/* Inset shadow (Vignette) for modern visual depth */}
+            <div className="absolute inset-0 shadow-[inset_0_0_15px_rgba(0,0,0,0.35)] pointer-events-none z-10 rounded-xl" />
+
+            {/* Year Badge */}
+            <div className="absolute bottom-2 left-2 px-2 py-0.5 text-[8px] font-bold rounded bg-black/45 backdrop-blur-md border border-white/10 text-white/90 z-10 transition-opacity duration-300 group-hover:opacity-0">
+              {project.date.split(",")[1]?.trim() || "Project"}
+            </div>
+
             {/* Hover overlay */}
-            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
+            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl z-10" />
 
             {/* NEW badge */}
             {project.isNew && (
-              <div className="absolute top-2 right-2 bg-yellow-400 text-black text-[9px] font-bold px-2 py-0.5 rounded-full shadow">
+              <div className="absolute top-2 right-2 bg-yellow-400 text-black text-[9px] font-bold px-2 py-0.5 rounded-full shadow z-10 transition-opacity duration-300 group-hover:opacity-0">
                 NEW
               </div>
             )}

@@ -25,18 +25,18 @@ export default function DesktopMenu({
 
   return (
     <motion.div
-      className={`fixed left-4 top-4 h-[calc(100dvh-32px)] flex flex-col transition-all duration-500 ease-in-out ${
+      className={`fixed left-4 top-4 h-[calc(100dvh-32px)] flex flex-col border ${
         isDarkMode
-          ? "bg-neutral-950/20 text-stone-200 shadow-[0_0_3px_1px_rgba(255,255,255,0.1)]"
-          : "bg-neutral-100/20 text-stone-800 shadow-[0_0_3px_2px_rgba(0,0,0,0.1)]"
-      } backdrop-blur-md rounded-xl overflow-hidden`}
+          ? "bg-neutral-950/45 text-neutral-200 border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+          : "bg-white/45 text-neutral-800 border-neutral-200/50 shadow-[0_8px_32px_rgba(0,0,0,0.06)]"
+      } backdrop-blur-xl rounded-2xl overflow-hidden`}
       initial={false}
       animate={{
         width: isSidebarOpen ? "250px" : "68px",
       }}
       transition={{
-        duration: 0.3,
-        ease: "easeInOut",
+        duration: 0.35,
+        ease: [0.16, 1, 0.3, 1],
       }}
       onMouseEnter={() => setIsSidebarOpen(true)}
       onMouseLeave={() => setIsSidebarOpen(false)}
@@ -46,13 +46,7 @@ export default function DesktopMenu({
         toggleDarkMode={toggleDarkMode}
         isSidebarOpen={isSidebarOpen}
       />
-      {/* Profile Section */}
-      <div className="flex-shrink-0 relative mb-12">
-        <div
-          className="absolute bottom-0 left-4 right-4 h-0 bg-transparent"
-          style={{ width: "calc(100% - 32px)" }}
-        />
-      </div>
+
 
       <Breakline className="mx-3" />
 

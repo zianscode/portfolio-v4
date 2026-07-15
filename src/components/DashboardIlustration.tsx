@@ -3,112 +3,70 @@ import { motion } from "framer-motion";
 import DashboardContainer from "@/components/LandingContainer";
 
 export default function DashboardIllustration() {
-  const sidebarItemVariants = {
-    hidden: { x: -20, opacity: 0 },
-    visible: { x: 0, opacity: 1 }
-  };
-
-  const contentItemVariants = {
-    hidden: { x: 20, opacity: 0 },
-    visible: { x: 0, opacity: 1 }
-  };
-
   return (
     <DashboardContainer>
       <motion.div
-        className="flex h-48 w-80 bg-transparent backdrop-blur-lg rounded-lg shadow-lg overflow-hidden border dark:border-neutral-700 border-neutral-200"
-        initial={{ opacity: 0, scale: 0.9 }}
+        className="flex w-full h-[112px] bg-transparent overflow-hidden"
+        initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <motion.div
-          className="w-1/4 border-r dark:border-neutral-700 border-neutral-200 p-2 flex flex-col space-y-2"
-          initial={{ x: -50 }}
-          animate={{ x: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          {[0, 1, 2].map((i) => (
-            <motion.div
-              key={i}
-              className="h-4 border dark:border-neutral-600 border-neutral-300 rounded cursor-pointer bg-transparent"
-              variants={sidebarItemVariants}
-              initial="hidden"
-              animate="visible"
-              transition={{
-                delay: 0.2 + i * 0.15,
-                type: "spring",
-                stiffness: 120
-              }}
-              whileHover={{ scale: 1.05, borderColor: "#4f46e5" }}
-              whileTap={{ scale: 0.95 }}
-            />
-          ))}
-        </motion.div>
+        {/* Left Sidebar */}
+        <div className="w-1/4 border-r dark:border-neutral-700 border-neutral-300 p-1.5 flex flex-col gap-1.5">
+          {/* Profile Circle */}
+          <div className="w-3 h-3 rounded-full bg-neutral-350 dark:bg-neutral-600 mb-1 flex-shrink-0" />
+          {/* Nav items */}
+          <div className="h-1 w-full rounded-full bg-neutral-400 dark:bg-neutral-500 flex-shrink-0" />
+          <div className="h-1 w-2/3 rounded-full bg-neutral-300 dark:bg-neutral-600 flex-shrink-0" />
+          <div className="h-1 w-4/5 rounded-full bg-neutral-300 dark:bg-neutral-600 flex-shrink-0" />
+        </div>
 
-        <motion.div
-          className="flex-1 p-3"
-          initial={{ x: 50 }}
-          animate={{ x: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          <motion.div
-            className="h-4 border dark:border-neutral-700 border-neutral-300 rounded mb-2 bg-transparent"
-            variants={contentItemVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.4, type: "spring" }}
-            whileHover={{ scaleX: 1.05 }}
-          />
-          
-          <motion.div
-            className="h-16 border dark:border-neutral-700 border-neutral-300 rounded p-2 space-y-1 bg-transparent"
-            initial={{ scale: 0.95 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.4, delay: 0.6 }}
-          >
-            {[0, 1, 2].map((i) => (
-              <motion.div
-                key={i}
-                className="h-2 border dark:border-neutral-700 border-neutral-400 rounded-full bg-transparent"
-                initial={{ width: 0 }}
-                animate={{ width: "60%" }}
-                transition={{
-                  delay: 0.8 + i * 0.2,
-                  duration: 1.5,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  type: "tween"
-                }}
+        {/* Right Content Area */}
+        <div className="flex-1 p-2 flex flex-col gap-1.5 overflow-hidden">
+          {/* Top Header Row */}
+          <div className="flex justify-between items-center w-full flex-shrink-0">
+            <div className="h-2 w-12 rounded-full bg-neutral-450 dark:bg-neutral-600" />
+            <div className="h-2 w-2 rounded-full bg-neutral-300 dark:bg-neutral-700" />
+          </div>
+
+          {/* Dashboard Grid (2 Widgets) */}
+          <div className="grid grid-cols-2 gap-1.5 flex-1 min-h-0">
+            {/* Widget 1: Bar Chart */}
+            <div className="border dark:border-neutral-700 border-neutral-300 rounded p-1 flex items-end justify-center gap-1 h-full min-h-0">
+              <motion.div 
+                className="w-1.5 bg-neutral-400 dark:bg-neutral-600 rounded-t-sm" 
+                animate={{ height: ["40%", "80%", "40%"] }} 
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
               />
-            ))}
-          </motion.div>
-        </motion.div>
+              <motion.div 
+                className="w-1.5 bg-neutral-350 dark:bg-neutral-500 rounded-t-sm" 
+                animate={{ height: ["70%", "30%", "70%"] }} 
+                transition={{ duration: 2, delay: 0.3, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div 
+                className="w-1.5 bg-neutral-400 dark:bg-neutral-600 rounded-t-sm" 
+                animate={{ height: ["20%", "60%", "20%"] }} 
+                transition={{ duration: 2, delay: 0.6, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </div>
 
-        <motion.div
-          className="absolute bottom-2 right-2 w-3 h-3 border border-blue-500 rounded-full bg-transparent"
-          animate={{
-            y: [0, 3],  
-            scale: [0.9, 1.1]  
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            type: "tween" 
-          }}
-        />
-        <motion.div
-          className="absolute bottom-4 left-4 w-2 h-2 border border-purple-500 rounded-full bg-transparent"
-          animate={{
-            rotate: [0, 360],  
-            scale: [0.8, 1.2]  
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
+            {/* Widget 2: Stats / Lines */}
+            <div className="border dark:border-neutral-700 border-neutral-300 rounded p-1 flex flex-col gap-1.5 h-full justify-center min-h-0">
+              <div className="flex gap-1 items-center flex-shrink-0">
+                <div className="w-1 h-1 rounded-full bg-neutral-450 dark:bg-neutral-500" />
+                <div className="h-1 w-full rounded-full bg-neutral-350 dark:bg-neutral-600" />
+              </div>
+              <div className="flex gap-1 items-center flex-shrink-0">
+                <div className="w-1 h-1 rounded-full bg-neutral-450 dark:bg-neutral-500" />
+                <div className="h-1 w-2/3 rounded-full bg-neutral-300 dark:bg-neutral-700" />
+              </div>
+              <div className="flex gap-1 items-center flex-shrink-0">
+                <div className="w-1 h-1 rounded-full bg-neutral-450 dark:bg-neutral-500" />
+                <div className="h-1 w-3/4 rounded-full bg-neutral-300 dark:bg-neutral-700" />
+              </div>
+            </div>
+          </div>
+        </div>
       </motion.div>
     </DashboardContainer>
   );

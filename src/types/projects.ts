@@ -20,6 +20,7 @@ export interface ProjectProps {
   link: string;
   slug: string;
   isDarkMode: boolean;
+  spanClass?: string;
 }
 
 export interface Certificate {

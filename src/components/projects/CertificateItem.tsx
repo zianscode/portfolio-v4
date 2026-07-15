@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { CertificateProps } from "@/types/projects";
 import { FiArrowRight } from "react-icons/fi";
+import { getCleanImageUrl } from "@/utils/image";
 
 const CertificateItem = ({ title, description, issuedBy, date, image, link, isDarkMode }: CertificateProps) => {
   return (
@@ -14,17 +15,18 @@ const CertificateItem = ({ title, description, issuedBy, date, image, link, isDa
       className={`group flex flex-col h-full rounded-2xl overflow-hidden transition-all duration-500 font-poppins
         ${isDarkMode 
           ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:bg-neutral-800/50 hover:-translate-y-1" 
-          : "bg-white/50 backdrop-blur-md border border-white/60 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:bg-white/70 hover:-translate-y-1"
+          : "bg-white/50 backdrop-blur-md border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:bg-white/70 hover:-translate-y-1"
         }`}
     >
       {/* Edge-to-Edge Image Container (Fixed 3:2 Aspect Ratio) */}
       <div className="relative w-full aspect-[3/2] overflow-hidden bg-neutral-100 dark:bg-neutral-800">
         <Image
-          src={image}
+          src={getCleanImageUrl(image)}
           alt={title}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-110" 
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          unoptimized={process.env.NODE_ENV === "development"}
         />
         <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>

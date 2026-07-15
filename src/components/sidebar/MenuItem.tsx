@@ -36,14 +36,14 @@ export default function MenuItem({
       rel={isExternal ? 'noopener noreferrer' : undefined}
     >
       <motion.div
-        className={`flex items-center gap-3 py-2 px-3 rounded-xl transition-colors duration-300 ease-in-out cursor-pointer relative overflow-hidden ${
+        className={`flex items-center py-2 px-3 rounded-xl transition-colors duration-200 cursor-pointer relative overflow-hidden border border-transparent ${
           isCurrentActive
             ? isDarkMode
-              ? "bg-neutral-800 text-white"
-              : "bg-neutral-500 text-white"
+              ? "bg-white/10 text-white border-white/5 shadow-sm"
+              : "bg-black/5 text-neutral-950 border-black/5 shadow-sm"
             : isDarkMode
-            ? "hover:bg-neutral-700 hover:text-white text-neutral-300"
-            : "hover:bg-neutral-200 hover:text-stone-800 text-stone-600"
+            ? "hover:bg-white/5 hover:text-white text-neutral-400"
+            : "hover:bg-black/5 hover:text-neutral-900 text-neutral-600"
         }`}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
@@ -53,29 +53,33 @@ export default function MenuItem({
         <div
           className={`${
             isCurrentActive
-              ? "text-white"
-              : isDarkMode
-              ? "text-neutral-300"
-              : "text-stone-600"
-          } flex-shrink-0`}
+              ? isDarkMode ? "text-white" : "text-neutral-950"
+              : isDarkMode ? "text-neutral-400" : "text-neutral-500"
+          } flex-shrink-0 transition-colors duration-200`}
         >
           <Icon className="h-5 w-5" />
         </div>
 
-        {/* Menu Name - Force display on mobile */}
-        {shouldShowText && (
-          <span
-            className={`${
-              isCurrentActive
-                ? "text-white"
-                : isDarkMode
-                ? "text-neutral-300"
-                : "text-stone-600"
-            } whitespace-nowrap font-medium`}
-          >
-            {title}
-          </span>
-        )}
+        {/* Menu Name */}
+        <motion.span
+          className={`${
+            isCurrentActive
+              ? isDarkMode ? "text-white" : "text-neutral-950"
+              : isDarkMode ? "text-neutral-400" : "text-neutral-600"
+          } whitespace-nowrap font-medium overflow-hidden`}
+          initial={false}
+          animate={{
+            width: shouldShowText ? "auto" : 0,
+            opacity: shouldShowText ? 1 : 0,
+            marginLeft: shouldShowText ? 12 : 0,
+          }}
+          transition={{
+            duration: 0.25,
+            ease: [0.25, 1, 0.5, 1],
+          }}
+        >
+          {title}
+        </motion.span>
       </motion.div>
     </Link>
   );

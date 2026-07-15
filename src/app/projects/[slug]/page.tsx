@@ -9,6 +9,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa"; 
 import { FiArrowLeft, FiCheckCircle } from "react-icons/fi";
+import { getCleanImageUrl } from "@/utils/image";
 
 const ProjectDetailPage = () => {
   const { isDarkMode } = useDarkMode();
@@ -25,7 +26,7 @@ const ProjectDetailPage = () => {
       );
       if (foundProject) {
         setProject(foundProject);
-        setActiveImage(foundProject.image);
+        setActiveImage(foundProject.gallery && foundProject.gallery.length > 0 ? foundProject.gallery[0] : foundProject.image);
       }
     }
     setLoading(false);
@@ -46,7 +47,7 @@ const ProjectDetailPage = () => {
         <button onClick={() => router.push("/projects")} className={`px-6 py-2 rounded-full font-bold text-sm transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] ${
           isDarkMode 
             ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 text-stone-200 hover:bg-neutral-800/50 hover:shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
-            : "bg-white/50 backdrop-blur-md border border-white/60 text-stone-800 hover:bg-white/70"
+            : "bg-white/50 backdrop-blur-md border border-neutral-200/80 text-stone-800 hover:bg-white/70"
         }`}>
           Back to Projects
         </button>
@@ -69,7 +70,7 @@ const ProjectDetailPage = () => {
             <FiArrowLeft className="mr-2 transition-transform group-hover:-translate-x-1" />
             Back to Projects
           </button>
-
+          
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -108,13 +109,14 @@ const ProjectDetailPage = () => {
                 {/* Main Image */}
                 <div className="relative w-full aspect-video bg-white dark:bg-neutral-950 overflow-hidden">
                   <Image
-                    src={activeImage}
+                    src={getCleanImageUrl(activeImage)}
                     alt={project.title}
                     fill
                     className="object-cover transition-transform duration-700" 
                     priority
                     quality={100}
                     sizes="(max-width: 640px) 100vw, (max-width: 1200px) 700px, 830px"
+                    unoptimized={process.env.NODE_ENV === "development"}
                   />
                 </div>
               </div>
@@ -124,21 +126,22 @@ const ProjectDetailPage = () => {
                 <div className="flex gap-2 sm:gap-3 md:gap-4 overflow-x-auto pb-2 sm:pb-4 no-scrollbar">
                   {project.gallery.map((img, index) => (
                     <button
-                      key={index}
-                      onClick={() => setActiveImage(img)}
-                      className={`relative aspect-video w-[72px] sm:w-28 md:w-36 rounded-lg sm:rounded-xl overflow-hidden border-2 transition-all duration-300 flex-shrink-0 ${
-                        activeImage === img
-                          ? "border-neutral-900 dark:border-white ring-2 sm:ring-4 ring-neutral-900/10 dark:ring-white/10"
-                          : "border-transparent opacity-50 hover:opacity-100 grayscale hover:grayscale-0"
-                      }`}
-                    >
-                      <Image
-                        src={img}
-                        alt={`Gallery ${index + 1}`}
-                        fill
-                        className="object-cover"
-                      />
-                    </button>
+                       key={index}
+                       onClick={() => setActiveImage(img)}
+                       className={`relative aspect-video w-[72px] sm:w-28 md:w-36 rounded-lg sm:rounded-xl overflow-hidden border-2 transition-all duration-300 flex-shrink-0 ${
+                         activeImage === img
+                           ? "border-neutral-900 dark:border-white ring-2 sm:ring-4 ring-neutral-900/10 dark:ring-white/10"
+                           : "border-transparent opacity-50 hover:opacity-100 grayscale hover:grayscale-0"
+                       }`}
+                     >
+                       <Image
+                         src={getCleanImageUrl(img)}
+                         alt={`Gallery ${index + 1}`}
+                         fill
+                         className="object-cover"
+                         unoptimized={process.env.NODE_ENV === "development"}
+                       />
+                     </button>
                   ))}
                 </div>
               )}
@@ -169,7 +172,7 @@ const ProjectDetailPage = () => {
                       className={`inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-4 rounded-xl font-bold text-[13px] sm:text-sm space-x-2.5 sm:space-x-3 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] ${
                         isDarkMode
                           ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 text-stone-200 hover:bg-neutral-800/50 hover:shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
-                          : "bg-white/50 backdrop-blur-md border border-white/60 text-stone-800 hover:bg-white/70"
+                          : "bg-white/50 backdrop-blur-md border border-neutral-200/80 text-stone-800 hover:bg-white/70"
                       }`}
                     >
                       <FaGithub className="text-lg sm:text-xl" /> 
@@ -185,7 +188,7 @@ const ProjectDetailPage = () => {
                 <div className={`p-4 sm:p-6 rounded-xl sm:rounded-2xl transition-all duration-300 space-y-3 sm:space-y-5 ${
                   isDarkMode 
                     ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)]" 
-                    : "bg-white/50 backdrop-blur-md border border-white/60 shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
+                    : "bg-white/50 backdrop-blur-md border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
                 }`}>
                   <h3 className="text-sm sm:text-base font-bold uppercase tracking-widest opacity-60">Technologies</h3>
                   <div className="flex flex-wrap gap-1.5 sm:gap-2">
@@ -209,7 +212,7 @@ const ProjectDetailPage = () => {
                   <div className={`p-4 sm:p-6 rounded-xl sm:rounded-2xl transition-all duration-300 space-y-3 sm:space-y-5 ${
                     isDarkMode 
                       ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)]" 
-                      : "bg-white/50 backdrop-blur-md border border-white/60 shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
+                      : "bg-white/50 backdrop-blur-md border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
                   }`}>
                     <h3 className="text-sm sm:text-base font-bold uppercase tracking-widest opacity-60">Key Features</h3>
                     <ul className="space-y-3 sm:space-y-4">

@@ -199,7 +199,7 @@ const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
             className={`text-xs flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] ${
               isDarkMode
                 ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 text-stone-200 hover:bg-neutral-800/50 hover:shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
-                : "bg-white/50 backdrop-blur-md border border-white/60 text-blue-600 hover:bg-white/70 hover:-translate-y-0.5"
+                : "bg-white/50 backdrop-blur-md border border-neutral-200/80 text-blue-600 hover:bg-white/70 hover:-translate-y-0.5"
             }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -246,7 +246,7 @@ const CareerCard = ({ career, isDarkMode, index }: CareerCardProps) => {
       className={`w-full relative overflow-hidden rounded-2xl transition-all duration-300 h-full flex flex-col ${
         isDarkMode
           ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:bg-neutral-800/50 hover:-translate-y-1"
-          : "bg-white/50 backdrop-blur-md border border-white/60 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:bg-white/70 hover:-translate-y-1"
+          : "bg-white/50 backdrop-blur-md border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:bg-white/70 hover:-translate-y-1"
       }`}
     >
       <div className="p-4 flex flex-col h-full">

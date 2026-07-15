@@ -21,7 +21,7 @@ const ServicesSection = () => {
     },
     {
       title: "Landing Page Design",
-      description: "Design and develop high-converting landing pages that capture leads and drive sales.",
+      description: "Design and develop high converting landing pages that capture leads and drive sales.",
       Illustration: LandingIllustration
     },
     {
@@ -85,7 +85,7 @@ const ServiceCard = ({ title, description, isDarkMode, Illustration }: ServiceCa
     className={`p-6 rounded-2xl transition-all duration-300 cursor-pointer relative overflow-hidden group ${
       isDarkMode 
         ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:bg-neutral-800/50 hover:-translate-y-1" 
-        : "bg-white/50 backdrop-blur-md border border-white/60 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:bg-white/70 hover:-translate-y-1"
+        : "bg-white/50 backdrop-blur-md border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:bg-white/70 hover:-translate-y-1"
     }`}
   >
     <div className="flex items-center justify-center relative h-48 w-full mt-2 mb-4">

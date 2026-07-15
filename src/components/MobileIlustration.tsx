@@ -9,7 +9,7 @@ export default function MobileIlustration() {
       <div className="flex flex-col items-center w-full px-1 pt-2">
         {/* Animated profile avatar */}
         <motion.div
-          className="mb-1.5 border border-neutral-300 dark:border-neutral-700"
+          className="mb-1.5 border border-neutral-400 dark:border-neutral-700"
           initial={{
             borderRadius: "50%",
             width: "12px",
@@ -30,10 +30,10 @@ export default function MobileIlustration() {
 
         {/* Status bars */}
         <div className="w-full flex flex-col gap-1 mb-2">
-          <div className="h-1 w-6 rounded-full bg-neutral-300 dark:bg-neutral-700" />
+          <div className="h-1 w-6 rounded-full bg-neutral-400 dark:bg-neutral-700" />
           <div className="flex gap-0.5">
-            <div className="h-0.5 w-2 rounded-full bg-neutral-300 dark:bg-neutral-600" />
-            <div className="h-0.5 w-4 rounded-full bg-neutral-200 dark:bg-neutral-700" />
+            <div className="h-0.5 w-2 rounded-full bg-neutral-400 dark:bg-neutral-600" />
+            <div className="h-0.5 w-4 rounded-full bg-neutral-300 dark:bg-neutral-700" />
           </div>
         </div>
 
@@ -42,7 +42,7 @@ export default function MobileIlustration() {
           {[1, 2, 3].map((item) => (
             <motion.div
               key={item}
-              className="w-full rounded border border-neutral-300 dark:border-neutral-700"
+              className="w-full rounded border border-neutral-400 dark:border-neutral-700"
               initial={{ height: "8px" }}
               animate={{
                 height: ["8px", "8px", "12px", "12px", "12px", "8px"],

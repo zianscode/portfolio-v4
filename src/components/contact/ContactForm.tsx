@@ -9,7 +9,7 @@ const Contact = () => {
 
   const headingColor = isDarkMode ? 'text-stone-100' : 'text-neutral-900';
   const paragraphColor = isDarkMode ? 'text-stone-300' : 'text-neutral-700';
-  const borderColor = isDarkMode ? 'border-white/10' : 'border-white/60';
+  const borderColor = isDarkMode ? 'border-white/10' : 'border-neutral-200/80';
   const bgColor = isDarkMode ? 'bg-neutral-900/40' : 'bg-white/50';
 
   return (
@@ -43,7 +43,7 @@ const Contact = () => {
             className={`w-full md:w-auto py-4 px-8 rounded-xl font-bold text-sm flex items-center justify-center space-x-3 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] ${
               isDarkMode
                 ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 text-stone-200 hover:bg-neutral-800/50 hover:shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
-                : "bg-white/50 backdrop-blur-md border border-white/60 text-stone-800 hover:bg-white/70 hover:-translate-y-0.5"
+                : "bg-white/50 backdrop-blur-md border border-neutral-200/80 text-stone-800 hover:bg-white/70 hover:-translate-y-0.5"
             }`}
           >
             <FiMail className="text-xl" />

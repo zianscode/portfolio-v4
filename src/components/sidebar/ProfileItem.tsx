@@ -38,7 +38,7 @@ export default function ProfileItem({
 
   return (
     <div
-      className="flex flex-col items-center justify-center py-4 relative transition-all" 
+      className="flex flex-col items-center justify-start relative h-[200px] w-full pt-2" 
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -49,7 +49,7 @@ export default function ProfileItem({
       />
 
       <motion.div
-        className="relative mt-9 rounded-full overflow-hidden border-2 border-neutral-700/50 transition-all z-10 shadow-lg" 
+        className="relative mt-10 rounded-full overflow-hidden border-2 border-neutral-700/50 z-10 shadow-lg" 
         initial={false}
         animate={{
           width: isSidebarOpen ? "90px" : "38px",
@@ -59,20 +59,19 @@ export default function ProfileItem({
         whileHover={{
           scale: 1.05,
           borderColor: isDarkMode
-            ? "#FFFFFF"
-            : "#000000",
+            ? "#525252"
+            : "#d4d4d4",
         }}
         transition={{
-          duration: 0.3,
-          ease: "easeInOut",
+          duration: 0.35,
+          ease: [0.16, 1, 0.3, 1],
         }}
       >
         <Image
           src="/image/Fajar_Fauzian.jpg"
           alt="ziancode"
-          width={80} 
-          height={80}
-          className="object-cover w-full h-full"
+          fill
+          className="object-cover"
         />
 
       </motion.div>
@@ -81,7 +80,7 @@ export default function ProfileItem({
         className={`
           ${isSidebarOpen ? "absolute top-2 right-2" : "mt-2"} 
           w-8 h-8 m-2 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-white
-          rounded-xl flex items-center justify-center z-10 transition-all
+          rounded-xl flex items-center justify-center z-10 transition-colors duration-200
           hover:bg-neutral-100 dark:hover:bg-neutral-700 shadow-md
         `}
         onClick={toggleDarkMode}

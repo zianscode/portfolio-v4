@@ -9,12 +9,12 @@ export default function MobileLandingContainer({
   return (
      <div className="group relative">
       {/* 3D Mobile Container - Even More Compact */}
-      <div className="h-36 w-20 overflow-hidden rounded-xl border-[3px] border-neutral-800 dark:border-neutral-900 transition-all duration-300 ease-out transform-gpu group-hover:scale-105 group-hover:-translate-y-1 group-hover:rotate-x-12 group-hover:rotate-y-6 group-hover:shadow-lg group-hover:shadow-brand-neon/20 perspective-1000">
+      <div className="h-36 w-20 overflow-hidden rounded-xl border-[3px] border-neutral-300 dark:border-neutral-900 transition-all duration-300 ease-out transform-gpu group-hover:scale-105 group-hover:-translate-y-1 group-hover:rotate-x-12 group-hover:rotate-y-6 group-hover:shadow-lg group-hover:shadow-brand-neon/20 perspective-1000">
         
         {/* Screen area with hover effect */}
         <div className="relative h-full w-full overflow-hidden bg-neutral-100 dark:bg-neutral-950 transition-colors duration-300 group-hover:bg-neutral-50 dark:group-hover:bg-neutral-900">
           {/* Mini Notch */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-1 bg-neutral-800 dark:bg-neutral-900 rounded-b-sm z-10"></div>
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-1 bg-neutral-300 dark:bg-neutral-900 rounded-b-sm z-10"></div>
           
           {/* Status bar */}
           <div className="absolute top-0.5 left-0 right-0 flex justify-between items-center px-1 z-10">
