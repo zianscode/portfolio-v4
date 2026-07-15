@@ -88,13 +88,8 @@ const ServiceCard = ({ title, description, isDarkMode, Illustration }: ServiceCa
         : "bg-white border-neutral-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:bg-neutral-50/50 hover:border-neutral-300/60 hover:-translate-y-1"
     }`}
   >
-    <div className={`flex items-center justify-center relative h-36 w-full rounded-xl border overflow-hidden transition-all duration-300 ${
-      isDarkMode 
-        ? "bg-neutral-950 border-neutral-900" 
-        : "bg-white border-neutral-200/60"
-    }`}
-    >
-      <div className="relative inline-block scale-100 sm:scale-110 origin-center pointer-events-none">
+    <div className="flex items-center justify-center relative h-40 w-full mt-2">
+      <div className="relative inline-block scale-110 sm:scale-125 origin-center pointer-events-none">
         <Illustration />
       </div>
     </div>
