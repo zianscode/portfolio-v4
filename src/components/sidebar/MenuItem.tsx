@@ -35,7 +35,9 @@ export default function MenuItem({
       rel={isExternal ? 'noopener noreferrer' : undefined}
     >
       <motion.div
-        className={`flex items-center py-2 px-3 rounded-xl transition-colors duration-200 cursor-pointer relative overflow-hidden border border-transparent ${
+        className={`flex items-center py-2 rounded-xl transition-all duration-200 cursor-pointer relative overflow-hidden border border-transparent ${
+          isOpen ? "px-3 justify-start" : "px-0 justify-center"
+        } ${
           isCurrentActive
             ? isDarkMode
               ? "bg-white/10 text-white border-white/5 shadow-sm"
