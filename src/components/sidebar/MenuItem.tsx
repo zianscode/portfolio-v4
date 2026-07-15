@@ -66,7 +66,6 @@ export default function MenuItem({
           } whitespace-nowrap text-sm font-medium overflow-hidden inline-block`}
           initial={false}
           animate={{
-            width: shouldShowText ? "auto" : 0,
             opacity: shouldShowText ? 1 : 0,
             marginLeft: shouldShowText ? 12 : 0,
           }}
