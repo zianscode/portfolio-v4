@@ -125,7 +125,7 @@ export default function ProfileItem({
                   className="text-neutral-900 dark:text-neutral-200 font-semibold"
                 >
                   <Link href="/">
-                    <h2 className="font-poppins flex-grow whitespace-nowrap text-base font-medium lg:text-lg"> 
+                    <h2 className="font-poppins flex-grow whitespace-nowrap text-sm font-semibold"> 
                       Fajar Fauzian
                     </h2>
                   </Link>

@@ -8,7 +8,7 @@ interface FooterProps {
 
 export default function FooterItem({ isSidebarOpen }: FooterProps) {
   return (
-    <div className="py-4 text-stone-400 mt-auto text-center backdrop-blur-sm max-w-[250px] mx-auto">
+    <div className="py-4 text-stone-400 mt-auto text-center backdrop-blur-sm max-w-[250px] mx-auto text-xs">
       <AnimatePresence mode="wait">
         {isSidebarOpen ? (
           <motion.div
@@ -16,10 +16,10 @@ export default function FooterItem({ isSidebarOpen }: FooterProps) {
             className="flex items-center justify-center gap-2"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }} // Ubah exit ke y: -10 untuk simetri
+            exit={{ opacity: 0, y: -10 }} 
             transition={{ type: "spring", stiffness: 100, damping: 15 }}
           >
-            <span className="text-sm font-medium">© 2025</span>
+            <span className="text-xs font-medium">© 2025</span>
             <motion.div
               className="flex items-center gap-1"
               initial={{ scale: 0.8 }}

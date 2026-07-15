@@ -63,7 +63,7 @@ export default function MenuItem({
             isCurrentActive
               ? isDarkMode ? "text-white" : "text-neutral-950"
               : isDarkMode ? "text-neutral-400" : "text-neutral-600"
-          } whitespace-nowrap font-medium overflow-hidden`}
+          } whitespace-nowrap text-sm font-medium overflow-hidden`}
           initial={false}
           animate={{
             width: shouldShowText ? "auto" : 0,
