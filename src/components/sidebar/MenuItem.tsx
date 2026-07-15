@@ -35,9 +35,7 @@ export default function MenuItem({
       rel={isExternal ? 'noopener noreferrer' : undefined}
     >
       <motion.div
-        className={`flex items-center py-2 rounded-xl transition-all duration-200 cursor-pointer relative overflow-hidden border border-transparent ${
-          isOpen ? "px-3 justify-start" : "px-0 justify-center"
-        } ${
+        className={`flex items-center py-2 px-3 rounded-xl transition-colors duration-200 cursor-pointer relative overflow-hidden border border-transparent ${
           isCurrentActive
             ? isDarkMode
               ? "bg-white/10 text-white border-white/5 shadow-sm"
@@ -65,7 +63,7 @@ export default function MenuItem({
             isCurrentActive
               ? isDarkMode ? "text-white" : "text-neutral-950"
               : isDarkMode ? "text-neutral-400" : "text-neutral-600"
-          } whitespace-nowrap text-sm font-medium overflow-hidden`}
+          } whitespace-nowrap text-sm font-medium overflow-hidden inline-block`}
           initial={false}
           animate={{
             width: shouldShowText ? "auto" : 0,
