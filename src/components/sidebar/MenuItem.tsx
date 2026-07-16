@@ -48,7 +48,6 @@ export default function MenuItem({
         whileTap={{ scale: 0.98 }}
         onClick={() => isMobile && setIsMobileOpen && setIsMobileOpen(false)}
       >
-        {/* Dynamic sliding active background pill */}
         {isCurrentActive && (
           <motion.div
             layoutId="active-sidebar-pill"
@@ -61,7 +60,6 @@ export default function MenuItem({
           />
         )}
 
-        {/* Hover background for non-active items */}
         {!isCurrentActive && (
           <div
             className={`absolute inset-0 -z-10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 ${
