@@ -35,26 +35,46 @@ export default function MenuItem({
       rel={isExternal ? 'noopener noreferrer' : undefined}
     >
       <motion.div
-        className={`flex items-center py-2 px-3 rounded-xl transition-colors duration-200 cursor-pointer relative overflow-hidden border border-transparent ${
+        className={`group flex items-center py-2 px-3 rounded-xl cursor-pointer relative ${
           isOpen ? "justify-start px-3" : "justify-center px-0"
         } ${
           isCurrentActive
-            ? isDarkMode
-              ? "bg-white/10 text-white border-white/5 shadow-sm"
-              : "bg-black/5 text-neutral-950 border-black/5 shadow-sm"
+            ? isDarkMode ? "text-white" : "text-neutral-950"
             : isDarkMode
-            ? "hover:bg-white/5 hover:text-white text-neutral-400"
-            : "hover:bg-black/5 hover:text-neutral-900 text-neutral-600"
+            ? "text-neutral-400 hover:text-white"
+            : "text-neutral-600 hover:text-neutral-900"
         }`}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         onClick={() => isMobile && setIsMobileOpen && setIsMobileOpen(false)}
       >
+        {/* Dynamic sliding active background pill */}
+        {isCurrentActive && (
+          <motion.div
+            layoutId="active-sidebar-pill"
+            className={`absolute inset-0 -z-10 rounded-xl border ${
+              isDarkMode 
+                ? "bg-white/10 border-white/5 shadow-sm" 
+                : "bg-black/5 border-black/5 shadow-sm"
+            }`}
+            transition={{ type: "spring", stiffness: 380, damping: 30 }}
+          />
+        )}
+
+        {/* Hover background for non-active items */}
+        {!isCurrentActive && (
+          <div
+            className={`absolute inset-0 -z-10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 ${
+              isDarkMode ? "bg-white/5" : "bg-black/5"
+            }`}
+          />
+        )}
+
         <div
           className={`${
             isCurrentActive
               ? isDarkMode ? "text-white" : "text-neutral-950"
-              : isDarkMode ? "text-neutral-400" : "text-neutral-500"
+              : isDarkMode ? "text-neutral-400 group-hover:text-white" : "text-neutral-500 group-hover:text-neutral-900"
           } flex-shrink-0 transition-colors duration-200`}
         >
           <Icon className="h-5 w-5" />
@@ -64,7 +84,7 @@ export default function MenuItem({
           className={`${
             isCurrentActive
               ? isDarkMode ? "text-white" : "text-neutral-950"
-              : isDarkMode ? "text-neutral-400" : "text-neutral-600"
+              : isDarkMode ? "text-neutral-400 group-hover:text-white" : "text-neutral-600 group-hover:text-neutral-900"
           } whitespace-nowrap text-sm font-medium overflow-hidden`}
           initial={false}
           animate={{
