@@ -16,15 +16,33 @@
 html,
 body {
   font-family: 'Poppins', sans-serif;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
   overflow-x: hidden;
   box-sizing: border-box;
 }
 
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  display: none;
+/* Custom scrollbar styling (subtle and matches theme) */
+html::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.25);
+  border-radius: 9999px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.45);
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.25) transparent;
 }
 
 @keyframes fadeIn {
