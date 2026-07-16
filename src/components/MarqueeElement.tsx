@@ -17,14 +17,22 @@ export default function MarqueeElement({
   className = ''
 }: MarqueeElementProps) {
   return (
-    <Marquee 
-      direction={direction} 
-      speed={speed} 
-      pauseOnHover={pauseOnHover}
-      gradientWidth={100}
-      className={className}
+    <div 
+      style={{
+        WebkitMaskImage: 'linear-gradient(to right, transparent, white 10%, white 90%, transparent)',
+        maskImage: 'linear-gradient(to right, transparent, white 10%, white 90%, transparent)'
+      }}
+      className="w-full overflow-hidden"
     >
-      {children}
-    </Marquee>
+      <Marquee 
+        direction={direction} 
+        speed={speed} 
+        pauseOnHover={pauseOnHover}
+        gradient={false}
+        className={className}
+      >
+        {children}
+      </Marquee>
+    </div>
   )
 }
