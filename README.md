@@ -1,76 +1,138 @@
-# Portfolio Website v.4 🚀
+# Personal Portfolio Website (v4)
 
-Selamat datang di repositori Portfolio Website versi 4! Ini adalah iterasi terbaru dari portfolio pribadi saya yang dibangun dengan teknologi modern.
+A modern, highly performant, and responsive personal portfolio application built by **Fajar Fauzian** (@zianscode). Developed using Next.js 15, TypeScript, Tailwind CSS, and Framer Motion, this platform showcases full-stack web applications, mobile solutions, software design case studies, and career milestones.
 
-## ✨ Fitur Unggulan
+---
 
-- **Next.js 15** - Dengan fitur App Router terbaru untuk performa optimal
-- **Desain Modern** - Antarmuka yang elegan dan responsif
-- **Animasi Smooth** - Transisi halus dengan Framer Motion
-- **Dark/Light Mode** - Dukungan tema gelap dan terang
-- **Optimized Performance** - Load cepat dengan optimisasi bawaan Next.js
+## Technical Overview
 
-## 🛠 Teknologi Utama
+- **Core Framework**: Next.js 15 (App Router Architecture)
+- **UI & Logic**: React 18, TypeScript, Tailwind CSS, HeroUI
+- **Animation & Motion**: Framer Motion
+- **State & Real-time Services**: Firebase (Authentication & Firestore) for interactive chatroom features, SWR
+- **Design System**: Glassmorphic UI aesthetics, curated Dark & Light themes, custom grid system
 
-- ⚛️ Next.js 15 (App Router)
-- 🎨 Tailwind CSS
-- ✨ Framer Motion
-- 📱 Fully Responsive
-- 🌓 Dark Mode Support
+---
 
-## 🚀 Cara Menjalankan
+## Key Platform Features
 
-1. Clone repositori ini
+### Responsive Adaptive Navigation
+- Dedicated Desktop Vertical Sidebar for large screens (`>= 1024px`)
+- Top Floating Glass Dock Navbar optimized for tablet viewports (`768px - 1023px`)
+- Compact Mobile Header and Slide-over Drawer (`< 768px`)
+
+### Featured Projects & Design Case Studies
+- Comprehensive project catalog with detailed slug routes (`/projects/[slug]`)
+- Multi-technology stack indicators and external links to GitHub repositories and Figma design files
+- Interactive category filtering between Projects and Verified Certificates
+
+### Real-Time Chatroom Component
+- Live global chatroom powered by Firebase Firestore
+- Google OAuth authentication via Firebase Auth
+- Feature set including message editing, threaded replies, and message deletion
+
+### Interactive Career & Education Timeline
+- Professional work experience and education timeline with custom gradient indicators
+- Dynamic resume download integration
+
+---
+
+## Architecture & Directory Structure
+
+```
+portfolio-v4/
+├── public/                 # Static assets, project images, and media
+├── src/
+│   ├── app/                # Next.js App Router pages and layouts
+│   │   ├── about/          # Personal profile and career timeline page
+│   │   ├── blog/           # Blog posts and articles
+│   │   ├── chatroom/       # Real-time community chatroom page
+│   │   ├── contact/        # Contact form and social link cards
+│   │   ├── projects/       # Projects catalog and individual slug routes
+│   │   ├── roadmap/        # Learning and technical roadmap page
+│   │   ├── layout.tsx      # Root layout wrapper
+│   │   └── page.tsx        # Homepage hero section and highlights
+│   ├── common/             # Global constants and static values
+│   ├── components/         # Modular reusable React components
+│   │   ├── about/          # Career timeline, skills, and intro sections
+│   │   ├── chatroom/       # Message list, input, and user profile
+│   │   ├── contact/        # Contact form and social cards
+│   │   ├── home/           # Hero section, latest project cards, services
+│   │   ├── projects/       # Project item cards and header buttons
+│   │   └── sidebar/        # Desktop, Tablet, and Mobile navigation
+│   ├── context/            # React context providers (Dark Mode Engine)
+│   ├── data/               # Project data, resume credentials, skill lists
+│   ├── lib/                # Firebase configuration and third-party helpers
+│   ├── types/              # TypeScript interfaces and type definitions
+│   └── utils/              # Helper functions (Image URL formatting, etc.)
+└── package.json            # Project dependencies and script declarations
+```
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js version 18.17.0 or higher
+- Package Manager: `npm`, `yarn`, `pnpm`, or `bun`
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/zianscode/portfolio-v.4.git
+cd portfolio-v4
+```
+
 2. Install dependencies:
 
 ```bash
 npm install
-# atau
-yarn install
-# atau
-pnpm install
-# atau
-bun install
 ```
 
-3. Jalankan server development:
+3. Configure Environment Variables:
+
+Create a `.env.local` file in the root directory and define the required environment variables:
+
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+```
+
+4. Run the development server:
 
 ```bash
 npm run dev
-# atau
-yarn dev
-# atau
-pnpm dev
-# atau
-bun dev
 ```
 
-Buka [http://localhost:3000](http://localhost:3000) di browser Anda untuk melihat hasilnya.
-
-## 📂 Struktur Proyek
-
-```
-portfolio-v4/
-├── app/            # Routing dengan Next.js App Router
-├── components/     # Komponen UI reusable
-├── lib/            # Utility functions
-├── styles/         # Global styles
-├── public/         # Assets statis
-└── package.json    # Dependencies
-```
-
-## 🌐 Deployment
-
-Portfolio ini sudah di-deploy di Vercel:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
-
-Atau kunjungi demo langsung di: [https://zianscode.vercel.app ](https://zianscode.vercel.app/)
-
-## 🤝 Kontribusi
-
-Meskipun ini adalah proyek pribadi, saran dan masukan selalu diterima! Buat issue atau pull request jika Anda memiliki ide perbaikan.
+Open `http://localhost:3000` in your web browser to view the application.
 
 ---
 
-© 2025 Fajar Fauzian - Dibangun dengan ❤️ dan Next.js
+## Build and Production Deployment
+
+To create an optimized production build:
+
+```bash
+npm run build
+```
+
+To run the production server locally:
+
+```bash
+npm run start
+```
+
+---
+
+## Author & License
+
+Developed and maintained by **Fajar Fauzian** (@zianscode).
+
+This project is private and proprietary. All rights reserved.
