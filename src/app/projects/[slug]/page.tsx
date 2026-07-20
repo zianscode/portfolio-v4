@@ -355,38 +355,42 @@ const ProjectDetailPage = () => {
               </div>
             )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/10">
+            <div className="grid grid-cols-2 gap-2 sm:gap-4 pt-4 border-t border-white/10">
               <Link
                 href={`/projects/${prevProject.slug}`}
-                className={`p-4 rounded-2xl border flex items-center justify-between group transition-all duration-300 ${
+                className={`p-2.5 sm:p-4 rounded-xl sm:rounded-2xl border flex items-center group transition-all duration-300 min-w-0 ${
                   isDarkMode 
                     ? "bg-neutral-900/40 border-white/10 hover:border-white/20 hover:bg-neutral-800/40" 
                     : "bg-white/50 border-neutral-200/80 hover:bg-white/80"
                 }`}
               >
-                <div className="flex items-center space-x-3">
-                  <FiArrowLeft className="text-lg transition-transform group-hover:-translate-x-1" />
-                  <div>
-                    <span className="text-[10px] uppercase font-bold text-neutral-400 tracking-wider">Previous Project</span>
-                    <h4 className="text-xs sm:text-sm font-bold truncate max-w-[180px] sm:max-w-[200px]">{prevProject.title}</h4>
+                <div className="flex items-center space-x-1.5 sm:space-x-3 min-w-0 w-full">
+                  <FiArrowLeft className="text-sm sm:text-lg shrink-0 transition-transform group-hover:-translate-x-1" />
+                  <div className="min-w-0 flex-1">
+                    <span className="text-[9px] sm:text-[10px] uppercase font-bold text-neutral-400 tracking-wider block truncate">
+                      Previous<span className="hidden sm:inline"> Project</span>
+                    </span>
+                    <h4 className="text-xs sm:text-sm font-bold truncate">{prevProject.title}</h4>
                   </div>
                 </div>
               </Link>
 
               <Link
                 href={`/projects/${nextProject.slug}`}
-                className={`p-4 rounded-2xl border flex items-center justify-between group transition-all duration-300 ${
+                className={`p-2.5 sm:p-4 rounded-xl sm:rounded-2xl border flex items-center justify-end group transition-all duration-300 min-w-0 ${
                   isDarkMode 
                     ? "bg-neutral-900/40 border-white/10 hover:border-white/20 hover:bg-neutral-800/40" 
                     : "bg-white/50 border-neutral-200/80 hover:bg-white/80"
                 }`}
               >
-                <div className="flex items-center justify-end space-x-3 w-full text-right">
-                  <div>
-                    <span className="text-[10px] uppercase font-bold text-neutral-400 tracking-wider">Next Project</span>
-                    <h4 className="text-xs sm:text-sm font-bold truncate max-w-[180px] sm:max-w-[200px]">{nextProject.title}</h4>
+                <div className="flex items-center justify-end space-x-1.5 sm:space-x-3 min-w-0 w-full text-right">
+                  <div className="min-w-0 flex-1">
+                    <span className="text-[9px] sm:text-[10px] uppercase font-bold text-neutral-400 tracking-wider block truncate">
+                      Next<span className="hidden sm:inline"> Project</span>
+                    </span>
+                    <h4 className="text-xs sm:text-sm font-bold truncate">{nextProject.title}</h4>
                   </div>
-                  <FiArrowRight className="text-lg transition-transform group-hover:translate-x-1" />
+                  <FiArrowRight className="text-sm sm:text-lg shrink-0 transition-transform group-hover:translate-x-1" />
                 </div>
               </Link>
             </div>
