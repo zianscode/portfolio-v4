@@ -18,7 +18,7 @@ export default function TabletMenu({
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className={`fixed top-4 inset-x-0 mx-auto z-50 w-[92vw] max-w-[760px] px-3.5 sm:px-5 py-2 rounded-full border flex items-center justify-between shadow-xl backdrop-blur-xl font-poppins transition-all duration-300 ${
+      className={`fixed top-4 inset-x-0 mx-auto z-50 w-[calc(100%-2rem)] max-w-[700px] xl:max-w-[830px] px-3.5 sm:px-5 py-2 rounded-full border flex items-center justify-between shadow-xl backdrop-blur-xl font-poppins transition-all duration-300 ${
         isDarkMode
           ? "bg-neutral-950/80 text-neutral-200 border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
           : "bg-white/80 text-neutral-800 border-neutral-200/60 shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
