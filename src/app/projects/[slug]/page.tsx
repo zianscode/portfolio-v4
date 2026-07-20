@@ -6,9 +6,10 @@ import { useDarkMode } from "@/context/DarkModeContext";
 import { detailedProjects } from "@/data/resume";
 import { Project } from "@/types/projects";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaGithub, FaFigma } from "react-icons/fa"; 
-import { FiArrowLeft, FiCheckCircle } from "react-icons/fi";
+import { FiArrowLeft, FiArrowRight, FiCheckCircle, FiLayers, FiCpu } from "react-icons/fi";
 import { getCleanImageUrl } from "@/utils/image";
 
 const ProjectDetailPage = () => {
@@ -55,6 +56,10 @@ const ProjectDetailPage = () => {
     );
   }
 
+  const currentIndex = detailedProjects.findIndex((p) => p.slug === project.slug);
+  const prevProject = currentIndex > 0 ? detailedProjects[currentIndex - 1] : detailedProjects[detailedProjects.length - 1];
+  const nextProject = currentIndex < detailedProjects.length - 1 ? detailedProjects[currentIndex + 1] : detailedProjects[0];
+
   return (
     <div className={`flex min-h-screen pb-16 font-poppins antialiased overflow-x-hidden ${isDarkMode ? "text-white" : "text-black"}`}>
       <main className="flex-1 min-w-0 flex flex-col items-center pt-6 sm:pt-10 md:pt-24 lg:pt-14 px-4 sm:px-6 ml-0 md:ml-0 lg:ml-6">
@@ -76,7 +81,13 @@ const ProjectDetailPage = () => {
             transition={{ duration: 0.4 }}
             className="space-y-6 sm:space-y-8"
           >
-            <div className="space-y-2">
+            <div className="space-y-2.5">
+              <div className="flex items-center gap-2">
+                <span className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center gap-1.5">
+                  <FiLayers className="text-xs" />
+                  {project.category || "Project Case Study"}
+                </span>
+              </div>
               <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-neutral-900 dark:text-white">{project.title}</h1>
               <p className={`text-[13px] sm:text-[15px] leading-relaxed font-medium ${isDarkMode ? "text-neutral-400" : "text-neutral-500"}`}>
                 {project.description}
@@ -127,7 +138,7 @@ const ProjectDetailPage = () => {
                            ? "border-neutral-900 dark:border-white ring-2 sm:ring-4 ring-neutral-900/10 dark:ring-white/10"
                            : "border-transparent opacity-50 hover:opacity-100 grayscale hover:grayscale-0"
                        }`}
-                     >
+                      >
                        <Image
                          src={getCleanImageUrl(img)}
                          alt={`Gallery ${index + 1}`}
@@ -135,25 +146,29 @@ const ProjectDetailPage = () => {
                          className="object-cover"
                          unoptimized={process.env.NODE_ENV === "development"}
                        />
-                     </button>
+                      </button>
                   ))}
                 </div>
               )}
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
-              <div className="lg:col-span-2 space-y-6 sm:space-y-10 order-2 lg:order-1">
-                <section className="space-y-3 sm:space-y-4">
-                  <h2 className="text-lg sm:text-xl font-bold flex items-center space-x-2">
-                    <span className="w-1 sm:w-1.5 h-5 sm:h-6 bg-neutral-900 dark:bg-white rounded-full"></span>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className={`lg:col-span-2 p-5 sm:p-7 rounded-2xl border flex flex-col justify-between space-y-6 ${
+                isDarkMode 
+                  ? "bg-neutral-900/40 backdrop-blur-md border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)]" 
+                  : "bg-white/50 backdrop-blur-md border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
+              }`}>
+                <div className="space-y-3">
+                  <h2 className="text-base sm:text-lg font-bold flex items-center space-x-2">
+                    <span className="w-1.5 h-5 bg-blue-500 rounded-full"></span>
                     <span>Project Description</span>
                   </h2>
-                  <p className={`text-[13px] sm:text-[15px] leading-relaxed font-medium ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
+                  <p className={`text-[13px] sm:text-[14px] leading-relaxed font-medium ${isDarkMode ? "text-neutral-300" : "text-neutral-600"}`}>
                     {project.detailedDescription}
                   </p>
-                </section>
+                </div>
 
-                <div className="flex flex-wrap items-center gap-3 pt-1 sm:pt-2"> 
+                <div className="flex flex-wrap items-center gap-3 pt-2"> 
                   {project.link && project.link !== "#" && (
                     <motion.a
                       whileHover={{ scale: 1.02 }}
@@ -161,20 +176,20 @@ const ProjectDetailPage = () => {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl font-bold text-[13px] sm:text-sm space-x-2.5 sm:space-x-3 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] ${
+                      className={`inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-xs sm:text-sm space-x-2 transition-all duration-300 shadow-sm ${
                         isDarkMode
-                          ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 text-stone-200 hover:bg-neutral-800/50 hover:shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
-                          : "bg-white/50 backdrop-blur-md border border-neutral-200/80 text-stone-800 hover:bg-white/70"
+                          ? "bg-neutral-800 text-white border border-white/15 hover:bg-neutral-700"
+                          : "bg-neutral-900 text-white hover:bg-neutral-800"
                       }`}
                     >
                       {project.link.includes("figma.com") ? (
                         <>
-                          <FaFigma className="text-lg sm:text-xl text-purple-400" /> 
+                          <FaFigma className="text-base text-purple-400" /> 
                           <span>View Figma Design</span>
                         </>
                       ) : (
                         <>
-                          <FaGithub className="text-lg sm:text-xl" /> 
+                          <FaGithub className="text-base" /> 
                           <span>Explore Source Code</span>
                         </>
                       )}
@@ -188,61 +203,116 @@ const ProjectDetailPage = () => {
                       href={project.figmaLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl font-bold text-[13px] sm:text-sm space-x-2.5 sm:space-x-3 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] ${
+                      className={`inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-xs sm:text-sm space-x-2 transition-all duration-300 shadow-sm ${
                         isDarkMode
-                          ? "bg-neutral-900/40 backdrop-blur-md border border-purple-500/20 text-purple-200 hover:bg-purple-950/30 hover:border-purple-500/40 hover:shadow-[0_4px_20px_rgba(168,85,247,0.2)]"
-                          : "bg-purple-50/60 backdrop-blur-md border border-purple-200/80 text-purple-900 hover:bg-purple-100/80"
+                          ? "bg-purple-950/40 text-purple-200 border border-purple-500/30 hover:bg-purple-900/50"
+                          : "bg-purple-50 text-purple-900 border border-purple-200 hover:bg-purple-100"
                       }`}
                     >
-                      <FaFigma className="text-lg sm:text-xl text-purple-400" /> 
+                      <FaFigma className="text-base text-purple-400" /> 
                       <span>View Figma Design</span>
                     </motion.a>
                   )}
                 </div>
               </div>
 
-              <div className="space-y-4 sm:space-y-6 lg:space-y-8 order-1 lg:order-2">
-                <div className={`p-4 sm:p-6 rounded-xl sm:rounded-2xl transition-all duration-300 space-y-3 sm:space-y-5 ${
-                  isDarkMode 
-                    ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)]" 
-                    : "bg-white/50 backdrop-blur-md border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
-                }`}>
-                  <h3 className="text-sm sm:text-base font-bold uppercase tracking-widest opacity-60">Technologies</h3>
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                    {project.technologies.map((tech, index) => (
-                      <span
-                        key={index}
-                        className={`px-2.5 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-md border ${
-                          isDarkMode
-                            ? "bg-neutral-800/80 text-neutral-300 border-neutral-700/50"
-                            : "bg-white text-neutral-600 border-neutral-200"
-                        } shadow-sm`}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+              <div className={`p-5 sm:p-7 rounded-2xl border space-y-4 ${
+                isDarkMode 
+                  ? "bg-neutral-900/40 backdrop-blur-md border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)]" 
+                  : "bg-white/50 backdrop-blur-md border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
+              }`}>
+                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-widest flex items-center gap-2 text-neutral-400">
+                  <FiCpu className="text-blue-400" /> Technologies & Tools
+                </h3>
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                  {project.technologies.map((tech, index) => (
+                    <span
+                      key={index}
+                      className={`px-3 py-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-lg border ${
+                        isDarkMode
+                          ? "bg-neutral-800/80 text-neutral-200 border-white/10"
+                          : "bg-neutral-100 text-neutral-700 border-neutral-200"
+                      } shadow-sm`}
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
-
-                {project.features && project.features.length > 0 && (
-                  <div className={`p-4 sm:p-6 rounded-xl sm:rounded-2xl transition-all duration-300 space-y-3 sm:space-y-5 ${
-                    isDarkMode 
-                      ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)]" 
-                      : "bg-white/50 backdrop-blur-md border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
-                  }`}>
-                    <h3 className="text-sm sm:text-base font-bold uppercase tracking-widest opacity-60">Key Features</h3>
-                    <ul className="space-y-3 sm:space-y-4">
-                      {project.features.map((feature, index) => (
-                        <li key={index} className="flex items-start text-[13px] sm:text-[14px] font-medium">
-                          <FiCheckCircle className="text-emerald-500 mt-0.5 mr-2.5 sm:mr-3 flex-shrink-0 text-base sm:text-lg" />
-                          <span className={isDarkMode ? "text-neutral-400" : "text-neutral-700"}>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
               </div>
             </div>
+
+            {project.features && project.features.length > 0 && (
+              <div className={`p-5 sm:p-7 rounded-2xl border space-y-6 ${
+                isDarkMode 
+                  ? "bg-neutral-900/40 backdrop-blur-md border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)]" 
+                  : "bg-white/50 backdrop-blur-md border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
+              }`}>
+                <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                  <h3 className="text-base sm:text-lg font-bold flex items-center space-x-2">
+                    <span className="w-1.5 h-5 bg-emerald-500 rounded-full"></span>
+                    <span>Key Features & Capabilities</span>
+                  </h3>
+                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    {project.features.length} Features Included
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4">
+                  {project.features.map((feature, index) => (
+                    <div 
+                      key={index} 
+                      className={`p-3.5 sm:p-4 rounded-xl border flex items-start gap-3 transition-all hover:-translate-y-0.5 ${
+                        isDarkMode 
+                          ? "bg-neutral-800/50 border-white/5 hover:border-white/15" 
+                          : "bg-white/80 border-neutral-200/80 hover:border-neutral-300"
+                      }`}
+                    >
+                      <FiCheckCircle className="text-emerald-500 mt-0.5 flex-shrink-0 text-base sm:text-lg" />
+                      <span className={`text-[13px] sm:text-[14px] font-medium leading-snug ${isDarkMode ? "text-neutral-200" : "text-neutral-700"}`}>
+                        {feature}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/10">
+              <Link
+                href={`/projects/${prevProject.slug}`}
+                className={`p-4 rounded-2xl border flex items-center justify-between group transition-all duration-300 ${
+                  isDarkMode 
+                    ? "bg-neutral-900/40 border-white/10 hover:border-white/20 hover:bg-neutral-800/40" 
+                    : "bg-white/50 border-neutral-200/80 hover:bg-white/80"
+                }`}
+              >
+                <div className="flex items-center space-x-3">
+                  <FiArrowLeft className="text-lg transition-transform group-hover:-translate-x-1" />
+                  <div>
+                    <span className="text-[10px] uppercase font-bold text-neutral-400 tracking-wider">Previous Project</span>
+                    <h4 className="text-xs sm:text-sm font-bold truncate max-w-[180px] sm:max-w-[200px]">{prevProject.title}</h4>
+                  </div>
+                </div>
+              </Link>
+
+              <Link
+                href={`/projects/${nextProject.slug}`}
+                className={`p-4 rounded-2xl border flex items-center justify-between group transition-all duration-300 ${
+                  isDarkMode 
+                    ? "bg-neutral-900/40 border-white/10 hover:border-white/20 hover:bg-neutral-800/40" 
+                    : "bg-white/50 border-neutral-200/80 hover:bg-white/80"
+                }`}
+              >
+                <div className="flex items-center justify-end space-x-3 w-full text-right">
+                  <div>
+                    <span className="text-[10px] uppercase font-bold text-neutral-400 tracking-wider">Next Project</span>
+                    <h4 className="text-xs sm:text-sm font-bold truncate max-w-[180px] sm:max-w-[200px]">{nextProject.title}</h4>
+                  </div>
+                  <FiArrowRight className="text-lg transition-transform group-hover:translate-x-1" />
+                </div>
+              </Link>
+            </div>
+
           </motion.div>
         </div>
       </main>
