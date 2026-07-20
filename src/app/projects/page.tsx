@@ -8,6 +8,8 @@ import TabHeader from "@/components/projects/TabHeader";
 import TabButtons from "@/components/projects/TabButtons";
 import ProjectItem from "@/components/projects/ProjectItem";
 import CertificateItem from "@/components/projects/CertificateItem";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
 const getProjectSpans = (total: number): string[] => {
   const rowConfigs = [
@@ -44,12 +46,19 @@ const getProjectSpans = (total: number): string[] => {
   });
 };
 
+const INITIAL_CERTIFICATE_COUNT = 4;
+
 const ProjectsPage = () => {
   const { isDarkMode } = useDarkMode();
   const [activeTab, setActiveTab] = useState<"projects" | "certificates">("projects");
+  const [showAllCertificates, setShowAllCertificates] = useState<boolean>(false);
 
-  const displayedItems = activeTab === "projects" ? [...detailedProjects].reverse() : certificates;
-  const projectSpans = activeTab === "projects" ? getProjectSpans(displayedItems.length) : [];
+  const reversedProjects = [...detailedProjects].reverse();
+  const projectSpans = getProjectSpans(reversedProjects.length);
+
+  const displayedCertificates = showAllCertificates 
+    ? certificates 
+    : certificates.slice(0, INITIAL_CERTIFICATE_COUNT);
 
   return (
     <div
@@ -62,43 +71,74 @@ const ProjectsPage = () => {
           <TabHeader activeTab={activeTab} isDarkMode={isDarkMode} />
           <TabButtons activeTab={activeTab} setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {displayedItems.map((item: Project | Certificate, index: number) => {
-              if (isProject(item)) {
-                return (
-                  <ProjectItem
-                    key={item.id}
-                    id={item.id}
-                    title={item.title}
-                    description={item.description}
-                    technologies={item.technologies}
-                    image={item.image}
-                    link={item.link}
-                    slug={item.slug}
-                    category={item.category}
-                    figmaLink={item.figmaLink}
-                    isDarkMode={isDarkMode}
-                    spanClass={projectSpans[index]}
-                  />
-                );
-              } else if (isCertificate(item)) {
-                return (
-                  <CertificateItem
-                    key={item.id}
-                    id={item.id}
-                    title={item.title}
-                    description={item.description}
-                    issuedBy={item.issuedBy}
-                    date={item.date}
-                    image={item.image}
-                    link={item.link}
-                    isDarkMode={isDarkMode}
-                  />
-                );
-              }
-              return null; 
-            })}
-          </div>
+          {activeTab === "projects" ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {reversedProjects.map((item: Project, index: number) => (
+                <ProjectItem
+                  key={item.id}
+                  id={item.id}
+                  title={item.title}
+                  description={item.description}
+                  technologies={item.technologies}
+                  image={item.image}
+                  link={item.link}
+                  slug={item.slug}
+                  category={item.category}
+                  figmaLink={item.figmaLink}
+                  isDarkMode={isDarkMode}
+                  spanClass={projectSpans[index]}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="space-y-8">
+              {/* 2-Column Grid for Certificates */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                <AnimatePresence mode="popLayout">
+                  {displayedCertificates.map((item: Certificate) => (
+                    <CertificateItem
+                      key={item.id}
+                      id={item.id}
+                      title={item.title}
+                      description={item.description}
+                      issuedBy={item.issuedBy}
+                      date={item.date}
+                      image={item.image}
+                      link={item.link}
+                      isDarkMode={isDarkMode}
+                    />
+                  ))}
+                </AnimatePresence>
+              </div>
+
+              {/* Show More / Show Less Button */}
+              {certificates.length > INITIAL_CERTIFICATE_COUNT && (
+                <div className="flex justify-center pt-2">
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => setShowAllCertificates((prev) => !prev)}
+                    className={`inline-flex items-center space-x-2 px-6 py-3 rounded-full text-xs font-bold transition-all duration-300 shadow-md ${
+                      isDarkMode
+                        ? "bg-neutral-900/60 backdrop-blur-md border border-white/15 text-stone-200 hover:bg-neutral-800 hover:border-white/30"
+                        : "bg-white/80 backdrop-blur-md border border-neutral-300 text-neutral-800 hover:bg-neutral-100 hover:border-neutral-400"
+                    }`}
+                  >
+                    <span>
+                      {showAllCertificates
+                        ? "Show Less"
+                        : `Show More Certificates (${certificates.length - INITIAL_CERTIFICATE_COUNT} More)`}
+                    </span>
+                    {showAllCertificates ? (
+                      <FiChevronUp className="text-base text-blue-400" />
+                    ) : (
+                      <FiChevronDown className="text-base text-blue-400" />
+                    )}
+                  </motion.button>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </main>
     </div>
