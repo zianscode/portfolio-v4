@@ -132,7 +132,9 @@ export const detailedProjects = [
     link: "https://github.com/zianscode/Final-Coding-Camp-DBS",
     slug: "eco-marketplace",
     gallery: [
-      "/projects/detailsprojects/eco_marketplace/marketplace.png"
+      "/projects/detailsprojects/eco_marketplace/marketplace (1).png",
+      "/projects/detailsprojects/eco_marketplace/marketplace (2).png",
+      "/projects/detailsprojects/eco_marketplace/marketplace (3).png"
     ],
     features: [
       "Advanced product search system",
