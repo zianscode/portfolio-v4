@@ -9,6 +9,8 @@ export interface Project {
   slug: string;
   gallery?: string[];
   features?: string[];
+  category?: string;
+  isFeatured?: boolean;
 }
 
 export interface ProjectProps {
@@ -21,6 +23,8 @@ export interface ProjectProps {
   slug: string;
   isDarkMode: boolean;
   spanClass?: string;
+  features?: string[];
+  category?: string;
 }
 
 export interface Certificate {

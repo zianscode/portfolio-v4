@@ -97,7 +97,7 @@ const BlogPage = () => {
         </div>
       )}
 
-      <main className="flex-1 flex justify-center pt-8 md:pt-12 px-4 md:px-8 lg:px-12 ml-0 md:ml-8">
+      <main className="flex-1 flex justify-center pt-8 md:pt-24 lg:pt-12 px-4 md:px-8 lg:px-12 ml-0 md:ml-0 lg:ml-8">
         <div className="max-w-4xl mx-auto w-full">
           <BlogHeader isDarkMode={isDarkMode} />
 

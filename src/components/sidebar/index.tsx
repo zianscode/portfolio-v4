@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useDarkMode } from "@/context/DarkModeContext";
 import DesktopMenu from "@/components/sidebar/DesktopMenu";
+import TabletMenu from "@/components/sidebar/TabletMenu";
 import MobileMenu from "@/components/sidebar/MobileMenu";
 import { usePathname } from "next/navigation";
 import MobileProfileItem from "@/components/sidebar/MobileProfileItem";
@@ -43,7 +44,18 @@ export default function Sidebar({ isLoading }: SidebarProps) {
         </div>
       )}
 
-      <div className="hidden md:block">
+      {!isLoading && (
+        <div className="hidden md:block lg:hidden">
+          <TabletMenu
+            isDarkMode={isDarkMode}
+            toggleDarkMode={toggleDarkMode}
+            menuItems={MENU_ITEMS}
+            pathname={pathname}
+          />
+        </div>
+      )}
+
+      <div className="hidden lg:block">
         <DesktopMenu
           isDarkMode={isDarkMode}
           toggleDarkMode={toggleDarkMode}

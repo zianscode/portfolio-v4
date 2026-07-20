@@ -30,6 +30,13 @@ export interface MobileMenuProps {
   prefetchNextPages?: () => void;
 }
 
+export interface TabletMenuProps {
+  isDarkMode: boolean;
+  toggleDarkMode: () => void;
+  menuItems: MenuItemType[];
+  pathname: string;
+}
+
 export interface SocialMedia {
   id: string;
   title: string;

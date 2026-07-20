@@ -71,6 +71,7 @@ export default function ProfileItem({
           src="/image/Fajar_Fauzian.jpg"
           alt="ziancode"
           fill
+          sizes="90px"
           className="object-cover"
         />
 

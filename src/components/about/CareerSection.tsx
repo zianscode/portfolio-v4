@@ -20,6 +20,32 @@ import {
 } from "@/types/career";
 import { motion } from "framer-motion";
 
+const getNodeColors = (index: number) => {
+  const colors = [
+    {
+      gradient: "from-cyan-400 via-blue-500 to-indigo-500",
+      shadow: "shadow-[0_0_12px_rgba(6,182,212,0.9)]",
+    },
+    {
+      gradient: "from-emerald-400 via-green-500 to-teal-500",
+      shadow: "shadow-[0_0_12px_rgba(16,185,129,0.9)]",
+    },
+    {
+      gradient: "from-purple-400 via-fuchsia-500 to-pink-500",
+      shadow: "shadow-[0_0_12px_rgba(192,132,252,0.9)]",
+    },
+    {
+      gradient: "from-amber-400 via-orange-500 to-yellow-500",
+      shadow: "shadow-[0_0_12px_rgba(245,158,11,0.9)]",
+    },
+    {
+      gradient: "from-rose-400 via-pink-500 to-red-500",
+      shadow: "shadow-[0_0_12px_rgba(244,63,94,0.9)]",
+    },
+  ];
+  return colors[index % colors.length];
+};
+
 const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
   const getYear = (dateString: string) => {
     if (!dateString) return "";
@@ -57,7 +83,8 @@ const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
           {data.map((item, index) => {
             const isLeft = index % 2 === 0;
             const year = getYear(item.startDate);
-            
+            const nodeColor = getNodeColors(index);
+
             return (
               <div key={item.id} className="relative flex flex-col md:flex-row items-center justify-between">
                 <div className="md:hidden absolute left-[21px] w-[6px] h-full z-0">
@@ -97,13 +124,13 @@ const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
                 <div className={`md:hidden absolute left-[15px] top-[32px] w-4 h-6 rounded-md flex items-center justify-center border-y-2 z-10 ${
                   isDarkMode ? "bg-stone-900 border-stone-700 shadow-lg" : "bg-stone-100 border-stone-300 shadow-sm"
                 }`}>
-                  <div className={`w-1.5 h-1.5 rounded-full animate-pulse bg-gradient-to-tr from-blue-500 to-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.8)]`} />
+                  <div className={`w-1.5 h-1.5 rounded-full animate-pulse bg-gradient-to-tr ${nodeColor.gradient} ${nodeColor.shadow}`} />
                 </div>
                 
                 <div className={`hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-8 rounded-lg items-center justify-center border-y-2 z-10 ${
                   isDarkMode ? "bg-stone-900 border-stone-700 shadow-xl" : "bg-stone-100 border-stone-400 shadow-md"
                 }`}>
-                  <div className={`w-2 h-2 rounded-full animate-pulse bg-gradient-to-tr from-blue-600 via-emerald-400 to-cyan-400 shadow-[0_0_12px_rgba(52,211,153,0.9)]`} />
+                  <div className={`w-2 h-2 rounded-full animate-pulse bg-gradient-to-tr ${nodeColor.gradient} ${nodeColor.shadow}`} />
                 </div>
                 
                 <div className={`w-full md:w-[46%] pl-14 pr-2 md:pl-0 md:pr-0 relative ${isLeft ? 'md:order-1' : 'md:order-3'}`}>
@@ -178,7 +205,7 @@ const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
             initial={{ x: 20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            href="https://drive.google.com/file/d/11XkR7vfboVs5C4YqMHnUYyt4yZ5ObhYy/view?usp=sharing"
+            href="https://drive.google.com/file/d/1TZtsQPPjNdiK-CqbPzfM-aq2JDR_WKSv/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className={`text-xs flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] ${

@@ -15,7 +15,7 @@ export default function GridBackground() {
   return (
     <div className="fixed inset-x-0 top-0 h-[600px] pointer-events-none z-0 overflow-hidden">
       <div 
-        className="absolute inset-0 w-full h-full hidden sm:block"
+        className="absolute inset-0 w-full h-full hidden lg:block"
         style={{
           backgroundImage: `
             linear-gradient(to right, ${lineColor} 1px, transparent 1px),
@@ -28,7 +28,7 @@ export default function GridBackground() {
       />
 
       <div 
-        className="absolute inset-0 w-full h-full sm:hidden top-[70px]"
+        className="absolute inset-0 w-full h-full lg:hidden top-[75px]"
         style={{
           backgroundImage: `
             linear-gradient(to right, ${lineColor} 1px, transparent 1px),

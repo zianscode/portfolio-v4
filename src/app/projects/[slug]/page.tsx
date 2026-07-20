@@ -7,7 +7,7 @@ import { detailedProjects } from "@/data/resume";
 import { Project } from "@/types/projects";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FaGithub } from "react-icons/fa"; 
+import { FaGithub, FaFigma } from "react-icons/fa"; 
 import { FiArrowLeft, FiCheckCircle } from "react-icons/fi";
 import { getCleanImageUrl } from "@/utils/image";
 
@@ -57,7 +57,7 @@ const ProjectDetailPage = () => {
 
   return (
     <div className={`flex min-h-screen pb-16 font-poppins antialiased overflow-x-hidden ${isDarkMode ? "text-white" : "text-black"}`}>
-      <main className="flex-1 min-w-0 flex flex-col items-center pt-6 sm:pt-10 md:pt-16 lg:pt-14 px-4 sm:px-6 ml-0 md:ml-6">
+      <main className="flex-1 min-w-0 flex flex-col items-center pt-6 sm:pt-10 md:pt-24 lg:pt-14 px-4 sm:px-6 ml-0 md:ml-0 lg:ml-6">
         <div className="w-full min-w-0 max-w-[700px] xl:max-w-[830px] space-y-6 sm:space-y-8">
           
           <button
@@ -167,8 +167,17 @@ const ProjectDetailPage = () => {
                           : "bg-white/50 backdrop-blur-md border border-neutral-200/80 text-stone-800 hover:bg-white/70"
                       }`}
                     >
-                      <FaGithub className="text-lg sm:text-xl" /> 
-                      <span>Explore Source Code</span>
+                      {project.link.includes("figma.com") ? (
+                        <>
+                          <FaFigma className="text-lg sm:text-xl text-purple-400" /> 
+                          <span>View Figma Design</span>
+                        </>
+                      ) : (
+                        <>
+                          <FaGithub className="text-lg sm:text-xl" /> 
+                          <span>Explore Source Code</span>
+                        </>
+                      )}
                     </motion.a>
                   </div>
                 )}
