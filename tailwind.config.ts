@@ -12,6 +12,9 @@ const config: Config = {
   darkMode: ["class"], 
   theme: {
     extend: {
+      screens: {
+        lg: "1551px",
+      },
       colors: {
         background: "var(--background)", 
         foreground: "var(--foreground)", 
