@@ -134,7 +134,6 @@ export const detailedProjects = [
     gallery: [
       "/projects/detailsprojects/eco_marketplace/marketplace (1).png",
       "/projects/detailsprojects/eco_marketplace/marketplace (2).png",
-      "/projects/detailsprojects/eco_marketplace/marketplace (3).png"
     ],
     features: [
       "Advanced product search system",
@@ -156,7 +155,8 @@ export const detailedProjects = [
     figmaLink: "https://www.figma.com/design/2uKGYZmrdia2xzuprG3tC5/Kedai-KopiO?node-id=0-1&t=r0v60Dy8nRs10tGf-1",
     slug: "kedai-kopi-o",
     gallery: [
-      "/projects/detailsprojects/kedai_kopio/kko.png",
+      "/projects/detailsprojects/kedai_kopio/kko (1).png",
+      "/projects/detailsprojects/kedai_kopio/kko (2).png",
     ],
     features: [
       "Catalog & Product Search",
