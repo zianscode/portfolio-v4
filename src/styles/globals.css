@@ -136,16 +136,16 @@ html {
 }
 
 .shooting-star-1 {
-  animation: shootingStarAnim 3.4s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+  animation: shootingStarAnim 3.6s linear infinite;
   animation-delay: 0s;
 }
 
 .shooting-star-2 {
-  animation: shootingStarAnim 4.0s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
-  animation-delay: 3.8s;
+  animation: shootingStarAnim 3.6s linear infinite;
+  animation-delay: -1.2s;
 }
 
 .shooting-star-3 {
-  animation: shootingStarAnim 3.1s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
-  animation-delay: 7.5s;
+  animation: shootingStarAnim 3.6s linear infinite;
+  animation-delay: -2.4s;
 }
