@@ -70,9 +70,6 @@ const ProjectDetailPage = () => {
     setActiveImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
   };
 
-  const currentIndex = detailedProjects.findIndex((p) => p.slug === project.slug);
-  const prevProject = currentIndex > 0 ? detailedProjects[currentIndex - 1] : detailedProjects[detailedProjects.length - 1];
-  const nextProject = currentIndex < detailedProjects.length - 1 ? detailedProjects[currentIndex + 1] : detailedProjects[0];
 
   return (
     <div className={`flex min-h-screen pb-16 font-poppins antialiased overflow-x-hidden ${isDarkMode ? "text-white" : "text-black"}`}>
@@ -355,45 +352,6 @@ const ProjectDetailPage = () => {
               </div>
             )}
 
-            <div className="grid grid-cols-2 gap-2 sm:gap-4 pt-4 border-t border-white/10">
-              <Link
-                href={`/projects/${prevProject.slug}`}
-                className={`p-2.5 sm:p-4 rounded-xl sm:rounded-2xl border flex items-center group transition-all duration-300 min-w-0 ${
-                  isDarkMode 
-                    ? "bg-neutral-900/40 border-white/10 hover:border-white/20 hover:bg-neutral-800/40" 
-                    : "bg-white/50 border-neutral-200/80 hover:bg-white/80"
-                }`}
-              >
-                <div className="flex items-center space-x-1.5 sm:space-x-3 min-w-0 w-full">
-                  <FiArrowLeft className="text-sm sm:text-lg shrink-0 transition-transform group-hover:-translate-x-1" />
-                  <div className="min-w-0 flex-1">
-                    <span className="text-[9px] sm:text-[10px] uppercase font-bold text-neutral-400 tracking-wider block truncate">
-                      Previous<span className="hidden sm:inline"> Project</span>
-                    </span>
-                    <h4 className="text-xs sm:text-sm font-bold truncate">{prevProject.title}</h4>
-                  </div>
-                </div>
-              </Link>
-
-              <Link
-                href={`/projects/${nextProject.slug}`}
-                className={`p-2.5 sm:p-4 rounded-xl sm:rounded-2xl border flex items-center justify-end group transition-all duration-300 min-w-0 ${
-                  isDarkMode 
-                    ? "bg-neutral-900/40 border-white/10 hover:border-white/20 hover:bg-neutral-800/40" 
-                    : "bg-white/50 border-neutral-200/80 hover:bg-white/80"
-                }`}
-              >
-                <div className="flex items-center justify-end space-x-1.5 sm:space-x-3 min-w-0 w-full text-right">
-                  <div className="min-w-0 flex-1">
-                    <span className="text-[9px] sm:text-[10px] uppercase font-bold text-neutral-400 tracking-wider block truncate">
-                      Next<span className="hidden sm:inline"> Project</span>
-                    </span>
-                    <h4 className="text-xs sm:text-sm font-bold truncate">{nextProject.title}</h4>
-                  </div>
-                  <FiArrowRight className="text-sm sm:text-lg shrink-0 transition-transform group-hover:translate-x-1" />
-                </div>
-              </Link>
-            </div>
 
           </motion.div>
         </div>
