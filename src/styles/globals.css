@@ -116,3 +116,36 @@ html {
   outline: none;
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
 }
+
+/* Shooting Star Animation Rules */
+@keyframes shootingStarAnim {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.7);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  65% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(-950px, 950px, 0) scale(1.1);
+    opacity: 0;
+  }
+}
+
+.shooting-star-1 {
+  animation: shootingStarAnim 3.4s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+  animation-delay: 0s;
+}
+
+.shooting-star-2 {
+  animation: shootingStarAnim 4.0s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+  animation-delay: 3.8s;
+}
+
+.shooting-star-3 {
+  animation: shootingStarAnim 3.1s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+  animation-delay: 7.5s;
+}
