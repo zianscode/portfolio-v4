@@ -16,6 +16,7 @@ interface AppContentProps {
 }
 
 import GridBackground from "@/components/GridBackground";
+import ShootingStars from "@/components/ShootingStars";
 import ChatRoomButton from "@/components/ChatRoomButton";
 
 function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
@@ -25,6 +26,7 @@ function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
     <>
       <div className={`fixed inset-0 z-[-1] ${mounted ? (isDarkMode ? 'bg-neutral-950' : 'bg-white') : ''}`} />
       <GridBackground />
+      <ShootingStars />
       <AnimatePresence>
         {isLoading && (
           <motion.div
