@@ -19,9 +19,12 @@ const ProjectItem = ({
   isDarkMode,
   spanClass = "md:col-span-1",
   category,
+  figmaLink,
 }: ProjectProps) => {
   const isGithubLink = link && link.includes("github.com");
-  const isFigmaLink = link && link.includes("figma.com");
+  const hasFigma = (link && link.includes("figma.com")) || (figmaLink && figmaLink.includes("figma.com"));
+  const figmaUrl = (link && link.includes("figma.com")) ? link : figmaLink;
+
   const visibleTechs = technologies ? technologies.slice(0, 3) : [];
   const remainingTechCount = technologies ? Math.max(0, technologies.length - 3) : 0;
 
@@ -58,9 +61,9 @@ const ProjectItem = ({
           </div>
 
           <div className="flex items-center gap-2 pointer-events-auto">
-            {isFigmaLink && (
+            {hasFigma && figmaUrl && (
               <a
-                href={link}
+                href={figmaUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
@@ -143,16 +146,18 @@ const ProjectItem = ({
               <span className="text-[11px] font-bold text-neutral-300 flex items-center gap-1 group-hover:text-blue-400 transition-colors">
                 View Details <FiArrowUpRight className="text-xs" />
               </span>
-              {isFigmaLink && (
-                <span className="text-[10px] font-medium text-purple-300 flex items-center gap-1">
-                  <FaFigma className="text-xs" /> Figma Design
-                </span>
-              )}
-              {isGithubLink && (
-                <span className="text-[10px] font-medium text-neutral-400 flex items-center gap-1">
-                  <FaGithub className="text-xs" /> GitHub Repo
-                </span>
-              )}
+              <div className="flex items-center gap-2">
+                {hasFigma && (
+                  <span className="text-[10px] font-medium text-purple-300 flex items-center gap-1">
+                    <FaFigma className="text-xs" /> Figma Design
+                  </span>
+                )}
+                {isGithubLink && (
+                  <span className="text-[10px] font-medium text-neutral-400 flex items-center gap-1">
+                    <FaGithub className="text-xs" /> GitHub Repo
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         </Link>

@@ -76,6 +76,7 @@ const ProjectsPage = () => {
                     link={item.link}
                     slug={item.slug}
                     category={item.category}
+                    figmaLink={item.figmaLink}
                     isDarkMode={isDarkMode}
                     spanClass={projectSpans[index]}
                   />

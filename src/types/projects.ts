@@ -11,6 +11,7 @@ export interface Project {
   features?: string[];
   category?: string;
   isFeatured?: boolean;
+  figmaLink?: string;
 }
 
 export interface ProjectProps {
@@ -25,6 +26,7 @@ export interface ProjectProps {
   spanClass?: string;
   features?: string[];
   category?: string;
+  figmaLink?: string;
 }
 
 export interface Certificate {

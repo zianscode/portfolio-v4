@@ -153,15 +153,15 @@ const ProjectDetailPage = () => {
                   </p>
                 </section>
 
-                {project.link && project.link !== "#" && (
-                  <div className="pt-1 sm:pt-2"> 
+                <div className="flex flex-wrap items-center gap-3 pt-1 sm:pt-2"> 
+                  {project.link && project.link !== "#" && (
                     <motion.a
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-4 rounded-xl font-bold text-[13px] sm:text-sm space-x-2.5 sm:space-x-3 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] ${
+                      className={`inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl font-bold text-[13px] sm:text-sm space-x-2.5 sm:space-x-3 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] ${
                         isDarkMode
                           ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 text-stone-200 hover:bg-neutral-800/50 hover:shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
                           : "bg-white/50 backdrop-blur-md border border-neutral-200/80 text-stone-800 hover:bg-white/70"
@@ -179,8 +179,26 @@ const ProjectDetailPage = () => {
                         </>
                       )}
                     </motion.a>
-                  </div>
-                )}
+                  )}
+
+                  {project.figmaLink && !project.link?.includes("figma.com") && (
+                    <motion.a
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      href={project.figmaLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl font-bold text-[13px] sm:text-sm space-x-2.5 sm:space-x-3 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] ${
+                        isDarkMode
+                          ? "bg-neutral-900/40 backdrop-blur-md border border-purple-500/20 text-purple-200 hover:bg-purple-950/30 hover:border-purple-500/40 hover:shadow-[0_4px_20px_rgba(168,85,247,0.2)]"
+                          : "bg-purple-50/60 backdrop-blur-md border border-purple-200/80 text-purple-900 hover:bg-purple-100/80"
+                      }`}
+                    >
+                      <FaFigma className="text-lg sm:text-xl text-purple-400" /> 
+                      <span>View Figma Design</span>
+                    </motion.a>
+                  )}
+                </div>
               </div>
 
               <div className="space-y-4 sm:space-y-6 lg:space-y-8 order-1 lg:order-2">
