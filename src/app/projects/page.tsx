@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useDarkMode } from "@/context/DarkModeContext";
 import { detailedProjects, certificates } from "@/data/resume";
-import { Project, Certificate, isProject, isCertificate } from "@/types/projects";
+import { Project, Certificate } from "@/types/projects";
 import TabHeader from "@/components/projects/TabHeader";
 import TabButtons from "@/components/projects/TabButtons";
 import ProjectItem from "@/components/projects/ProjectItem";
