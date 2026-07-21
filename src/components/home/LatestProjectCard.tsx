@@ -28,20 +28,20 @@ const LatestProjectCard = ({ project, index }: LatestProjectCardProps) => {
               ${isDarkMode 
                 ? "border-neutral-800 bg-neutral-900/30 dark:shadow-[0_4px_15px_rgba(0,0,0,0.25)] dark:group-hover:shadow-[0_12px_30px_rgba(0,0,0,0.55)]" 
                 : "border-neutral-200 bg-white/30"
-              } h-44 md:h-32`}
+              } h-28 sm:h-36 md:h-32`}
           >
             <Image
               src={getCleanImageUrl(project.src)}
               alt={project.title}
               fill
               className="object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"
-              sizes="(max-width: 768px) 100vw, 260px"
+              sizes="(max-width: 768px) 50vw, 260px"
               priority={index < 2}
               unoptimized={process.env.NODE_ENV === "development"}
             />
             <div className="absolute inset-0 shadow-[inset_0_0_15px_rgba(0,0,0,0.35)] pointer-events-none z-10 rounded-xl" />
 
-            <div className="absolute bottom-2 left-2 px-2 py-0.5 text-[8px] font-bold rounded bg-black/45 backdrop-blur-md border border-white/10 text-white/90 z-10 transition-opacity duration-300 group-hover:opacity-0">
+            <div className="absolute bottom-2 left-2 px-1.5 py-0.5 text-[8px] font-bold rounded bg-black/45 backdrop-blur-md border border-white/10 text-white/90 z-10 transition-opacity duration-300 group-hover:opacity-0">
               {project.date.split(",")[1]?.trim() || "Project"}
             </div>
 
@@ -56,7 +56,7 @@ const LatestProjectCard = ({ project, index }: LatestProjectCardProps) => {
 
           <div className="flex flex-col gap-0.5 px-0.5">
             <p
-              className={`font-semibold font-poppins leading-snug truncate text-[14px] md:text-[13px] ${
+              className={`font-semibold font-poppins leading-snug truncate text-xs sm:text-[14px] md:text-[13px] ${
                  isDarkMode ? "text-neutral-200" : "text-neutral-800"
               }`}
             >

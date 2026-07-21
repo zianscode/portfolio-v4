@@ -44,7 +44,7 @@ const LatestProject = () => {
             </p>
           </div>
 
-          <div className="sm:hidden">
+          <div className="md:hidden">
             <Link href="/projects">
               <motion.div
                 className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm flex items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap cursor-pointer ${
@@ -62,7 +62,7 @@ const LatestProject = () => {
           </div>
         </div>
 
-        <div className="hidden sm:block">
+        <div className="hidden md:block">
           <Link href="/projects" passHref>
             <motion.div
               className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm flex items-center gap-2 transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95 whitespace-nowrap cursor-pointer ${
@@ -80,25 +80,22 @@ const LatestProject = () => {
         </div>
       </div>
 
-      <div className="sm:hidden no-scrollbar mt-4 overflow-x-scroll overflow-y-visible snap-x snap-mandatory pb-2">
-        <div className="flex">
-          {projects.map((project, index) => (
-            <div
-              key={`${project.title}-${index}`}
-              className="min-w-full snap-center px-0.5"
-            >
-              <LatestProjectCard
-                project={project}
-                index={index}
-              />
-            </div>
-          ))}
-        </div>
+      {/* Mobile Grid Layout (< 768px / md:hidden): 2 Columns */}
+      <div className="md:hidden grid grid-cols-2 gap-2.5 sm:gap-3.5 mt-4">
+        {projects.map((project, index) => (
+          <div key={`${project.title}-${index}`}>
+            <LatestProjectCard
+              project={project}
+              index={index}
+            />
+          </div>
+        ))}
       </div>
 
+      {/* Tablet / Desktop Carousel Layout (>= 768px / hidden md:flex) */}
       <div
         ref={carouselRef}
-        className="hidden sm:flex no-scrollbar mt-4 flex-row space-x-4 overflow-x-auto pt-2 pb-4 snap-x snap-proximity"
+        className="hidden md:flex no-scrollbar mt-4 flex-row space-x-4 overflow-x-auto pt-2 pb-4 snap-x snap-proximity"
       >
         {projects.map((project, index) => (
           <div key={`${project.title}-${index}`} className="snap-start">
