@@ -63,10 +63,11 @@ const LatestProject = () => {
         </div>
       </div>
 
-      {/* Horizontal Carousel with Responsive Visible Card Count:
-          - Screen >= 768px (md:): 3 cards visible (w-[calc(33.333%-11px)])
-          - Screen 500px - 767px (sm:): 2 cards visible (w-[calc(50%-8px)])
-          - Screen < 500px: 1 card visible (w-full)
+      {/* Responsive Horizontal Carousel:
+          - Wide Desktop (>= 1024px): original card width lg:w-[250px] xl:w-[260px] (4+ cards visible)
+          - Tablet (768px - 1023px): 3 cards visible (md:w-[calc(33.333%-11px)])
+          - Small Tablet (500px - 767px): 2 cards visible (sm:w-[calc(50%-8px)])
+          - Mobile (< 500px): 1 card visible (w-full)
       */}
       <div
         ref={carouselRef}
@@ -75,7 +76,7 @@ const LatestProject = () => {
         {projects.map((project, index) => (
           <div
             key={`${project.title}-${index}`}
-            className="snap-start flex-shrink-0 w-full sm:w-[calc(50%-8px)] md:w-[calc(33.333%-11px)]"
+            className="snap-start flex-shrink-0 w-full sm:w-[calc(50%-8px)] md:w-[calc(33.333%-11px)] lg:w-[250px] xl:w-[260px]"
           >
             <LatestProjectCard project={project} index={index} />
           </div>
