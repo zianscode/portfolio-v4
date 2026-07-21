@@ -6,10 +6,9 @@ import { useDarkMode } from "@/context/DarkModeContext";
 import { detailedProjects } from "@/data/resume";
 import { Project } from "@/types/projects";
 import Image from "next/image";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaFigma } from "react-icons/fa"; 
-import { FiArrowLeft, FiArrowRight, FiCheckCircle, FiLayers, FiCpu, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { FiArrowLeft, FiCheckCircle, FiLayers, FiCpu, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { getCleanImageUrl } from "@/utils/image";
 
 const ProjectDetailPage = () => {
