@@ -91,7 +91,7 @@ const LatestProject = () => {
         {projects.map((project, index) => (
           <div
             key={`${project.title}-${index}`}
-            className="snap-start flex-shrink-0 w-[calc(50%-6px)] md:w-auto"
+            className="snap-start flex-shrink-0 w-full sm:w-[calc(50%-6px)] md:w-auto"
           >
             <LatestProjectCard project={project} index={index} />
           </div>
