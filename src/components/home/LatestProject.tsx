@@ -80,25 +80,22 @@ const LatestProject = () => {
         </div>
       </div>
 
-      <div className="sm:hidden no-scrollbar mt-4 overflow-x-scroll overflow-y-visible snap-x snap-mandatory pb-2">
-        <div className="flex">
-          {projects.map((project, index) => (
-            <div
-              key={`${project.title}-${index}`}
-              className="min-w-full snap-center px-0.5"
-            >
-              <LatestProjectCard
-                project={project}
-                index={index}
-              />
-            </div>
-          ))}
-        </div>
+      {/* Mobile / Narrow Screen View (< 768px / md:hidden): 2-Column Grid for clean layout */}
+      <div className="md:hidden grid grid-cols-2 gap-3 mt-4">
+        {projects.map((project, index) => (
+          <div key={`${project.title}-${index}`}>
+            <LatestProjectCard
+              project={project}
+              index={index}
+            />
+          </div>
+        ))}
       </div>
 
+      {/* Tablet / Desktop View (>= 768px / hidden md:flex): Original Carousel */}
       <div
         ref={carouselRef}
-        className="hidden sm:flex no-scrollbar mt-4 flex-row space-x-4 overflow-x-auto pt-2 pb-4 snap-x snap-proximity"
+        className="hidden md:flex no-scrollbar mt-4 flex-row space-x-4 overflow-x-auto pt-2 pb-4 snap-x snap-proximity"
       >
         {projects.map((project, index) => (
           <div key={`${project.title}-${index}`} className="snap-start">
