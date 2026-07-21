@@ -32,7 +32,7 @@ export default function TabletMenu({
       {/* 1. LAYAR 1200px - 1550px: NAVBAR LENGKAP HORIZONTAL (SINGLE PILL) */}
       {/* ============================================================ */}
       <div
-        className={`hidden min-[1200px]:flex px-3.5 sm:px-5 py-2 rounded-full border items-center justify-between shadow-xl backdrop-blur-xl transition-all duration-300 ${
+        className={`hidden min-[1300px]:flex px-3.5 sm:px-5 py-2 rounded-full border items-center justify-between shadow-xl backdrop-blur-xl transition-all duration-300 ${
           isDarkMode
             ? "bg-neutral-950/85 text-neutral-200 border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
             : "bg-white/85 text-neutral-800 border-neutral-200/60 shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
@@ -104,7 +104,7 @@ export default function TabletMenu({
       {/* ============================================================ */}
       {/* 2. LAYAR 700px - 1199px (DI BAWAH 1200px): HEADER PILL TERPISAH + DROPDOWN 1 KOLOM */}
       {/* ============================================================ */}
-      <div className="flex min-[1200px]:hidden justify-between items-start pointer-events-none">
+      <div className="flex min-[1300px]:hidden justify-between items-start pointer-events-none">
         {/* Left Floating Pill: Profile Avatar & Name */}
         <div
           className={`pointer-events-auto px-3.5 py-1.5 rounded-full border flex items-center gap-2.5 shadow-xl backdrop-blur-xl transition-all duration-300 ${
