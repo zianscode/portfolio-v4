@@ -80,29 +80,20 @@ const LatestProject = () => {
         </div>
       </div>
 
-      {/* Mobile / Narrow Screen View (< 768px / md:hidden): 2-Column Grid for clean layout */}
-      <div className="md:hidden grid grid-cols-2 gap-3 mt-4">
-        {projects.map((project, index) => (
-          <div key={`${project.title}-${index}`}>
-            <LatestProjectCard
-              project={project}
-              index={index}
-            />
-          </div>
-        ))}
-      </div>
-
-      {/* Tablet / Desktop View (>= 768px / hidden md:flex): Original Carousel */}
+      {/* Horizontal Carousel (Active across all screen sizes).
+          On screens < 768px (e.g. 767px), each card takes flex-shrink-0 w-[calc(50%-6px)] 
+          so exactly 2 cards are visible at a time in the carousel!
+      */}
       <div
         ref={carouselRef}
-        className="hidden md:flex no-scrollbar mt-4 flex-row space-x-4 overflow-x-auto pt-2 pb-4 snap-x snap-proximity"
+        className="no-scrollbar mt-4 flex flex-row gap-3 sm:gap-4 overflow-x-auto pt-2 pb-4 snap-x snap-mandatory"
       >
         {projects.map((project, index) => (
-          <div key={`${project.title}-${index}`} className="snap-start">
-            <LatestProjectCard
-              project={project}
-              index={index}
-            />
+          <div
+            key={`${project.title}-${index}`}
+            className="snap-start flex-shrink-0 w-[calc(50%-6px)] md:w-auto"
+          >
+            <LatestProjectCard project={project} index={index} />
           </div>
         ))}
       </div>
