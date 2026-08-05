@@ -40,7 +40,7 @@ export default function GridBackground() {
         }}
       />
 
-      <div className="absolute inset-0 backdrop-blur-[1px]" 
+      <div className="hidden lg:block absolute inset-0 backdrop-blur-[1px]" 
            style={{ 
              maskImage: 'radial-gradient(ellipse at top center, transparent 20%, black 100%)',
              WebkitMaskImage: 'radial-gradient(ellipse at top center, transparent 20%, black 100%)' 

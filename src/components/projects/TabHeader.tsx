@@ -42,7 +42,7 @@ const TabHeader = ({ activeTab, isDarkMode }: TabHeaderProps) => {
           }`}
         >
           {activeTab === "projects"
-            ? "Showcasing my passion for technology, design, and problem-solving through code."
+            ? "Showcasing my passion for technology, design, and problem solving through code."
             : "A collection of certifications that validate my skills and knowledge."}
         </p>
       </div>

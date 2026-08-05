@@ -15,8 +15,8 @@ export default function RootLayoutClient({
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-      setTimeout(() => setIsInitialLoad(false), 500);
-    }, 1500);
+      setTimeout(() => setIsInitialLoad(false), 300);
+    }, 300);
 
     return () => clearTimeout(timer);
   }, []);

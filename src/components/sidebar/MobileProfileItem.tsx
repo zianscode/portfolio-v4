@@ -38,11 +38,11 @@ export default function MobileProfileItem({
       style={{
         backgroundColor: scrolled
           ? isDarkMode
-            ? "rgba(10, 10, 10, 0.55)"
-            : "rgba(255, 255, 255, 0.55)"
+            ? "rgba(10, 10, 10, 0.85)"
+            : "rgba(255, 255, 255, 0.85)"
           : "transparent",
-        backdropFilter: scrolled ? "blur(20px) saturate(180%)" : "blur(0px)",
-        WebkitBackdropFilter: scrolled ? "blur(20px) saturate(180%)" : "blur(0px)",
+        backdropFilter: scrolled ? "blur(8px)" : "blur(0px)",
+        WebkitBackdropFilter: scrolled ? "blur(8px)" : "blur(0px)",
         borderBottom: scrolled
           ? isDarkMode
             ? "1px solid rgba(255,255,255,0.08)"
@@ -91,15 +91,9 @@ export default function MobileProfileItem({
                 Fajar Fauzian
               </h2>
             </Link>
-            <motion.div
-              animate={{
-                scale: [0.8, 1, 0.8],
-                opacity: [0.8, 1, 0.8],
-              }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            >
+            <div>
               <RiVerifiedBadgeFill className="text-blue-500" size={12} />
-            </motion.div>
+            </div>
           </div>
           <a
             href={DEVTO_PROFILE}

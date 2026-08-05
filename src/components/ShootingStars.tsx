@@ -15,7 +15,7 @@ function Classic5PointStar({ sizeClass }: { sizeClass: string }) {
 
 export default function ShootingStars() {
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden z-[1]">
+    <div className="hidden md:block fixed inset-0 pointer-events-none overflow-hidden z-[1]">
       {/* Shooting Star 1 */}
       <div 
         className="absolute top-[-20px] right-[10%] shooting-star-1"

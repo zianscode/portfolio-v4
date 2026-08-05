@@ -20,6 +20,15 @@ body {
   box-sizing: border-box;
 }
 
+@media (max-width: 767px) {
+  html, body {
+    -webkit-overflow-scrolling: touch;
+  }
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
 /* Custom scrollbar styling (subtle and matches theme) */
 html::-webkit-scrollbar {
   width: 6px;
