@@ -17,7 +17,7 @@ interface AppContentProps {
 
 import GridBackground from "@/components/GridBackground";
 import ShootingStars from "@/components/ShootingStars";
-import ChatRoomButton from "@/components/ChatRoomButton";
+import ChatRoomButton from "@/components/chatroom/ChatRoomButton";
 
 function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
   const { isDarkMode, mounted } = useDarkMode();
@@ -46,7 +46,6 @@ function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
       <div
         className="flex flex-1 overflow-x-hidden pt-12 md:pt-0 relative z-10"
       >
-        {/* Sidebar dengan animasi masuk/keluar */}
         <AnimatePresence>
           <motion.div
             className="relative z-[1001]"

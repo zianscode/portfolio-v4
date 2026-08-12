@@ -1,4 +1,3 @@
-// types/blog.ts
 export interface BlogPost {
     id: number;
     title: string;
@@ -16,7 +15,6 @@ export interface BlogPost {
     posts: BlogPost[];
   }
   
-  // This is the improved interface with string indexing support
   export interface Categories {
     [key: string]: CategoryData;
   }

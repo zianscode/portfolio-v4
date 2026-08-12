@@ -93,7 +93,7 @@ const ProjectsPage = () => {
           ) : (
             <div className="space-y-8">
               {/* 2-Column Grid for Certificates */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <AnimatePresence mode="popLayout">
                   {displayedCertificates.map((item: Certificate) => (
                     <CertificateItem

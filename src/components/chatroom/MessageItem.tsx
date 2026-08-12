@@ -62,7 +62,6 @@ const MessageItem = ({
       />
 
       <div className={`flex flex-col max-w-[75%] ${isOwner ? 'items-end' : 'items-start'}`}>
-        {/* Username + Timestamp + Actions */}
         <div className={`flex items-center gap-2 mb-1 ${isOwner ? 'flex-row-reverse' : ''}`}>
           <p className={`font-semibold text-sm ${isDarkMode ? "text-stone-300" : "text-stone-700"}`}>
             {message.username}

@@ -10,11 +10,6 @@ interface Message {
   timestamp: Date;
 }
 
-/**
- * Mengirim pesan ke Firestore.
- * @param username - Nama pengguna yang mengirim pesan.
- * @param message - Isi pesan yang akan dikirim.
- */
 export const sendMessage = async (username: string, message: string): Promise<void> => {
   if (!message.trim()) return;
 
@@ -30,11 +25,6 @@ export const sendMessage = async (username: string, message: string): Promise<vo
   }
 };
 
-/**
- * Mendapatkan pesan dari Firestore secara real-time.
- * @param callback - Fungsi yang akan dipanggil setiap kali ada perubahan pada pesan.
- * @returns Fungsi unsubscribe untuk menghentikan listener.
- */
 export const getMessages = (callback: (messages: Message[]) => void): (() => void) => {
   const q = query(messagesRef, orderBy("timestamp", "asc"));
 

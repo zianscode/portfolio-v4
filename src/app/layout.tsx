@@ -49,11 +49,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/*
-        suppressHydrationWarning di <head> mencegah React throw error
-        ketika browser extension (mobile simulator) memodifikasi DOM <head>
-        sebelum React selesai hydrate.
-      */}
       <head suppressHydrationWarning />
       <body className={`${poppins.variable} ${sora.variable} antialiased`} suppressHydrationWarning>
         <RootLayoutClient>

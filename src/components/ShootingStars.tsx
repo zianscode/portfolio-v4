@@ -16,47 +16,35 @@ function Classic5PointStar({ sizeClass }: { sizeClass: string }) {
 export default function ShootingStars() {
   return (
     <div className="hidden md:block fixed inset-0 pointer-events-none overflow-hidden z-[1]">
-      {/* Shooting Star 1 */}
       <div 
         className="absolute top-[-20px] right-[10%] shooting-star-1"
         style={{ willChange: "transform, opacity" }}
       >
         <div className="relative rotate-[135deg] flex items-center">
-          {/* Soft Fading Vapor Trail */}
           <div className="absolute right-2 h-[8px] w-[160px] rounded-full blur-[6px] bg-gradient-to-r from-transparent via-neutral-950/10 to-neutral-950/25 dark:via-white/10 dark:to-white/30" />
-          {/* Subtle Core Streak */}
           <div className="h-[1px] w-[110px] rounded-full bg-gradient-to-r from-transparent via-neutral-950/25 to-neutral-950/60 dark:via-white/30 dark:to-white/70" />
-          {/* Classic 5-point Star Head */}
           <Classic5PointStar sizeClass="w-3 h-3" />
         </div>
       </div>
 
-      {/* Shooting Star 2 */}
       <div 
         className="absolute top-[8%] right-[-10px] shooting-star-2"
         style={{ willChange: "transform, opacity" }}
       >
         <div className="relative rotate-[135deg] flex items-center">
-          {/* Soft Fading Vapor Trail */}
           <div className="absolute right-2 h-[10px] w-[180px] rounded-full blur-[7px] bg-gradient-to-r from-transparent via-neutral-950/10 to-neutral-950/25 dark:via-white/10 dark:to-white/30" />
-          {/* Subtle Core Streak */}
           <div className="h-[1px] w-[125px] rounded-full bg-gradient-to-r from-transparent via-neutral-950/25 to-neutral-950/60 dark:via-white/30 dark:to-white/70" />
-          {/* Classic 5-point Star Head */}
           <Classic5PointStar sizeClass="w-3.5 h-3.5" />
         </div>
       </div>
 
-      {/* Shooting Star 3 */}
       <div 
         className="absolute top-[22%] right-[28%] shooting-star-3"
         style={{ willChange: "transform, opacity" }}
       >
         <div className="relative rotate-[135deg] flex items-center">
-          {/* Soft Fading Vapor Trail */}
           <div className="absolute right-2 h-[7px] w-[130px] rounded-full blur-[5px] bg-gradient-to-r from-transparent via-neutral-950/10 to-neutral-950/25 dark:via-white/10 dark:to-white/30" />
-          {/* Subtle Core Streak */}
           <div className="h-[1px] w-[85px] rounded-full bg-gradient-to-r from-transparent via-neutral-950/25 to-neutral-950/60 dark:via-white/30 dark:to-white/70" />
-          {/* Classic 5-point Star Head */}
           <Classic5PointStar sizeClass="w-2.5 h-2.5" />
         </div>
       </div>

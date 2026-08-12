@@ -1,4 +1,3 @@
-// components/blog/BlogSearch.tsx
 "use client";
 
 interface BlogSearchProps {

@@ -39,7 +39,6 @@ function RoadmapItem({ item, isDarkMode }: RoadmapItemProps) {
   const Icon = item.icon;
   const [isHovered, setIsHovered] = useState(false);
   
-  // Extract hex color from item.color class if it is like text-[#123456]
   const hexColor = item.color.match(/#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})/)?.[0] || 
                    (item.color.includes('blue') ? '#3b82f6' : 
                     item.color.includes('amber') ? '#f59e0b' : 

@@ -80,10 +80,6 @@ const LatestProject = () => {
         </div>
       </div>
 
-      {/* Horizontal Carousel (Active across all screen sizes).
-          On screens < 768px (e.g. 767px), each card takes flex-shrink-0 w-[calc(50%-6px)] 
-          so exactly 2 cards are visible at a time in the carousel!
-      */}
       <div
         ref={carouselRef}
         className="no-scrollbar mt-4 flex flex-row gap-3 sm:gap-4 overflow-x-auto pt-2 pb-4 snap-x snap-mandatory"

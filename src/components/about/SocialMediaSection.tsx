@@ -36,7 +36,6 @@ const SocialMediaSection = ({ isDarkMode }: { isDarkMode: boolean }) => {
 
   return (
     <section className="space-y-5">
-      {/* Header */}
       <div>
         <div className="flex items-center gap-2">
           <FaHashtag
@@ -61,8 +60,7 @@ const SocialMediaSection = ({ isDarkMode }: { isDarkMode: boolean }) => {
         </p>
       </div>
 
-      {/* 2-Grid Interactive Showcase (No Standard Card Feel) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {items.map((item, index) => (
           <motion.a
             key={index}
@@ -79,17 +77,14 @@ const SocialMediaSection = ({ isDarkMode }: { isDarkMode: boolean }) => {
                 : "bg-gradient-to-br from-white/90 via-stone-50/60 to-white/90 text-stone-900 shadow-sm"
             }`}
           >
-            {/* Top Brand Ambient Aura Beam */}
             <div
               className={`absolute -right-12 -top-12 w-44 h-44 rounded-full bg-gradient-to-br ${item.brandGradient} opacity-15 blur-3xl group-hover:opacity-35 group-hover:scale-125 transition-all duration-700 pointer-events-none`}
             />
 
-            {/* Giant Background Watermark Logo */}
             <div className="absolute right-2 bottom-1 opacity-[0.05] dark:opacity-[0.08] group-hover:opacity-20 dark:group-hover:opacity-25 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 pointer-events-none text-6xl">
               {item.icon}
             </div>
 
-            {/* Top Header: Brand Icon + Title & Handle */}
             <div className="relative z-10 space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -115,7 +110,6 @@ const SocialMediaSection = ({ isDarkMode }: { isDarkMode: boolean }) => {
 
             </div>
 
-            {/* Bottom Action Pill */}
             <div className="relative z-10 mt-3 pt-3 border-t border-stone-200/50 dark:border-stone-800/50 flex items-center justify-between">
               <span className={`text-xs font-semibold ${item.accentColor}`}>
                 {item.action}

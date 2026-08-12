@@ -16,7 +16,6 @@ export default function TabletMenu({
 }: TabletMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Close dropdown menu automatically on route changes
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
@@ -28,9 +27,6 @@ export default function TabletMenu({
       transition={{ duration: 0.4, ease: "easeOut" }}
       className="fixed top-4 inset-x-0 mx-auto z-50 w-[calc(100%-2rem)] max-w-[700px] xl:max-w-[830px] font-poppins"
     >
-      {/* ============================================================ */}
-      {/* 1. LAYAR 1200px - 1550px: NAVBAR LENGKAP HORIZONTAL (SINGLE PILL) */}
-      {/* ============================================================ */}
       <div
         className={`hidden min-[1300px]:flex px-3.5 sm:px-5 py-2 rounded-full border items-center justify-between shadow-xl backdrop-blur-xl transition-all duration-300 ${
           isDarkMode
@@ -38,7 +34,6 @@ export default function TabletMenu({
             : "bg-white/85 text-neutral-800 border-neutral-200/60 shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
         }`}
       >
-        {/* Left: Avatar & Profile Name */}
         <Link href="/" className="flex items-center gap-2.5 group flex-shrink-0">
           <div className="relative w-8 h-8 rounded-full overflow-hidden border border-neutral-700/50 flex-shrink-0 transition-transform group-hover:scale-105">
             <Image
@@ -54,7 +49,6 @@ export default function TabletMenu({
           </span>
         </Link>
 
-        {/* Center: Full Horizontal Nav Links */}
         <nav className="flex items-center justify-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar py-0.5 px-2">
           {menuItems.map((item) => {
             const Icon = item.icon;
@@ -81,7 +75,6 @@ export default function TabletMenu({
           })}
         </nav>
 
-        {/* Right: Dark Mode Toggle Button */}
         <motion.button
           className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors shadow-sm ${
             isDarkMode
@@ -101,11 +94,7 @@ export default function TabletMenu({
         </motion.button>
       </div>
 
-      {/* ============================================================ */}
-      {/* 2. LAYAR 700px - 1199px (DI BAWAH 1200px): HEADER PILL TERPISAH + DROPDOWN 1 KOLOM */}
-      {/* ============================================================ */}
       <div className="flex min-[1300px]:hidden justify-between items-start pointer-events-none">
-        {/* Left Floating Pill: Profile Avatar & Name */}
         <div
           className={`pointer-events-auto px-3.5 py-1.5 rounded-full border flex items-center gap-2.5 shadow-xl backdrop-blur-xl transition-all duration-300 ${
             isDarkMode
@@ -129,7 +118,6 @@ export default function TabletMenu({
           </Link>
         </div>
 
-        {/* Right Floating Pill & Dropdown Menu */}
         <div className="relative pointer-events-auto flex flex-col items-end">
           <div
             className={`px-2 py-1.5 rounded-full border flex items-center gap-1.5 shadow-xl backdrop-blur-xl transition-all duration-300 ${
@@ -138,7 +126,6 @@ export default function TabletMenu({
                 : "bg-white/85 text-neutral-800 border-neutral-200/60 shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
             }`}
           >
-            {/* Dark Mode Toggle */}
             <motion.button
               className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors shadow-sm ${
                 isDarkMode
@@ -157,7 +144,6 @@ export default function TabletMenu({
               )}
             </motion.button>
 
-            {/* Hamburger Toggle */}
             <motion.button
               className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors shadow-sm ${
                 isDarkMode
@@ -173,7 +159,6 @@ export default function TabletMenu({
             </motion.button>
           </div>
 
-          {/* Animated Single-Column Vertical Dropdown Menu */}
           <AnimatePresence>
             {isOpen && (
               <motion.div
