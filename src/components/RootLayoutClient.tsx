@@ -16,7 +16,7 @@ export default function RootLayoutClient({
     const timer = setTimeout(() => {
       setIsLoading(false);
       setTimeout(() => setIsInitialLoad(false), 300);
-    }, 300);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
