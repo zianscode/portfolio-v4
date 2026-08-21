@@ -1,6 +1,7 @@
 import { Poppins, Sora } from "next/font/google";
 import "../styles/globals.css";
 import RootLayoutClient from "@/components/RootLayoutClient";
+import JsonLd from "@/components/JsonLd";
 import { Metadata } from "next";
 
 const poppins = Poppins({
@@ -16,9 +17,45 @@ const sora = Sora({
   display: "swap",
 });
 
+const siteUrl = "https://zianscode.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Zian's Code",
-  description: "Portfolio of Fajar Fauzian, a Frontend Developer and UI/UX Designer.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Fajar Fauzian | Frontend & Web Developer",
+    template: "%s | Fajar Fauzian",
+  },
+  description:
+    "Portfolio pribadi Fajar Fauzian, Frontend Developer yang berfokus pada React.js, Next.js, TypeScript, dan pengembangan aplikasi web modern.",
+  authors: [{ name: "Fajar Fauzian", url: siteUrl }],
+  creator: "Fajar Fauzian",
+  alternates: {
+    canonical: siteUrl,
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    title: "Fajar Fauzian | Frontend & Web Developer",
+    description:
+      "Portfolio pribadi Fajar Fauzian, Frontend Developer yang berfokus pada React.js, Next.js, TypeScript, dan pengembangan aplikasi web modern.",
+    siteName: "Fajar Fauzian Portfolio",
+    images: [
+      {
+        url: "/image/Fajar_Fauzian.jpg",
+        width: 800,
+        height: 800,
+        alt: "Fajar Fauzian - Frontend Developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Fajar Fauzian | Frontend & Web Developer",
+    description:
+      "Portfolio pribadi Fajar Fauzian, Frontend Developer yang berfokus pada React.js, Next.js, TypeScript, dan pengembangan aplikasi web modern.",
+    images: ["/image/Fajar_Fauzian.jpg"],
+  },
   icons: {
     icon: [
       { url: "/image/icon.png", type: "image/png" },
@@ -51,6 +88,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head suppressHydrationWarning />
       <body className={`${poppins.variable} ${sora.variable} antialiased`} suppressHydrationWarning>
+        <JsonLd />
         <RootLayoutClient>
           {children}
         </RootLayoutClient>

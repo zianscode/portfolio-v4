@@ -73,7 +73,7 @@ export default function MobileProfileItem({
         >
           <Image
             src="/image/Fajar_Fauzian.jpg"
-            alt="ziancode"
+            alt="Fajar Fauzian - Frontend Developer"
             width={34}
             height={34}
             sizes="34px"
@@ -84,12 +84,12 @@ export default function MobileProfileItem({
         <div className="flex flex-col">
           <div className="flex items-center gap-1.5">
             <Link href="/">
-              <h2
+              <span
                 className="font-poppins text-sm font-semibold transition-colors"
                 style={{ color: isDarkMode ? "rgba(255,255,255,0.95)" : "rgba(10,10,10,0.95)" }}
               >
                 Fajar Fauzian
-              </h2>
+              </span>
             </Link>
             <div>
               <RiVerifiedBadgeFill className="text-blue-500" size={12} />

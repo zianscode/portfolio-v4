@@ -69,7 +69,7 @@ export default function ProfileItem({
       >
         <Image
           src="/image/Fajar_Fauzian.jpg"
-          alt="ziancode"
+          alt="Fajar Fauzian - Frontend Developer"
           fill
           sizes="90px"
           className="object-cover"
@@ -126,9 +126,9 @@ export default function ProfileItem({
                   className="text-neutral-900 dark:text-neutral-200 font-semibold"
                 >
                   <Link href="/">
-                    <h2 className="font-poppins flex-grow whitespace-nowrap text-sm font-semibold"> 
+                    <span className="font-poppins flex-grow whitespace-nowrap text-sm font-semibold"> 
                       Fajar Fauzian
-                    </h2>
+                    </span>
                   </Link>
                 </motion.span>
                 <motion.div

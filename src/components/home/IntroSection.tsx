@@ -5,7 +5,7 @@ export default function Introduction() {
   return (
     <section className="space-y-3 bg-cover bg-no-repeat">
       <div className="flex items-start justify-between gap-3 min-w-0">
-        <div className="font-poppins flex gap-2 text-lg sm:text-xl font-bold text-neutral-700 dark:text-neutral-200 min-w-0 flex-1">
+        <h1 className="font-poppins flex gap-2 text-lg sm:text-xl font-bold text-neutral-700 dark:text-neutral-200 min-w-0 flex-1">
           <TypeAnimation
             sequence={[
               "Hi, I'm Fajar Fauzian",
@@ -14,7 +14,7 @@ export default function Introduction() {
             ]}
             delay={3000}
           />
-        </div>
+        </h1>
         <span className="text-neutral-700 dark:text-neutral-200 flex-shrink-0">
           <Saweria />
         </span>

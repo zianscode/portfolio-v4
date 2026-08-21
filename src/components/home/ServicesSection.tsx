@@ -1,3 +1,5 @@
+"use client";
+
 import { FaProjectDiagram } from "react-icons/fa";
 import { useDarkMode } from "@/context/DarkModeContext";
 import WebIlustration from "@/components/WebIlustration";
