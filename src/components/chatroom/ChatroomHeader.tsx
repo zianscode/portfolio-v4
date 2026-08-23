@@ -32,7 +32,7 @@ const ChatroomHeader = ({ isDarkMode }: ChatroomHeaderProps) => {
           isDarkMode ? "text-stone-300" : "text-stone-700"
         }`}
       >
-        Leave your impression or suggestion about this website here.
+        Leave your impression or suggestion about this website here
       </p>
     </motion.div>
   );

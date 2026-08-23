@@ -81,7 +81,7 @@ const SkillsList = ({ direction = "left", isDarkMode = false }: SkillsListProps)
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-1 sm:gap-3 md:gap-4 w-full">
+      <div className="flex flex-col gap-2.5 sm:gap-3 w-full">
         {Array.from({ length: 2 }, (_, index) => {
           // Use the skills state which is shuffled in useEffect, 
           const slider = skills; 
@@ -95,24 +95,17 @@ const SkillsList = ({ direction = "left", isDarkMode = false }: SkillsListProps)
               direction={marqueeDirection}
               speed={speed}
               pauseOnHover={true}
-              className="w-full py-1"
+              className="w-full"
             >
-              <div className="flex flex-nowrap" style={{ gap: '0.1rem' }}>
+              <div className="flex items-center gap-2.5 sm:gap-3 pr-2.5 sm:pr-3">
                 {duplicatedSlider.map((skill, i) => (
-                  <div 
-                    className="flex-none" 
+                  <SkillCard
                     key={i}
-                    style={{ 
-                      marginRight: i === duplicatedSlider.length - 1 ? '0' : '0.1rem'
-                    }}
-                  >
-                    <SkillCard
-                      name={skill.name}
-                      icon={skill.icon}
-                      color={skill.color}
-                      isMobile={isSmallScreen}
-                    />
-                  </div>
+                    name={skill.name}
+                    icon={skill.icon}
+                    color={skill.color}
+                    isMobile={isSmallScreen}
+                  />
                 ))}
               </div>
             </MarqueeElement>

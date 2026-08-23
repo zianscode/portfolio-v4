@@ -42,8 +42,8 @@ const TabHeader = ({ activeTab, isDarkMode }: TabHeaderProps) => {
           }`}
         >
           {activeTab === "projects"
-            ? "Showcasing my passion for technology, design, and problem solving through code."
-            : "A collection of certifications that validate my skills and knowledge."}
+            ? "Demonstrates my interest in developing projects and creating solutions through programming"
+            : "A collection of certifications that validate my skills and knowledge"}
         </p>
       </div>
     </motion.div>

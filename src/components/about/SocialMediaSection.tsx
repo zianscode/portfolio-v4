@@ -1,7 +1,6 @@
 import React from "react";
 import { FaHashtag, FaInstagram, FaYoutube } from "react-icons/fa";
 import { FiArrowUpRight } from "react-icons/fi";
-import { Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 
 const SocialMediaSection = ({ isDarkMode }: { isDarkMode: boolean }) => {
@@ -9,33 +8,21 @@ const SocialMediaSection = ({ isDarkMode }: { isDarkMode: boolean }) => {
     {
       name: "Instagram",
       handle: "@ffauzianc_",
-      tagline: "Photos, Reels & Creative Moments",
-      action: "Follow Profile",
+      hoverText: "Instagram Profile • @ffauzianc_",
       url: "https://www.instagram.com/ffauzianc_/",
-      icon: <FaInstagram />,
-      brandGradient: "from-amber-500 via-rose-500 to-purple-600",
-      accentColor: "text-pink-500 dark:text-pink-400",
-      borderColor: "border-pink-500/20 hover:border-pink-500/50 dark:border-pink-500/30 dark:hover:border-pink-500/60",
-      shadowGlow: "hover:shadow-[0_12px_40px_rgba(236,72,153,0.2)]",
-      btnClass: "bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 text-white",
+      icon: <FaInstagram className="text-base sm:text-lg text-pink-500/80 group-hover:text-pink-500 transition-colors" />,
     },
     {
       name: "YouTube",
       handle: "@crimson-z67",
-      tagline: "Videos, Tech Breakdown & Tutorials",
-      action: "Subscribe Channel",
+      hoverText: "YouTube Channel • @crimson-z67",
       url: "https://www.youtube.com/@crimson-z67/",
-      icon: <FaYoutube />,
-      brandGradient: "from-red-600 to-rose-600",
-      accentColor: "text-red-500 dark:text-red-400",
-      borderColor: "border-red-500/20 hover:border-red-500/50 dark:border-red-500/30 dark:hover:border-red-500/60",
-      shadowGlow: "hover:shadow-[0_12px_40px_rgba(239,68,68,0.2)]",
-      btnClass: "bg-gradient-to-r from-red-600 to-rose-600 text-white",
+      icon: <FaYoutube className="text-base sm:text-lg text-red-500/80 group-hover:text-red-500 transition-colors" />,
     },
   ];
 
   return (
-    <section className="space-y-5">
+    <section className="space-y-4">
       <div>
         <div className="flex items-center gap-2">
           <FaHashtag
@@ -60,69 +47,44 @@ const SocialMediaSection = ({ isDarkMode }: { isDarkMode: boolean }) => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="flex flex-wrap items-center gap-3 pt-1">
         {items.map((item, index) => (
-          <motion.a
+          <motion.div
             key={index}
-            href={item.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: index * 0.1 }}
-            whileHover={{ y: -6, scale: 1.015 }}
-            className={`group relative overflow-hidden rounded-2xl p-4 border backdrop-blur-2xl transition-all duration-500 flex flex-col justify-between ${item.borderColor} ${item.shadowGlow} ${
-              isDarkMode
-                ? "bg-gradient-to-br from-stone-900/80 via-stone-900/40 to-stone-950/80 text-stone-100"
-                : "bg-gradient-to-br from-white/90 via-stone-50/60 to-white/90 text-stone-900 shadow-sm"
-            }`}
+            transition={{ duration: 0.3, delay: index * 0.1 }}
+            className="relative group"
           >
-            <div
-              className={`absolute -right-12 -top-12 w-44 h-44 rounded-full bg-gradient-to-br ${item.brandGradient} opacity-15 blur-3xl group-hover:opacity-35 group-hover:scale-125 transition-all duration-700 pointer-events-none`}
-            />
-
-            <div className="absolute right-2 bottom-1 opacity-[0.05] dark:opacity-[0.08] group-hover:opacity-20 dark:group-hover:opacity-25 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 pointer-events-none text-6xl">
-              {item.icon}
-            </div>
-
-            <div className="relative z-10 space-y-2">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div
-                    className={`p-2 rounded-2xl bg-gradient-to-tr ${item.brandGradient} text-white shadow-md group-hover:rotate-6 transition-transform duration-300`}
-                  >
-                    {React.cloneElement(item.icon as React.ReactElement<{ className?: string }>, { className: "text-3xl" })}
-                  </div>
-                  <div>
-                    <h3 className="text-base font-extrabold tracking-tight font-poppins">
-                      {item.name}
-                    </h3>
-                    <p className={`text-xs font-mono font-medium ${item.accentColor}`}>
-                      {item.handle}
-                    </p>
-                  </div>
-                </div>
-
-                <span className="flex items-center gap-1.5 text-[11px] font-semibold px-3 py-1 rounded-full bg-black/5 dark:bg-white/10 text-stone-600 dark:text-stone-300">
-                  <Sparkles className={`w-3 h-3 ${item.accentColor}`} /> Connect
-                </span>
-              </div>
-
-            </div>
-
-            <div className="relative z-10 mt-3 pt-3 border-t border-stone-200/50 dark:border-stone-800/50 flex items-center justify-between">
-              <span className={`text-xs font-semibold ${item.accentColor}`}>
-                {item.action}
-              </span>
-
+            {/* Tooltip Badge on Hover */}
+            <div className="absolute -top-9 left-1/2 -translate-x-1/2 pointer-events-none opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-250 z-20">
               <div
-                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 ${item.btnClass} shadow-md group-hover:shadow-lg group-hover:scale-105`}
+                className={`px-3 py-1 rounded-full text-[11px] sm:text-xs font-medium whitespace-nowrap shadow-sm border backdrop-blur-md flex items-center gap-1.5 ${
+                  isDarkMode
+                    ? "bg-stone-900/90 text-stone-300 border-stone-800"
+                    : "bg-stone-800/90 text-stone-100 border-stone-700"
+                }`}
               >
-                <span>Visit</span>
-                <FiArrowUpRight className="text-sm group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+                <span>{item.hoverText}</span>
               </div>
             </div>
-          </motion.a>
+
+            {/* Badge Link */}
+            <a
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border text-xs sm:text-sm font-medium transition-all duration-300 shadow-sm ${
+                isDarkMode
+                  ? "bg-stone-900/60 border-stone-800 text-stone-300 hover:bg-stone-800/80 hover:border-stone-700 hover:text-stone-100"
+                  : "bg-stone-100/80 border-stone-200/80 text-stone-700 hover:bg-stone-200/80 hover:border-stone-300 hover:text-stone-900"
+              }`}
+            >
+              {item.icon}
+              <span>{item.name}</span>
+              <FiArrowUpRight className="text-xs opacity-50 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+            </a>
+          </motion.div>
         ))}
       </div>
     </section>
@@ -130,6 +92,7 @@ const SocialMediaSection = ({ isDarkMode }: { isDarkMode: boolean }) => {
 };
 
 export default SocialMediaSection;
+
 
 
 

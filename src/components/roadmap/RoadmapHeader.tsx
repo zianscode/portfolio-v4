@@ -32,7 +32,8 @@ export default function RoadmapHeader({ isDarkMode }: RoadmapHeaderProps) {
             isDarkMode ? "text-stone-400" : "text-gray-600"
           }`}
         >
-          Learning path recommendation and free course playlist
+          Recommended learning paths from the official documentation
+          website
         </p>
       </div>
     </motion.div>
