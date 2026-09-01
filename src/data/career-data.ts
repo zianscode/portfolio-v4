@@ -46,15 +46,15 @@ export const educationData = [
     duration: "3 Years",
     logo: "/career/wikrama.png"
   },
-  // {
-  //   id: 2,
-  //   company: "Universitas Binaniaga Indonesia",
-  //   position: "Computer Science",
-  //   tags: ["University", "Undergraduate"],
-  //   location: "Bogor, Indonesia", 
-  //   startDate: "Jul 2026",
-  //   endDate: "Current",
-  //   duration: "4 Years",
-  //   logo: "/career/unbin.png"
-  // },
+  {
+    id: 2,
+    company: "Universitas Binaniaga Indonesia",
+    position: "Computer Science",
+    tags: ["University", "Undergraduate"],
+    location: "Bogor, Indonesia", 
+    startDate: "Sep 2026",
+    endDate: "Current",
+    duration: "4 Years",
+    logo: "/career/unbin.png"
+  },
 ];

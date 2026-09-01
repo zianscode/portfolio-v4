@@ -8,6 +8,47 @@ import { BsCloudMoon, BsCloudSun } from "react-icons/bs";
 import { FiMenu, FiX } from "react-icons/fi";
 import { TabletMenuProps } from "@/types/menu";
 
+const dropdownVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 0.2,
+      ease: "easeInOut",
+      staggerChildren: 0.07,
+      delayChildren: 0.05,
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.15,
+      staggerChildren: 0.03,
+      staggerDirection: -1,
+    },
+  },
+};
+
+const dropdownItemVariants = {
+  hidden: { opacity: 0, y: 22, scale: 0.95 },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.3,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -10,
+    transition: {
+      duration: 0.15,
+    },
+  },
+};
+
 export default function TabletMenu({
   isDarkMode,
   toggleDarkMode,
@@ -159,13 +200,14 @@ export default function TabletMenu({
             </motion.button>
           </div>
 
-          <AnimatePresence>
+<AnimatePresence>
             {isOpen && (
               <motion.div
-                initial={{ opacity: 0, y: -10, scale: 0.96 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -10, scale: 0.96 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
+                key="tablet-dropdown"
+                variants={dropdownVariants}
+                initial="hidden"
+                animate="show"
+                exit="exit"
                 className={`absolute top-[calc(100%+8px)] right-0 w-[220px] sm:w-[240px] p-2 rounded-2xl border shadow-2xl backdrop-blur-2xl transition-all duration-300 z-50 ${
                   isDarkMode
                     ? "bg-neutral-950/90 text-neutral-200 border-white/10 shadow-[0_16px_40px_rgba(0,0,0,0.7)]"
@@ -178,23 +220,29 @@ export default function TabletMenu({
                     const isActive = pathname === item.href;
 
                     return (
-                      <Link
+                      <motion.div
                         key={item.href}
-                        href={item.href}
-                        onClick={() => setIsOpen(false)}
-                        className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 ${
-                          isActive
-                            ? isDarkMode
-                              ? "bg-white/15 text-white font-semibold border border-white/10 shadow-sm"
-                              : "bg-neutral-900 text-white font-semibold shadow-sm"
-                            : isDarkMode
+                        variants={dropdownItemVariants}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <Link
+                          href={item.href}
+                          onClick={() => setIsOpen(false)}
+                          className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 ${
+                            isActive
+                              ? isDarkMode
+                                ? "bg-white/15 text-white font-semibold border border-white/10 shadow-sm"
+                                : "bg-neutral-900 text-white font-semibold shadow-sm"
+                              : isDarkMode
                               ? "text-neutral-400 hover:text-white hover:bg-white/5"
                               : "text-neutral-600 hover:text-black hover:bg-black/5"
-                        }`}
-                      >
-                        <Icon className="text-sm flex-shrink-0" />
-                        <span>{item.title}</span>
-                      </Link>
+                          }`}
+                        >
+                          <Icon className="text-sm flex-shrink-0" />
+                          <span>{item.title}</span>
+                        </Link>
+                      </motion.div>
                     );
                   })}
                 </div>

@@ -59,7 +59,6 @@ export default function MobileMenu({
     }
   }, [isMobileOpen, prefetchNextPages]);
 
-  // Tutup menu mobile saat ukuran layar berubah ke desktop (>= 768px)
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768 && isMobileOpen) {
