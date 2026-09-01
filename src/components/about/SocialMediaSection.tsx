@@ -14,9 +14,9 @@ const SocialMediaSection = ({ isDarkMode }: { isDarkMode: boolean }) => {
     },
     {
       name: "YouTube",
-      handle: "@crimson-z67",
-      hoverText: "YouTube Channel • @crimson-z67",
-      url: "https://www.youtube.com/@crimson-z67/",
+      handle: "@hiccup-67",
+      hoverText: "YouTube Channel • @hiccup-67",
+      url: "https://www.youtube.com/@hiccup-67",
       icon: <FaYoutube className="text-base sm:text-lg text-red-500/80 group-hover:text-red-500 transition-colors" />,
     },
   ];
