@@ -2,24 +2,23 @@
 
 import { useDarkMode } from "@/context/DarkModeContext";
 import { motion } from "framer-motion";
-import { FiMail } from "react-icons/fi";
+import { FiMail, FiClock } from "react-icons/fi";
 
 const Contact = () => {
   const { isDarkMode } = useDarkMode();
 
   const headingColor = isDarkMode ? 'text-stone-100' : 'text-neutral-900';
   const paragraphColor = isDarkMode ? 'text-stone-300' : 'text-neutral-700';
-  const borderColor = isDarkMode ? 'border-white/10' : 'border-neutral-200/80';
-  const bgColor = isDarkMode ? 'bg-neutral-900/40' : 'bg-white/50';
+  const subtleColor = isDarkMode ? 'text-stone-400' : 'text-neutral-500';
 
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
-      className={`p-6 md:p-10 rounded-2xl transition-all duration-300 border ${borderColor} ${bgColor} backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] space-y-8 font-poppins`}
+      className={`space-y-8 font-poppins`}
     >
-      <div className="flex flex-col md:flex-row items-center gap-8 md:text-start text-center">
+      <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 md:text-start text-center">
         <div className="flex-1 space-y-4">
           <h2 className={`text-2xl md:text-3xl font-bold ${headingColor}`}>
             Let&apos;s build something together
@@ -35,24 +34,37 @@ const Contact = () => {
           </div>
         </div>
 
-        <div className="flex-shrink-0 w-full md:w-auto">
+        <div className="flex-shrink-0 w-full md:w-auto flex flex-col items-center gap-5">
+          <div className={`flex items-center gap-3 ${subtleColor}`}>
+            <span className="hidden md:block h-px w-14 bg-gradient-to-r from-transparent to-current opacity-30" />
+            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] whitespace-nowrap">
+              Open to Collaboration
+            </span>
+            <span className="hidden md:block h-px w-14 bg-gradient-to-l from-transparent to-current opacity-30" />
+          </div>
+
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => window.location.href = "mailto:fajarfauzian121@gmail.com"}
-            className={`w-full md:w-auto py-4 px-8 rounded-xl font-bold text-sm flex items-center justify-center space-x-3 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] ${
+            className={`w-full md:w-auto py-4 px-10 rounded-full font-bold text-sm flex items-center justify-center space-x-3 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] ${
               isDarkMode
-                ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 text-stone-200 hover:bg-neutral-800/50 hover:shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
-                : "bg-white/50 backdrop-blur-md border border-neutral-200/80 text-stone-800 hover:bg-white/70 hover:-translate-y-0.5"
+                ? "bg-neutral-900/40 backdrop-blur-md text-stone-200 hover:bg-neutral-800/50 hover:shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
+                : "bg-white/50 backdrop-blur-md text-stone-800 hover:bg-white/70 hover:-translate-y-0.5"
             }`}
           >
             <FiMail className="text-xl" />
             <span>Send me an Email</span>
           </motion.button>
+
+          <p className={`flex items-center gap-2 text-[12px] ${subtleColor}`}>
+            <FiClock />
+            <span>Replies within 24 hours</span>
+          </p>
         </div>
       </div>
 
-      <div className="pt-4 border-t border-neutral-200 dark:border-neutral-800 text-center">
+      <div className="pt-4 text-center">
         <p className="text-[13px] text-neutral-500 dark:text-neutral-400">
           Don&apos;t be a stranger, I respond to all messages! 🌟
         </p>

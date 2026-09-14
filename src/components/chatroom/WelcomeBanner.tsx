@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import { HiOutlineX } from "react-icons/hi";
 
 interface WelcomeBannerProps {
   isDarkMode: boolean;
@@ -42,16 +43,7 @@ const WelcomeBanner: React.FC<WelcomeBannerProps> = ({ isDarkMode, onClose }) =>
           }`}
           aria-label="Close welcome"
         >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path d="M18 6L6 18M6 6l12 12" />
-          </svg>
+          <HiOutlineX className="w-4 h-4" />
         </button>
       </div>
     </motion.div>

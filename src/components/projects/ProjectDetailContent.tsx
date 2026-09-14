@@ -8,7 +8,7 @@ import { Project } from "@/types/projects";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaFigma } from "react-icons/fa"; 
-import { FiArrowLeft, FiCheckCircle, FiLayers, FiCpu, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { FiArrowLeft, FiArrowUpRight, FiLayers, FiCpu, FiCheckCircle, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { getCleanImageUrl } from "@/utils/image";
 
 interface ProjectDetailContentProps {
@@ -20,6 +20,7 @@ const ProjectDetailContent = ({ slug }: ProjectDetailContentProps) => {
   const router = useRouter();
   const [project, setProject] = useState<Project | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
+  const [direction, setDirection] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -63,11 +64,18 @@ const ProjectDetailContent = ({ slug }: ProjectDetailContentProps) => {
   const currentImage = galleryImages[activeImageIndex] || project.image;
 
   const handleNextImage = () => {
+    setDirection(1);
     setActiveImageIndex((prev) => (prev + 1) % galleryImages.length);
   };
 
   const handlePrevImage = () => {
+    setDirection(-1);
     setActiveImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
+
+  const handleGoToSlide = (index: number) => {
+    setDirection(index > activeImageIndex ? 1 : -1);
+    setActiveImageIndex(index);
   };
 
   return (
@@ -116,7 +124,6 @@ const ProjectDetailContent = ({ slug }: ProjectDetailContentProps) => {
                   isDarkMode ? "bg-neutral-950/70 border-white/10" : "bg-neutral-100/80 border-neutral-200"
                 }`}>
                   <div className="flex items-center space-x-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]"></span>
                     <span className={`text-[10px] sm:text-xs font-bold uppercase tracking-widest ${isDarkMode ? "text-neutral-300" : "text-neutral-700"}`}>
                       Project Showcase
                     </span>
@@ -134,14 +141,20 @@ const ProjectDetailContent = ({ slug }: ProjectDetailContentProps) => {
                 </div>
 
                 {/* Main Preview Image Container */}
-                <div className="relative w-full aspect-video bg-neutral-950 overflow-hidden">
-                  <AnimatePresence mode="wait">
+                <div className={`relative w-full aspect-video overflow-hidden ${isDarkMode ? "bg-neutral-900" : "bg-neutral-100"}`}>
+                  <AnimatePresence initial={false} custom={direction}>
                     <motion.div
                       key={currentImage}
-                      initial={{ opacity: 0, scale: 0.98 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 1.02 }}
-                      transition={{ duration: 0.35, ease: "easeOut" }}
+                      custom={direction}
+                      variants={{
+                        enter: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%" }),
+                        center: { x: 0 },
+                        exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%" }),
+                      }}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      transition={{ x: { type: "spring", stiffness: 300, damping: 34 } }}
                       className="absolute inset-0"
                     >
                       <Image
@@ -177,94 +190,124 @@ const ProjectDetailContent = ({ slug }: ProjectDetailContentProps) => {
                     </>
                   )}
                 </div>
-
-                {galleryImages.length > 1 && (
-                  <div className={`py-2.5 flex justify-center items-center gap-2 border-t backdrop-blur-md ${
-                    isDarkMode ? "bg-neutral-950/70 border-white/10" : "bg-neutral-100/80 border-neutral-200"
-                  }`}>
-                    {galleryImages.map((_, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setActiveImageIndex(idx)}
-                        className={`h-2 rounded-full transition-all duration-300 ${
-                          activeImageIndex === idx
-                            ? "w-7 bg-blue-500 shadow-[0_0_8px_#3b82f6]"
-                            : "w-2 bg-neutral-500/40 hover:bg-neutral-400"
-                        }`}
-                        aria-label={`Go to slide ${idx + 1}`}
-                      />
-                    ))}
-                  </div>
-                )}
               </div>
               
               {galleryImages.length > 1 && (
-                <div className="flex gap-2 sm:gap-3.5 overflow-x-auto pb-1 no-scrollbar">
-                  {galleryImages.map((img, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setActiveImageIndex(index)}
-                      className={`relative aspect-video w-20 sm:w-32 md:w-40 rounded-xl overflow-hidden border-2 transition-all duration-300 flex-shrink-0 ${
-                        activeImageIndex === index
-                          ? "border-blue-500 ring-2 ring-blue-500/30 scale-[1.02] shadow-md"
-                          : "border-transparent opacity-60 hover:opacity-100 grayscale hover:grayscale-0"
-                      }`}
-                    >
-                      <Image
-                        src={getCleanImageUrl(img)}
-                        alt={`Thumbnail ${index + 1}`}
-                        fill
-                        className="object-cover"
-                        unoptimized={process.env.NODE_ENV === "development"}
-                      />
-                      <span className="absolute bottom-1 right-1 text-[9px] font-bold px-1.5 py-0.5 rounded bg-black/70 text-white backdrop-blur-sm">
-                        {index + 1}
-                      </span>
-                    </button>
-                  ))}
-                </div>
+                <>
+                  <h3 className="text-[11px] sm:text-xs font-semibold uppercase tracking-widest mb-3 text-neutral-500">
+                    Gallery · {galleryImages.length} images
+                  </h3>
+
+                  <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3">
+                    {galleryImages.map((img, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleGoToSlide(index)}
+                        aria-label={`Go to slide ${index + 1}`}
+                        className={`relative aspect-video w-full rounded-xl overflow-hidden border-2 transition-all duration-300 ${
+                          activeImageIndex === index
+                            ? "border-blue-500 ring-1 ring-blue-500/30"
+                            : "border-transparent opacity-70 hover:opacity-100"
+                        }`}
+                      >
+                        <Image
+                          src={getCleanImageUrl(img)}
+                          alt={`Thumbnail ${index + 1}`}
+                          fill
+                          className="object-cover"
+                          unoptimized={process.env.NODE_ENV === "development"}
+                        />
+                        <span className={`absolute bottom-1 right-1 text-[9px] font-bold px-1.5 py-0.5 rounded bg-black/70 text-white backdrop-blur-sm ${
+                          activeImageIndex === index ? "" : "opacity-60"
+                        }`}>
+                          {index + 1}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                </>
               )}
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              <div className={`lg:col-span-2 p-5 sm:p-7 rounded-2xl border flex flex-col justify-between space-y-6 ${
-                isDarkMode 
-                  ? "bg-neutral-900/40 backdrop-blur-md border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)]" 
-                  : "bg-white/50 backdrop-blur-md border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
-              }`}>
-                <div className="space-y-3">
-                  <h2 className="text-base sm:text-lg font-bold flex items-center space-x-2">
-                    <span className="w-1.5 h-5 bg-blue-500 rounded-full"></span>
-                    <span>Project Description</span>
+            <div className="space-y-5 sm:space-y-6">
+                <div>
+                  <h2 className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
+                    <FiLayers className={`text-sm ${isDarkMode ? "text-blue-400" : "text-blue-600"}`} />
+                    Overview
                   </h2>
-                  <p className={`text-[13px] sm:text-[14px] leading-relaxed font-medium ${isDarkMode ? "text-neutral-300" : "text-neutral-600"}`}>
+                  <p className={`mt-2.5 text-[14px] sm:text-[15px] leading-relaxed font-medium ${isDarkMode ? "text-neutral-300" : "text-neutral-600"}`}>
                     {project.detailedDescription}
                   </p>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-3 pt-2"> 
+                <div className="flex flex-wrap items-start gap-x-6 gap-y-3">
+                  <span className="inline-flex items-center gap-2 text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500 pt-1">
+                    <FiCpu className={`text-sm ${isDarkMode ? "text-blue-400" : "text-blue-600"}`} />
+                    Tech Stack
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.technologies.map((tech, index) => (
+                      <span
+                        key={index}
+                        className={`px-2.5 py-1 text-[11px] font-semibold rounded-md border transition-colors ${
+                          isDarkMode
+                            ? "bg-white/[0.05] text-neutral-300 border-white/10"
+                            : "bg-neutral-100 text-neutral-700 border-neutral-200"
+                        }`}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {project.features && project.features.length > 0 && (
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
+                        Features
+                      </span>
+                      <span className={`px-2 py-0.5 text-[10px] font-bold rounded-full border ${
+                        isDarkMode
+                          ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
+                          : "bg-emerald-50 text-emerald-600 border-emerald-200"
+                      }`}>
+                        {project.features.length}
+                      </span>
+                    </div>
+
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">
+                      {project.features.map((feature, index) => (
+                        <li key={index} className="flex items-start gap-2.5">
+                          <FiCheckCircle className="text-emerald-500 mt-0.5 flex-shrink-0 text-sm sm:text-base" />
+                          <span className={`text-[13px] sm:text-[14px] font-medium leading-snug ${isDarkMode ? "text-neutral-200" : "text-neutral-700"}`}>
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                <div className="flex flex-wrap gap-2.5 pt-1">
                   {project.link && project.link !== "#" && (
                     <motion.a
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                      whileTap={{ scale: 0.97 }}
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-xs sm:text-sm space-x-2 transition-all duration-300 shadow-sm ${
-                        isDarkMode
-                          ? "bg-neutral-800 text-white border border-white/15 hover:bg-neutral-700"
-                          : "bg-neutral-900 text-white hover:bg-neutral-800"
-                      }`}
+                      className="group/btn inline-flex items-center justify-center gap-2 rounded-full py-2.5 px-5 text-[13px] font-semibold transition-all duration-300 bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200"
                     >
                       {project.link.includes("figma.com") ? (
                         <>
-                          <FaFigma className="text-base text-purple-400" /> 
+                          <FaFigma className="text-sm text-purple-400 dark:text-purple-600" /> 
                           <span>View Figma Design</span>
                         </>
                       ) : (
                         <>
-                          <FaGithub className="text-base" /> 
+                          <FaGithub className="text-sm" /> 
                           <span>Explore Source Code</span>
+                          <FiArrowUpRight className="text-sm transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                         </>
                       )}
                     </motion.a>
@@ -272,84 +315,19 @@ const ProjectDetailContent = ({ slug }: ProjectDetailContentProps) => {
 
                   {project.figmaLink && !project.link?.includes("figma.com") && (
                     <motion.a
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                      whileTap={{ scale: 0.97 }}
                       href={project.figmaLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`inline-flex items-center justify-center px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-xs sm:text-sm space-x-2 transition-all duration-300 shadow-sm ${
-                        isDarkMode
-                          ? "bg-purple-950/40 text-purple-200 border border-purple-500/30 hover:bg-purple-900/50"
-                          : "bg-purple-50 text-purple-900 border border-purple-200 hover:bg-purple-100"
-                      }`}
+                      className="group/btn inline-flex items-center justify-center gap-2 rounded-full py-2.5 px-5 text-[13px] font-semibold transition-all duration-300 bg-purple-50 text-purple-900 border border-purple-200 hover:bg-purple-100 dark:bg-purple-950/40 dark:text-purple-200 dark:border-purple-500/30 dark:hover:bg-purple-900/50"
                     >
-                      <FaFigma className="text-base text-purple-400" /> 
+                      <FaFigma className="text-sm text-purple-400" /> 
                       <span>View Figma Design</span>
+                      <FiArrowUpRight className="text-sm transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                     </motion.a>
                   )}
                 </div>
               </div>
-
-              <div className={`p-5 sm:p-7 rounded-2xl border space-y-4 ${
-                isDarkMode 
-                  ? "bg-neutral-900/40 backdrop-blur-md border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)]" 
-                  : "bg-white/50 backdrop-blur-md border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
-              }`}>
-                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-widest flex items-center gap-2 text-neutral-400">
-                  <FiCpu className="text-blue-400" /> Technologies & Tools
-                </h3>
-                <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                  {project.technologies.map((tech, index) => (
-                    <span
-                      key={index}
-                      className={`px-3 py-1.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider rounded-lg border ${
-                        isDarkMode
-                          ? "bg-neutral-800/80 text-neutral-200 border-white/10"
-                          : "bg-neutral-100 text-neutral-700 border-neutral-200"
-                      } shadow-sm`}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {project.features && project.features.length > 0 && (
-              <div className={`p-5 sm:p-7 rounded-2xl border space-y-6 ${
-                isDarkMode 
-                  ? "bg-neutral-900/40 backdrop-blur-md border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)]" 
-                  : "bg-white/50 backdrop-blur-md border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
-              }`}>
-                <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                  <h3 className="text-base sm:text-lg font-bold flex items-center space-x-2">
-                    <span className="w-1.5 h-5 bg-emerald-500 rounded-full"></span>
-                    <span>Key Features & Capabilities</span>
-                  </h3>
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    {project.features.length} Features Included
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-4">
-                  {project.features.map((feature, index) => (
-                    <div 
-                      key={index} 
-                      className={`p-3.5 sm:p-4 rounded-xl border flex items-start gap-3 transition-all hover:-translate-y-0.5 ${
-                        isDarkMode 
-                          ? "bg-neutral-800/50 border-white/5 hover:border-white/15" 
-                          : "bg-white/80 border-neutral-200/80 hover:border-neutral-300"
-                      }`}
-                    >
-                      <FiCheckCircle className="text-emerald-500 mt-0.5 flex-shrink-0 text-base sm:text-lg" />
-                      <span className={`text-[13px] sm:text-[14px] font-medium leading-snug ${isDarkMode ? "text-neutral-200" : "text-neutral-700"}`}>
-                        {feature}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
 
           </motion.div>
         </div>
