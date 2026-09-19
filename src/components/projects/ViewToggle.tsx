@@ -12,7 +12,7 @@ const ViewToggle = ({ viewMode, setViewMode, isDarkMode }: ViewToggleProps) => {
       <button
         onClick={() => setViewMode("grid")}
         aria-label="Grid view"
-        className={`px-6 py-2 rounded-full flex items-center justify-center transition-all duration-300 font-bold text-sm ${
+        className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 font-bold ${
           viewMode === "grid"
             ? "bg-neutral-900 text-white shadow-lg dark:bg-white dark:text-black"
             : isDarkMode
@@ -25,7 +25,7 @@ const ViewToggle = ({ viewMode, setViewMode, isDarkMode }: ViewToggleProps) => {
       <button
         onClick={() => setViewMode("list")}
         aria-label="List view"
-        className={`px-6 py-2 rounded-full flex items-center justify-center transition-all duration-300 font-bold text-sm ${
+        className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 font-bold ${
           viewMode === "list"
             ? "bg-neutral-900 text-white shadow-lg dark:bg-white dark:text-black"
             : isDarkMode
