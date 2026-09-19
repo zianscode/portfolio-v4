@@ -122,7 +122,7 @@ const ProjectListItem = ({
             <span className="text-[11px] font-bold text-neutral-300 flex items-center gap-1 group-hover:text-blue-400 transition-colors">
               View Details <FiArrowUpRight className="text-xs" />
             </span>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 sm:hidden">
               {hasFigma && figmaUrl && (
                 <a
                   href={figmaUrl}
