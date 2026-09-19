@@ -20,20 +20,22 @@ const TabButtons = ({ activeTab, setActiveTab, isDarkMode }: TabButtonsProps) =>
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id as "projects" | "certificates")}
-            aria-label={tab.label}
-            title={tab.label}
             className={`
-              w-10 h-10 flex items-center justify-center rounded-full text-base transition-all duration-300 font-poppins
+              flex items-center justify-center rounded-full font-bold text-sm transition-all duration-300 font-poppins
+              w-10 h-10 md:w-auto md:h-auto md:px-6 md:py-2
               ${
                 activeTab === tab.id
                   ? "bg-neutral-900 text-white shadow-lg dark:bg-white dark:text-black"
                   : isDarkMode
-                    ? "bg-neutral-900 text-neutral-400 hover:bg-neutral-800 border border-neutral-800 dark:border-neutral-800"
+                    ? "bg-neutral-900 text-neutral-400 hover:bg-neutral-800 border border-neutral-800"
                     : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200 border border-neutral-200"
               }
             `}
           >
-            <Icon />
+            <span className="md:hidden">
+              <Icon />
+            </span>
+            <span className="hidden md:inline">{tab.label}</span>
           </button>
         );
       })}
