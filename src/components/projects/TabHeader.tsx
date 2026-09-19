@@ -4,16 +4,17 @@ import { FaProjectDiagram, FaCertificate } from "react-icons/fa";
 interface TabHeaderProps {
   activeTab: "projects" | "certificates";
   isDarkMode: boolean;
+  action?: React.ReactNode;
 }
 
-const TabHeader = ({ activeTab, isDarkMode }: TabHeaderProps) => {
+const TabHeader = ({ activeTab, isDarkMode, action }: TabHeaderProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="text-start mb-6"
+      className="flex items-start justify-between gap-4"
     >
-      <div>
+      <div className="min-w-0">
         <div className="flex items-center gap-2">
           {activeTab === "projects" ? (
             <FaProjectDiagram
@@ -46,6 +47,7 @@ const TabHeader = ({ activeTab, isDarkMode }: TabHeaderProps) => {
             : "A collection of certifications that validate my skills and knowledge"}
         </p>
       </div>
+      {action && <div className="flex-shrink-0 pt-1 sm:pt-0">{action}</div>}
     </motion.div>
   );
 };

@@ -131,7 +131,7 @@ const ProjectItem = ({
 
             {technologies && technologies.length > 0 && (
               <div className="flex flex-wrap gap-1.5 pt-1">
-                {technologies.map((tech, idx) => (
+                {visibleTechs.map((tech, idx) => (
                   <span
                     key={idx}
                     className="px-2 py-0.5 text-[9px] font-semibold rounded bg-white/15 backdrop-blur-sm border border-white/10 text-neutral-200"
@@ -139,6 +139,11 @@ const ProjectItem = ({
                     {tech}
                   </span>
                 ))}
+                {remainingTechCount > 0 && (
+                  <span className="px-2 py-0.5 text-[9px] font-semibold rounded bg-white/15 backdrop-blur-sm border border-white/10 text-neutral-400">
+                    +{remainingTechCount}
+                  </span>
+                )}
               </div>
             )}
 

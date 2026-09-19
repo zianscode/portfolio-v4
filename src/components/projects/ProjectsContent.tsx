@@ -40,9 +40,9 @@ const getProjectSpans = (total: number): string[] => {
   }
   
   return spans.map(s => {
-    if (s === 2) return "md:col-span-2";
-    if (s === 3) return "md:col-span-3";
-    return "md:col-span-1";
+    if (s === 2) return "lg:col-span-2";
+    if (s === 3) return "lg:col-span-3";
+    return "lg:col-span-1";
   });
 };
 
@@ -81,17 +81,22 @@ export default function ProjectsContent() {
     >
       <main className="flex-1 min-w-0 flex flex-col items-center pt-10 md:pt-24 lg:pt-14 px-4 md:px-6 lg:px-8 ml-0 md:ml-0 lg:ml-6 pb-20">
         <div className="w-full min-w-0 max-w-[700px] xl:max-w-[830px] transition-all duration-500 ease-in-out space-y-8 sm:space-y-10">
-          <TabHeader activeTab={activeTab} isDarkMode={isDarkMode} />
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+          <TabHeader
+            activeTab={activeTab}
+            isDarkMode={isDarkMode}
+            action={
+              activeTab === "projects" ? (
+                <ViewToggle viewMode={viewMode} setViewMode={handleSetViewMode} isDarkMode={isDarkMode} />
+              ) : undefined
+            }
+          />
+          <div className="mb-8">
             <TabButtons activeTab={activeTab} setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
-            {activeTab === "projects" && (
-              <ViewToggle viewMode={viewMode} setViewMode={handleSetViewMode} isDarkMode={isDarkMode} />
-            )}
           </div>
 
           {activeTab === "projects" ? (
             viewMode === "grid" ? (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {reversedProjects.map((item: Project, index: number) => (
                   <ProjectItem
                     key={item.id}
