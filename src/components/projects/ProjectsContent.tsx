@@ -1,12 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDarkMode } from "@/context/DarkModeContext";
 import { detailedProjects, certificates } from "@/data/resume";
 import { Project, Certificate } from "@/types/projects";
 import TabHeader from "@/components/projects/TabHeader";
 import TabButtons from "@/components/projects/TabButtons";
 import ProjectItem from "@/components/projects/ProjectItem";
+import ProjectListItem from "@/components/projects/ProjectListItem";
+import ViewToggle from "@/components/projects/ViewToggle";
 import CertificateItem from "@/components/projects/CertificateItem";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
@@ -14,8 +16,6 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 const getProjectSpans = (total: number): string[] => {
   const rowConfigs = [
     [2, 1],
-    [3],
-    [1, 1, 1],
     [1, 2]
   ];
   
@@ -52,6 +52,19 @@ export default function ProjectsContent() {
   const { isDarkMode } = useDarkMode();
   const [activeTab, setActiveTab] = useState<"projects" | "certificates">("projects");
   const [showAllCertificates, setShowAllCertificates] = useState<boolean>(false);
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+
+  useEffect(() => {
+    const saved = localStorage.getItem("project-view-mode");
+    if (saved === "grid" || saved === "list") {
+      setViewMode(saved);
+    }
+  }, []);
+
+  const handleSetViewMode = (mode: "grid" | "list") => {
+    setViewMode(mode);
+    localStorage.setItem("project-view-mode", mode);
+  };
 
   const reversedProjects = [...detailedProjects].reverse();
   const projectSpans = getProjectSpans(reversedProjects.length);
@@ -69,27 +82,52 @@ export default function ProjectsContent() {
       <main className="flex-1 min-w-0 flex flex-col items-center pt-10 md:pt-24 lg:pt-14 px-4 md:px-6 lg:px-8 ml-0 md:ml-0 lg:ml-6 pb-20">
         <div className="w-full min-w-0 max-w-[700px] xl:max-w-[830px] transition-all duration-500 ease-in-out space-y-8 sm:space-y-10">
           <TabHeader activeTab={activeTab} isDarkMode={isDarkMode} />
-          <TabButtons activeTab={activeTab} setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+            <TabButtons activeTab={activeTab} setActiveTab={setActiveTab} isDarkMode={isDarkMode} />
+            {activeTab === "projects" && (
+              <ViewToggle viewMode={viewMode} setViewMode={handleSetViewMode} isDarkMode={isDarkMode} />
+            )}
+          </div>
 
           {activeTab === "projects" ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {reversedProjects.map((item: Project, index: number) => (
-                <ProjectItem
-                  key={item.id}
-                  id={item.id}
-                  title={item.title}
-                  description={item.description}
-                  technologies={item.technologies}
-                  image={item.image}
-                  link={item.link}
-                  slug={item.slug}
-                  category={item.category}
-                  figmaLink={item.figmaLink}
-                  isDarkMode={isDarkMode}
-                  spanClass={projectSpans[index]}
-                />
-              ))}
-            </div>
+            viewMode === "grid" ? (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {reversedProjects.map((item: Project, index: number) => (
+                  <ProjectItem
+                    key={item.id}
+                    id={item.id}
+                    title={item.title}
+                    description={item.description}
+                    technologies={item.technologies}
+                    image={item.gallery?.[0] ?? item.image}
+                    link={item.link}
+                    slug={item.slug}
+                    category={item.category}
+                    figmaLink={item.figmaLink}
+                    isDarkMode={isDarkMode}
+                    spanClass={projectSpans[index]}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="space-y-6">
+                {reversedProjects.map((item: Project) => (
+                  <ProjectListItem
+                    key={item.id}
+                    id={item.id}
+                    title={item.title}
+                    description={item.description}
+                    technologies={item.technologies}
+                    image={item.gallery?.[0] ?? item.image}
+                    link={item.link}
+                    slug={item.slug}
+                    category={item.category}
+                    figmaLink={item.figmaLink}
+                    isDarkMode={isDarkMode}
+                  />
+                ))}
+              </div>
+            )
           ) : (
             <div className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

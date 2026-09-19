@@ -43,7 +43,7 @@ export const detailedProjects = [
     title: "Ciu Insurance",
     category: "Micro-Frontend",
     description: "Insurance bank handling app with attractive design.",
-    detailedDescription: "Insurance bank handling application with attractive design and complete features. This application is designed to simplify the management of insurance policies, claims, and premium payments. With an intuitive interface and complete features, Ciu Insurance is a complete solution for the modern insurance industry. The real-time notification system and analytical dashboard help users monitor and manage their insurance efficiently.",
+    detailedDescription: "Insurance bank handling application with attractive design and complete features. This application is designed to simplify the management of insurance policies, claims, and premium payments. With an intuitive interface and complete features, Ciu Insurance is a complete solution for the modern insurance industry. The real time notification system and analytical dashboard help users monitor and manage their insurance efficiently.",
     technologies: ["Next.js", "PostgreSQL", "Bootstrap", "Golang", "Node.js"],
     image: "/projects/ciu_insurance.png",
     link: "https://github.com/zianscode/micro-frontend.git",
@@ -55,7 +55,7 @@ export const detailedProjects = [
       "Insurance policy management",
       "Online claim",
       "Premium payment",
-      "Real-time notifications",
+      "Real time notifications",
       "Analytical dashboard"
     ]
   },
@@ -105,7 +105,7 @@ export const detailedProjects = [
     title: "Kasir App",
     category: "Fullstack Web",
     description: "A simple and responsive cashier app for managing sales and products in small businesses.",
-    detailedDescription: "Kasir App is a web based POS system built with Laravel and React.js. It allows users to manage products, process sales, handle user roles, and view transaction history. The app is designed for ease of use and optimized for small to medium-sized businesses.",
+    detailedDescription: "Kasir App is a web based POS system built with Laravel and React.js. It allows users to manage products, process sales, handle user roles, and view transaction history. The app is designed for ease of use and optimized for small to medium sized businesses.",
     technologies: ["Laravel", "PHP", "MySql", "JavaScript", "TailwindCss"],
     image: "/projects/pos_kasir.png",
     link: "https://github.com/zianscode/Final_UKK_Cashier_App.git",
@@ -116,7 +116,7 @@ export const detailedProjects = [
     features: [
       "User authentication and role management (admin and cashier)",
       "Product management (CRUD operations)",
-      "Real-time sales processing",
+      "Real time sales processing",
       "Transaction history and reporting",
       "Responsive and user-friendly interface"
     ]

@@ -11,7 +11,7 @@ const TabButtons = ({ activeTab, setActiveTab, isDarkMode }: TabButtonsProps) =>
   ];
 
   return (
-    <div className="flex items-center space-x-2 mb-8">
+    <div className="flex items-center space-x-2">
       {tabs.map((tab) => (
         <button
           key={tab.id}
