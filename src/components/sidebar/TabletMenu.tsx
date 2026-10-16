@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -56,10 +56,12 @@ export default function TabletMenu({
   pathname,
 }: TabletMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [prevPathname, setPrevPathname] = useState(pathname);
 
-  useEffect(() => {
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
     setIsOpen(false);
-  }, [pathname]);
+  }
 
   return (
     <motion.div
