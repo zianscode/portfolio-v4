@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 import { DarkModeProvider } from "@/context/DarkModeContext";
 import AppContent from "@/components/AppContent";
 
@@ -26,6 +27,7 @@ export default function RootLayoutClient({
       <AppContent isLoading={isLoading} isInitialLoad={isInitialLoad}>
         {children}
       </AppContent>
+      <Toaster position="top-center" />
     </DarkModeProvider>
   );
 }

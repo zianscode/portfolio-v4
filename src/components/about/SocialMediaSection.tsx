@@ -7,7 +7,7 @@ const SocialMediaSection = ({ isDarkMode }: { isDarkMode: boolean }) => {
   const items = [
     {
       name: "Instagram",
-      handle: "@ffauzianc_",
+      handle: "@ffauzian_.0",
       hoverText: "Instagram Profile • @ffauzian_.0",
       url: "https://www.instagram.com/ffauzian_.0",
       icon: <FaInstagram className="text-base sm:text-lg text-pink-500/80 group-hover:text-pink-500 transition-colors" />,
