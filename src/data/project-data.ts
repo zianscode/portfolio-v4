@@ -155,7 +155,7 @@ export const detailedProjects = [
     figmaLink: "https://www.figma.com/design/2uKGYZmrdia2xzuprG3tC5/Kedai-KopiO?node-id=0-1&t=r0v60Dy8nRs10tGf-1",
     slug: "kedai-kopi-o",
     gallery: [
-      "/projects/detailsprojects/kedai_kopio/kko (1).png",
+      "/projects/detailsprojects/kedai_kopio/kko.png",
     ],
     features: [
       "Catalog & Product Search",

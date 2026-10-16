@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDarkMode } from "@/context/DarkModeContext";
 import DesktopMenu from "@/components/sidebar/DesktopMenu";
 import TabletMenu from "@/components/sidebar/TabletMenu";
@@ -18,21 +18,9 @@ export default function Sidebar({ isLoading }: SidebarProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return <div className="sticky top-0 z-10 flex flex-col"></div>;
-  }
 
   return (
-    <div
-      className="sticky top-0 z-10 flex flex-col transition-all duration-300 lg:py-8"
-      suppressHydrationWarning={true}
-    >
+    <div className="sticky top-0 z-10 flex flex-col transition-all duration-300 lg:py-8">
       {!isLoading && (
         <div className="md:hidden">
           <MobileProfileItem
