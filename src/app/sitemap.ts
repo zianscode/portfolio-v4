@@ -11,7 +11,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/roadmap",
     "/contact",
     "/chatroom",
-    "/dashboard",
     "/blog",
   ].map((route) => ({
     url: `${baseUrl}${route}`,
