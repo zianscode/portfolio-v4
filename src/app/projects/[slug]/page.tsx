@@ -53,5 +53,5 @@ export async function generateStaticParams() {
 
 export default async function ProjectDetailPage({ params }: Props) {
   const { slug } = await params;
-  return <ProjectDetailContent slug={slug} />;
+  return <ProjectDetailContent key={slug} slug={slug} />;
 }

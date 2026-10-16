@@ -20,7 +20,7 @@ const CertificateItem = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className={`group relative flex flex-col h-full rounded-2xl overflow-hidden font-poppins border transition-colors duration-300 ${
+      className={`group relative flex flex-col h-full rounded-3xl overflow-hidden font-poppins border transition-colors duration-300 ${
         isDarkMode
           ? "bg-neutral-900/50 border-white/10 hover:border-white/20"
           : "bg-white border-neutral-200 hover:border-neutral-300"
