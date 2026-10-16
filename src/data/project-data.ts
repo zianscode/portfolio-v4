@@ -156,7 +156,6 @@ export const detailedProjects = [
     slug: "kedai-kopi-o",
     gallery: [
       "/projects/detailsprojects/kedai_kopio/kko (1).png",
-      "/projects/detailsprojects/kedai_kopio/kko (2).png",
     ],
     features: [
       "Catalog & Product Search",
