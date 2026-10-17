@@ -84,7 +84,7 @@ interface ServiceCardProps {
 
 const ServiceCard = ({ title, description, isDarkMode, Illustration }: ServiceCardProps) => (
   <div
-    className={`p-5 rounded-2xl transition-all duration-300 cursor-pointer border relative overflow-hidden group ${
+    className={`p-5 rounded-3xl transition-all duration-300 cursor-pointer border relative overflow-hidden group ${
       isDarkMode 
         ? "bg-neutral-950 border-neutral-800/80 shadow-[0_8px_30px_rgba(0,0,0,0.3)] hover:bg-neutral-900/10 hover:border-neutral-700/60 hover:-translate-y-1" 
         : "bg-white border-neutral-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.02)] hover:bg-neutral-50/50 hover:border-neutral-300/60 hover:-translate-y-1"
