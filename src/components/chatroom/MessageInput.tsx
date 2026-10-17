@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { FaPaperPlane, FaReply, FaTimes } from "react-icons/fa";
+import { FiArrowUp, FiCornerUpLeft, FiX } from "react-icons/fi";
 import { ReplyTo } from "@/types/chatroom";
 
 interface MessageInputProps {
@@ -13,45 +13,52 @@ interface MessageInputProps {
 
 const MessageInput = ({ isDarkMode, onSendMessage, isSending, replyingTo, onCancelReply }: MessageInputProps) => {
   const [newMessage, setNewMessage] = useState("");
+  const canSend = newMessage.trim().length > 0 && !isSending;
 
   const handleSend = async () => {
-    if (!newMessage.trim() || isSending) return;
-    
+    if (!canSend) return;
+
     await onSendMessage(newMessage);
     setNewMessage("");
   };
 
   return (
-    <div className="mt-6">
+    <div className="space-y-2">
       {replyingTo && (
-        <div className={`flex items-center gap-2 px-4 py-2 rounded-t-xl border-b-0 text-sm ${
-          isDarkMode ? "bg-neutral-800 border-neutral-700 text-gray-300" : "bg-gray-100 border-gray-300 text-gray-600"
-        }`}>
-          <FaReply size={12} className="text-blue-500 flex-shrink-0" />
-          <span className="font-semibold text-blue-500 flex-shrink-0">Replying to {replyingTo.username}</span>
-          <p className="truncate text-xs opacity-70">{replyingTo.message}</p>
+        <div
+          className={`flex items-center gap-3 pl-4 pr-1.5 py-1.5 rounded-full text-xs ${
+            isDarkMode ? "bg-neutral-900 text-neutral-300" : "bg-neutral-100 text-neutral-600"
+          }`}
+        >
+          <FiCornerUpLeft className="w-3.5 h-3.5 shrink-0" />
+          <p className="min-w-0 truncate">
+            <span className={`font-semibold ${isDarkMode ? "text-white" : "text-neutral-900"}`}>
+              {replyingTo.username}
+            </span>
+            <span className="ml-2 opacity-70">{replyingTo.message}</span>
+          </p>
           <button
             onClick={onCancelReply}
-            className={`ml-auto p-2 sm:p-1 rounded transition-colors ${
-              isDarkMode ? "hover:bg-neutral-700 text-gray-400" : "hover:bg-gray-200 text-gray-500"
+            className={`ml-auto shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-colors ${
+              isDarkMode ? "hover:bg-white/10 hover:text-white" : "hover:bg-neutral-200 hover:text-neutral-900"
             }`}
             aria-label="Cancel reply"
           >
-            <FaTimes size={12} />
+            <FiX className="w-3.5 h-3.5" />
           </button>
         </div>
       )}
 
-      <div className={`flex items-center gap-3 p-2 rounded-xl border transition-colors ${
-        replyingTo ? "rounded-t-none" : ""
-      } ${
-        isDarkMode
-          ? "bg-neutral-900 border-neutral-700 focus-within:border-blue-500/50"
-          : "bg-white border-gray-300 focus-within:border-blue-400"
-      }`}>
+      <div
+        className={`flex items-center gap-2 pl-5 pr-1.5 py-1.5 rounded-full border transition-colors ${
+          isDarkMode
+            ? "bg-neutral-900 border-white/10 focus-within:border-white/30"
+            : "bg-white border-neutral-200 focus-within:border-neutral-400"
+        }`}
+      >
         <input
           type="text"
-          placeholder="Type your message..."
+          placeholder={replyingTo ? `Reply to ${replyingTo.username}...` : "Write a message..."}
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
           onKeyDown={(e) => {
@@ -60,24 +67,26 @@ const MessageInput = ({ isDarkMode, onSendMessage, isSending, replyingTo, onCanc
               handleSend();
             }
           }}
-          className={`flex-1 px-3 py-2.5 bg-transparent text-sm outline-none ${
-            isDarkMode
-              ? "text-white placeholder-gray-500"
-              : "text-black placeholder-gray-400"
+          className={`flex-1 min-w-0 py-2 bg-transparent text-sm outline-none ${
+            isDarkMode ? "text-white placeholder-neutral-500" : "text-neutral-900 placeholder-neutral-400"
           }`}
           aria-label="Type your message"
         />
         <button
           onClick={handleSend}
-          disabled={!newMessage.trim() || isSending}
-          className={`p-3 sm:p-2.5 rounded-xl transition-all ${
-            !newMessage.trim() || isSending
-              ? isDarkMode ? "bg-neutral-800 text-gray-600" : "bg-gray-200 text-gray-400"
-              : isDarkMode ? "bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-600/20" : "bg-blue-500 hover:bg-blue-600 text-white shadow-lg shadow-blue-500/20"
+          disabled={!canSend}
+          className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-colors ${
+            canSend
+              ? isDarkMode
+                ? "bg-neutral-700 text-white hover:bg-neutral-600"
+                : "bg-neutral-200 text-neutral-900 hover:bg-neutral-300"
+              : isDarkMode
+                ? "bg-white/[0.06] text-neutral-600"
+                : "bg-neutral-100 text-neutral-400"
           }`}
           aria-label="Send message"
         >
-          <FaPaperPlane className={`text-base ${isSending ? "animate-pulse" : ""}`} />
+          <FiArrowUp className={`w-4 h-4 ${isSending ? "animate-pulse" : ""}`} />
         </button>
       </div>
     </div>

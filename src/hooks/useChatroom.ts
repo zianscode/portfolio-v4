@@ -27,7 +27,7 @@ export interface AlertConfig {
   message: string;
   confirmText: string;
   cancelText: string;
-  type: "warning" | "delete" | "edit" | "success";
+  type: "warning" | "delete" | "edit" | "success" | "login";
   onConfirm: () => void;
 }
 
@@ -301,14 +301,23 @@ export function useChatroom() {
 
   const handleReplyMessage = useCallback(
     (msg: Message) => {
-      if (!user) return;
+      if (!user) {
+        showAlert({
+          title: "Login required",
+          message: `You need to log in first to reply to ${msg.username}.`,
+          confirmText: "Login with Google",
+          type: "login",
+          onConfirm: handleLogin,
+        });
+        return;
+      }
       setReplyingTo({
         id: msg.id,
         username: msg.username,
         message: msg.message,
       });
     },
-    [user]
+    [user, showAlert, handleLogin]
   );
 
   const handleCancelReply = useCallback(() => {

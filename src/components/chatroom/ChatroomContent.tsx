@@ -73,10 +73,10 @@ export default function ChatroomContent() {
 
           <div
             ref={messagesContainerRef}
-            className={`rounded-2xl p-4 sm:p-6 border ${
+            className={`rounded-3xl p-4 sm:p-6 border ${
               isDarkMode
-                ? "bg-neutral-900/40 border-neutral-800"
-                : "bg-white/50 border-neutral-200"
+                ? "bg-neutral-900/50 border-white/10"
+                : "bg-white border-neutral-200"
             } max-h-[calc(100dvh-320px)] sm:max-h-[calc(100vh-400px)] overflow-y-auto scrollbar-none`}
           >
             <MessagesList

@@ -48,7 +48,7 @@ const SocialCard: React.FC<SocialCardProps> = ({
       target="_blank"
       rel="noreferrer"
       onMouseMove={handleMouseMove}
-      className={`group relative overflow-hidden block rounded-2xl border ${borderColor} ${bgColor} ${darkBgColor} p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)] transition-shadow duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${ringColor} flex flex-col h-full`}
+      className={`group relative overflow-hidden block rounded-3xl border ${borderColor} ${bgColor} ${darkBgColor} p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.4)] transition-shadow duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${ringColor} flex flex-col h-full`}
     >
       <div
         aria-hidden

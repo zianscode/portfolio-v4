@@ -10,38 +10,28 @@ interface LoginButtonProps {
 
 const LoginButton = ({ isDarkMode, onLogin, isLoggingIn }: LoginButtonProps) => {
   return (
-    <div className="mt-6 flex justify-center">
-      <button
-        onClick={onLogin}
-        disabled={isLoggingIn}
-        className={`
-          group relative flex items-center justify-center gap-3 w-full py-3.5 px-5 rounded-2xl font-medium text-sm
-          transition-all duration-300 active:scale-[0.98] overflow-hidden
-          ${isDarkMode
-            ? "bg-white/[0.06] text-white border border-white/[0.12] hover:border-white/[0.25] hover:bg-white/[0.10]"
-            : "bg-black/[0.04] text-neutral-800 border border-black/[0.08] hover:border-black/[0.18] hover:bg-black/[0.07]"
-          }
-          backdrop-blur-xl shadow-xl
-          ${isLoggingIn ? "opacity-70 cursor-not-allowed" : "cursor-pointer"}
-        `}
-        aria-label={isLoggingIn ? "Logging in..." : "Login with Google to Chat"}
-      >
-        <span className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.10] to-transparent pointer-events-none" />
-
-        <FcGoogle className="w-5 h-5 flex-shrink-0 relative z-10" />
-
-        <span className="relative z-10">
-          {isLoggingIn ? (
-            <span className="flex items-center gap-2">
-              <FiLoader className="animate-spin h-4 w-4" />
-              Logging in...
-            </span>
-          ) : (
-            "Login with Google to Chat"
-          )}
-        </span>
-      </button>
-    </div>
+    <button
+      onClick={onLogin}
+      disabled={isLoggingIn}
+      className={`flex items-center justify-center gap-3 w-full py-3.5 px-5 rounded-full border text-sm font-semibold transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed ${
+        isDarkMode
+          ? "bg-white/[0.04] border-white/10 text-white hover:bg-white/10"
+          : "bg-white border-neutral-200 text-neutral-900 hover:bg-neutral-50"
+      }`}
+    >
+      {isLoggingIn ? (
+        <>
+          <FiLoader className="w-4 h-4 animate-spin" />
+          Logging in...
+        </>
+      ) : (
+        <>
+          {/* Official Google mark, kept multicolor per Google's sign-in branding guidelines */}
+          <FcGoogle className="w-5 h-5" />
+          Continue with Google to chat
+        </>
+      )}
+    </button>
   );
 };
 

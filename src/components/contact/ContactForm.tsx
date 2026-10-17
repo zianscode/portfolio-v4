@@ -1,75 +1,75 @@
 "use client";
 
+import { useState } from "react";
 import { useDarkMode } from "@/context/DarkModeContext";
 import { motion } from "framer-motion";
-import { FiMail, FiClock } from "react-icons/fi";
+import { toast } from "react-hot-toast";
+import { FiArrowUpRight, FiCheck, FiCopy } from "react-icons/fi";
+
+const EMAIL = "fajarfauzian53@gmail.com";
 
 const Contact = () => {
   const { isDarkMode } = useDarkMode();
+  const [copied, setCopied] = useState(false);
 
-  const headingColor = isDarkMode ? 'text-stone-100' : 'text-neutral-900';
-  const paragraphColor = isDarkMode ? 'text-stone-300' : 'text-neutral-700';
-  const subtleColor = isDarkMode ? 'text-stone-400' : 'text-neutral-500';
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      toast.success("Email copied to clipboard");
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      toast.error("Couldn't copy, please copy it manually");
+    }
+  };
 
   return (
-    <motion.div 
+    <motion.section
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
-      className={`space-y-8 font-poppins`}
+      className={`pt-8 border-t font-poppins ${isDarkMode ? "border-white/10" : "border-neutral-200"}`}
     >
-      <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 md:text-start text-center">
-        <div className="flex-1 space-y-4">
-          <h2 className={`text-2xl md:text-3xl font-bold ${headingColor}`}>
-            Let&apos;s build something together
-          </h2>
+      <h2 className={`text-xl sm:text-2xl font-bold tracking-tight ${isDarkMode ? "text-white" : "text-neutral-900"}`}>
+        Prefer email?
+      </h2>
 
-          <div className={`space-y-4 ${paragraphColor}`}>
-            <p className="text-[15px] leading-relaxed">
-              I&apos;m always excited to collaborate on innovative projects and connect with fellow developers, designers, and creative minds.
-            </p>
-            <p className="text-[15px] leading-relaxed opacity-80">
-              Whether you have a project in mind, want to discuss technology, or just want to say hello I&apos;d love to hear from you!
-            </p>
-          </div>
-        </div>
+      <p
+        className={`mt-2 max-w-[560px] text-[14px] sm:text-[15px] leading-relaxed ${
+          isDarkMode ? "text-neutral-400" : "text-neutral-600"
+        }`}
+      >
+        Write to me about a project, a role, or anything you&apos;d like to talk
+        through. A few lines about what you have in mind is plenty to start with.
+      </p>
 
-        <div className="flex-shrink-0 w-full md:w-auto flex flex-col items-center gap-5">
-          <div className={`flex items-center gap-3 ${subtleColor}`}>
-            <span className="hidden md:block h-px w-14 bg-gradient-to-r from-transparent to-current opacity-30" />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.18em] whitespace-nowrap">
-              Open to Collaboration
-            </span>
-            <span className="hidden md:block h-px w-14 bg-gradient-to-l from-transparent to-current opacity-30" />
-          </div>
+      <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-3">
+        <a
+          href={`mailto:${EMAIL}`}
+          className={`group inline-flex items-center gap-2 text-lg sm:text-2xl font-semibold tracking-tight underline decoration-1 underline-offset-[6px] transition-colors break-all ${
+            isDarkMode
+              ? "text-white decoration-white/25 hover:decoration-white"
+              : "text-neutral-900 decoration-neutral-300 hover:decoration-neutral-900"
+          }`}
+        >
+          {EMAIL}
+          <FiArrowUpRight className="shrink-0 text-base sm:text-xl transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </a>
 
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => window.location.href = "mailto:fajarfauzian121@gmail.com"}
-            className={`w-full md:w-auto py-4 px-10 rounded-full font-bold text-sm flex items-center justify-center space-x-3 transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.05)] ${
-              isDarkMode
-                ? "bg-neutral-900/40 backdrop-blur-md text-stone-200 hover:bg-neutral-800/50 hover:shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
-                : "bg-white/50 backdrop-blur-md text-stone-800 hover:bg-white/70 hover:-translate-y-0.5"
-            }`}
-          >
-            <FiMail className="text-xl" />
-            <span>Send me an Email</span>
-          </motion.button>
-
-          <p className={`flex items-center gap-2 text-[12px] ${subtleColor}`}>
-            <FiClock />
-            <span>Replies within 24 hours</span>
-          </p>
-        </div>
+        <button
+          type="button"
+          onClick={handleCopy}
+          className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border text-xs font-semibold transition-colors ${
+            isDarkMode
+              ? "border-white/10 text-neutral-300 hover:bg-white/10 hover:text-white"
+              : "border-neutral-200 text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900"
+          }`}
+        >
+          {copied ? <FiCheck className="w-3.5 h-3.5" /> : <FiCopy className="w-3.5 h-3.5" />}
+          {copied ? "Copied" : "Copy"}
+        </button>
       </div>
-
-      <div className="pt-4 text-center">
-        <p className="text-[13px] text-neutral-500 dark:text-neutral-400">
-          Don&apos;t be a stranger, I respond to all messages! 🌟
-        </p>
-      </div>
-    </motion.div>
+    </motion.section>
   );
 };
 

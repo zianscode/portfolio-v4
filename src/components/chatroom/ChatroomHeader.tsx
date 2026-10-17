@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { BiMessageDetail } from "react-icons/bi";
+import { FiMessageSquare } from "react-icons/fi";
 
 interface ChatroomHeaderProps {
   isDarkMode: boolean;
@@ -14,7 +14,7 @@ const ChatroomHeader = ({ isDarkMode }: ChatroomHeaderProps) => {
       className="text-start"
     >
       <div className="flex items-center gap-2">
-        <BiMessageDetail
+        <FiMessageSquare
           className={`text-base sm:text-xl ${
             isDarkMode ? "text-stone-200" : "text-stone-800"
           }`}

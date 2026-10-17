@@ -1,4 +1,5 @@
 "use client";
+import { FiLoader, FiMessageCircle } from "react-icons/fi";
 import { Message, User } from "@/types/chatroom";
 import MessageItem from "./MessageItem";
 
@@ -33,25 +34,30 @@ const MessagesList = ({
   onSaveEdit,
   onCancelEdit,
 }: MessagesListProps) => {
+  const muted = isDarkMode ? "text-neutral-400" : "text-neutral-500";
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-32">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-500"></div>
-        <span className="ml-2">Loading messages...</span>
+      <div className={`flex justify-center items-center gap-2 h-32 text-sm ${muted}`}>
+        <FiLoader className="w-4 h-4 animate-spin" />
+        Loading messages...
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="text-center text-red-500 py-4">
-        {error}
+      <div className="flex flex-col items-center gap-3 py-8 text-center">
+        <p className={`text-sm ${muted}`}>{error}</p>
         <button
           onClick={() => window.location.reload()}
-          className="mt-2 text-sm text-blue-500 hover:underline"
+          className={`px-4 py-2 rounded-full border text-xs font-semibold transition-colors ${
+            isDarkMode
+              ? "border-white/10 text-neutral-200 hover:bg-white/10"
+              : "border-neutral-200 text-neutral-800 hover:bg-neutral-100"
+          }`}
         >
-          Try Again
+          Try again
         </button>
       </div>
     );
@@ -59,14 +65,15 @@ const MessagesList = ({
 
   if (messages.length === 0) {
     return (
-      <p className="text-center text-gray-500">
-        No messages yet. Be the first to say something!
-      </p>
+      <div className={`flex flex-col items-center gap-2 py-10 text-center text-sm ${muted}`}>
+        <FiMessageCircle className="w-6 h-6" />
+        No messages yet. Be the first to say something.
+      </div>
     );
   }
 
   return (
-    <div className="overflow-y-auto scrollbar-none">
+    <div className="space-y-5">
       {messages.map((message) => (
         <MessageItem
           key={message.id}

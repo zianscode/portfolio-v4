@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { HiOutlineX } from "react-icons/hi";
+import { FiX } from "react-icons/fi";
 
 interface WelcomeBannerProps {
   isDarkMode: boolean;
@@ -15,37 +15,36 @@ const WelcomeBanner: React.FC<WelcomeBannerProps> = ({ isDarkMode, onClose }) =>
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      className={`p-4 rounded-2xl border text-sm ${
+      className={`flex items-start gap-3 pl-5 pr-3 py-4 rounded-3xl border ${
         isDarkMode
-          ? "bg-blue-900/20 border-blue-800/30 text-blue-200"
-          : "bg-blue-50 border-blue-200 text-blue-800"
+          ? "bg-neutral-900/50 border-white/10"
+          : "bg-white border-neutral-200"
       }`}
     >
-      <div className="flex items-start gap-3">
-        <span className="text-lg flex-shrink-0">🙏</span>
-        <div>
-          <p className="font-semibold mb-0.5">Terima kasih sudah login!</p>
-          <p
-            className={`text-xs leading-relaxed ${
-              isDarkMode ? "text-blue-300" : "text-blue-600"
-            }`}
-          >
-            Silakan tinggalkan pesan, saran, atau kritik untuk website ini. Setiap
-            masukan sangat berarti untuk pengembangan ke depannya. 😊
-          </p>
-        </div>
-        <button
-          onClick={onClose}
-          className={`ml-auto p-2 sm:p-1.5 rounded-lg transition-colors ${
-            isDarkMode
-              ? "hover:bg-blue-800/30 text-blue-300"
-              : "hover:bg-blue-100 text-blue-600"
+      <div className="flex-1 min-w-0">
+        <p className={`text-sm font-semibold ${isDarkMode ? "text-white" : "text-neutral-900"}`}>
+          Terima kasih sudah login
+        </p>
+        <p
+          className={`mt-0.5 text-[13px] leading-relaxed ${
+            isDarkMode ? "text-neutral-400" : "text-neutral-600"
           }`}
-          aria-label="Close welcome"
         >
-          <HiOutlineX className="w-4 h-4" />
-        </button>
+          Silakan tinggalkan pesan, saran, atau kritik untuk website ini. Setiap
+          masukan sangat berarti untuk pengembangan ke depannya.
+        </p>
       </div>
+      <button
+        onClick={onClose}
+        className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
+          isDarkMode
+            ? "text-neutral-400 hover:bg-white/10 hover:text-white"
+            : "text-neutral-500 hover:bg-neutral-100 hover:text-neutral-900"
+        }`}
+        aria-label="Close welcome message"
+      >
+        <FiX className="w-4 h-4" />
+      </button>
     </motion.div>
   );
 };

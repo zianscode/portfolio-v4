@@ -1,47 +1,46 @@
 "use client";
 
 import React from "react";
-import { useRouter } from "next/navigation";
-import { FaExclamationTriangle } from "react-icons/fa";
+import Link from "next/link";
+import { FiTool } from "react-icons/fi";
 
 interface MaintenanceModalProps {
   isDarkMode: boolean;
 }
 
 const MaintenanceModal: React.FC<MaintenanceModalProps> = ({ isDarkMode }) => {
-  const router = useRouter();
-
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-md ${
-        isDarkMode ? "bg-black" : "bg-gray-100"
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 font-poppins ${
+        isDarkMode ? "bg-neutral-950" : "bg-neutral-100"
       }`}
     >
       <div
-        className={`p-8 rounded-xl max-w-md text-center ${
-          isDarkMode ? "bg-neutral-900 border border-neutral-700 text-white" : "bg-white shadow-xl text-black"
+        className={`w-full max-w-sm p-8 rounded-3xl border text-center ${
+          isDarkMode ? "bg-neutral-900 border-white/10 text-white" : "bg-white border-neutral-200 text-neutral-900"
         }`}
       >
-        <div className="flex justify-center mb-4">
-          <FaExclamationTriangle
-            className={`h-16 w-16 ${isDarkMode ? "text-yellow-400" : "text-yellow-500"}`}
-          />
-        </div>
-        <h2 className="text-2xl font-bold mb-2">Under Maintenance</h2>
-        <p className="mb-4">
-          This chatroom is currently undergoing maintenance. Please check back later.
-        </p>
-        <p className="text-sm text-gray-500 mb-6">We&apos;ll be back soon!</p>
-        <button
-          onClick={() => router.push("/")}
-          className={`px-6 py-2 rounded-lg transition-colors ${
-            isDarkMode
-              ? "bg-neutral-800 hover:bg-neutral-700 text-white"
-              : "bg-gray-200 hover:bg-gray-300 text-black"
+        <div
+          className={`mx-auto mb-5 w-14 h-14 rounded-full flex items-center justify-center ${
+            isDarkMode ? "bg-white/[0.06] text-neutral-200" : "bg-neutral-100 text-neutral-700"
           }`}
         >
-          Return to Home
-        </button>
+          <FiTool className="w-6 h-6" />
+        </div>
+        <h2 className="text-xl font-bold">Under maintenance</h2>
+        <p className={`mt-2 text-sm leading-relaxed ${isDarkMode ? "text-neutral-400" : "text-neutral-600"}`}>
+          The chat room is being worked on right now. Please check back later.
+        </p>
+        <Link
+          href="/"
+          className={`mt-6 inline-flex items-center justify-center w-full py-2.5 px-5 rounded-full text-sm font-semibold transition-colors ${
+            isDarkMode
+              ? "bg-neutral-700 text-white hover:bg-neutral-600"
+              : "bg-neutral-200 text-neutral-900 hover:bg-neutral-300"
+          }`}
+        >
+          Back to home
+        </Link>
       </div>
     </div>
   );
