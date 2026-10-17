@@ -79,9 +79,9 @@ export default function ProfileItem({
 
       <motion.button
         className={`
-          ${isSidebarOpen ? "absolute top-2 right-2" : "mt-2"} 
-          w-8 h-8 m-2 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-white
-          rounded-xl flex items-center justify-center z-10 transition-colors duration-200
+          ${isSidebarOpen ? "absolute top-[68px] right-5" : "m-2"}
+          w-8 h-8 bg-white dark:bg-neutral-800 text-neutral-800 dark:text-white
+          rounded-full flex items-center justify-center z-10 transition-colors duration-200
           hover:bg-neutral-100 dark:hover:bg-neutral-700 shadow-md
         `}
         onClick={toggleDarkMode}

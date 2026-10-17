@@ -35,7 +35,7 @@ export default function MenuItem({
       rel={isExternal ? 'noopener noreferrer' : undefined}
     >
       <motion.div
-        className={`group flex items-center py-2 px-3 rounded-xl cursor-pointer relative ${
+        className={`group flex items-center py-2 px-3 rounded-full cursor-pointer relative ${
           isOpen ? "justify-start px-3" : "justify-center px-0"
         } ${
           isCurrentActive
@@ -51,7 +51,7 @@ export default function MenuItem({
         {isCurrentActive && (
           <motion.div
             layoutId="active-sidebar-pill"
-            className={`absolute inset-0 -z-10 rounded-xl border ${
+            className={`absolute inset-0 -z-10 rounded-full border ${
               isDarkMode 
                 ? "bg-white/10 border-white/5 shadow-sm" 
                 : "bg-black/5 border-black/5 shadow-sm"
@@ -62,7 +62,7 @@ export default function MenuItem({
 
         {!isCurrentActive && (
           <div
-            className={`absolute inset-0 -z-10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-200 ${
+            className={`absolute inset-0 -z-10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 ${
               isDarkMode ? "bg-white/5" : "bg-black/5"
             }`}
           />

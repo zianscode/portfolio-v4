@@ -25,11 +25,11 @@ export default function DesktopMenu({
 
   return (
     <motion.div
-      className={`fixed left-4 top-4 h-[calc(100dvh-32px)] flex flex-col border ${
+      className={`fixed left-0 top-0 h-dvh flex flex-col border border-l-0 ${
         isDarkMode
-          ? "bg-neutral-950/45 text-neutral-200 border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
-          : "bg-white/45 text-neutral-800 border-neutral-200/50 shadow-[0_8px_32px_rgba(0,0,0,0.06)]"
-      } backdrop-blur-xl rounded-2xl overflow-hidden`}
+          ? "bg-neutral-950/45 text-neutral-200 border-white/10"
+          : "bg-white/45 text-neutral-800 border-neutral-200/50"
+      } backdrop-blur-xl rounded-r-3xl overflow-hidden`}
       initial={false}
       animate={{
         width: isSidebarOpen ? "250px" : "68px",
