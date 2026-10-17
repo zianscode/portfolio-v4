@@ -1,4 +1,4 @@
-export const summaryMock = {
+export const aboutSummary = {
     paragraphOne:
       'Hi! I’m Fajar Fauzian, and my journey in frontend development started around three years ago when I entered the Software and Game Development major in vocational high school. There, I was introduced to the basics of web development such as HTML, CSS, and JavaScript, while also learning the difference between frontend and backend development. At first, I was simply curious about how websites were built and how designs could be transformed into interactive experiences.',
     paragraphTwo:

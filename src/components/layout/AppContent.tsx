@@ -1,11 +1,11 @@
 "use client";
 
 import { useDarkMode } from "@/context/DarkModeContext";
-import LoadingSpinner from "@/components/LoadingSpinner";
+import LoadingScreen from "@/components/layout/LoadingScreen";
 import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
 
-const ClientOnlySidebar = dynamic(() => import("@/components/sidebar/index"), {
+const ClientOnlyNavigation = dynamic(() => import("@/components/navigation/Navigation"), {
   ssr: false,
 });
 
@@ -15,9 +15,9 @@ interface AppContentProps {
   children: React.ReactNode;
 }
 
-import GridBackground from "@/components/GridBackground";
-import ShootingStars from "@/components/ShootingStars";
-import ChatRoomButton from "@/components/chatroom/ChatRoomButton";
+import GridBackground from "@/components/effects/GridBackground";
+import ShootingStars from "@/components/effects/ShootingStars";
+import ChatroomButton from "@/components/chatroom/ChatroomButton";
 
 function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
   const { isDarkMode, mounted } = useDarkMode();
@@ -38,7 +38,7 @@ function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <LoadingSpinner />
+            <LoadingScreen />
           </motion.div>
         )}
       </AnimatePresence>
@@ -54,7 +54,7 @@ function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <ClientOnlySidebar isLoading={isLoading} />
+            <ClientOnlyNavigation isLoading={isLoading} />
           </motion.div>
         </AnimatePresence>
 
@@ -68,7 +68,7 @@ function AppContent({ isLoading, isInitialLoad, children }: AppContentProps) {
         </motion.div>
       </div>
 
-      <ChatRoomButton />
+      <ChatroomButton />
     </>
   );
 }

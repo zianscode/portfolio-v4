@@ -2,11 +2,11 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 
-interface FooterProps {
+interface SidebarFooterProps {
   isSidebarOpen: boolean;
 }
 
-export default function FooterItem({ isSidebarOpen }: FooterProps) {
+export default function SidebarFooter({ isSidebarOpen }: SidebarFooterProps) {
   return (
     <div className="py-4 text-stone-400 mt-auto text-center backdrop-blur-sm rounded-full max-w-[250px] mx-auto text-xs">
       <AnimatePresence mode="wait">

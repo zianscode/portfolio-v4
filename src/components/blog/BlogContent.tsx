@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDarkMode } from "@/context/DarkModeContext";
-import { categories } from "@/data/resume";
+import { categories } from "@/data/blog";
 import { BlogPost } from "@/types/blog";
 import BlogHeader from "@/components/blog/BlogHeader";
 import BlogSearch from "@/components/blog/BlogSearch";

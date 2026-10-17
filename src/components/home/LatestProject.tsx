@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import { FaCode, FaBullhorn } from "react-icons/fa";
 import { useDarkMode } from "@/context/DarkModeContext";
-import { projects } from "@/data/resume";
+import { projects } from "@/data/projects";
 import LatestProjectCard from "@/components/home/LatestProjectCard";
 import Link from "next/link";
 

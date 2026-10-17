@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import { ComponentType } from "react";
 
 export type MenuItemType = {
@@ -35,16 +34,4 @@ export interface TabletMenuProps {
   toggleDarkMode: () => void;
   menuItems: MenuItemType[];
   pathname: string;
-}
-
-export interface SocialMedia {
-  id: string;
-  title: string;
-  description: string;
-  href: string;
-  icon: ReactNode;
-  classContainer: string;
-  classText: string;
-  classLink: string;
-  classIcon: string;
 }

@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect } from "react";
-import ProfileItem from "@/components/sidebar/ProfileItem";
-import FooterItem from "@/components/sidebar/FooterItem";
-import MenuItem from "@/components/sidebar/MenuItem";
+import SidebarProfile from "@/components/navigation/SidebarProfile";
+import SidebarFooter from "@/components/navigation/SidebarFooter";
+import MenuItem from "@/components/navigation/MenuItem";
 import { motion } from "framer-motion";
-import Breakline from "@/components/Breakline";
-import { DesktopMenuProps } from "@/types/menu";
+import Breakline from "@/components/ui/Breakline";
+import { DesktopMenuProps } from "@/types/navigation";
 
 export default function DesktopMenu({
   isDarkMode,
@@ -41,7 +41,7 @@ export default function DesktopMenu({
       onMouseEnter={() => setIsSidebarOpen(true)}
       onMouseLeave={() => setIsSidebarOpen(false)}
     >
-      <ProfileItem
+      <SidebarProfile
         isDarkMode={isDarkMode}
         toggleDarkMode={toggleDarkMode}
         isSidebarOpen={isSidebarOpen}
@@ -89,7 +89,7 @@ export default function DesktopMenu({
       </motion.nav>
 
       <div className="flex-shrink-0 px-3 pb-4">
-        <FooterItem isSidebarOpen={isSidebarOpen} />
+        <SidebarFooter isSidebarOpen={isSidebarOpen} />
       </div>
     </motion.div>
   );

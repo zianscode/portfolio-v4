@@ -6,10 +6,10 @@ import { useChatroom, MAINTENANCE_MODE } from "@/hooks/useChatroom";
 
 import ChatroomHeader from "@/components/chatroom/ChatroomHeader";
 import UserProfile from "@/components/chatroom/UserProfile";
-import MessagesList from "@/components/chatroom/MessagesList";
+import MessageList from "@/components/chatroom/MessageList";
 import MessageInput from "@/components/chatroom/MessageInput";
 import LoginButton from "@/components/chatroom/LoginButton";
-import CustomAlert from "@/components/chatroom/CustomAlert";
+import ConfirmDialog from "@/components/chatroom/ConfirmDialog";
 import WelcomeBanner from "@/components/chatroom/WelcomeBanner";
 import MaintenanceModal from "@/components/chatroom/MaintenanceModal";
 
@@ -79,7 +79,7 @@ export default function ChatroomContent() {
                 : "bg-white border-neutral-200"
             } max-h-[calc(100dvh-320px)] sm:max-h-[calc(100vh-400px)] overflow-y-auto scrollbar-none`}
           >
-            <MessagesList
+            <MessageList
               messages={messages}
               currentUser={user}
               isDarkMode={isDarkMode}
@@ -116,7 +116,7 @@ export default function ChatroomContent() {
         </div>
       </main>
 
-      <CustomAlert
+      <ConfirmDialog
         isOpen={alertConfig.isOpen}
         onClose={hideAlert}
         onConfirm={alertConfig.onConfirm}

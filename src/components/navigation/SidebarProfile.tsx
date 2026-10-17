@@ -5,21 +5,21 @@ import Image from "next/image";
 import { BsCloudMoon, BsCloudSun } from "react-icons/bs";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { motion, AnimatePresence } from "framer-motion";
-import ProfileHeader from "@/components/sidebar/ProfileHeader";
+import SidebarProfileBanner from "@/components/navigation/SidebarProfileBanner";
 import Link from "next/link";
-import { DEVTO_PROFILE } from "@/common/constant";
+import { DEVTO_PROFILE } from "@/constants/links";
 
-interface ProfileProps {
+interface SidebarProfileProps {
   isDarkMode: boolean;
   toggleDarkMode: () => void;
   isSidebarOpen: boolean;
 }
 
-export default function ProfileItem({
+export default function SidebarProfile({
   isDarkMode,
   toggleDarkMode,
   isSidebarOpen,
-}: ProfileProps) {
+}: SidebarProfileProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [showText, setShowText] = useState(false);
 
@@ -42,7 +42,7 @@ export default function ProfileItem({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <ProfileHeader
+      <SidebarProfileBanner
         isSidebarOpen={isSidebarOpen}
         isHovered={isHovered}
         showText={showText}

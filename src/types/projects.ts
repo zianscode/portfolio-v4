@@ -14,7 +14,7 @@ export interface Project {
   figmaLink?: string;
 }
 
-export interface ProjectProps {
+export interface ProjectCardProps {
   id: number;
   title: string;
   description: string;
@@ -39,7 +39,7 @@ export interface Certificate {
   link: string;
 }
 
-export interface CertificateProps {
+export interface CertificateCardProps {
   id: number;
   title: string;
   description: string;

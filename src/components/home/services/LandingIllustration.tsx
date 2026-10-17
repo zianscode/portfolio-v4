@@ -1,16 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import LandingContainer from "@/components/LandingContainer";
+import BrowserFrame from "@/components/home/services/BrowserFrame";
 
-export default function LandingIlustration() {
+export default function LandingIllustration() {
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
   };
 
   return (
-    <LandingContainer>
+    <BrowserFrame>
       <div className="flex flex-col gap-1 w-full py-4">
         <motion.div
           className="w-full h-2 rounded-full border-2 border-neutral-400 dark:border-neutral-800 bg-transparent"
@@ -87,6 +87,6 @@ export default function LandingIlustration() {
           ))}
         </div>
       </div>
-    </LandingContainer>
+    </BrowserFrame>
   );
 }

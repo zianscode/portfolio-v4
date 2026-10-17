@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import DashboardContainer from "@/components/LandingContainer";
+import BrowserFrame from "@/components/home/services/BrowserFrame";
 
 export default function DashboardIllustration() {
   return (
-    <DashboardContainer>
+    <BrowserFrame>
       <motion.div
         className="flex w-full h-[112px] bg-transparent overflow-hidden"
         initial={{ opacity: 0, scale: 0.95 }}
@@ -62,6 +62,6 @@ export default function DashboardIllustration() {
           </div>
         </div>
       </motion.div>
-    </DashboardContainer>
+    </BrowserFrame>
   );
 }

@@ -8,7 +8,7 @@ import { FiArrowUpRight, FiCheck, FiCopy } from "react-icons/fi";
 
 const EMAIL = "fajarfauzian53@gmail.com";
 
-const Contact = () => {
+const EmailSection = () => {
   const { isDarkMode } = useDarkMode();
   const [copied, setCopied] = useState(false);
 
@@ -73,4 +73,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default EmailSection;

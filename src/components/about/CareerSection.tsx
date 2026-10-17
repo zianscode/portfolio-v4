@@ -12,7 +12,7 @@ import {
   FaLightbulb,
   FaCode,
 } from "react-icons/fa";
-import { workExperienceData, educationData } from "@/data/resume";
+import { workExperienceData, educationData } from "@/data/career";
 import {
   CareerSectionProps,
   CareerCardProps,

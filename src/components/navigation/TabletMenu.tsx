@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { BsCloudMoon, BsCloudSun } from "react-icons/bs";
 import { FiMenu, FiX } from "react-icons/fi";
-import { TabletMenuProps } from "@/types/menu";
+import { TabletMenuProps } from "@/types/navigation";
 
 const dropdownVariants = {
   hidden: { opacity: 0 },

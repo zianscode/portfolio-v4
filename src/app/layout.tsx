@@ -1,7 +1,7 @@
 import { Poppins, Sora } from "next/font/google";
-import "../styles/globals.css";
-import RootLayoutClient from "@/components/RootLayoutClient";
-import JsonLd from "@/components/JsonLd";
+import "@/styles/globals.css";
+import RootLayoutClient from "@/components/layout/RootLayoutClient";
+import JsonLd from "@/components/layout/JsonLd";
 import { Metadata } from "next";
 
 const poppins = Poppins({

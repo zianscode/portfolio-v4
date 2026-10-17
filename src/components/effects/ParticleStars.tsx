@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from 'react';
-import styles from '@/styles/ParticleStars.module.css';
+import styles from '@/components/effects/ParticleStars.module.css';
 
 const ParticleStars: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);

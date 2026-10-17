@@ -4,7 +4,7 @@ import type { CSSProperties } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaCircle } from "react-icons/fa";
 
-interface ProfileHeaderProps {
+interface SidebarProfileBannerProps {
   isSidebarOpen: boolean;
   isHovered: boolean;
   showText: boolean;
@@ -56,11 +56,11 @@ const backdropStyle: CSSProperties = {
   WebkitMaskRepeat: "no-repeat",
 };
 
-export default function ProfileHeader({
+export default function SidebarProfileBanner({
   isSidebarOpen,
   isHovered,
   showText,
-}: ProfileHeaderProps) {
+}: SidebarProfileBannerProps) {
   return (
     <>
       {isSidebarOpen && (

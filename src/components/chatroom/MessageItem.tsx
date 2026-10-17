@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { FiCheck, FiCornerUpLeft, FiEdit2, FiTrash2, FiX } from "react-icons/fi";
 import { Message, User } from "@/types/chatroom";
-import { formatTimestamp } from "@/utils/chatroom";
+import { formatTimestamp } from "@/utils/format-date";
 
 interface MessageItemProps {
   message: Message;

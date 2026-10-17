@@ -1,12 +1,12 @@
 import React from 'react';
-import { summaryMock } from '@/common/mocks/summary';
+import { aboutSummary } from '@/data/about';
 import { BiLeaf as ProfileIcon } from 'react-icons/bi';
 
-interface SummaryProps {
+interface IntroductionSectionProps {
   isDarkMode: boolean;
 }
 
-const Summary: React.FC<SummaryProps> = ({ isDarkMode }) => {
+const IntroductionSection: React.FC<IntroductionSectionProps> = ({ isDarkMode }) => {
   const borderColor = isDarkMode ? 'border-stone-700' : 'border-stone-300';
   const textColor = isDarkMode ? 'text-stone-300' : 'text-gray-700';
   const paragraphColor = isDarkMode ? 'text-stone-300' : 'text-neutral-800';
@@ -42,14 +42,14 @@ const Summary: React.FC<SummaryProps> = ({ isDarkMode }) => {
           data-testid="summary"
           className={`flex flex-col space-y-6 font-poppins text-[15px] leading-relaxed ${paragraphColor}`}
         >
-          <p>{summaryMock.paragraphOne}</p>
-          <p>{summaryMock.paragraphTwo}</p>
-          <p>{summaryMock.paragraphThree}</p>
-          <p>{summaryMock.paragraphFour}</p>
+          <p>{aboutSummary.paragraphOne}</p>
+          <p>{aboutSummary.paragraphTwo}</p>
+          <p>{aboutSummary.paragraphThree}</p>
+          <p>{aboutSummary.paragraphFour}</p>
         </div>
       </div>
     </section>
   );
 };
 
-export default Summary;
+export default IntroductionSection;

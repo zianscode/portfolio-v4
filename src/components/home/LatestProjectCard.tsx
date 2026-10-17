@@ -3,9 +3,8 @@
 import Image from "next/image";
 import { useDarkMode } from "@/context/DarkModeContext";
 import Link from "next/link";
-import { detailedProjects } from "@/data/resume";
+import { detailedProjects } from "@/data/projects";
 import { LatestProjectCardProps } from "@/types/projects";
-import { getCleanImageUrl } from "@/utils/image";
 
 const LatestProjectCard = ({ project, index }: LatestProjectCardProps) => {
   const { isDarkMode } = useDarkMode();
@@ -31,7 +30,7 @@ const LatestProjectCard = ({ project, index }: LatestProjectCardProps) => {
               } h-44 md:h-32`}
           >
             <Image
-              src={getCleanImageUrl(project.src)}
+              src={project.src}
               alt={project.title}
               fill
               className="object-cover rounded-xl transition-transform duration-500 group-hover:scale-105"

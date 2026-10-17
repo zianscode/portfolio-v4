@@ -2,11 +2,10 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { CertificateProps } from "@/types/projects";
+import { CertificateCardProps } from "@/types/projects";
 import { FiArrowUpRight, FiAward } from "react-icons/fi";
-import { getCleanImageUrl } from "@/utils/image";
 
-const CertificateItem = ({
+const CertificateCard = ({
   title,
   description,
   issuedBy,
@@ -14,7 +13,7 @@ const CertificateItem = ({
   image,
   link,
   isDarkMode,
-}: CertificateProps) => {
+}: CertificateCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -34,7 +33,7 @@ const CertificateItem = ({
         className="relative block w-full aspect-[16/10] overflow-hidden bg-neutral-950/80"
       >
         <Image
-          src={getCleanImageUrl(image)}
+          src={image}
           alt={title}
           fill
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
@@ -92,4 +91,4 @@ const CertificateItem = ({
   );
 };
 
-export default CertificateItem;
+export default CertificateCard;

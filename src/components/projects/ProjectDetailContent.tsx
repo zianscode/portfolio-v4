@@ -3,13 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useDarkMode } from "@/context/DarkModeContext";
-import { detailedProjects } from "@/data/resume";
+import { detailedProjects } from "@/data/projects";
 import { Project } from "@/types/projects";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaFigma } from "react-icons/fa";
 import { FiArrowLeft, FiArrowUpRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { getCleanImageUrl } from "@/utils/image";
 
 interface ProjectDetailContentProps {
   slug: string;
@@ -133,7 +132,7 @@ const ProjectDetailContent = ({ slug }: ProjectDetailContentProps) => {
                     className="absolute inset-0"
                   >
                     <Image
-                      src={getCleanImageUrl(currentImage)}
+                      src={currentImage}
                       alt={`${project.title} screenshot ${activeImageIndex + 1}`}
                       fill
                       className="object-cover"
@@ -183,7 +182,7 @@ const ProjectDetailContent = ({ slug }: ProjectDetailContentProps) => {
                         }`}
                       >
                         <Image
-                          src={getCleanImageUrl(img)}
+                          src={img}
                           alt=""
                           fill
                           className="object-cover"

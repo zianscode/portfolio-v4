@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useDarkMode } from "@/context/DarkModeContext";
 import { IoMdContacts } from "react-icons/io";
 import SocialCards from "@/components/contact/SocialCards";
-import ContactForm from "@/components/contact/ContactForm";
+import EmailSection from "@/components/contact/EmailSection";
 
 export default function ContactContent() {
   const { isDarkMode } = useDarkMode();
@@ -49,7 +49,7 @@ export default function ContactContent() {
 
           <div className="grid grid-cols-1 gap-8">
             <SocialCards />
-            <ContactForm />
+            <EmailSection />
           </div>
         </div>
       </main>

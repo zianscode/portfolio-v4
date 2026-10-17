@@ -6,7 +6,7 @@ import {
   BiMessageDetail as ChatIcon,
 } from 'react-icons/bi';
 import { LuWorkflow } from 'react-icons/lu';
-import { MenuItemType } from '@/types/menu';
+import { MenuItemType } from '@/types/navigation';
 
 export const MENU_ITEMS: MenuItemType[] = [
   {

@@ -3,11 +3,11 @@
 import React from 'react'
 import { TypeAnimation as TypeAnimationComponent } from 'react-type-animation'
 
-interface TypeAnimationProps {
+interface TypingTextProps {
   sequence: string[]
   delay?: number
 }
-export default function TypeAnimation({ sequence, delay = 1000 }: TypeAnimationProps) {
+export default function TypingText({ sequence, delay = 1000 }: TypingTextProps) {
   const modifiedSequence: (string | number)[] = []
 
   sequence.forEach((item, index) => {

@@ -3,7 +3,7 @@
 import { FiMessageCircle } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 
-const ChatRoomButton = () => {
+const ChatroomButton = () => {
   const router = useRouter();
 
   return (
@@ -19,4 +19,4 @@ const ChatRoomButton = () => {
   );
 };
 
-export default ChatRoomButton;
+export default ChatroomButton;

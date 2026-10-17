@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
-import SkillCard from "./SkillCard";
-import MarqueeElement from "@/components/MarqueeElement";
-import { SkillList } from "@/data/resume";
+import SkillCard from "@/components/about/SkillCard";
+import Marquee from "@/components/ui/Marquee";
+import { skillItems } from "@/data/skills";
 import { FaLaptopCode } from "react-icons/fa";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
-interface SkillsListProps {
+interface SkillListProps {
   isDarkMode?: boolean;
   direction?: "left" | "right";
   isMobile: boolean;
 }
 
-const SkillsList = ({ direction = "left", isDarkMode = false }: SkillsListProps) => {
+const SkillList = ({ direction = "left", isDarkMode = false }: SkillListProps) => {
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
   const isMediumScreen = useMediaQuery("(max-width: 768px)");
-  const [skills, setSkills] = useState(SkillList);
+  const [skills, setSkills] = useState(skillItems);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    setSkills([...SkillList].sort(() => Math.random() - 0.5));
+    setSkills([...skillItems].sort(() => Math.random() - 0.5));
   }, []);
 
   if (!mounted) {
@@ -90,7 +90,7 @@ const SkillsList = ({ direction = "left", isDarkMode = false }: SkillsListProps)
           const duplicatedSlider = [...slider, ...slider];
 
           return (
-            <MarqueeElement
+            <Marquee
               key={index}
               direction={marqueeDirection}
               speed={speed}
@@ -108,7 +108,7 @@ const SkillsList = ({ direction = "left", isDarkMode = false }: SkillsListProps)
                   />
                 ))}
               </div>
-            </MarqueeElement>
+            </Marquee>
           );
         })}
       </div>
@@ -116,4 +116,4 @@ const SkillsList = ({ direction = "left", isDarkMode = false }: SkillsListProps)
   );
 };
 
-export default SkillsList;
+export default SkillList;

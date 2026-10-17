@@ -1,7 +1,7 @@
 import React from 'react'
-import Marquee from 'react-fast-marquee'
+import FastMarquee from 'react-fast-marquee'
 
-interface MarqueeElementProps {
+interface MarqueeProps {
   direction?: 'left' | 'right'
   children: React.ReactNode
   speed?: number
@@ -9,13 +9,13 @@ interface MarqueeElementProps {
   className?: string
 }
 
-export default function MarqueeElement({ 
+export default function Marquee({ 
   children, 
   direction = 'left',
   speed = 25,
   pauseOnHover = false,
   className = ''
-}: MarqueeElementProps) {
+}: MarqueeProps) {
   return (
     <div 
       style={{
@@ -24,7 +24,7 @@ export default function MarqueeElement({
       }}
       className="w-full overflow-hidden"
     >
-      <Marquee 
+      <FastMarquee 
         direction={direction} 
         speed={speed} 
         pauseOnHover={pauseOnHover}
@@ -32,7 +32,7 @@ export default function MarqueeElement({
         className={className}
       >
         {children}
-      </Marquee>
+      </FastMarquee>
     </div>
   )
 }

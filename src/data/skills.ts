@@ -21,7 +21,7 @@ import {
 } from 'react-icons/si';
 import { VscVscode as SiVscode } from 'react-icons/vsc';
 
-export const SkillList = [
+export const skillItems = [
   { name: "HTML5", icon: SiHtml5, color: "text-[#E34F26]" },
   { name: "CSS3", icon: SiCss3, color: "text-[#1572B6]" },
   { name: "JavaScript", icon: SiJavascript, color: "text-[#F7DF1E]" },

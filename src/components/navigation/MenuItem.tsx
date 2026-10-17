@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { MenuItemType } from "@/types/menu";
+import { MenuItemType } from "@/types/navigation";
 
 interface MenuItemProps {
   item: MenuItemType;

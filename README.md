@@ -52,19 +52,26 @@ portfolio-v4/
 │   │   ├── roadmap/        # Learning and technical roadmap page
 │   │   ├── layout.tsx      # Root layout wrapper
 │   │   └── page.tsx        # Homepage hero section and highlights
-│   ├── common/             # Global constants and static values
-│   ├── components/         # Modular reusable React components
-│   │   ├── about/          # Career timeline, skills, and intro sections
-│   │   ├── chatroom/       # Message list, input, and user profile
-│   │   ├── contact/        # Contact form and social cards
-│   │   ├── home/           # Hero section, latest project cards, services
-│   │   ├── projects/       # Project item cards and header buttons
-│   │   └── sidebar/        # Desktop, Tablet, and Mobile navigation
-│   ├── context/            # React context providers (Dark Mode Engine)
-│   ├── data/               # Project data, resume credentials, skill lists
-│   ├── lib/                # Firebase configuration and third-party helpers
+│   ├── components/
+│   │   ├── layout/         # App shell: root layout client, loading screen, JSON-LD
+│   │   ├── navigation/     # Desktop sidebar, tablet navbar, mobile menu
+│   │   ├── effects/        # Background effects (grid, shooting stars, particles)
+│   │   ├── ui/             # Generic building blocks (marquee, typing text, divider)
+│   │   ├── home/           # Hero, latest projects, services (+ services/ illustrations)
+│   │   ├── about/          # Introduction, career timeline, skills, social media
+│   │   ├── projects/       # Project grid/list cards, certificate cards, detail page
+│   │   ├── contact/        # Social cards and email section
+│   │   ├── chatroom/       # Message list, input, dialogs, floating chat button
+│   │   ├── blog/           # Blog list, search, category filter
+│   │   └── roadmap/        # Learning roadmap categories and items
+│   ├── constants/          # External links (donate, dev.to profile)
+│   ├── context/            # React context providers (dark mode)
+│   ├── data/               # Static content: projects, certificates, skills, career, navigation
+│   ├── hooks/              # Custom hooks (chatroom state, media queries)
+│   ├── lib/                # Firebase and Google Tag Manager integrations
+│   ├── styles/             # Global CSS
 │   ├── types/              # TypeScript interfaces and type definitions
-│   └── utils/              # Helper functions (Image URL formatting, etc.)
+│   └── utils/              # Pure helpers (date formatting)
 └── package.json            # Project dependencies and script declarations
 ```
 

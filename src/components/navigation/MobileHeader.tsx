@@ -7,21 +7,21 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { DEVTO_PROFILE } from "@/common/constant";
+import { DEVTO_PROFILE } from "@/constants/links";
 
-interface ProfileProps {
+interface MobileHeaderProps {
   isDarkMode: boolean;
   toggleDarkMode: () => void;
   isMobileOpen: boolean;
   setIsMobileOpen: (open: boolean) => void;
 }
 
-export default function MobileProfileItem({
+export default function MobileHeader({
   isDarkMode,
   toggleDarkMode,
   isMobileOpen,
   setIsMobileOpen,
-}: ProfileProps) {
+}: MobileHeaderProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {

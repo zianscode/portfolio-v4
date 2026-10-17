@@ -2,11 +2,11 @@
 
 import { motion } from 'framer-motion'
 
-import WebContainer from '@/components/WebContainer'
+import BrowserFrame from '@/components/home/services/BrowserFrame'
 
-export default function WebIlustration() {
+export default function WebIllustration() {
   return (
-    <WebContainer>
+    <BrowserFrame>
       <div>
         <motion.div
           className="mb-2 border border-neutral-400 dark:border-neutral-700"
@@ -65,6 +65,6 @@ export default function WebIlustration() {
           </div>
         </div>
       </div>
-    </WebContainer>
+    </BrowserFrame>
   )
 }

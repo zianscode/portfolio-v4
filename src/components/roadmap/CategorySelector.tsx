@@ -1,4 +1,4 @@
-import { skillCategories } from "@/data/resume";
+import { skillCategories } from "@/data/skills";
 
 type CategoryKey = keyof typeof skillCategories;
 

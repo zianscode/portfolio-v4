@@ -1,5 +1,5 @@
 import ProjectDetailContent from "@/components/projects/ProjectDetailContent";
-import { detailedProjects } from "@/data/resume";
+import { detailedProjects } from "@/data/projects";
 import { Metadata } from "next";
 
 type Props = {

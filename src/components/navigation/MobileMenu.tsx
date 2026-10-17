@@ -1,8 +1,8 @@
 "use client";
 import { useEffect } from "react";
-import MenuItem from "@/components/sidebar/MenuItem";
+import MenuItem from "@/components/navigation/MenuItem";
 import { motion, AnimatePresence } from "framer-motion";
-import { MobileMenuProps } from "@/types/menu";
+import { MobileMenuProps } from "@/types/navigation";
 
 const overlayVariants = {
   hidden: { opacity: 0 },
@@ -84,7 +84,7 @@ export default function MobileMenu({
     <AnimatePresence>
       {isMobileOpen && (
         <motion.div
-          key="mobile-sidebar"
+          key="mobile-menu"
           className={`fixed left-0 right-0 top-0 w-full h-full flex flex-col ${
             isDarkMode
               ? "bg-neutral-950/95 text-stone-200"

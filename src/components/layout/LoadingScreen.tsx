@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useDarkMode } from "@/context/DarkModeContext";
-import ParticleStars from "./ParticleStars";
+import ParticleStars from "@/components/effects/ParticleStars";
 import { motion, AnimatePresence } from "framer-motion";
 
 const SunEarthMoonSystem = () => {

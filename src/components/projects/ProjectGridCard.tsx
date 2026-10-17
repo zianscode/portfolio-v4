@@ -3,12 +3,11 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ProjectProps } from "@/types/projects";
-import { getCleanImageUrl } from "@/utils/image";
+import { ProjectCardProps } from "@/types/projects";
 import { FaGithub, FaFigma } from "react-icons/fa";
 import { FiArrowRight } from "react-icons/fi";
 
-const ProjectItem = ({
+const ProjectGridCard = ({
   id,
   title,
   description,
@@ -20,7 +19,7 @@ const ProjectItem = ({
   spanClass = "md:col-span-1",
   category,
   figmaLink,
-}: ProjectProps) => {
+}: ProjectCardProps) => {
   const isGithubLink = link && link.includes("github.com");
   const hasFigma = (link && link.includes("figma.com")) || (figmaLink && figmaLink.includes("figma.com"));
   const figmaUrl = (link && link.includes("figma.com")) ? link : figmaLink;
@@ -51,7 +50,7 @@ const ProjectItem = ({
           <div className="absolute inset-0 shadow-[inset_0_0_35px_rgba(0,0,0,0.45)] pointer-events-none z-10 transition-all duration-500 group-hover:shadow-[inset_0_0_65px_rgba(0,0,0,0.7)]" />
 
           <Image
-            src={getCleanImageUrl(image)}
+            src={image}
             alt={title}
             fill
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
@@ -163,4 +162,4 @@ const ProjectItem = ({
   );
 };
 
-export default ProjectItem;
+export default ProjectGridCard;

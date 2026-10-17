@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { DarkModeProvider } from "@/context/DarkModeContext";
-import AppContent from "@/components/AppContent";
+import AppContent from "@/components/layout/AppContent";
 
 export default function RootLayoutClient({
   children,

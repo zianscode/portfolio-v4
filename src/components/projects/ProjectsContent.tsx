@@ -2,14 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { useDarkMode } from "@/context/DarkModeContext";
-import { detailedProjects, certificates } from "@/data/resume";
+import { detailedProjects } from "@/data/projects";
+import { certificates } from "@/data/certificates";
 import { Project, Certificate } from "@/types/projects";
 import TabHeader from "@/components/projects/TabHeader";
 import TabButtons from "@/components/projects/TabButtons";
-import ProjectItem from "@/components/projects/ProjectItem";
-import ProjectListItem from "@/components/projects/ProjectListItem";
+import ProjectGridCard from "@/components/projects/ProjectGridCard";
+import ProjectListCard from "@/components/projects/ProjectListCard";
 import ViewToggle from "@/components/projects/ViewToggle";
-import CertificateItem from "@/components/projects/CertificateItem";
+import CertificateCard from "@/components/projects/CertificateCard";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 
@@ -93,7 +94,7 @@ export default function ProjectsContent() {
             viewMode === "grid" ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {reversedProjects.map((item: Project, index: number) => (
-                  <ProjectItem
+                  <ProjectGridCard
                     key={item.id}
                     id={item.id}
                     title={item.title}
@@ -112,7 +113,7 @@ export default function ProjectsContent() {
             ) : (
               <div className="space-y-6">
                 {reversedProjects.map((item: Project) => (
-                  <ProjectListItem
+                  <ProjectListCard
                     key={item.id}
                     id={item.id}
                     title={item.title}
@@ -133,7 +134,7 @@ export default function ProjectsContent() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <AnimatePresence mode="popLayout">
                   {displayedCertificates.map((item: Certificate) => (
-                    <CertificateItem
+                    <CertificateCard
                       key={item.id}
                       id={item.id}
                       title={item.title}

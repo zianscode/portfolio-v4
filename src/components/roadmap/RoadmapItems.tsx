@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { FaLink } from "react-icons/fa";
-import { skillCategories } from "@/data/resume";
+import { skillCategories } from "@/data/skills";
 
 type CategoryKey = keyof typeof skillCategories;
 

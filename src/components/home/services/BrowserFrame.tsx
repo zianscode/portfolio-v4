@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function LandingContainer({
+export default function BrowserFrame({
   children,
 }: {
   children: React.ReactNode;
@@ -48,15 +48,15 @@ export function Demo() {
           3D Landing Container
         </h1>
         <div className="flex gap-8 justify-center">
-          <LandingContainer>
+          <BrowserFrame>
             <DemoContent />
-          </LandingContainer>
-          <LandingContainer>
+          </BrowserFrame>
+          <BrowserFrame>
             <div className="flex flex-col items-center gap-1 py-4">
               <div className="w-6 h-6 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full"></div>
               <div className="text-xs text-neutral-600 dark:text-neutral-400">Another</div>
             </div>
-          </LandingContainer>
+          </BrowserFrame>
         </div>
       </div>
     </div>

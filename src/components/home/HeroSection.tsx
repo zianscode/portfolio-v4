@@ -1,12 +1,12 @@
-import Saweria from "@/components/Saweria";
-import TypeAnimation from "@/components/TypeAnimation";
+import DonateButton from "@/components/home/DonateButton";
+import TypingText from "@/components/ui/TypingText";
 
-export default function Introduction() {
+export default function HeroSection() {
   return (
     <section className="space-y-3 bg-cover bg-no-repeat">
       <div className="flex items-start justify-between gap-3 min-w-0">
         <h1 className="font-poppins flex gap-2 text-lg sm:text-xl font-bold text-neutral-700 dark:text-neutral-200 min-w-0 flex-1">
-          <TypeAnimation
+          <TypingText
             sequence={[
               "Hi, I'm Fajar Fauzian",
               "Hi, I'm Frontend Developer",
@@ -16,7 +16,7 @@ export default function Introduction() {
           />
         </h1>
         <span className="text-neutral-700 dark:text-neutral-200 flex-shrink-0">
-          <Saweria />
+          <DonateButton />
         </span>
       </div>
 

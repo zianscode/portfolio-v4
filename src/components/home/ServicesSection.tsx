@@ -2,10 +2,10 @@
 
 import { FaProjectDiagram } from "react-icons/fa";
 import { useDarkMode } from "@/context/DarkModeContext";
-import WebIlustration from "@/components/WebIlustration";
-import MobileIllustration from "@/components/MobileIlustration";
-import LandingIllustration from "@/components/LandingIlustration";
-import DashboardIllustration from "@/components/DashboardIlustration";
+import WebIllustration from "@/components/home/services/WebIllustration";
+import MobileIllustration from "@/components/home/services/MobileIllustration";
+import LandingIllustration from "@/components/home/services/LandingIllustration";
+import DashboardIllustration from "@/components/home/services/DashboardIllustration";
 
 const ServicesSection = () => {
   const { isDarkMode } = useDarkMode();
@@ -14,7 +14,7 @@ const ServicesSection = () => {
     {
       title: "Website Development",
       description: "Build responsive and scalable websites tailored to your business needs, using the latest web technologies.",
-      Illustration: WebIlustration
+      Illustration: WebIllustration
     },
     {
       title: "Mobile UI/UX Design",

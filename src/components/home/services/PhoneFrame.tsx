@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-export default function MobileLandingContainer({
+export default function PhoneFrame({
   children,
 }: {
   children: React.ReactNode;
@@ -109,10 +109,10 @@ export function MobileDemo() {
           Ultra-Compact Mobile UI
         </h1>
         <div className="flex gap-6">
-          <MobileLandingContainer>
+          <PhoneFrame>
             <MobileIllustration />
-          </MobileLandingContainer>
-          <MobileLandingContainer>
+          </PhoneFrame>
+          <PhoneFrame>
             <div className="flex flex-col items-center gap-1">
               <div className="w-4 h-4 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full"></div>
               <div className="text-[6px] text-neutral-600 dark:text-neutral-400">App</div>
@@ -121,15 +121,15 @@ export function MobileDemo() {
                 <div className="w-3 h-0.5 bg-neutral-400 dark:bg-neutral-500 rounded"></div>
               </div>
             </div>
-          </MobileLandingContainer>
-          <MobileLandingContainer>
+          </PhoneFrame>
+          <PhoneFrame>
             <div className="flex flex-col items-center w-full px-1">
               <div className="w-3 h-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded mb-1"></div>
               <div className="w-full h-0.5 bg-neutral-300 dark:bg-neutral-600 rounded mb-1"></div>
               <div className="w-4/5 h-0.5 bg-neutral-200 dark:bg-neutral-700 rounded mb-1"></div>
               <div className="text-[6px] text-neutral-600 dark:text-neutral-400">UI</div>
             </div>
-          </MobileLandingContainer>
+          </PhoneFrame>
         </div>
       </div>
     </div>

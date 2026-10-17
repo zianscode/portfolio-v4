@@ -1,9 +1,9 @@
 "use client";
 import { FiLoader, FiMessageCircle } from "react-icons/fi";
 import { Message, User } from "@/types/chatroom";
-import MessageItem from "./MessageItem";
+import MessageItem from "@/components/chatroom/MessageItem";
 
-interface MessagesListProps {
+interface MessageListProps {
   messages: Message[];
   currentUser: User | null;
   isDarkMode: boolean;
@@ -19,7 +19,7 @@ interface MessagesListProps {
   onCancelEdit: () => void;
 }
 
-const MessagesList = ({
+const MessageList = ({
   messages,
   currentUser,
   isDarkMode,
@@ -33,7 +33,7 @@ const MessagesList = ({
   onEditTextChange,
   onSaveEdit,
   onCancelEdit,
-}: MessagesListProps) => {
+}: MessageListProps) => {
   const muted = isDarkMode ? "text-neutral-400" : "text-neutral-500";
 
   if (isLoading) {
@@ -94,4 +94,4 @@ const MessagesList = ({
   );
 };
 
-export default MessagesList;
+export default MessageList;

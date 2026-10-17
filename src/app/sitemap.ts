@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { detailedProjects } from "@/data/resume";
+import { detailedProjects } from "@/data/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://zianscode.vercel.app";

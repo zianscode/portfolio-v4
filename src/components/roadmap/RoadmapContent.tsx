@@ -6,7 +6,7 @@ import { useDarkMode } from "@/context/DarkModeContext";
 import RoadmapHeader from "@/components/roadmap/RoadmapHeader";
 import CategorySelector from "@/components/roadmap/CategorySelector";
 import RoadmapItems from "@/components/roadmap/RoadmapItems";
-import { skillCategories } from "@/data/resume";
+import { skillCategories } from "@/data/skills";
 
 type CategoryKey = keyof typeof skillCategories;
 

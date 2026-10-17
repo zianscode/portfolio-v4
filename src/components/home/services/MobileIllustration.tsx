@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import MobileContainer from "@/components/MobileContainer";
+import PhoneFrame from "@/components/home/services/PhoneFrame";
 
-export default function MobileIlustration() {
+export default function MobileIllustration() {
   return (
-    <MobileContainer>
+    <PhoneFrame>
       <div className="flex flex-col items-center w-full px-1 pt-2">
         <motion.div
           className="mb-1.5 border border-neutral-400 dark:border-neutral-700"
@@ -54,6 +54,6 @@ export default function MobileIlustration() {
           ))}
         </div>
       </div>
-    </MobileContainer>
+    </PhoneFrame>
   );
 }

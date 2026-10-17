@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
-import { db, auth, loginWithGoogle } from "@/lib/firebaseConfig";
+import { db, auth, loginWithGoogle } from "@/lib/firebase";
 import {
   collection,
   addDoc,

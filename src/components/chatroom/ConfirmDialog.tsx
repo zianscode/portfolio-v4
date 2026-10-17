@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FiAlertTriangle, FiCheck, FiEdit2, FiLogIn, FiTrash2, FiX } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
 
-interface CustomAlertProps {
+interface ConfirmDialogProps {
   isOpen: boolean;
   onClose: () => void;
   onConfirm: () => void;
@@ -23,7 +23,7 @@ const ICONS = {
   login: FiLogIn,
 };
 
-const CustomAlert = ({
+const ConfirmDialog = ({
   isOpen,
   onClose,
   onConfirm,
@@ -33,7 +33,7 @@ const CustomAlert = ({
   cancelText,
   type,
   isDarkMode,
-}: CustomAlertProps) => {
+}: ConfirmDialogProps) => {
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -147,4 +147,4 @@ const CustomAlert = ({
   );
 };
 
-export default CustomAlert;
+export default ConfirmDialog;
