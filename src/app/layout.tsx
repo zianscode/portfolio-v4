@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: "Fajar Fauzian Portfolio",
     images: [
       {
-        url: "/image/Fajar_Fauzian.jpg",
+        url: "/profile/fajar-fauzian.jpg",
         width: 800,
         height: 800,
         alt: "Fajar Fauzian - Frontend Developer",
@@ -54,16 +54,16 @@ export const metadata: Metadata = {
     title: "Fajar Fauzian | Frontend & Web Developer",
     description:
       "Portfolio pribadi Fajar Fauzian, Frontend Developer yang berfokus pada React.js, Next.js, TypeScript, dan pengembangan aplikasi web modern.",
-    images: ["/image/Fajar_Fauzian.jpg"],
+    images: ["/profile/fajar-fauzian.jpg"],
   },
   icons: {
     icon: [
-      { url: "/image/icon.png", type: "image/png" },
-      { url: "/image/icon.png", sizes: "16x16" },
-      { url: "/image/icon.png", sizes: "32x32" },
+      { url: "/icons/app-icon.png", type: "image/png" },
+      { url: "/icons/app-icon.png", sizes: "16x16" },
+      { url: "/icons/app-icon.png", sizes: "32x32" },
     ],
-    shortcut: "/image/icon.png",
-    apple: "/image/icon.png",
+    shortcut: "/icons/app-icon.png",
+    apple: "/icons/app-icon.png",
   },
   formatDetection: {
     telephone: false,

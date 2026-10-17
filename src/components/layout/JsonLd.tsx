@@ -5,7 +5,7 @@ export default function JsonLd() {
     "name": "Fajar Fauzian",
     "alternateName": "zianscode",
     "url": "https://zianscode.vercel.app",
-    "image": "https://zianscode.vercel.app/image/Fajar_Fauzian.jpg",
+    "image": "https://zianscode.vercel.app/profile/fajar-fauzian.jpg",
     "jobTitle": "Frontend Developer",
     "address": {
       "@type": "PostalAddress",

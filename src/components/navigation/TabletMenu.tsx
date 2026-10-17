@@ -80,7 +80,7 @@ export default function TabletMenu({
         <Link href="/" className="flex items-center gap-2.5 group flex-shrink-0">
           <div className="relative w-8 h-8 rounded-full overflow-hidden border border-neutral-700/50 flex-shrink-0 transition-transform group-hover:scale-105">
             <Image
-              src="/image/Fajar_Fauzian.jpg"
+              src="/profile/fajar-fauzian.jpg"
               alt="Fajar Fauzian"
               fill
               sizes="32px"
@@ -148,7 +148,7 @@ export default function TabletMenu({
           <Link href="/" className="flex items-center gap-2.5 group">
             <div className="relative w-8 h-8 rounded-full overflow-hidden border border-neutral-700/50 flex-shrink-0 transition-transform group-hover:scale-105">
               <Image
-                src="/image/Fajar_Fauzian.jpg"
+                src="/profile/fajar-fauzian.jpg"
                 alt="Fajar Fauzian"
                 fill
                 sizes="32px"

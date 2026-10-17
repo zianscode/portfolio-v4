@@ -5,7 +5,7 @@ export const certificates = [
     description: "Certificate in Coding Camp supported by DBS Foundation, specialising in Front-End Back End Developer",
     issuedBy: "Coding Camp powered by DBS Foundation",
     date: "January 30, 2025",
-    image: "/certificates/dbs.png",
+    image: "/certificates/dbs-coding-camp-completion.webp",
     link: "https://drive.google.com/file/d/1_u9moNXCOOCsj2cWsHXzLb3j69SSSONd/view?usp=drive_link",
   },  
   {
@@ -14,7 +14,7 @@ export const certificates = [
     description: "English for Business Communication",
     issuedBy: "Coding Camp powered by DBS Foundation",
     date: "January 30, 2025",
-    image: "/certificates/dbs_english.png",
+    image: "/certificates/dbs-coding-camp-english-achievement.webp",
     link: "https://drive.google.com/file/d/13rr8V9HuzLtyqJklejMQ4YoE84x0eRtK/view?usp=drive_link",
   },  
   {
@@ -23,7 +23,7 @@ export const certificates = [
     description: "Building a Career in UI/UX from Zero to Hero",
     issuedBy: "DaffaScript Agency",
     date: "February 4, 2025",
-    image: "/certificates/daffascr.png",
+    image: "/certificates/daffascript-ui-ux-zero-to-hero.webp",
     link: "https://drive.google.com/file/d/1uRwwZV5Ua_0OW0qwr7s42nXLdX4VH98F/view?usp=drive_link",
   },  
   {
@@ -32,7 +32,7 @@ export const certificates = [
     description: "Certificate of completion of Industrial Work Practice",
     issuedBy: "PT Narantraya",
     date: "July 21, 2024",
-    image: "/certificates/pkl.png",
+    image: "/certificates/narantraya-internship.webp",
     link: "https://drive.google.com/file/d/1KEnumAeXLEMcZCFsrvooHx0fiutnDW6Q/view?usp=drive_link",
   },  
   {
@@ -41,7 +41,7 @@ export const certificates = [
     description: "Career Guidance For Aspiring Game Developer.",
     issuedBy: "IGDX Career",
     date: "December 18, 2024",
-    image: "/certificates/igdx.png",
+    image: "/certificates/igdx-career-seminar.webp",
     link: "https://drive.google.com/file/d/1H4aCas-yLXKmizrN3QaRJSN3az9B1KC_/view?usp=drive_link",
   },
   {
@@ -50,7 +50,7 @@ export const certificates = [
     description: "Completed a Full Learning Path with Professional Skill in: UI-UX RESEARCH AND DESIGN",
     issuedBy: "MySkill",
     date: "March 11, 2025",
-    image: "/certificates/myskill.png",
+    image: "/certificates/myskill-ui-ux-research-design.webp",
     link: "https://drive.google.com/file/d/1lx5ePQXxgSrFGlFzEnAiMoaPp98ioHeP/view?usp=drive_link",
   },
   {
@@ -60,7 +60,7 @@ export const certificates = [
       "Front-end Development with The Progressive JavaScript Framework Vue.js",
     issuedBy: "Wanteknologi",
     date: "October 30, 2023",
-    image: "/certificates/vuejs.png",
+    image: "/certificates/wanteknologi-frontend-vue-js.webp",
     link: "https://drive.google.com/file/d/1BZ3ccpGrEE_2IZWN9KDVR7c1yPTVC-Fx/view?usp=drive_link",
   },
   {
@@ -70,7 +70,7 @@ export const certificates = [
       "Joining the Backend Development with Javascript Framework Training with PT.Laskar Teknologi Mulia (Cyberlabs).",
     issuedBy: "PT Laskar Teknologi Mulia",
     date: "November 10, 2023",
-    image: "/certificates/express.png",
+    image: "/certificates/laskar-teknologi-backend-express-js.webp",
     link: "https://drive.google.com/file/d/12W30fxT1vpU0nziuJVKOL38qBadhumrg/view?usp=drive_link",
   },
   {
@@ -79,7 +79,7 @@ export const certificates = [
     description: "Certification for completing the AI course Dicoding.",
     issuedBy: "Dicoding",
     date: "November 30, 2024",
-    image: "/certificates/dicai.png",
+    image: "/certificates/dicoding-dasar-ai.webp",
     link: "https://drive.google.com/file/d/1Q59lDUnG8LaOrxpwZ5RvG_SQCmEzvF_E/view?usp=drive_link",
   },
   {
@@ -89,7 +89,7 @@ export const certificates = [
       "Certification for completing the Frontend Web course Dicoding.",
     issuedBy: "Dicoding",
     date: "November 24, 2023",
-    image: "/certificates/dicfepml.png",
+    image: "/certificates/dicoding-frontend-web-pemula.webp",
     link: "https://drive.google.com/file/d/1moE3wdslssz-TDvWTeP0tqq5URyqv9S5/view?usp=drive_link",
   },
   {
@@ -98,7 +98,7 @@ export const certificates = [
     description: "Certification for completing the AWS course Dicoding.",
     issuedBy: "Dicoding",
     date: "November 25, 2023",
-    image: "/certificates/dicaws.png",
+    image: "/certificates/dicoding-aws-cloud-practitioner.webp",
     link: "https://drive.google.com/file/d/1i89m11ZocSTqaQk8AhiPsxFJ6HxYZ3xq/view?usp=drive_link",
   },
   {
@@ -107,7 +107,7 @@ export const certificates = [
     description: "Certification for completing the JS course Dicoding.",
     issuedBy: "Dicoding",
     date: "January 24, 2025",
-    image: "/certificates/dicjs.png",
+    image: "/certificates/dicoding-dasar-javascript.webp",
     link: "https://drive.google.com/file/d/1D8sIA-4zFwJpjtkPoI_LbADspGeRBZzG/view?usp=drive_link",
   },
 ];

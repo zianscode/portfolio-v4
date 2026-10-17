@@ -67,7 +67,7 @@ export default function SidebarProfileBanner({
         <>
           <motion.div
             className="absolute inset-x-0 top-0 h-24 bg-cover bg-center z-0 rounded-2xl overflow-hidden"
-            style={{ ...backdropStyle, backgroundImage: "url('/image/backdrop.webp')" }}
+            style={{ ...backdropStyle, backgroundImage: "url('/profile/sidebar-banner.webp')" }}
             initial={{ opacity: 0, scale: 1.1 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}

@@ -68,7 +68,7 @@ export default function SidebarProfile({
         }}
       >
         <Image
-          src="/image/Fajar_Fauzian.jpg"
+          src="/profile/fajar-fauzian.jpg"
           alt="Fajar Fauzian - Frontend Developer"
           fill
           sizes="90px"

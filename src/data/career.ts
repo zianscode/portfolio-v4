@@ -8,7 +8,7 @@ export const workExperienceData = [
     startDate: "Jan 2024", 
     endDate: "Jun 2024",
     duration: "6 Months",
-    logo: "/career/narantraya.jpg"
+    logo: "/career/narantraya-teknologi-digital.webp"
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ export const workExperienceData = [
     startDate: "Aug 2024",
     endDate: "Nov 2024", 
     duration: "3 Months",
-    logo: "/career/narantraya.jpg"
+    logo: "/career/narantraya-teknologi-digital.webp"
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ export const workExperienceData = [
     startDate: "Jan 2025",
     endDate: "Apr 2025",
     duration: "3 Months",
-    logo: "/career/dbs.jpg"
+    logo: "/career/dbs-foundation-coding-camp.webp"
   },
 ];
 
@@ -44,7 +44,7 @@ export const educationData = [
     startDate: "Jul 2022",
     endDate: "Jun 2025",
     duration: "3 Years",
-    logo: "/career/wikrama.png"
+    logo: "/career/smk-wikrama-bogor.webp"
   },
   {
     id: 2,
@@ -55,6 +55,6 @@ export const educationData = [
     startDate: "Sep 2026",
     endDate: "Current",
     duration: "4 Years",
-    logo: "/career/unbin.png"
+    logo: "/career/universitas-binaniaga-indonesia.webp"
   },
 ];

@@ -72,7 +72,7 @@ export default function MobileHeader({
           transition={{ duration: 0.15 }}
         >
           <Image
-            src="/image/Fajar_Fauzian.jpg"
+            src="/profile/fajar-fauzian.jpg"
             alt="Fajar Fauzian - Frontend Developer"
             width={34}
             height={34}

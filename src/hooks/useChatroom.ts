@@ -71,7 +71,7 @@ export function useChatroom() {
         setUser({
           name: currentUser.displayName || "Anonymous",
           email: currentUser.email || "",
-          photo: currentUser.photoURL || "/default-profile.svg",
+          photo: currentUser.photoURL || "/chatroom/default-avatar.svg",
           uid: currentUser.uid,
         });
         if (justLoggedInRef.current) {
@@ -115,7 +115,7 @@ export function useChatroom() {
                 id: docSnap.id,
                 username: data.username || "Unknown User",
                 message: data.message || "",
-                photo: data.photo || "/default-profile.svg",
+                photo: data.photo || "/chatroom/default-avatar.svg",
                 timestamp: data.timestamp,
                 userId: data.userId || "",
                 replyTo: data.replyTo || null,
