@@ -105,7 +105,7 @@ export default function MobileMenu({
                   variants={itemVariants}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className={`rounded-lg ${
+                  className={`rounded-full ${
                     isDarkMode
                       ? "hover:bg-neutral-800/80 active:bg-neutral-800"
                       : "hover:bg-neutral-200/80 active:bg-neutral-200"

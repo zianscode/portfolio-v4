@@ -109,7 +109,7 @@ export default function MobileHeader({
 
       <div className="flex items-center gap-2">
         <motion.button
-          className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300"
+          className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300"
           style={{
             background: scrolled
               ? isDarkMode ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.06)"
@@ -131,7 +131,7 @@ export default function MobileHeader({
         </motion.button>
 
         <motion.button
-          className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300"
+          className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300"
           style={{
             background: scrolled
               ? isDarkMode ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.06)"

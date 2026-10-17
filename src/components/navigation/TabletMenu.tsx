@@ -210,7 +210,7 @@ export default function TabletMenu({
                 initial="hidden"
                 animate="show"
                 exit="exit"
-                className={`absolute top-[calc(100%+8px)] right-0 w-[220px] sm:w-[240px] p-2 rounded-2xl border shadow-2xl backdrop-blur-2xl transition-all duration-300 z-50 ${
+                className={`absolute top-[calc(100%+8px)] right-0 w-[220px] sm:w-[240px] p-2 rounded-3xl border shadow-2xl backdrop-blur-2xl transition-all duration-300 z-50 ${
                   isDarkMode
                     ? "bg-neutral-950/90 text-neutral-200 border-white/10 shadow-[0_16px_40px_rgba(0,0,0,0.7)]"
                     : "bg-white/90 text-neutral-800 border-neutral-200/80 shadow-[0_16px_40px_rgba(0,0,0,0.12)]"
@@ -231,7 +231,7 @@ export default function TabletMenu({
                         <Link
                           href={item.href}
                           onClick={() => setIsOpen(false)}
-                          className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 ${
+                          className={`flex items-center gap-3 px-3.5 py-2.5 rounded-full text-xs font-medium transition-all duration-200 ${
                             isActive
                               ? isDarkMode
                                 ? "bg-white/15 text-white font-semibold border border-white/10 shadow-sm"
