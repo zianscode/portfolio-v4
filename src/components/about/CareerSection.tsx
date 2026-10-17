@@ -121,13 +121,13 @@ const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
                   )}
                 </div>
                 
-                <div className={`md:hidden absolute left-[15px] top-[32px] w-4 h-6 rounded-md flex items-center justify-center border-y-2 z-10 ${
+                <div className={`md:hidden absolute left-[15px] top-[32px] w-4 h-6 rounded-full flex items-center justify-center border-y-2 z-10 ${
                   isDarkMode ? "bg-stone-900 border-stone-700 shadow-lg" : "bg-stone-100 border-stone-300 shadow-sm"
                 }`}>
                   <div className={`w-1.5 h-1.5 rounded-full animate-pulse bg-gradient-to-tr ${nodeColor.gradient} ${nodeColor.shadow}`} />
                 </div>
                 
-                <div className={`hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-8 rounded-lg items-center justify-center border-y-2 z-10 ${
+                <div className={`hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-5 h-8 rounded-full items-center justify-center border-y-2 z-10 ${
                   isDarkMode ? "bg-stone-900 border-stone-700 shadow-xl" : "bg-stone-100 border-stone-400 shadow-md"
                 }`}>
                   <div className={`w-2 h-2 rounded-full animate-pulse bg-gradient-to-tr ${nodeColor.gradient} ${nodeColor.shadow}`} />
@@ -147,7 +147,7 @@ const CareerSection = ({ isDarkMode }: CareerSectionProps) => {
                 </div>
                 
                 <div className={`hidden md:flex w-[46%] items-center ${isLeft ? 'md:order-3 justify-start pl-6' : 'md:order-1 justify-end pr-6'}`}>
-                  <div className={`relative flex items-center gap-2 px-4 py-2 rounded-xl shadow-lg border transition-transform hover:-translate-y-1 ${isDarkMode ? "bg-neutral-800 border-neutral-700 text-stone-200" : "bg-white border-stone-200 text-stone-700"}`}>
+                  <div className={`relative flex items-center gap-2 px-4 py-2 rounded-full shadow-lg border transition-transform hover:-translate-y-1 ${isDarkMode ? "bg-neutral-800 border-neutral-700 text-stone-200" : "bg-white border-stone-200 text-stone-700"}`}>
                     
                     {isLeft ? (
                       <div className={`absolute top-1/2 -translate-y-1/2 -left-[6px] border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[6px] ${isDarkMode ? "border-r-neutral-700" : "border-r-stone-200"}`}>
@@ -253,7 +253,7 @@ const CareerCard = ({ career, isDarkMode, index }: CareerCardProps) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.1 * index }}
       whileHover={{ y: -2 }}
-      className={`w-full relative overflow-hidden rounded-2xl transition-all duration-300 h-full flex flex-col ${
+      className={`w-full relative overflow-hidden rounded-3xl transition-all duration-300 h-full flex flex-col ${
         isDarkMode
           ? "bg-neutral-900/40 backdrop-blur-md border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.3)] hover:bg-neutral-800/50 hover:-translate-y-1"
           : "bg-white/50 backdrop-blur-md border border-neutral-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:bg-white/70 hover:-translate-y-1"
