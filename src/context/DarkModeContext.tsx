@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useEffect, useSyncExternalStore } from "react";
 
 interface DarkModeContextType {
   isDarkMode: boolean;
@@ -16,21 +16,37 @@ const DarkModeContext = createContext<DarkModeContextType>({
 
 export const useDarkMode = () => useContext(DarkModeContext);
 
+const STORAGE_KEY = "darkMode";
+const listeners = new Set<() => void>();
+
+const subscribe = (listener: () => void) => {
+  listeners.add(listener);
+  const media = window.matchMedia("(prefers-color-scheme: dark)");
+  media.addEventListener("change", listener);
+  window.addEventListener("storage", listener);
+  return () => {
+    listeners.delete(listener);
+    media.removeEventListener("change", listener);
+    window.removeEventListener("storage", listener);
+  };
+};
+
+const getSnapshot = () => {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  return saved !== null
+    ? JSON.parse(saved) === true
+    : window.matchMedia("(prefers-color-scheme: dark)").matches;
+};
+
+const getServerSnapshot = () => false;
+
+const subscribeNoop = () => () => {};
+
 export const DarkModeProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    const darkModePreference = localStorage.getItem("darkMode");
-    const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    setIsDarkMode(
-      darkModePreference !== null ? JSON.parse(darkModePreference) : prefersDarkMode
-    );
-    setMounted(true);
-  }, []);
+  const isDarkMode = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const mounted = useSyncExternalStore(subscribeNoop, () => true, () => false);
 
   useEffect(() => {
     if (!mounted) return;
@@ -44,12 +60,11 @@ export const DarkModeProvider: React.FC<{
       document.body.classList.add("bg-white");
       document.body.classList.remove("bg-neutral-950");
     }
-
-    localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
   }, [isDarkMode, mounted]);
 
   const toggleDarkMode = () => {
-    setIsDarkMode((prev) => !prev);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(!getSnapshot()));
+    listeners.forEach((listener) => listener());
   };
 
   return (
