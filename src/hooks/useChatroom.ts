@@ -34,7 +34,7 @@ export interface AlertConfig {
 export function useChatroom() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [user, setUser] = useState<User | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(!MAINTENANCE_MODE);
   const [error, setError] = useState<string | null>(null);
   const [isSending, setIsSending] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
@@ -93,13 +93,7 @@ export function useChatroom() {
   }, [showWelcome]);
 
   useEffect(() => {
-    if (MAINTENANCE_MODE) {
-      setIsLoading(false);
-      return;
-    }
-
-    setIsLoading(true);
-    setError(null);
+    if (MAINTENANCE_MODE) return;
 
     try {
       const messagesRef = collection(db, "messages");
@@ -137,8 +131,16 @@ export function useChatroom() {
       return unsubscribe;
     } catch (err) {
       console.error("Error setting up messages listener:", err);
-      setError("Failed to initialize chat. Please refresh the page.");
-      setIsLoading(false);
+      // Report the setup failure asynchronously, the same way onSnapshot reports errors.
+      let cancelled = false;
+      queueMicrotask(() => {
+        if (cancelled) return;
+        setError("Failed to initialize chat. Please refresh the page.");
+        setIsLoading(false);
+      });
+      return () => {
+        cancelled = true;
+      };
     }
   }, []);
 
